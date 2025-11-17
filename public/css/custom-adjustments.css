@@ -1,0 +1,137 @@
+/* Ajustes personalizados de tamaño de fuente */
+
+/* Tamaño base del body aumentado */
+body {
+  font-size: 20px !important;
+}
+
+/* Párrafos */
+p {
+  font-size: 20px !important;
+  line-height: 1.6 !important;
+}
+
+/* Textos de tarjetas */
+.card-text {
+  font-size: 20px !important;
+}
+
+.card-body p {
+  font-size: 18px !important;
+}
+
+/* Lista del footer */
+.footer_ul_amrc li a {
+  font-size: 17px !important;
+}
+
+/* News section */
+.news-info p {
+  font-size: 18px !important;
+}
+
+/* About section */
+.about-main p {
+  font-size: 20px !important;
+}
+
+.left-ab p {
+  font-size: 20px !important;
+}
+
+/* Títulos de tarjetas en portfolio */
+.portfolio-item .card .card-body h4 a {
+  font-size: 24px !important;
+}
+
+.portfolio-item .card .card-body p {
+  font-size: 18px !important;
+}
+
+/* Blog entries */
+.blog-entries .card .card-body h2.card-title {
+  font-size: 26px !important;
+}
+
+.blog-entries .card .card-body p {
+  font-size: 20px !important;
+}
+
+/* Lead text */
+.lead {
+  font-size: 22px !important;
+}
+
+/* Navbar links - mantener tamaño original para no afectar layout */
+.navbar-expand-lg.top-nav .navbar-nav .nav-link {
+  font-size: 16px !important;
+  line-height: 1.5 !important;
+}
+
+/* Dropdown menu - ajustar posicionamiento */
+.navbar-expand-lg.top-nav .navbar-nav .dropdown-menu {
+  margin-top: 0 !important;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  font-size: 16px !important;
+  padding: 8px 20px !important;
+  line-height: 1.5 !important;
+}
+
+/* Contact details */
+.contact-details ul li {
+  font-size: 16px !important;
+}
+
+/* Blockquotes - Citas */
+.blockquote {
+  font-size: 20px !important;
+}
+
+.blockquote p {
+  font-size: 20px !important;
+}
+
+.blockquote-footer {
+  font-size: 18px !important;
+}
+
+/* Cards - Recuadros */
+.card-body {
+  font-size: 18px !important;
+}
+
+.card-body h5 {
+  font-size: 22px !important;
+}
+
+.card-body h6 {
+  font-size: 18px !important;
+}
+
+.card-body ul li {
+  font-size: 18px !important;
+}
+
+.card-body ul li h6 {
+  font-size: 18px !important;
+}
+
+/* Card headers */
+.card-header {
+  font-size: 20px !important;
+}
+
+h5.card-header {
+  font-size: 22px !important;
+}
+
+/* Lista de requisitos y similares */
+.blog-right-side .card-body ul li {
+  font-size: 18px !important;
+  line-height: 1.6 !important;
+}
+
+/* Social media y otros elementos pequeños mantienen su tamaño original */

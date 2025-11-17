@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="INSESO - Afiliación - Empresas" currentPath="/afiliacionee_empresas">
+<div class="full-title">
+		<div class="container">
+			<img class="img-fluid" src="/images/trabajadores/img_silder_trabaja_02.jpg" alt=""/>
+		</div>
+	</div>
+
+    <div class="container">
+		<div class="about-main">
+			<div class="row">
+				<div class="col-lg-6">
+					<h2>Inscripción de Empresas</h2>
+					<div class="card my-4">
+						<h4 class="card-header">Usted es un empresario </h4>
+						<div class="card-body">
+							<ul>
+								<li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial.</h6></li>
+								<li><h6>Rellenar ficha de registro de empresa</h6></li>
+								<li><h6>Copia de NIF.</h6></li>
+								<li><h6>*Copia de registro de comercio</h6></li>
+								<li><h6>Copia de D.I.P/Pasaporte o Residencia del responsable de la empresa.</h6></li>
+								<li><h6>Listado de los trabajadores y sus salarios.</h6></li>
+								<li><h6>Copia del estatuto de la empresa.</h6></li>
+							</ul>
+						</div>
+					</div>
+					<div class="card my-4">
+						<h4 class="card-header">Entidades Autonomas/Empresas Para Publicas</h4>
+						<div class="card-body">
+							<ul>
+								<li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial</h6></li>
+								<li><h6>Rellenar ficha de registro de empresa</h6></li>
+								<li><h6>Copia del Decreto Ley de la creación de la empresa</h6></li>
+								<li><h6>Listado de los trabajadores y sus salarios</h6></li>
+								<li><h6>Copia de D.I.P  del Director General de la empresa</h6></li>
+							</ul>
+						</div>
+					</div>
+					<div class="card my-4">
+						<h4 class="card-header">Si es usted Senador O Diputado para la solicitud de su carnet</h4>
+						<div class="card-body">
+							<ul>
+								<li><h6>Copia D.I.P/Pasaporte</h6></li>
+								<li><h6>Rellenar ficha de afiliación</h6></li>
+								<li><h6>Una (1) foto tamaño carné</h6></li>
+								<li><h6>Credencial</h6></li>
+								<li><h6>5 000 FCFAs. Importe carné. </h6></li>
+							</ul>
+						</div>
+					</div>
+					<div class="card my-4">
+						<h4 class="card-header">Los Ministerios</h4>
+						<div class="card-body">
+							<ul>
+								<li><h6>Los Ministerios se entiende automáticamente inscritos, la inscripción es de oficio, al ser parte de un empleador común, que es el Gobierno</h6></li>
+							</ul>
+						</div>
+					</div>
+				</div>			
+				
+				<div class="col-lg-6">
+					<img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_02.jpg" alt=""/>					
+					<h4 class="card-header">Baja de Empresa</h4>
+					<div class="card-body">
+						<ul>
+							<li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional O provincial</h6></li>
+							<li><h6>Copia Baja concedida por la Dirección General de Impuestos y Contribuciones</h6></li>
+							<li><h6>Copias de liquidaciones de los trabajadores (finiquitos) entrega a los mismos o debidamente refrendados por el Mº de Trabajo y Seguridad Social</h6></li>
+						</ul>
+					</div>					
+					
+					<hr>					
+					<img class="img-fluid rounded mb-4" src="/images/trabajadores/Solicitud.png" alt=""/>
+				</div>
+				
+			</div>
+		</div>			
+	</div>
+	
+	<div class="customers-box"> 
+		<div class="container">
+			<hr>
+			<h2>NUESTROS SOCIOS</h2>
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="customers-slider" class="owl-carousel">
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt=""/>
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt=""/>
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt=""/>
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt=""/>
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt=""/>
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt=""/>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>
+
+<script is:inline>
+	(function($) {
+		$(document).ready(function() {
+			if ($("#customers-slider").length) {
+				$("#customers-slider").owlCarousel({
+					items: 5,
+					loop: true,
+					margin: 15,
+					nav: false,
+					dots: false,
+					autoplay: true,
+					autoplayTimeout: 2500,
+					responsive: {
+						0: { items: 2 },
+						650: { items: 2 },
+						768: { items: 3 },
+						1000: { items: 4 },
+						1200: { items: 5 }
+					}
+				});
+			}
+		});
+	})(window.jQuery);
+</script>

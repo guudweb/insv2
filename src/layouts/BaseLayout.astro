@@ -1,0 +1,60 @@
+---
+import TopBar from '../components/TopBar.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+	currentPath?: string;
+}
+
+const {
+	title = 'INSESO',
+	description = '',
+	currentPath = Astro.url.pathname
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ge">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content={description}>
+	<meta name="author" content="">
+	<link href="/images/favicon.png" rel="icon">
+	<title>{title}</title>
+
+	<!-- CSS Files -->
+	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/all.css" rel="stylesheet">
+	<link href="/css/owl.carousel.min.css" rel="stylesheet">
+	<link href="/css/owl.carousel_2.css" rel="stylesheet">
+	<link href="/css/owl.theme_2.css" rel="stylesheet">
+	<link href="/css/style.css" rel="stylesheet">
+	<link href="/css/style_2.css" rel="stylesheet">
+	<link href="/css/bootstrap_2.css" rel="stylesheet">
+	<link href="/css/responsive_2.css" rel="stylesheet">
+	<link href="/css/animate_2.css" rel="stylesheet">
+	<link href="/css/prettyPhoto_2.css" rel="stylesheet">
+	<link href="/css/font-awesome_2.css" rel="stylesheet">
+
+	<!-- Custom adjustments -->
+	<link href="/css/custom-adjustments.css" rel="stylesheet">
+</head>
+<body>
+	<div class="wrapper-main">
+		<TopBar />
+		<Navbar currentPath={currentPath} />
+
+		<slot />
+
+		<Footer />
+	</div>
+
+	<!-- Scripts -->
+	<script is:inline src="/vendor/jquery/jquery.min.js"></script>
+	<script is:inline src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

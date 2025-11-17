@@ -1,0 +1,58 @@
+---
+// Blog Slider component - Slider de categorías
+interface SlideItem {
+	image: string;
+	title: string;
+	link: string;
+}
+
+const items: SlideItem[] = [
+	{
+		image: '/images/img_acc-01.jpg',
+		title: 'ES USTED AUTÓNOMO',
+		link: '/afiliacionee_trabajadores'
+	},
+	{
+		image: '/images/img_acc_02.jpg',
+		title: 'USTED ES UN EMPLEADO',
+		link: '/afiliacionee_trabajadores'
+	},
+	{
+		image: '/images/img_acc_03.jpg',
+		title: 'USTED ES EMPRESARIO',
+		link: '/afiliacionee_empresas'
+	},
+	{
+		image: '/images/img_acc_13.jpg',
+		title: 'SOLICITUD DE CARNÉ',
+		link: '#'
+	}
+];
+---
+
+<div class="blog-slide">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="blog-slider" class="owl-carousel">
+					{items.map(item => (
+						<div class="post-slide">
+							<div class="pic">
+								<img src={item.image} alt={item.title}>
+								<ul class="post-category">
+									<li><a href={item.link}>{item.title}</a></li>
+								</ul>
+							</div>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+
+<script>
+	// Se inicializará Owl Carousel desde los scripts del layout
+	// o se puede migrar a Swiper.js en el futuro
+</script>

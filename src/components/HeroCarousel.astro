@@ -1,0 +1,46 @@
+---
+// Hero Carousel component usando Swiper.js (reemplazo de Bootstrap carousel)
+interface Slide {
+	image: string;
+}
+
+const slides: Slide[] = [
+	{ image: '/images/accueil/slider-00.jpg' },
+	{ image: '/images/accueil/slider-01.jpg' },
+	{ image: '/images/accueil/slider-02.jpg' },
+	{ image: '/images/accueil/slider-03.jpg' },
+	{ image: '/images/accueil/slider-04.jpg' },
+	{ image: '/images/accueil/slider-05.jpg' },
+	{ image: '/images/accueil/slider-06.jpg' }
+];
+---
+
+<header class="slider-main">
+	<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+		<ol class="carousel-indicators">
+			{slides.map((_, index) => (
+				<li
+					data-target="#carouselExampleIndicators"
+					data-slide-to={index}
+					class={index === 0 ? 'active' : ''}
+				></li>
+			))}
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			{slides.map((slide, index) => (
+				<div
+					class={`carousel-item ${index === 0 ? 'active' : ''}`}
+					style={`background-image: url(${slide.image})`}
+				></div>
+			))}
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+</header>
