@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getNoticias, getStrapiImageUrl, formatDate, getNoticiaSlug } from '../../lib/strapi';
+
+const noticias = await getNoticias();
+---
+
+<BaseLayout title="INSESO - Noticias" currentPath="/noticias">
+	<div class="full-title">
+		<div class="container"><br>
+			<h1 class="text_blanc">NOTICIAS INSESO</h1><br>
+			<div class="breadcrumb-main">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+					<li class="breadcrumb-item active">Noticias</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="blog-main">
+		<div class="container">
+			<div class="row">
+				{noticias.length === 0 ? (
+					<div class="col-12">
+						<div class="alert alert-info" role="alert">
+							<h4>No hay noticias disponibles</h4>
+							<p>Aún no se han publicado noticias. Vuelve pronto para ver las últimas actualizaciones de INSESO.</p>
+						</div>
+					</div>
+				) : (
+					noticias.map((noticia) => (
+						<div class="col-lg-4 col-md-6 mb-4">
+							<div class="card h-100">
+								{noticia.imagen && (
+									<img
+										class="card-img-top"
+										src={getStrapiImageUrl(noticia.imagen.url)}
+										alt={noticia.imagen.alternativeText || noticia.titulo}
+									/>
+								)}
+								<div class="card-body">
+									<h4 class="card-title">
+										<a href={`/noticias/${getNoticiaSlug(noticia)}`}>
+											{noticia.titulo}
+										</a>
+									</h4>
+									<p class="card-text">{noticia.resumen}</p>
+									<p class="text-muted">
+										<small>
+											<i class="fas fa-calendar"></i> {formatDate(noticia.fechaPublicacion)}
+											{noticia.autor && (
+												<> | <i class="fas fa-user"></i> {noticia.autor}</>
+											)}
+										</small>
+									</p>
+								</div>
+								<div class="card-footer">
+									<a href={`/noticias/${getNoticiaSlug(noticia)}`} class="btn btn-primary">
+										Leer más &rarr;
+									</a>
+								</div>
+							</div>
+						</div>
+					))
+				)}
+			</div>
+		</div>
+	</div>
+
+	<div class="customers-box">
+		<div class="container">
+			<hr>
+			<h2>NUESTROS SOCIOS</h2>
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="customers-slider" class="owl-carousel">
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>
+
+<script is:inline>
+	(function($) {
+		$(document).ready(function() {
+			if ($("#customers-slider").length) {
+				$("#customers-slider").owlCarousel({
+					items: 5,
+					loop: true,
+					margin: 15,
+					nav: false,
+					dots: false,
+					autoplay: true,
+					autoplayTimeout: 2500,
+					responsive: {
+						0: { items: 2 },
+						650: { items: 2 },
+						768: { items: 3 },
+						1000: { items: 4 },
+						1200: { items: 5 }
+					}
+				});
+			}
+		});
+	})(window.jQuery);
+</script>

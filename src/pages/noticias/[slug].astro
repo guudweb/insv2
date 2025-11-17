@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug } from '../../lib/strapi';
+
+export async function getStaticPaths() {
+	const noticias = await getNoticias();
+	return noticias.map((noticia) => ({
+		params: { slug: getNoticiaSlug(noticia) },
+	}));
+}
+
+const { slug } = Astro.params;
+const noticia = await getNoticiaBySlug(slug);
+
+if (!noticia) {
+	return Astro.redirect('/noticias');
+}
+
+const { titulo, contenido, resumen, fechaPublicacion, autor, imagen } = noticia;
+---
+
+<BaseLayout title={`INSESO - ${titulo}`} currentPath={`/noticias/${slug}`}>
+	<div class="full-title">
+		<div class="container"><br>
+			<h1 class="text_blanc">{titulo}</h1><br>
+			<div class="breadcrumb-main">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+					<li class="breadcrumb-item"><a href="/noticias">Noticias</a></li>
+					<li class="breadcrumb-item active">{titulo}</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="blog-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 blog-entries">
+					<div class="card mb-4">
+						{imagen && (
+							<img
+								class="card-img-top"
+								src={getStrapiImageUrl(imagen.url)}
+								alt={imagen.alternativeText || titulo}
+							/>
+						)}
+						<div class="card-body">
+							<p class="text-muted">
+								<i class="fas fa-calendar"></i> {formatDate(fechaPublicacion)}
+								{autor && (
+									<> | <i class="fas fa-user"></i> {autor}</>
+								)}
+							</p>
+							<hr>
+
+							<div class="noticia-contenido" set:html={contenido} />
+						</div>
+					</div>
+
+					<div class="text-center my-4">
+						<a href="/noticias" class="btn btn-secondary">
+							<i class="fas fa-arrow-left"></i> Volver a Noticias
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-4 blog-right-side">
+					<div class="card my-4">
+						<h5 class="card-header">Resumen</h5>
+						<div class="card-body">
+							<p>{resumen}</p>
+						</div>
+					</div>
+
+					<div class="card my-4">
+						<h5 class="card-header">Compartir</h5>
+						<div class="card-body text-center">
+							<a
+								href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url}`}
+								target="_blank"
+								class="btn btn-primary m-1"
+							>
+								<i class="fab fa-facebook-f"></i> Facebook
+							</a>
+							<a
+								href={`https://twitter.com/intent/tweet?url=${Astro.url}&text=${titulo}`}
+								target="_blank"
+								class="btn btn-info m-1"
+							>
+								<i class="fab fa-twitter"></i> Twitter
+							</a>
+						</div>
+					</div>
+
+					<div class="card my-4">
+						<h5 class="card-header">Contacto</h5>
+						<div class="card-body">
+							<p><strong>INSESO</strong></p>
+							<p>Tel.: (+240) 333 092214</p>
+							<p>Email: info@inseso.org</p>
+							<a href="/contacto" class="btn btn-primary btn-block">
+								Contactar
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="customers-box">
+		<div class="container">
+			<hr>
+			<h2>NUESTROS SOCIOS</h2>
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="customers-slider" class="owl-carousel">
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>
+
+<script is:inline>
+	(function($) {
+		$(document).ready(function() {
+			if ($("#customers-slider").length) {
+				$("#customers-slider").owlCarousel({
+					items: 5,
+					loop: true,
+					margin: 15,
+					nav: false,
+					dots: false,
+					autoplay: true,
+					autoplayTimeout: 2500,
+					responsive: {
+						0: { items: 2 },
+						650: { items: 2 },
+						768: { items: 3 },
+						1000: { items: 4 },
+						1200: { items: 5 }
+					}
+				});
+			}
+		});
+	})(window.jQuery);
+</script>
+
+<style>
+	.noticia-contenido {
+		font-size: 18px;
+		line-height: 1.8;
+	}
+
+	.noticia-contenido p {
+		margin-bottom: 1.5rem;
+	}
+
+	.noticia-contenido h2,
+	.noticia-contenido h3,
+	.noticia-contenido h4 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: #8c1b12;
+	}
+
+	.noticia-contenido img {
+		max-width: 100%;
+		height: auto;
+		margin: 2rem 0;
+		border-radius: 8px;
+	}
+
+	.noticia-contenido ul,
+	.noticia-contenido ol {
+		margin-bottom: 1.5rem;
+		padding-left: 2rem;
+	}
+
+	.noticia-contenido li {
+		margin-bottom: 0.5rem;
+	}
+</style>

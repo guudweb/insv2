@@ -1,2 +1,32 @@
+# Dependencies
 node_modules
+cms/node_modules
+
+# Environment variables
 .env
+cms/.env
+
+# Build outputs
+dist/
+.astro/
+
+# Strapi
+cms/.tmp/
+cms/.cache/
+cms/build/
+cms/public/uploads/*
+!cms/public/uploads/.gitkeep
+
+# Database
+cms/.tmp/
+*.db
+*.sqlite
+
+# Logs
+*.log
+npm-debug.log*
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
