@@ -1,0 +1,90 @@
+{
+  "kind": "collectionType",
+  "collectionName": "noticias",
+  "info": {
+    "singularName": "noticia",
+    "pluralName": "noticias",
+    "displayName": "Noticia"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
+    },
+    "resumen": {
+      "type": "text"
+    },
+    "contenido": {
+      "type": "richtext"
+    },
+    "fechaPublicacion": {
+      "type": "date"
+    },
+    "imagen": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "video": {
+      "type": "string"
+    },
+    "tipoMedia": {
+      "type": "enumeration",
+      "default": "imagen",
+      "enum": [
+        "imagen",
+        "video"
+      ]
+    },
+    "categoria": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria.categoria",
+      "inversedBy": "noticias"
+    },
+    "posicion": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "principal",
+        "lateral",
+        "ultima-hora",
+        "novedad"
+      ]
+    },
+    "orden": {
+      "type": "integer",
+      "default": 0
+    },
+    "destacado": {
+      "type": "boolean",
+      "default": false
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    },
+    "videoArchivo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

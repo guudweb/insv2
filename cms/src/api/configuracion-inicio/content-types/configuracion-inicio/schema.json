@@ -1,0 +1,66 @@
+{
+  "kind": "singleType",
+  "collectionName": "configuracion_inicios",
+  "info": {
+    "singularName": "configuracion-inicio",
+    "pluralName": "configuracion-inicios",
+    "displayName": "ConfiguracionInicio"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tituloHero": {
+      "type": "string",
+      "default": "JUNTOS EN CADA ETAPA DE TU VIDA"
+    },
+    "afiliacionTitulo": {
+      "type": "string"
+    },
+    "afiliacionImagen": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "afiliacionTexto": {
+      "type": "text"
+    },
+    "afiliacionEnlace": {
+      "type": "string"
+    },
+    "sidebarImagenBanner": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "sidebarCardTitulo": {
+      "type": "string"
+    },
+    "sidebarCardTexto": {
+      "type": "text"
+    },
+    "videoUrl": {
+      "type": "string"
+    },
+    "videoTitulo": {
+      "type": "string"
+    },
+    "videoFecha": {
+      "type": "string"
+    },
+    "videoDescripcion": {
+      "type": "text"
+    }
+  }
+}
