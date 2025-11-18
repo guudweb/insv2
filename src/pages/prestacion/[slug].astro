@@ -1,0 +1,37 @@
+---
+/**
+ * Ruta dinámica para prestaciones
+ * Esta página se genera automáticamente para cualquier prestación en Strapi
+ * URL: /prestacion/[slug]
+ */
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+import { getPrestacionBySlug } from '../../lib/strapi';
+
+// SSR habilitado - genera páginas dinámicamente
+export const prerender = false;
+
+// Obtener el slug de la URL
+const { slug } = Astro.params;
+
+// Cargar la prestación desde Strapi
+const prestacion = await getPrestacionBySlug(slug as string);
+
+// Si no existe, mostrar 404
+if (!prestacion) {
+  return Astro.redirect('/404');
+}
+
+// Construir el título para la página
+const pageTitle = `INSESO - ${prestacion.titulo}`;
+const breadcrumbTitle = prestacion.titulo.toUpperCase();
+---
+
+<PrestacionLayout
+  slug={slug as string}
+  pageTitle={pageTitle}
+  breadcrumbTitle={breadcrumbTitle}
+  currentPath={`/prestacion/${slug}`}
+  defaultDescripcion=""
+  defaultRequisitos=""
+  defaultImagen="/images/prestaciones/prestaciones_default.jpg"
+/>

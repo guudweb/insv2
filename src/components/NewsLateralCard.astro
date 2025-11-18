@@ -1,0 +1,25 @@
+---
+import type { Noticia } from '../lib/strapi';
+import { getStrapiImageUrl } from '../lib/strapi';
+
+interface Props {
+  noticia: Noticia;
+  variant?: 'default' | 'compact';
+}
+
+const { noticia, variant = 'default' } = Astro.props;
+
+const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
+const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
+---
+
+<div class="card my-4">
+  <h5 class="card-header">
+    <a href={`/noticia/${slug}`} class="text-decoration-none text-white">
+      {noticia.titulo}
+    </a>
+  </h5>
+  <a href={`/noticia/${slug}`}>
+    <img class="img-fluid" src={imageUrl} alt={noticia.titulo} />
+  </a>
+</div>

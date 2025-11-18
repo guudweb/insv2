@@ -1,0 +1,31 @@
+---
+import type { Noticia } from '../lib/strapi';
+import NewsCard from './NewsCard.astro';
+
+interface Props {
+  noticias: Noticia[];
+  columns?: number;
+  showDates?: boolean;
+  title?: string;
+}
+
+const { noticias, columns = 4, showDates = false, title } = Astro.props;
+
+const columnClass = `col-lg-${12 / columns} col-md-${columns === 4 ? '4' : '6'} col-sm-6`;
+---
+
+{title && (
+  <div class="container">
+    <h2 class="card-header">{title}</h2>
+  </div>
+)}
+
+<div class="container">
+  <div class="row">
+    {noticias.map((noticia) => (
+      <div class={`${columnClass} portfolio-item`}>
+        <NewsCard noticia={noticia} showDate={showDates} />
+      </div>
+    ))}
+  </div>
+</div>

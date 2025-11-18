@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import {
+  getNoticias,
+  getNoticiaBySlug,
+  getStrapiImageUrl,
+  formatDate,
+  richTextToPlainText,
+  getNoticiaVideoUrl,
+  type Noticia
+} from '../../lib/strapi';
+
+export const prerender = false;
+
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/404');
+}
+
+const noticia = await getNoticiaBySlug(slug);
+
+if (!noticia) {
+  return Astro.redirect('/404');
+}
+
+const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : null;
+const videoUrl = getNoticiaVideoUrl(noticia); // Usa helper que prioriza videoArchivo
+const contenidoTexto = noticia.contenido ? richTextToPlainText(noticia.contenido) : '';
+
+const breadcrumbItems = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Noticias', href: '/#noticias' }
+];
+---
+
+<BaseLayout title={`INSESO - ${noticia.titulo}`} currentPath={`/noticia/${slug}`}>
+  <Breadcrumb title={noticia.titulo} items={breadcrumbItems} />
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article>
+          <h1 class="mb-3">{noticia.titulo}</h1>
+
+          {noticia.fechaPublicacion && (
+            <p class="text-muted mb-4">
+              <i class="far fa-calendar"></i> {formatDate(noticia.fechaPublicacion)}
+              {noticia.autor && (
+                <span class="ms-3">
+                  <i class="far fa-user"></i> {noticia.autor}
+                </span>
+              )}
+            </p>
+          )}
+
+          {noticia.categoria && (
+            <span class="badge bg-primary mb-3" style={`background-color: ${noticia.categoria.color} !important;`}>
+              {noticia.categoria.nombre}
+            </span>
+          )}
+
+          {noticia.tipoMedia === 'video' && videoUrl ? (
+            <div class="mb-4">
+              {videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be') || videoUrl.includes('vimeo.com') ? (
+                <div class="ratio ratio-16x9">
+                  <iframe
+                    src={videoUrl}
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                  </iframe>
+                </div>
+              ) : (
+                <video controls width="100%" class="mb-3">
+                  <source src={videoUrl} type="video/mp4">
+                  Tu navegador no soporta el elemento de video.
+                </video>
+              )}
+            </div>
+          ) : imageUrl && (
+            <img
+              src={imageUrl}
+              alt={noticia.titulo}
+              class="img-fluid mb-4 rounded"
+            />
+          )}
+
+          {noticia.resumen && (
+            <div class="lead mb-4" style="font-size: 1.1rem; color: #555;">
+              {noticia.resumen}
+            </div>
+          )}
+
+          <div class="content">
+            {contenidoTexto.split('\n').map((paragraph: string) => (
+              paragraph.trim() && <p class="mb-3">{paragraph}</p>
+            ))}
+          </div>
+
+          {noticia.categoria && (
+            <div class="mt-5">
+              <hr />
+              <p class="text-muted">
+                <strong>Categoría:</strong> {noticia.categoria.nombre}
+              </p>
+            </div>
+          )}
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0">Compartir</h5>
+          </div>
+          <div class="card-body">
+            <div class="d-flex gap-2">
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url.href}`}
+                target="_blank"
+                class="btn btn-primary btn-sm"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-facebook"></i> Facebook
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${Astro.url.href}&text=${noticia.titulo}`}
+                target="_blank"
+                class="btn btn-info btn-sm text-white"
+                rel="noopener noreferrer"
+              >
+                <i class="fab fa-twitter"></i> Twitter
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5 class="mb-0">Información</h5>
+          </div>
+          <div class="card-body">
+            {noticia.fechaPublicacion && (
+              <p><strong>Fecha:</strong> {formatDate(noticia.fechaPublicacion)}</p>
+            )}
+            {noticia.autor && (
+              <p><strong>Autor:</strong> {noticia.autor}</p>
+            )}
+            <p><strong>Tipo:</strong> {noticia.tipoMedia === 'video' ? 'Video' : 'Artículo'}</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h5 class="mb-0">Volver</h5>
+          </div>
+          <div class="card-body">
+            <a href="/" class="btn btn-outline-primary">
+              <i class="fas fa-arrow-left"></i> Volver al inicio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PartnersCarousel />
+</BaseLayout>
+
+<style>
+  .content p {
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: #333;
+  }
+
+  article h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    line-height: 1.2;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+  }
+</style>
+
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>
+
+<script is:inline>
+  (function($) {
+    $(document).ready(function() {
+      if ($("#customers-slider").length) {
+        $("#customers-slider").owlCarousel({
+          items: 5,
+          loop: true,
+          margin: 15,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 2500,
+          responsive: {
+            0: { items: 2 },
+            650: { items: 2 },
+            768: { items: 3 },
+            1000: { items: 4 },
+            1200: { items: 5 }
+          }
+        });
+      }
+    });
+  })(window.jQuery);
+</script>

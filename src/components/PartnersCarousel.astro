@@ -1,0 +1,69 @@
+---
+/**
+ * Componente PartnersCarousel - Carousel de logos de socios
+ *
+ * En el futuro, los socios se cargarán desde Strapi.
+ * Por ahora, usa los logos estáticos del proyecto.
+ */
+
+interface Partner {
+  logo: string;
+  alt: string;
+}
+
+// TODO: Reemplazar con datos de Strapi cuando esté configurado
+// import { getSocios } from '../lib/strapi';
+// const socios = await getSocios();
+
+const partners: Partner[] = [
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 1' },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 2' },
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 3' },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 4' },
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 5' },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 6' },
+];
+---
+
+<div class="container">
+  <div class="customers-box">
+    <hr>
+    <h2>NUESTROS SOCIOS</h2>
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="customers-slider" class="owl-carousel">
+          {partners.map((partner) => (
+            <div class="mb-4">
+              <img class="img-fluid" src={partner.logo} alt={partner.alt} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function($) {
+    $(document).ready(function() {
+      if ($("#customers-slider").length) {
+        $("#customers-slider").owlCarousel({
+          items: 5,
+          loop: true,
+          margin: 15,
+          nav: false,
+          dots: false,
+          autoplay: true,
+          autoplayTimeout: 2500,
+          responsive: {
+            0: { items: 2 },
+            650: { items: 2 },
+            768: { items: 3 },
+            1000: { items: 4 },
+            1200: { items: 5 }
+          }
+        });
+      }
+    });
+  })(window.jQuery);
+</script>

@@ -1,0 +1,141 @@
+---
+/**
+ * Componente PrestacionesGrid - Grid de todas las prestaciones sociales
+ *
+ * Este componente muestra el grid de 9 prestaciones.
+ * Cuando el Content Type de Prestaciones esté configurado en Strapi,
+ * se puede pasar el array de prestaciones como prop.
+ *
+ * @param {Array} prestaciones - Array de prestaciones (opcional)
+ * @param {boolean} usarStrapi - Si debe cargar datos de Strapi (default: false)
+ */
+
+import type { Prestacion } from '../lib/strapi';
+import { getPrestaciones, getStrapiImageUrl } from '../lib/strapi';
+
+interface Props {
+  prestaciones?: Prestacion[];
+  usarStrapi?: boolean;
+}
+
+const { prestaciones: prestacionesProp, usarStrapi = false } = Astro.props;
+
+// Mapeo de slugs de Strapi (kebab-case) a URLs de páginas Astro (con guiones bajos)
+const slugToPageUrl: Record<string, string> = {
+  'prestaciones-medico-farmaceuticas': 'Prestaciones_Médico_Farmacéuticas',
+  'subsidio-de-incapacidad-temporal': 'Subsidio_de_incapacidad_temporal',
+  'subsidio-por-maternidad': 'Subsidio_por_maternidad',
+  'prestaciones-por-invalidez': 'Prestaciones_por_invalidez',
+  'pension-por-vejez': 'Pensión_por_vejez',
+  'prestaciones-por-muerte-y-supervivencia': 'Prestaciones_por_muerte_y_supervivencia',
+  'proteccion-al-empleo': 'Protección_al_empleo',
+  'subsidios-familiares': 'Subsidios_familiares',
+  'servicios-sociales': 'Servicios_sociales'
+};
+
+// Función helper para convertir slug de Strapi a URL de página
+function getPageUrl(slug: string): string {
+  // Si existe mapeo a página antigua, usar esa URL
+  if (slugToPageUrl[slug]) {
+    return slugToPageUrl[slug];
+  }
+  // Si no, usar la ruta dinámica nueva
+  return `prestacion/${slug}`;
+}
+
+// Datos estáticos (se usan hasta que Strapi esté configurado)
+const prestacionesEstaticas = [
+  {
+    titulo: 'Prestaciones Médico-Farmacéuticas',
+    slug: 'Prestaciones_Médico_Farmacéuticas',
+    imagen: '/images/prestaciones/prestaciones_img_01.jpg',
+    espacioBr: false
+  },
+  {
+    titulo: 'Subsidio de incapacidad temporal',
+    slug: 'Subsidio_de_incapacidad_temporal',
+    imagen: '/images/prestaciones/prestaciones_img_02.jpg',
+    espacioBr: true
+  },
+  {
+    titulo: 'Subsidio por maternidad',
+    slug: 'Subsidio_por_maternidad',
+    imagen: '/images/prestaciones/prestaciones_img_03.jpg',
+    espacioBr: true
+  },
+  {
+    titulo: 'Prestaciones por invalidez',
+    slug: 'Prestaciones_por_invalidez',
+    imagen: '/images/prestaciones/prestaciones_img_04.jpg',
+    espacioBr: true
+  },
+  {
+    titulo: 'Pensión por vejez',
+    slug: 'Pensión_por_vejez',
+    imagen: '/images/prestaciones/prestaciones_img_05.jpg',
+    espacioBr: true
+  },
+  {
+    titulo: 'Prestaciones por muerte y supervivencia',
+    slug: 'Prestaciones_por_muerte_y_supervivencia',
+    imagen: '/images/prestaciones/prestaciones_img_06.jpg',
+    espacioBr: false
+  },
+  {
+    titulo: 'Protección al empleo',
+    slug: 'Protección_al_empleo',
+    imagen: '/images/prestaciones/prestaciones_img_07.jpg',
+    espacioBr: true
+  },
+  {
+    titulo: 'Subsidios familiares',
+    slug: 'Subsidios_familiares',
+    imagen: '/images/prestaciones/prestaciones_img_08.jpg',
+    espacioBr: true
+  },
+  {
+    titulo: 'Servicios sociales',
+    slug: 'Servicios_sociales',
+    imagen: '/images/prestaciones/prestaciones_img_09.jpg',
+    espacioBr: true
+  }
+];
+
+// Determinar qué datos usar
+let prestacionesData;
+
+if (usarStrapi) {
+  // Cargar desde Strapi
+  const prestacionesStrapi = prestacionesProp || await getPrestaciones();
+  prestacionesData = prestacionesStrapi.map(p => ({
+    titulo: p.titulo,
+    slug: getPageUrl(p.slug), // Convertir slug de Strapi a URL de página
+    imagen: p.imagen ? getStrapiImageUrl(p.imagen.url) : '/images/default.jpg',
+    espacioBr: true
+  }));
+} else {
+  // Usar datos estáticos
+  prestacionesData = prestacionesEstaticas;
+}
+---
+
+<div class="services-bar">
+  <div class="container">
+    <div class="row">
+      {prestacionesData.map((prestacion) => (
+        <div class="col-lg-4 mb-4">
+          <div class="card h-100">
+            <div class="card-img">
+              <img class="img-fluid" src={prestacion.imagen} alt={prestacion.titulo} />
+            </div>
+            <div class="card-body">
+              <h4 class="card-header">{prestacion.titulo}</h4>
+              {prestacion.espacioBr && <br>}
+              <a href={`/${prestacion.slug}`} class="btn btn-primary">Seguir leyendo &rarr;</a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

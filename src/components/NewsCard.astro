@@ -1,0 +1,31 @@
+---
+import type { Noticia } from '../lib/strapi';
+import { getStrapiImageUrl, formatDate, richTextToPlainText } from '../lib/strapi';
+
+interface Props {
+  noticia: Noticia;
+  showDate?: boolean;
+  showExcerpt?: boolean;
+  imageSize?: 'small' | 'medium' | 'large';
+}
+
+const { noticia, showDate = false, showExcerpt = true, imageSize = 'medium' } = Astro.props;
+
+const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
+const resumen = noticia.resumen || richTextToPlainText(noticia.contenido).substring(0, 150) + '...';
+const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
+---
+
+<div class="card h-100">
+  <img class="card-img-top" src={imageUrl} alt={noticia.titulo} />
+  <div class="card-body">
+    {showDate && noticia.fechaPublicacion && (
+      <p class="text-muted small">{formatDate(noticia.fechaPublicacion)}</p>
+    )}
+    <h4><a href={`/noticia/${slug}`}>{noticia.titulo}</a></h4>
+    {showExcerpt && (
+      <p>{resumen}</p>
+    )}
+    <a href={`/noticia/${slug}`} class="btn btn-primary">Seguir leyendo &rarr;</a>
+  </div>
+</div>

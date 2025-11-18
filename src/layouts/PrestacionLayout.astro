@@ -1,0 +1,110 @@
+---
+/**
+ * Layout para páginas de prestaciones individuales
+ * Carga datos desde Strapi y renderiza el contenido dinámicamente
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import PrestacionesGrid from '../components/PrestacionesGrid.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
+import { getPrestacionBySlug, getStrapiImageUrl, richTextToPlainText } from '../lib/strapi';
+
+interface Props {
+  slug: string; // Slug de Strapi (kebab-case)
+  pageTitle: string; // Título para SEO
+  breadcrumbTitle: string; // Título para el breadcrumb
+  currentPath: string; // Path actual para navegación
+  defaultDescripcion?: string; // Descripción por defecto si no hay en Strapi
+  defaultRequisitos?: string; // Requisitos por defecto si no hay en Strapi
+  defaultImagen?: string; // Imagen por defecto si no hay en Strapi
+}
+
+const {
+  slug,
+  pageTitle,
+  breadcrumbTitle,
+  currentPath,
+  defaultDescripcion = '',
+  defaultRequisitos = '',
+  defaultImagen = '/images/prestaciones/prestaciones_detail_01.jpg'
+} = Astro.props;
+
+// Cargar datos desde Strapi
+const prestacion = await getPrestacionBySlug(slug);
+
+// Usar datos de Strapi o valores por defecto
+const titulo = prestacion?.titulo || breadcrumbTitle;
+const descripcion = richTextToPlainText(prestacion?.descripcion) || defaultDescripcion;
+const requisitos = prestacion?.requisitos || defaultRequisitos;
+const imagenDetalle = prestacion?.imagenDetalle
+  ? getStrapiImageUrl(prestacion.imagenDetalle.url)
+  : (prestacion?.imagen ? getStrapiImageUrl(prestacion.imagen.url) : defaultImagen);
+
+// Convertir requisitos a array
+const requisitosArray = requisitos?.split('\n').filter(r => r.trim()) || [];
+---
+
+<BaseLayout title={pageTitle} currentPath={currentPath}>
+  <Breadcrumb
+    title={breadcrumbTitle}
+    items={[
+      { label: 'Prestaciones Sociales', href: '/Prestaciones_Sociales' }
+    ]}
+  />
+
+  <div class="blog-main">
+    <div class="container">
+      <div class="row">
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+          <!-- Preview Image -->
+          <img class="img-fluid rounded" src={imagenDetalle} alt={titulo} />
+          <hr>
+
+          {descripcion && (
+            <blockquote class="blockquote">
+              <p class="mb-0">{descripcion}</p>
+            </blockquote>
+          )}
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-md-4 blog-right-side">
+          {requisitosArray.length > 0 && (
+            <div class="card my-4">
+              <h5 class="card-header">Requisitos:</h5>
+              <div class="card-body">
+                <ul>
+                  {requisitosArray.map((req) => (
+                    <li><h6 set:html={req.replace(/^-\s*/, '')} /></li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PrestacionesGrid usarStrapi={true} />
+
+  <PartnersCarousel />
+
+  <div class="touch-line">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <p></p>
+        </div>
+        <div class="col-md-4">
+          <a class="btn btn-lg btn-secondary btn-block" href="#"> Contacte con nosotros </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>

@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  output: 'static',
+  output: 'hybrid', // Permite mezclar páginas estáticas y dinámicas
   build: {
     assets: 'assets'
   }
