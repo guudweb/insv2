@@ -1,134 +1,116 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
+import InfoCard from '../components/InfoCard.astro';
+
+export const prerender = false;
 ---
 
-<BaseLayout title="INSESO - Afiliación - Trabajadores" currentPath="/afiliacionee_trabajadores">
-<div class="full-title">
-		<div class="container">
-			<img class="img-fluid" src="/images/trabajadores/img_silder_trabaja_01.jpg" alt=""/>
-		</div>
-	</div>
+<ContentWithSidebarLayout
+  title="INSESO - Afiliación - Trabajadores"
+  currentPath="/afiliacionee_trabajadores"
+  headerImage="/images/trabajadores/img_silder_trabaja_01.jpg"
+  headerImageAlt="Afiliación de Trabajadores - INSESO"
+  showPartners={true}
+>
+  <Fragment slot="main">
+    <div class="about-main">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Afiliación de los Trabajadores</h2>
+          <p>
+            Es el acto por el que un trabajador, ya sea por cuenta ajena en el sector privado o público
+            o por cuenta propia, se inscribe oficialmente en el INSESO para poder recibir protección social:
+            pensión, asistencia sanitaria, subsidio de enfermedad o accidente, prestaciones familiares, etc.
+          </p>
+        </div>
+      </div>
 
-    <div class="container">
-		<div class="about-main">
-			<div class="row">
-				<div class="col-lg-6">
-					<h2>Afiliación de los Trabajadores</h2>
-					<p>Es el acto por el que un trabajador, ya sea por cuenta ajena en el sector privado o público o por cuenta propia, se inscribe oficialmente en el INSESO para poder recibir protección social : pensión, asistencia sanitaria, subsidio de enfermedad o accidente, prestaciones familiares, etc.</p>
-					<div class="card my-4">
-						<h4 class="card-header">Sector Privado Y Autónomo</h4>
-						<div class="card-body">
-							<ul>
-								<li><h6>Rellenar ficha de afiliación</h6></li>
-								<li><h6>Copia de D.I.P/Pasaporte o Residencia para extranjeros</h6></li>
-								<li><h6>Una (1) foto tamaño carné</h6></li>
-								<li><h6>**Copia del contrato de trabajo</h6></li>
-							</ul>
-						</div>
-					</div>
-					<div class="card my-4">
-						<h4 class="card-header">Sector publico</h4>
-						<div class="card-body">
-							<ul>
-								<li><h6>Copia del nombramiento o contrato</h6></li>
-								<li><h6>Copia TRES (3) últimas nominas</h6></li>
-								<li><h6>Copia del D.I.P/Pasaporte</h6></li>
-								<li><h6>Rellenar ficha de afiliación</h6></li>
-								<li><h6>Una (1) foto tamaño carné</h6></li>
-							</ul>
-						</div>
-					</div>
-					<div class="card my-4">
-						<h4 class="card-header">Trabajador Autonomo Y/O Profesional De Libre Ejercicio</h4>
-						<div class="card-body">
-							<ul>
-								<li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial.</h6></li>
-								<li><h6>Certificado médico</h6></li>
-								<li><h6>Declaración del salario, el mínimo actual reconocido es de 300 000 FCFAs.</h6></li>
-								<li><h6>Copia del D.I.P/ Pasaporte o Residencia para expatriados</h6></li>
-								<li><h6>Rellenar ficha de afiliación</h6></li>
-							</ul>
-						</div>
-					</div>
-				</div>			
-				
-				<div class="col-lg-6">
-					<img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_01.png" alt=""/>
-					
-					<h4 class="card-header">Baja del trabajador</h4>
-					<div class="card-body">
-						<ul>
-							<li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial</h6></li>
-							<li><h6>Copia carta de despido por razones que fueran con entrega Y recibí del trabajador</h6></li>
-							<li><h6>Copia liquidación practicada ( finiquito) con entrega al trabajador</h6></li>
-						</ul>
-					</div>
-					
-					<hr>					
-					<img class="img-fluid rounded mb-4" src="/images/trabajadores/Solicitud.png" alt=""/>					
-				</div>
-				
-			</div>
-		</div>			
-	</div>
-	
-	<div class="customers-box"> 
-		<div class="container">
-			<hr>
-			<h2>NUESTROS SOCIOS</h2>
-			<div class="row">
-				<div class="col-lg-12">
-					<div id="customers-slider" class="owl-carousel">
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</BaseLayout>
+      <div class="row mt-4">
+        <div class="col-lg-6">
+          <InfoCard
+            title="Sector Privado Y Autónomo"
+            items={[
+              'Rellenar ficha de afiliación',
+              'Copia de D.I.P/Pasaporte o Residencia para extranjeros',
+              'Una (1) foto tamaño carné',
+              '**Copia del contrato de trabajo'
+            ]}
+            variant="requirements"
+          />
 
-<script is:inline src="/js/owl.carousel.min.js"></script>
-<script is:inline src="/js/owl.carousel_2.js"></script>
-<script is:inline src="/js/script.js"></script>
+          <InfoCard
+            title="Sector Público"
+            items={[
+              'Copia del nombramiento o contrato',
+              'Copia TRES (3) últimas nominas',
+              'Copia del D.I.P/Pasaporte',
+              'Rellenar ficha de afiliación',
+              'Una (1) foto tamaño carné'
+            ]}
+            variant="requirements"
+          />
 
-<script is:inline>
-	(function($) {
-		$(document).ready(function() {
-			if ($("#customers-slider").length) {
-				$("#customers-slider").owlCarousel({
-					items: 5,
-					loop: true,
-					margin: 15,
-					nav: false,
-					dots: false,
-					autoplay: true,
-					autoplayTimeout: 2500,
-					responsive: {
-						0: { items: 2 },
-						650: { items: 2 },
-						768: { items: 3 },
-						1000: { items: 4 },
-						1200: { items: 5 }
-					}
-				});
-			}
-		});
-	})(window.jQuery);
-</script>
+          <InfoCard
+            title="Trabajador Autónomo Y/O Profesional De Libre Ejercicio"
+            items={[
+              'Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial.',
+              'Certificado médico',
+              'Declaración del salario, el mínimo actual reconocido es de 300 000 FCFAs.',
+              'Copia del D.I.P/ Pasaporte o Residencia para expatriados',
+              'Rellenar ficha de afiliación'
+            ]}
+            variant="requirements"
+          />
+        </div>
+
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_01.png" alt="Afiliación Trabajadores" />
+
+          <InfoCard
+            title="Baja del trabajador"
+            items={[
+              'Finalización del contrato de trabajo, jubilación o despido',
+              'Cese de actividad en el caso del trabajador autónomo',
+              'Fallecimiento del trabajador'
+            ]}
+            variant="requirements"
+          />
+
+          <div class="card my-4">
+            <h4 class="card-header">Información Importante</h4>
+            <div class="card-body">
+              <p>
+                <strong>Nota:</strong> El trabajador debe conservar su carné de afiliado durante toda su
+                vida laboral. En caso de pérdida, debe solicitar un duplicado en las oficinas del INSESO.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="sidebar">
+    <InfoCard title="Documentación necesaria">
+      <p>
+        Asegúrese de tener todos los documentos requeridos antes de iniciar el proceso de afiliación.
+      </p>
+      <p>
+        Los documentos deben estar en buen estado y ser legibles.
+      </p>
+    </InfoCard>
+
+    <InfoCard title="Enlaces relacionados">
+      <ul>
+        <li><a href="/afiliacionee_empresas">Afiliación de Empresas</a></li>
+        <li><a href="/afiliacionee_autonomo">Afiliación de Autónomos</a></li>
+        <li><a href="/condiciones_adhesion">Condiciones de Adhesión</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </InfoCard>
+
+    <div class="card-img">
+      <img class="img-fluid" src="/images/trabajadores/img_trabaja_02.jpg" alt="INSESO Servicios" />
+    </div>
+  </Fragment>
+</ContentWithSidebarLayout>

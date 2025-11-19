@@ -1,117 +1,96 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
+import InfoCard from '../components/InfoCard.astro';
+
+export const prerender = false;
 ---
 
-<BaseLayout title="INSESO - Sobre Nosotros" currentPath="/sobre_nosotros">
-	<div class="full-title">
-		<div class="container">
-			<img class="img-fluid" src="/images/sommes nous/slide_qsn.gif" alt=""/>
-		</div>
-	</div>
+<ContentWithSidebarLayout
+  title="INSESO - Sobre Nosotros"
+  currentPath="/sobre_nosotros"
+  headerImage="/images/sommes nous/slide_qsn.gif"
+  headerImageAlt="Sobre Nosotros - INSESO"
+  showPartners={true}
+>
+  <Fragment slot="main">
+    <!-- Presentación General -->
+    <div class="about-main">
+      <div class="row">
+        <div class="col-lg-12">
+          <h2>Presentación general</h2>
+          <p>
+            El INSESO es una institución de la Seguridad Social encargada de gestionar el sistema de
+            Seguridad Social en beneficio de los trabajadores y las personas a su cargo. Desempeña un papel
+            central en la regulación de las relaciones entre empresas y trabajadores en materia de
+            protección social. La institución garantiza el acceso a diversas prestaciones sociales basadas
+            en la solidaridad y la justicia social.
+          </p>
+          <p>
+            La afiliación es el vínculo jurídico formal que se establece entre una empresa, sus
+            trabajadores y el INSESO. Marca la integración de estos últimos en el sistema nacional de
+            Seguridad Social, confiriéndoles tanto derechos -como el acceso a las prestaciones sociales-
+            como obligaciones, en particular el pago regular de las cotizaciones. Este mecanismo tiene por
+            objeto garantizar una protección social equitativa y duradera, basada en el principio de
+            solidaridad entre generaciones y categorías socioprofesionales.
+          </p>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_01.jpg" alt="INSESO Instalaciones" />
+        </div>
+      </div>
+    </div>
 
-	<div class="container">
-		<div class="about-main">
-			<div class="row">
-				<div class="col-lg-6">
-					<h2>Presentación general</h2>
-					<p>El INSESO es una institución de la Seguridad Social encargada de gestionar el sistema de Seguridad Social en beneficio de los trabajadores y las personas a su cargo. Desempeña un papel central en la regulación de las relaciones entre empresas y trabajadores en materia de protección social. La institución garantiza el acceso a diversas prestaciones sociales basadas en la solidaridad y la justicia social.</p>
-					<p>La afiliación es el vínculo jurídico formal que se establece entre una empresa, sus trabajadores y el INSESO. Marca la integración de estos últimos en el sistema nacional de Seguridad Social, confiriéndoles tanto derechos -como el acceso a las prestaciones sociales- como obligaciones, en particular el pago regular de las cotizaciones. Este mecanismo tiene por objeto garantizar una protección social equitativa y duradera, basada en el principio de solidaridad entre generaciones y categorías socioprofesionales.</p>
-				</div>
-				<div class="col-lg-6">
-					<img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_01.jpg" alt="" />
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Nuestra Misión -->
+    <div class="about-inner">
+      <div class="row mb-4">
+        <div class="col-lg-12">
+          <div class="left-ab">
+            <h2>Nuestra misión</h2>
+            <p>
+              Proporcionar una cobertura social eficaz, accesible y equitativa a todos los asegurados,
+              apoyando al mismo tiempo a las empresas en el cumplimiento de sus obligaciones legales.
+            </p>
 
-	<div class="about-inner">
-		<div class="container">
-			<div class="row mb-4">
-				<div class="col-lg-6">
-					<div class="left-ab">
-						<h2>Nuestra misión</h2>
-						<p>Proporcionar una cobertura social eficaz, accesible y equitativa a todos los asegurados, apoyando al mismo tiempo a las empresas en el cumplimiento de sus obligaciones legales.</p>
-						<div class="card my-4">
-							<h5 class="card-header">INSESO se compromete a :</h5>
-							<div class="card-body">
-								<ul>
-									<li><h6>Afiliación correcta de empresas y empleados</h6></li>
-									<li><h6>Recaudación y gestión rigurosas de las cotizaciones</h6></li>
-									<li><h6>Pago de las prestaciones de la Seguridad Social conforme a los derechos adquiridos</h6></li>
-									<li><h6>Sensibilización en materia de protección social y prevención de riesgos laborales</h6></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="right-ab">
-						<img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_02.png" alt="" />
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+            <InfoCard
+              title="INSESO se compromete a :"
+              items={[
+                'Afiliación correcta de empresas y empleados',
+                'Recaudación y gestión rigurosas de las cotizaciones',
+                'Pago de las prestaciones de la Seguridad Social conforme a los derechos adquiridos',
+                'Sensibilización en materia de protección social y prevención de riesgos laborales'
+              ]}
+              variant="list"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_02.png" alt="Misión INSESO" />
+        </div>
+      </div>
+    </div>
+  </Fragment>
 
-	<div class="customers-box">
-		<div class="container">
-			<hr>
-			<h2>NUESTROS SOCIOS</h2>
-			<div class="row">
-				<div class="col-lg-12">
-					<div id="customers-slider" class="owl-carousel">
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <Fragment slot="sidebar">
+    <InfoCard title="Información de contacto">
+      <p>
+        Para más información sobre INSESO y nuestros servicios, no dude en ponerse en contacto con nosotros.
+      </p>
+      <p>
+        Estamos aquí para ayudarle con cualquier consulta relacionada con la seguridad social y la
+        afiliación.
+      </p>
+    </InfoCard>
 
-</BaseLayout>
-
-<script is:inline src="/js/owl.carousel.min.js"></script>
-<script is:inline src="/js/owl.carousel_2.js"></script>
-<script is:inline src="/js/script.js"></script>
-
-<script is:inline>
-	// Inicializar Owl Carousel para socios
-	(function($) {
-		$(document).ready(function() {
-			if ($("#customers-slider").length) {
-				$("#customers-slider").owlCarousel({
-					items: 5,
-					loop: true,
-					margin: 15,
-					nav: false,
-					dots: false,
-					autoplay: true,
-					autoplayTimeout: 2500,
-					responsive: {
-						0: { items: 2 },
-						650: { items: 2 },
-						768: { items: 3 },
-						1000: { items: 4 },
-						1200: { items: 5 }
-					}
-				});
-			}
-		});
-	})(window.jQuery);
-</script>
+    <InfoCard title="Enlaces útiles">
+      <ul>
+        <li><a href="/Prestaciones_Sociales">Prestaciones Sociales</a></li>
+        <li><a href="/condiciones_adhesion">Condiciones de Adhesión</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </InfoCard>
+  </Fragment>
+</ContentWithSidebarLayout>

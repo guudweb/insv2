@@ -1,143 +1,142 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
+import InfoCard from '../components/InfoCard.astro';
+import { contactInfo } from '../config/contact';
+
+export const prerender = false;
 ---
 
-<BaseLayout title="INSESO - Contacto" currentPath="/contacto">
-	<div class="full-title">
-		<div class="container">
-			<img class="img-fluid" src="/images/sommes nous/slide_qsn_04.jpg" alt=""/>
-		</div>
-	</div>
+<ContentWithSidebarLayout
+  title="INSESO - Contacto"
+  currentPath="/contacto"
+  headerImage="/images/sommes nous/slide_qsn_04.jpg"
+  headerImageAlt="Contacto - INSESO"
+  showPartners={true}
+>
+  <Fragment slot="main">
+    <div class="contact-main">
+      <!-- Mapa de Google -->
+      <div style="width:100%;height:450px;border-radius:12px;overflow:hidden;border:1px solid #eee;margin-bottom:2rem">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.32190665812!2d8.7290642!3d3.739865600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10669d4bd7ce0583%3A0xd4e5228a42ab40da!2sINSESO!5e0!3m2!1sfr!2scm!4v1756209327234!5m2!1sfr!2scm"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-	<div class="contact-main">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 mb-4 contact-left">
-					<div style="width:100%;height:450px;border-radius:12px;overflow:hidden;border:1px solid #eee">
-						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.32190665812!2d8.7290642!3d3.739865600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10669d4bd7ce0583%3A0xd4e5228a42ab40da!2sINSESO!5e0!3m2!1sfr!2scm!4v1756209327234!5m2!1sfr!2scm" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-						</iframe>
-					</div><hr>
+      <hr>
 
-					<h3>Envíenos un mensaje</h3>
-					<form name="sentMessage" id="contactForm" novalidate>
-						<div class="control-group form-group">
-							<div class="controls">
-								<input type="text" placeholder="Nombre y apellidos" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
-								<p class="help-block"></p>
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<input type="tel" placeholder="Número de teléfono" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<input type="email" placeholder="Dirección de e-mail" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<textarea rows="5" cols="100" placeholder="Mensaje" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
-							</div>
-						</div>
-						<div id="success"></div>
-						<button type="submit" class="btn btn-primary" id="sendMessageButton">Enviar mensaje</button>
-					</form>
-				</div>
+      <!-- Formulario de contacto -->
+      <h3>Envíenos un mensaje</h3>
+      <form name="sentMessage" id="contactForm" novalidate>
+        <div class="control-group form-group">
+          <div class="controls">
+            <input
+              type="text"
+              placeholder="Nombre y apellidos"
+              class="form-control"
+              id="name"
+              required
+              data-validation-required-message="Por favor ingrese su nombre."
+            />
+            <p class="help-block"></p>
+          </div>
+        </div>
 
-				<div class="col-md-4 blog-right-side">
-					<div class="card mb-4">
-						<div class="card mb-4">
-							<h5 class="card-header">CONTACTOS</h5>
-							<div class="card-body">
-								<h5>Malabo – Delegación Nacional</h5>
-								&rarr; Avda. de la Independencia, S/N<br>
-								&rarr; Tel.: (+240) 333 092214<br>
-								&rarr; Código Postal: 944<br>
-								&rarr; Email: info@inseso.org<br>
-							</div><hr>
-							<div class="card-body">
-								<h5>Bata – Delegación Regional</h5>
-								&rarr; Bata II, B/Nkoantoma S/N<br>
-								&rarr; Tel.: (+240) 333 082690<br>
-							</div>
-						</div>
-						<div class="card-img">
-							<img class="img-fluid" src="/images/contacto/contacto_pub_01.gif" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <input
+              type="tel"
+              placeholder="Número de teléfono"
+              class="form-control"
+              id="phone"
+              required
+              data-validation-required-message="Por favor ingrese su teléfono."
+            />
+          </div>
+        </div>
 
-		<div class="customers-box">
-			<div class="container">
-				<hr>
-				<h2>NUESTROS SOCIOS</h2>
-				<div class="row">
-					<div class="col-lg-12">
-						<div id="customers-slider" class="owl-carousel">
-							<div class="mb-4">
-								<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-							</div>
-							<div class="mb-4">
-								<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-							</div>
-							<div class="mb-4">
-								<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-							</div>
-							<div class="mb-4">
-								<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-							</div>
-							<div class="mb-4">
-								<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-							</div>
-							<div class="mb-4">
-								<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <input
+              type="email"
+              placeholder="Dirección de e-mail"
+              class="form-control"
+              id="email"
+              required
+              data-validation-required-message="Por favor ingrese su email."
+            />
+          </div>
+        </div>
 
-		<div class="touch-line">
-			<div class="container">
-				<div class="row">
-				</div>
-			</div>
-		</div>
-	</div>
-</BaseLayout>
+        <div class="control-group form-group">
+          <div class="controls">
+            <textarea
+              rows="5"
+              cols="100"
+              placeholder="Mensaje"
+              class="form-control"
+              id="message"
+              required
+              data-validation-required-message="Por favor ingrese su mensaje"
+              maxlength="999"
+              style="resize:none"
+            ></textarea>
+          </div>
+        </div>
 
-<script is:inline src="/js/owl.carousel.min.js"></script>
-<script is:inline src="/js/owl.carousel_2.js"></script>
-<script is:inline src="/js/script.js"></script>
-<script is:inline src="/js/jqBootstrapValidation.js"></script>
-<script is:inline src="/js/contact_me.js"></script>
+        <div id="success"></div>
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">
+          Enviar mensaje
+        </button>
+      </form>
+    </div>
+  </Fragment>
 
-<script is:inline>
-	(function($) {
-		$(document).ready(function() {
-			if ($("#customers-slider").length) {
-				$("#customers-slider").owlCarousel({
-					items: 5,
-					loop: true,
-					margin: 15,
-					nav: false,
-					dots: false,
-					autoplay: true,
-					autoplayTimeout: 2500,
-					responsive: {
-						0: { items: 2 },
-						650: { items: 2 },
-						768: { items: 3 },
-						1000: { items: 4 },
-						1200: { items: 5 }
-					}
-				});
-			}
-		});
-	})(window.jQuery);
-</script>
+  <Fragment slot="sidebar">
+    <!-- Información de Contacto desde config -->
+    <div class="card mb-4">
+      <InfoCard title="CONTACTOS">
+        <div class="card-body">
+          <h5>{contactInfo.national.city} – {contactInfo.national.name}</h5>
+          &rarr; {contactInfo.national.address}<br>
+          &rarr; Tel.: {contactInfo.national.phone}<br>
+          &rarr; Código Postal: {contactInfo.national.postalCode}<br>
+          &rarr; Email: {contactInfo.national.email}<br>
+        </div>
+        <hr>
+        <div class="card-body">
+          <h5>{contactInfo.regional.city} – {contactInfo.regional.name}</h5>
+          &rarr; {contactInfo.regional.address}<br>
+          &rarr; Tel.: {contactInfo.regional.phone}<br>
+        </div>
+      </InfoCard>
+
+      <div class="card-img">
+        <img class="img-fluid" src="/images/contacto/contacto_pub_01.gif" alt="Contacto INSESO" />
+      </div>
+    </div>
+  </Fragment>
+</ContentWithSidebarLayout>
+
+<style>
+  .contact-main {
+    margin-bottom: 2rem;
+  }
+
+  .contact-main h3 {
+    margin-bottom: 1.5rem;
+  }
+
+  .control-group {
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary {
+    margin-top: 1rem;
+  }
+</style>

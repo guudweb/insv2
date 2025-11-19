@@ -1,0 +1,56 @@
+---
+/**
+ * InfoCard - Componente reutilizable para tarjetas de información
+ *
+ * @param title - Título del card
+ * @param items - Array de items a mostrar (texto o HTML)
+ * @param variant - Tipo de visualización: 'list' | 'requirements' | 'text'
+ * @param className - Clases CSS adicionales
+ */
+interface Props {
+  title: string;
+  items?: string[];
+  variant?: 'list' | 'requirements' | 'text';
+  className?: string;
+}
+
+const {
+  title,
+  items = [],
+  variant = 'list',
+  className = ''
+} = Astro.props;
+
+const hasSlot = Astro.slots.has('default');
+---
+
+<div class={`card my-4 ${className}`.trim()}>
+  <h5 class="card-header">{title}</h5>
+  <div class="card-body">
+    {hasSlot ? (
+      <slot />
+    ) : (
+      <>
+        {variant === 'list' && items.length > 0 && (
+          <ul>
+            {items.map((item) => (
+              <li><h6 set:html={item} /></li>
+            ))}
+          </ul>
+        )}
+
+        {variant === 'requirements' && items.length > 0 && (
+          <ul>
+            {items.map((item) => (
+              <li><h6 set:html={item.replace(/^-\s*/, '')} /></li>
+            ))}
+          </ul>
+        )}
+
+        {variant === 'text' && items.length > 0 && (
+          <p set:html={items[0]} />
+        )}
+      </>
+    )}
+  </div>
+</div>

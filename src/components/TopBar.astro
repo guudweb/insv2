@@ -1,5 +1,6 @@
 ---
 // TopBar component - Barra superior con redes sociales y contacto
+import { contactInfo } from '../config/contact';
 ---
 
 <div class="top-bar">
@@ -19,8 +20,8 @@
 			<div class="col-lg-6">
 				<div class="contact-details">
 					<ul>
-						<li><i class="fas fa-phone fa-rotate-90"></i> (+240) 333 092214 </li>
-						<li><i class="fas fa-map-marker-alt"></i> 944 Malabo – Delegación Nacional </li>
+						<li><i class="fas fa-phone fa-rotate-90"></i> {contactInfo.national.phone}</li>
+						<li><i class="fas fa-map-marker-alt"></i> {contactInfo.national.postalCode} {contactInfo.national.city} – {contactInfo.national.name}</li>
 					</ul>
 				</div>
 			</div>

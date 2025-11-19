@@ -1,0 +1,22 @@
+---
+/**
+ * PageHeader - Componente reutilizable para encabezados de página con imagen
+ *
+ * @param imageSrc - URL de la imagen del encabezado
+ * @param imageAlt - Texto alternativo para la imagen
+ * @param className - Clases CSS adicionales (opcional)
+ */
+interface Props {
+  imageSrc: string;
+  imageAlt?: string;
+  className?: string;
+}
+
+const { imageSrc, imageAlt = '', className = '' } = Astro.props;
+---
+
+<div class={`full-title ${className}`.trim()}>
+  <div class="container">
+    <img class="img-fluid" src={imageSrc} alt={imageAlt} />
+  </div>
+</div>
