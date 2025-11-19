@@ -24,35 +24,33 @@ function getDateParts(dateString: string) {
 <section id="news">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
-        {noticias.map((noticia) => {
-          const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
-          const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
-          const { month, day, year } = getDateParts(noticia.fechaPublicacion);
+      {noticias.map((noticia) => {
+        const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
+        const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
+        const { month, day, year } = getDateParts(noticia.fechaPublicacion);
 
-          return (
-            <div class="col-md-4 news-sec">
-              <div class="news-info">
-                <img src={imageUrl} class="img-responsive" alt={noticia.titulo} />
-                <div class="data-meta">
-                  <h4>{month}</h4>
-                  <h4>{day}</h4>
-                  <h4>{year}</h4>
-                </div>
-                <br />
-                <a href={`/noticia/${slug}`}>
-                  <h2>{noticia.titulo}</h2>
-                </a>
-                <p>{noticia.resumen}</p>
-                <a href={`/noticia/${slug}`} class="btn btn-primary">
-                  Seguir leyendo &rarr;
-                </a>
+        return (
+          <div class="col-md-4 news-sec">
+            <div class="news-info">
+              <img src={imageUrl} class="img-responsive" alt={noticia.titulo} />
+              <div class="data-meta">
+                <h4>{month}</h4>
+                <h4>{day}</h4>
+                <h4>{year}</h4>
               </div>
               <br />
+              <a href={`/noticia/${slug}`}>
+                <h2>{noticia.titulo}</h2>
+              </a>
+              <p>{noticia.resumen}</p>
+              <a href={`/noticia/${slug}`} class="btn btn-primary">
+                Seguir leyendo &rarr;
+              </a>
             </div>
-          );
-        })}
-      </div>
+            <br />
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>

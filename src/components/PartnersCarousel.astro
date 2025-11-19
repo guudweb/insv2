@@ -37,13 +37,23 @@ const partners = strapiSocios.length > 0
       <div class="col-lg-12">
         <div id="customers-slider" class="owl-carousel">
           {partners.map((partner) => (
-            <div class="mb-4">
+            <div class="mb-4 d-flex align-items-center justify-content-center" style="height: 120px;">
               {partner.link ? (
-                <a href={partner.link} target="_blank" rel="noopener noreferrer">
-                  <img class="img-fluid" src={partner.logo} alt={partner.alt} />
+                <a href={partner.link} target="_blank" rel="noopener noreferrer" class="d-block">
+                  <img
+                    class="img-fluid"
+                    src={partner.logo}
+                    alt={partner.alt}
+                    style="max-height: 100px; width: auto; object-fit: contain;"
+                  />
                 </a>
               ) : (
-                <img class="img-fluid" src={partner.logo} alt={partner.alt} />
+                <img
+                  class="img-fluid"
+                  src={partner.logo}
+                  alt={partner.alt}
+                  style="max-height: 100px; width: auto; object-fit: contain;"
+                />
               )}
             </div>
           ))}
