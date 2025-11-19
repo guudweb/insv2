@@ -155,6 +155,20 @@ export interface Prestacion {
   publishedAt: string;
 }
 
+// Interfaz para Socios
+export interface Socio {
+  id: number;
+  documentId: string;
+  nombre: string;
+  logo: StrapiImage;
+  enlace: string | null;
+  orden: number;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
 // Obtener todas las noticias
 export async function getNoticias(): Promise<Noticia[]> {
   const queryParams: any = {
@@ -165,9 +179,9 @@ export async function getNoticias(): Promise<Noticia[]> {
     },
   };
 
-  // Añadir status=draft si estamos en modo preview
-  if (previewContext.enabled && previewContext.status) {
-    queryParams.status = previewContext.status;
+  // Añadir publicationState=preview si estamos en modo preview
+  if (previewContext.enabled) {
+    queryParams.publicationState = 'preview';
   }
 
   const query = qs.stringify(queryParams, {
@@ -204,9 +218,9 @@ export async function getNoticiaByDocumentId(documentId: string): Promise<Notici
     populate: ['imagen', 'videoArchivo', 'categoria'],
   };
 
-  // Añadir status=draft si estamos en modo preview
-  if (previewContext.enabled && previewContext.status) {
-    queryParams.status = previewContext.status;
+  // Añadir publicationState=preview si estamos en modo preview
+  if (previewContext.enabled) {
+    queryParams.publicationState = 'preview';
   }
 
   const query = qs.stringify(queryParams, {
@@ -250,9 +264,9 @@ export async function getNoticiaBySlug(slug: string): Promise<Noticia | null> {
       populate: ['imagen', 'videoArchivo', 'categoria'],
     };
 
-    // Añadir status=draft si estamos en modo preview
-    if (previewContext.enabled && previewContext.status) {
-      queryParams.status = previewContext.status;
+    // Añadir publicationState=preview si estamos en modo preview
+    if (previewContext.enabled) {
+      queryParams.publicationState = 'preview';
     }
 
     const queryBySlug = qs.stringify(queryParams, {
@@ -392,9 +406,9 @@ export async function getPrestacionByDocumentId(documentId: string): Promise<Pre
     populate: ['imagen', 'imagenDetalle'],
   };
 
-  // Añadir status=draft si estamos en modo preview
-  if (previewContext.enabled && previewContext.status) {
-    queryParams.status = previewContext.status;
+  // Añadir publicationState=preview si estamos en modo preview
+  if (previewContext.enabled) {
+    queryParams.publicationState = 'preview';
   }
 
   const query = qs.stringify(queryParams, {
@@ -436,9 +450,9 @@ export async function getPrestacionBySlug(slug: string): Promise<Prestacion | nu
     populate: ['imagen', 'imagenDetalle'],
   };
 
-  // Añadir status=draft si estamos en modo preview
-  if (previewContext.enabled && previewContext.status) {
-    queryParams.status = previewContext.status;
+  // Añadir publicationState=preview si estamos en modo preview
+  if (previewContext.enabled) {
+    queryParams.publicationState = 'preview';
   }
 
   const query = qs.stringify(queryParams, {
@@ -605,6 +619,82 @@ export async function getConfiguracionInicio(): Promise<ConfiguracionInicio | nu
     return json.data;
   } catch (error) {
     console.error('Error al obtener configuración de inicio:', error);
+    return null;
+  }
+}
+
+// ==================== SOCIOS ====================
+
+// Obtener todos los socios
+export async function getSocios(): Promise<Socio[]> {
+  const query = qs.stringify(
+    {
+      populate: ['logo'],
+      filters: {
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/socios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching socios: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Socio[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener socios:', error);
+    return [];
+  }
+}
+
+// Obtener un socio por documentId (para preview)
+export async function getSocioByDocumentId(documentId: string): Promise<Socio | null> {
+  const queryParams: any = {
+    populate: ['logo'],
+  };
+
+  // Añadir publicationState=preview si estamos en modo preview
+  if (previewContext.enabled) {
+    queryParams.publicationState = 'preview';
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (previewContext.enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await fetch(`${STRAPI_URL}/api/socios/${documentId}?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching socio: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Socio> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener socio:', error);
     return null;
   }
 }

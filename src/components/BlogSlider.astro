@@ -1,33 +1,51 @@
 ---
-// Blog Slider component - Slider de categorías
-interface SlideItem {
-	image: string;
-	title: string;
-	link: string;
+// Blog Slider component - Conectado a Strapi
+import type { SlideAfiliacion } from '../lib/strapi';
+import { getStrapiImageUrl } from '../lib/strapi';
+
+interface Props {
+	slides?: SlideAfiliacion[];
 }
 
-const items: SlideItem[] = [
+const { slides: strapiSlides = [] } = Astro.props;
+
+// Fallback a slides estáticos si no hay datos de Strapi
+const defaultItems = [
 	{
 		image: '/images/img_acc-01.jpg',
 		title: 'ES USTED AUTÓNOMO',
-		link: '/afiliacionee_trabajadores'
+		link: '/afiliacionee_trabajadores',
+		description: ''
 	},
 	{
 		image: '/images/img_acc_02.jpg',
 		title: 'USTED ES UN EMPLEADO',
-		link: '/afiliacionee_trabajadores'
+		link: '/afiliacionee_trabajadores',
+		description: ''
 	},
 	{
 		image: '/images/img_acc_03.jpg',
 		title: 'USTED ES EMPRESARIO',
-		link: '/afiliacionee_empresas'
+		link: '/afiliacionee_empresas',
+		description: ''
 	},
 	{
 		image: '/images/img_acc_13.jpg',
 		title: 'SOLICITUD DE CARNÉ',
-		link: '#'
+		link: '#',
+		description: ''
 	}
 ];
+
+// Usar slides de Strapi si están disponibles, sino usar los por defecto
+const items = strapiSlides.length > 0
+	? strapiSlides.map(slide => ({
+			image: getStrapiImageUrl(slide.imagen.url),
+			title: slide.titulo,
+			link: slide.enlace,
+			description: slide.descripcion || ''
+		}))
+	: defaultItems;
 ---
 
 <div class="blog-slide">

@@ -49,6 +49,7 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
 
     case 'hero-slide':
     case 'slide-afiliacion':
+    case 'socio':
       // Para estos tipos, redirigir a la home con preview habilitado
       redirectUrl = `/preview/home?type=${type}&documentId=${documentId}`;
       break;

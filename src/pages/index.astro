@@ -11,6 +11,9 @@ import {
   getConfiguracionInicio,
   getNoticiasByPosicion,
   getPrestaciones,
+  getHeroSlides,
+  getSlidesAfiliacion,
+  getSocios,
   getStrapiImageUrl,
   richTextToPlainText,
   getNoticiaVideoUrl
@@ -20,6 +23,9 @@ export const prerender = false;
 
 // Obtener datos de Strapi
 const config = await getConfiguracionInicio();
+const heroSlides = await getHeroSlides();
+const slidesAfiliacion = await getSlidesAfiliacion();
+const socios = await getSocios();
 const noticiaPrincipal = (await getNoticiasByPosicion('principal', 1))[0];
 const noticiasLaterales = await getNoticiasByPosicion('lateral', 2);
 const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 6);
@@ -45,7 +51,7 @@ const videoDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 ---
 
 <BaseLayout title="INSESO - Inicio" currentPath="/">
-	<HeroCarousel />
+	<HeroCarousel slides={heroSlides} />
 
 	<div class="container">
 		<div class="portfolio-main">
@@ -53,7 +59,7 @@ const videoDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 		</div>
 	</div>
 
-	<BlogSlider />
+	<BlogSlider slides={slidesAfiliacion} />
 
 	<div class="blog-main">
 		<div class="container">
@@ -132,7 +138,7 @@ const videoDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 		<UltimaHoraSection noticias={noticiasUltimaHora} />
 	)}
 
-	<PartnersCarousel />
+	<PartnersCarousel socios={socios} />
 
 </BaseLayout>
 

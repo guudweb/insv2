@@ -1,28 +1,32 @@
 ---
-/**
- * Componente PartnersCarousel - Carousel de logos de socios
- *
- * En el futuro, los socios se cargarán desde Strapi.
- * Por ahora, usa los logos estáticos del proyecto.
- */
+// Componente PartnersCarousel - Conectado a Strapi
+import type { Socio } from '../lib/strapi';
+import { getStrapiImageUrl } from '../lib/strapi';
 
-interface Partner {
-  logo: string;
-  alt: string;
+interface Props {
+  socios?: Socio[];
 }
 
-// TODO: Reemplazar con datos de Strapi cuando esté configurado
-// import { getSocios } from '../lib/strapi';
-// const socios = await getSocios();
+const { socios: strapiSocios = [] } = Astro.props;
 
-const partners: Partner[] = [
-  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 1' },
-  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 2' },
-  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 3' },
-  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 4' },
-  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 5' },
-  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 6' },
+// Fallback a logos estáticos si no hay datos de Strapi
+const defaultPartners = [
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 1', link: null },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 2', link: null },
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 3', link: null },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 4', link: null },
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 5', link: null },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 6', link: null },
 ];
+
+// Usar socios de Strapi si están disponibles, sino usar los por defecto
+const partners = strapiSocios.length > 0
+  ? strapiSocios.map(socio => ({
+      logo: getStrapiImageUrl(socio.logo.url),
+      alt: socio.logo.alternativeText || socio.nombre,
+      link: socio.enlace
+    }))
+  : defaultPartners;
 ---
 
 <div class="container">
@@ -34,7 +38,13 @@ const partners: Partner[] = [
         <div id="customers-slider" class="owl-carousel">
           {partners.map((partner) => (
             <div class="mb-4">
-              <img class="img-fluid" src={partner.logo} alt={partner.alt} />
+              {partner.link ? (
+                <a href={partner.link} target="_blank" rel="noopener noreferrer">
+                  <img class="img-fluid" src={partner.logo} alt={partner.alt} />
+                </a>
+              ) : (
+                <img class="img-fluid" src={partner.logo} alt={partner.alt} />
+              )}
             </div>
           ))}
         </div>

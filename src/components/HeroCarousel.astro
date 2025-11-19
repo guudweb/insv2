@@ -1,10 +1,16 @@
 ---
-// Hero Carousel component usando Swiper.js (reemplazo de Bootstrap carousel)
-interface Slide {
-	image: string;
+// Hero Carousel component - Conectado a Strapi
+import type { HeroSlide } from '../lib/strapi';
+import { getStrapiImageUrl } from '../lib/strapi';
+
+interface Props {
+	slides?: HeroSlide[];
 }
 
-const slides: Slide[] = [
+const { slides: heroSlides = [] } = Astro.props;
+
+// Fallback a slides estáticos si no hay datos de Strapi
+const defaultSlides = [
 	{ image: '/images/accueil/slider-00.jpg' },
 	{ image: '/images/accueil/slider-01.jpg' },
 	{ image: '/images/accueil/slider-02.jpg' },
@@ -13,6 +19,17 @@ const slides: Slide[] = [
 	{ image: '/images/accueil/slider-05.jpg' },
 	{ image: '/images/accueil/slider-06.jpg' }
 ];
+
+// Usar slides de Strapi si están disponibles, sino usar los por defecto
+const slides = heroSlides.length > 0
+	? heroSlides.map(slide => ({
+			image: getStrapiImageUrl(slide.imagen.url),
+			title: slide.titulo,
+			subtitle: slide.subtitulo,
+			link: slide.enlace,
+			buttonText: slide.textoBoton
+		}))
+	: defaultSlides;
 ---
 
 <header class="slider-main">
@@ -31,7 +48,17 @@ const slides: Slide[] = [
 				<div
 					class={`carousel-item ${index === 0 ? 'active' : ''}`}
 					style={`background-image: url(${slide.image})`}
-				></div>
+				>
+					{slide.title && (
+						<div class="carousel-caption d-none d-md-block">
+							{slide.title && <h2>{slide.title}</h2>}
+							{slide.subtitle && <p>{slide.subtitle}</p>}
+							{slide.link && slide.buttonText && (
+								<a href={slide.link} class="btn btn-primary">{slide.buttonText}</a>
+							)}
+						</div>
+					)}
+				</div>
 			))}
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
