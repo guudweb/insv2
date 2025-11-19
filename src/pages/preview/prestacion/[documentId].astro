@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+  getPrestacionByDocumentId,
+  setPreviewContext,
+  getStrapiImageUrl,
+  formatDate,
+} from '../../../lib/strapi';
+
+// Obtener el documentId de los parámetros
+const { documentId } = Astro.params;
+
+// Obtener datos de preview de la cookie
+const previewCookie = Astro.cookies.get('preview');
+let previewData: any = null;
+
+if (previewCookie?.value) {
+  try {
+    previewData = JSON.parse(previewCookie.value);
+  } catch (e) {
+    console.error('Error parsing preview cookie:', e);
+  }
+}
+
+// Si no hay cookie de preview o no está habilitado, redirigir
+if (!previewData || !previewData.enabled) {
+  return Astro.redirect('/');
+}
+
+// Establecer contexto de preview
+setPreviewContext(true, previewData.status || 'draft');
+
+// Obtener la prestación
+const prestacion = documentId ? await getPrestacionByDocumentId(documentId) : null;
+
+if (!prestacion) {
+  return Astro.redirect('/');
+}
+
+const imagenUrl = prestacion.imagen ? getStrapiImageUrl(prestacion.imagen.url) : null;
+const imagenDetalleUrl = prestacion.imagenDetalle ? getStrapiImageUrl(prestacion.imagenDetalle.url) : null;
+---
+
+<BaseLayout title={`Preview: ${prestacion.titulo}`}>
+  <!-- Banner de preview -->
+  <div style="background: #4945ff; color: white; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 1000;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <strong>🔍 Modo Preview</strong>
+        <span style="margin-left: 1rem;">Estado: {previewData.status === 'draft' ? 'Borrador' : 'Publicado'}</span>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href={`/prestacion/${prestacion.slug}`}
+           style="background: white; color: #4945ff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+          Ver versión publicada
+        </a>
+        <a href="/api/exit-preview"
+           style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+          Salir del preview
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido de la prestación -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article>
+          <!-- Título -->
+          <h1 class="mb-4">{prestacion.titulo}</h1>
+
+          <!-- Imagen principal -->
+          {imagenUrl && (
+            <img src={imagenUrl} alt={prestacion.imagen?.alternativeText || prestacion.titulo} class="img-fluid mb-4" />
+          )}
+
+          <!-- Resumen -->
+          {prestacion.resumen && (
+            <div class="lead mb-4">
+              {prestacion.resumen}
+            </div>
+          )}
+
+          <!-- Descripción -->
+          <div class="content mb-4">
+            <h3>Descripción</h3>
+            {prestacion.descripcion.split('\n').map((parrafo: string) => (
+              parrafo.trim() && <p>{parrafo}</p>
+            ))}
+          </div>
+
+          <!-- Requisitos -->
+          {prestacion.requisitos && (
+            <div class="content mb-4">
+              <h3>Requisitos</h3>
+              {prestacion.requisitos.split('\n').map((parrafo: string) => (
+                parrafo.trim() && <p>{parrafo}</p>
+              ))}
+            </div>
+          )}
+
+          <!-- Imagen de detalle -->
+          {imagenDetalleUrl && (
+            <div class="mb-4">
+              <h3>Imagen adicional</h3>
+              <img src={imagenDetalleUrl} alt={prestacion.imagenDetalle?.alternativeText || ''} class="img-fluid" />
+            </div>
+          )}
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Información de Preview</h5>
+            <dl>
+              <dt>Document ID:</dt>
+              <dd><code>{prestacion.documentId}</code></dd>
+
+              <dt>Slug:</dt>
+              <dd><code>{prestacion.slug}</code></dd>
+
+              <dt>Estado:</dt>
+              <dd>{previewData.status === 'draft' ? 'Borrador' : 'Publicado'}</dd>
+
+              <dt>Orden:</dt>
+              <dd>{prestacion.orden}</dd>
+
+              <dt>Activo:</dt>
+              <dd>{prestacion.activo ? 'Sí' : 'No'}</dd>
+
+              <dt>Creado:</dt>
+              <dd>{formatDate(prestacion.createdAt)}</dd>
+
+              <dt>Actualizado:</dt>
+              <dd>{formatDate(prestacion.updatedAt)}</dd>
+
+              {prestacion.publishedAt && (
+                <>
+                  <dt>Publicado:</dt>
+                  <dd>{formatDate(prestacion.publishedAt)}</dd>
+                </>
+              )}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+
+  dd {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  code {
+    background: #f4f4f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+</style>

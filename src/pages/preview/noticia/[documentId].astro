@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import {
+  getNoticiaByDocumentId,
+  setPreviewContext,
+  getStrapiImageUrl,
+  formatDate,
+  richTextToPlainText,
+  getNoticiaVideoUrl
+} from '../../../lib/strapi';
+
+// Obtener el documentId de los parámetros
+const { documentId } = Astro.params;
+
+// Obtener datos de preview de la cookie
+const previewCookie = Astro.cookies.get('preview');
+let previewData: any = null;
+
+if (previewCookie?.value) {
+  try {
+    previewData = JSON.parse(previewCookie.value);
+  } catch (e) {
+    console.error('Error parsing preview cookie:', e);
+  }
+}
+
+// Si no hay cookie de preview o no está habilitado, redirigir
+if (!previewData || !previewData.enabled) {
+  return Astro.redirect('/');
+}
+
+// Establecer contexto de preview
+setPreviewContext(true, previewData.status || 'draft');
+
+// Obtener la noticia
+const noticia = documentId ? await getNoticiaByDocumentId(documentId) : null;
+
+if (!noticia) {
+  return Astro.redirect('/');
+}
+
+const imagenUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : null;
+const videoUrl = getNoticiaVideoUrl(noticia);
+const contenidoTexto = richTextToPlainText(noticia.contenido);
+---
+
+<BaseLayout title={`Preview: ${noticia.titulo}`}>
+  <!-- Banner de preview -->
+  <div style="background: #4945ff; color: white; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 1000;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <strong>🔍 Modo Preview</strong>
+        <span style="margin-left: 1rem;">Estado: {previewData.status === 'draft' ? 'Borrador' : 'Publicado'}</span>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href={`/noticia/${noticia.slug || noticia.documentId}`}
+           style="background: white; color: #4945ff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+          Ver versión publicada
+        </a>
+        <a href="/api/exit-preview"
+           style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+          Salir del preview
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido de la noticia -->
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <article>
+          <!-- Categoría -->
+          {noticia.categoria && (
+            <div class="mb-3">
+              <span class="badge" style={`background-color: ${noticia.categoria.color || '#007bff'}`}>
+                {noticia.categoria.nombre}
+              </span>
+            </div>
+          )}
+
+          <!-- Título -->
+          <h1 class="mb-4">{noticia.titulo}</h1>
+
+          <!-- Metadata -->
+          <div class="text-muted mb-4">
+            <small>
+              {noticia.autor && <span>Por {noticia.autor} | </span>}
+              {formatDate(noticia.fechaPublicacion)}
+            </small>
+          </div>
+
+          <!-- Imagen o Video -->
+          {noticia.tipoMedia === 'video' && videoUrl ? (
+            <div class="mb-4">
+              {noticia.videoArchivo ? (
+                <video controls class="w-100" style="max-height: 500px;">
+                  <source src={videoUrl} type="video/mp4" />
+                </video>
+              ) : (
+                <div class="ratio ratio-16x9">
+                  <iframe src={videoUrl} allowfullscreen></iframe>
+                </div>
+              )}
+            </div>
+          ) : imagenUrl && (
+            <img src={imagenUrl} alt={noticia.imagen?.alternativeText || noticia.titulo} class="img-fluid mb-4" />
+          )}
+
+          <!-- Resumen -->
+          {noticia.resumen && (
+            <div class="lead mb-4">
+              {noticia.resumen}
+            </div>
+          )}
+
+          <!-- Contenido -->
+          <div class="content">
+            {contenidoTexto.split('\n').map((parrafo: string) => (
+              parrafo.trim() && <p>{parrafo}</p>
+            ))}
+          </div>
+        </article>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Información de Preview</h5>
+            <dl>
+              <dt>Document ID:</dt>
+              <dd><code>{noticia.documentId}</code></dd>
+
+              <dt>Estado:</dt>
+              <dd>{previewData.status === 'draft' ? 'Borrador' : 'Publicado'}</dd>
+
+              <dt>Creado:</dt>
+              <dd>{formatDate(noticia.createdAt)}</dd>
+
+              <dt>Actualizado:</dt>
+              <dd>{formatDate(noticia.updatedAt)}</dd>
+
+              {noticia.publishedAt && (
+                <>
+                  <dt>Publicado:</dt>
+                  <dd>{formatDate(noticia.publishedAt)}</dd>
+                </>
+              )}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+</style>

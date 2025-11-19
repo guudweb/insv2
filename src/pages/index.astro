@@ -22,7 +22,7 @@ export const prerender = false;
 const config = await getConfiguracionInicio();
 const noticiaPrincipal = (await getNoticiasByPosicion('principal', 1))[0];
 const noticiasLaterales = await getNoticiasByPosicion('lateral', 2);
-const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 3);
+const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 6);
 const prestaciones = await getPrestaciones();
 const prestacionesDestacadas = prestaciones.filter(p => p.destacado).slice(0, 4);
 

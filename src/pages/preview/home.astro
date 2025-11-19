@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { setPreviewContext } from '../../lib/strapi';
+
+// Obtener datos de preview de la cookie
+const previewCookie = Astro.cookies.get('preview');
+let previewData: any = null;
+
+if (previewCookie?.value) {
+  try {
+    previewData = JSON.parse(previewCookie.value);
+  } catch (e) {
+    console.error('Error parsing preview cookie:', e);
+  }
+}
+
+// Si no hay cookie de preview o no está habilitado, redirigir
+if (!previewData || !previewData.enabled) {
+  return Astro.redirect('/');
+}
+
+// Establecer contexto de preview
+setPreviewContext(true, previewData.status || 'draft');
+
+const url = new URL(Astro.request.url);
+const type = url.searchParams.get('type');
+const documentId = url.searchParams.get('documentId');
+---
+
+<BaseLayout title="Preview - Página Principal">
+  <!-- Banner de preview -->
+  <div style="background: #4945ff; color: white; padding: 1rem; text-align: center; position: sticky; top: 0; z-index: 1000;">
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div>
+        <strong>🔍 Modo Preview</strong>
+        <span style="margin-left: 1rem;">Tipo: {type}</span>
+        <span style="margin-left: 1rem;">Estado: {previewData.status === 'draft' ? 'Borrador' : 'Publicado'}</span>
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <a href="/"
+           style="background: white; color: #4945ff; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+          Ver versión publicada
+        </a>
+        <a href="/api/exit-preview"
+           style="background: rgba(255,255,255,0.2); color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; font-weight: bold;">
+          Salir del preview
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Preview de elementos de la página principal</h2>
+            <p class="mb-4">
+              Estás visualizando en modo preview un elemento que aparece en la página principal.
+            </p>
+
+            <div class="alert alert-info">
+              <h5>Información del elemento:</h5>
+              <dl>
+                <dt>Tipo de contenido:</dt>
+                <dd><code>{type}</code></dd>
+
+                <dt>Document ID:</dt>
+                <dd><code>{documentId}</code></dd>
+
+                <dt>Estado:</dt>
+                <dd>{previewData.status === 'draft' ? 'Borrador' : 'Publicado'}</dd>
+              </dl>
+            </div>
+
+            <p class="text-muted">
+              Para ver cómo se visualiza este elemento, visita la <a href="/">página principal</a>
+              mientras el modo preview esté activo.
+            </p>
+
+            <div class="mt-4">
+              <a href="/" class="btn btn-primary">Ir a la página principal</a>
+              <a href="/api/exit-preview" class="btn btn-outline-secondary ms-2">Salir del preview</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  dl {
+    margin: 0;
+  }
+
+  dt {
+    font-weight: bold;
+    margin-top: 0.5rem;
+  }
+
+  dd {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  code {
+    background: #f4f4f4;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    font-size: 0.9em;
+  }
+</style>

@@ -3,6 +3,26 @@ import qs from 'qs';
 
 const STRAPI_URL = import.meta.env.STRAPI_URL || 'http://localhost:1337';
 
+// Preview context para mantener el estado de preview
+interface PreviewContext {
+  enabled: boolean;
+  status?: string;
+}
+
+let previewContext: PreviewContext = {
+  enabled: false
+};
+
+// Función para establecer el contexto de preview
+export function setPreviewContext(enabled: boolean, status?: string) {
+  previewContext = { enabled, status };
+}
+
+// Función para obtener el contexto de preview
+export function getPreviewContext(): PreviewContext {
+  return previewContext;
+}
+
 interface StrapiResponse<T> {
   data: T;
   meta: {
@@ -137,21 +157,34 @@ export interface Prestacion {
 
 // Obtener todas las noticias
 export async function getNoticias(): Promise<Noticia[]> {
-  const query = qs.stringify(
-    {
-      populate: ['imagen', 'videoArchivo', 'categoria'],
-      sort: ['fechaPublicacion:desc'],
-      pagination: {
-        pageSize: 100,
-      },
+  const queryParams: any = {
+    populate: ['imagen', 'videoArchivo', 'categoria'],
+    sort: ['fechaPublicacion:desc'],
+    pagination: {
+      pageSize: 100,
     },
-    {
-      encodeValuesOnly: true,
-    }
-  );
+  };
+
+  // Añadir status=draft si estamos en modo preview
+  if (previewContext.enabled && previewContext.status) {
+    queryParams.status = previewContext.status;
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/noticias?${query}`);
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (previewContext.enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await fetch(`${STRAPI_URL}/api/noticias?${query}`, {
+      headers,
+    });
 
     if (!response.ok) {
       throw new Error(`Error fetching noticias: ${response.status}`);
@@ -165,25 +198,75 @@ export async function getNoticias(): Promise<Noticia[]> {
   }
 }
 
+// Obtener una noticia por documentId (para preview)
+export async function getNoticiaByDocumentId(documentId: string): Promise<Noticia | null> {
+  const queryParams: any = {
+    populate: ['imagen', 'videoArchivo', 'categoria'],
+  };
+
+  // Añadir status=draft si estamos en modo preview
+  if (previewContext.enabled && previewContext.status) {
+    queryParams.status = previewContext.status;
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (previewContext.enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await fetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching noticia: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Noticia> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener noticia:', error);
+    return null;
+  }
+}
+
 // Obtener una noticia por slug
 export async function getNoticiaBySlug(slug: string): Promise<Noticia | null> {
   try {
     // Primero intentar buscar por slug exacto
-    const queryBySlug = qs.stringify(
-      {
-        filters: {
-          slug: {
-            $eq: slug,
-          },
+    const queryParams: any = {
+      filters: {
+        slug: {
+          $eq: slug,
         },
-        populate: ['imagen', 'videoArchivo', 'categoria'],
       },
-      {
-        encodeValuesOnly: true,
-      }
-    );
+      populate: ['imagen', 'videoArchivo', 'categoria'],
+    };
 
-    const responseBySlug = await fetch(`${STRAPI_URL}/api/noticias?${queryBySlug}`);
+    // Añadir status=draft si estamos en modo preview
+    if (previewContext.enabled && previewContext.status) {
+      queryParams.status = previewContext.status;
+    }
+
+    const queryBySlug = qs.stringify(queryParams, {
+      encodeValuesOnly: true,
+    });
+
+    const headers: HeadersInit = {};
+    if (previewContext.enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const responseBySlug = await fetch(`${STRAPI_URL}/api/noticias?${queryBySlug}`, {
+      headers,
+    });
 
     if (responseBySlug.ok) {
       const jsonBySlug: StrapiResponse<Noticia[]> = await responseBySlug.json();
@@ -303,24 +386,74 @@ export async function getPrestaciones(): Promise<Prestacion[]> {
   }
 }
 
-// Obtener una prestación por slug
-export async function getPrestacionBySlug(slug: string): Promise<Prestacion | null> {
-  const query = qs.stringify(
-    {
-      filters: {
-        slug: {
-          $eq: slug,
-        },
-      },
-      populate: ['imagen', 'imagenDetalle'],
-    },
-    {
-      encodeValuesOnly: true,
-    }
-  );
+// Obtener una prestación por documentId (para preview)
+export async function getPrestacionByDocumentId(documentId: string): Promise<Prestacion | null> {
+  const queryParams: any = {
+    populate: ['imagen', 'imagenDetalle'],
+  };
+
+  // Añadir status=draft si estamos en modo preview
+  if (previewContext.enabled && previewContext.status) {
+    queryParams.status = previewContext.status;
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/prestaciones?${query}`);
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (previewContext.enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await fetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching prestacion: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Prestacion> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener prestación:', error);
+    return null;
+  }
+}
+
+// Obtener una prestación por slug
+export async function getPrestacionBySlug(slug: string): Promise<Prestacion | null> {
+  const queryParams: any = {
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: ['imagen', 'imagenDetalle'],
+  };
+
+  // Añadir status=draft si estamos en modo preview
+  if (previewContext.enabled && previewContext.status) {
+    queryParams.status = previewContext.status;
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+    if (previewContext.enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await fetch(`${STRAPI_URL}/api/prestaciones?${query}`, {
+      headers,
+    });
 
     if (!response.ok) {
       throw new Error(`Error fetching prestacion: ${response.status}`);

@@ -1,0 +1,126 @@
+---
+interface Props {
+  status?: string;
+  type?: string;
+  publishedUrl?: string;
+  showPublishedLink?: boolean;
+}
+
+const {
+  status = 'draft',
+  type,
+  publishedUrl,
+  showPublishedLink = true
+} = Astro.props;
+
+const statusLabel = status === 'draft' ? 'Borrador' : 'Publicado';
+---
+
+<div class="preview-banner">
+  <div class="preview-banner-content">
+    <div class="preview-banner-info">
+      <strong>🔍 Modo Preview</strong>
+      {type && <span class="preview-badge">Tipo: {type}</span>}
+      <span class="preview-badge">Estado: {statusLabel}</span>
+    </div>
+    <div class="preview-banner-actions">
+      {showPublishedLink && publishedUrl && (
+        <a href={publishedUrl} class="preview-btn preview-btn-primary">
+          Ver versión publicada
+        </a>
+      )}
+      <a href="/api/exit-preview" class="preview-btn preview-btn-secondary">
+        Salir del preview
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .preview-banner {
+    background: #4945ff;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .preview-banner-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .preview-banner-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .preview-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+  }
+
+  .preview-banner-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .preview-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+
+  .preview-btn-primary {
+    background: white;
+    color: #4945ff;
+  }
+
+  .preview-btn-primary:hover {
+    background: #f0f0f0;
+    transform: translateY(-1px);
+  }
+
+  .preview-btn-secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+
+  .preview-btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 768px) {
+    .preview-banner-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .preview-banner-info {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .preview-banner-actions {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
