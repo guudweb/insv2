@@ -1,155 +1,95 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
+import InfoCard from '../components/InfoCard.astro';
+
+export const prerender = false;
 ---
 
-<BaseLayout title="INSESO - Afiliación" currentPath="/afiliación_fernanda">
-<div class="full-title">
-		<div class="container">
-			<img class="img-fluid" src="/images/afiliacion/afiliacion_slider_01.jpg" alt=""/>
-		</div>
-	</div>
-	
-	
-	<div class="blog-main">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 blog-entries">
-					<div class="card mb-4">
-						<img class="card-img-top" src="/images/afiliacion/afiliacion_00.gif" alt="" /><br>
-						<div class="card-body">
-							<h2 class="card-title">LA FUNCIÓN DE AFILIACIÓN A LA SEGURIDAD SOCIAL</h2>
-							<p class="card-text">La función principal de la afiliación a la seguridad social es incorporar a una persona al sistema de seguridad social y, por lo tanto, garantizar su acceso a las prestaciones y servicios que este ofrece. La afiliación es obligatoria para las personas que realizan una actividad laboral que las incluye en el sistema.</p><br>
-							
-							<h2 class="card-title">¿QUÉ  IMPLICA LA AFILIACIÓN?</h2>
-							<div class="card my-4">
-								<h5 class="card-header">La afiliación implica :</h5>
-								<div class="card-body">
-									<ul>
-										<li><h6>Identification : La persona que se afilia recibe un Número de la Seguridad Social (NUSS), que la identifica dentro del sistema</h6></li>
-										<li><h6>Registro : La afiliación se realiza a través del servicio de Control General de Afiliación</h6></li>
-										<li><h6>Derechos y obligaciones : La afiliación establece los derechos y obligaciones de la persona dentro del sistema, como el derecho a recibir prestaciones por enfermedad, maternidad, vejez etc., y la obligación de cotizar a la seguridad social.</h6></li>
-									</ul>
-								</div>
-							</div>
-							
-							<h2 class="card-title">¿POR QUÉ ES IMPORTANTE LA AFILIACIÓN?</h2>
-							<div class="card my-4">
-								<h5 class="card-header">La importancia de afiliación consiste en que :</h5>
-								<div class="card-body">
-									<ul>
-										<li><h6>Garantiza la protección en caso de contingencias (necesidad): Permite acceder a servicios de salud, prestaciones económicas y otros beneficios en caso de enfermedad, accidente laboral, maternidad, etc.</h6></li>
-										<li><h6>Facilita el acceso a prestaciones: Permite acceder a pensiones de jubilación, incapacidad, viudedad, etc. </h6></li>
-										<li><h6>Es un requisito para acceder a determinados derechos laborales: Es necesario para poder ejercer derechos como el acceso a la sanidad pública, la prestación asistenciales como la acción social etc. </h6></li>
-									</ul>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>				
+<ContentWithSidebarLayout
+  title="INSESO - Afiliación"
+  currentPath="/afiliación_fernanda"
+  headerImage="/images/afiliacion/afiliacion_slider_01.jpg"
+  headerImageAlt="Afiliación - INSESO"
+  showPartners={true}
+>
+  <Fragment slot="main">
+    <div class="card mb-4">
+      <img class="card-img-top" src="/images/afiliacion/afiliacion_00.gif" alt="Afiliación INSESO" /><br>
+      <div class="card-body">
+        <h2 class="card-title">LA FUNCIÓN DE AFILIACIÓN A LA SEGURIDAD SOCIAL</h2>
+        <p class="card-text">
+          La función principal de la afiliación a la seguridad social es incorporar a una persona al
+          sistema de seguridad social y, por lo tanto, garantizar su acceso a las prestaciones y
+          servicios que este ofrece. La afiliación es obligatoria para las personas que realizan una
+          actividad laboral que las incluye en el sistema.
+        </p><br>
 
-				<div class="col-md-4 blog-right-side">
+        <h2 class="card-title">¿QUÉ IMPLICA LA AFILIACIÓN?</h2>
+        <InfoCard
+          title="La afiliación implica :"
+          items={[
+            'Identification : La persona que se afilia recibe un Número de la Seguridad Social (NUSS), que la identifica dentro del sistema',
+            'Registro : La afiliación se realiza a través del servicio de Control General de Afiliación',
+            'Derechos y obligaciones : La afiliación establece los derechos y obligaciones de la persona dentro del sistema, como el derecho a recibir prestaciones por enfermedad, maternidad, vejez etc., y la obligación de cotizar a la seguridad social.'
+          ]}
+          variant="list"
+        />
 
-					<div class="card my-4">
-						<h5 class="card-header">¿Cómo se produce la inscripción de empresas y la afiliación de los trabajadores?</h5>
-						<div class="card-body">
-							La inscripción de empresas y trabajadores, inicialmente es simultánea. Se produce mediante la presentación por las empresas de los requisitos enumerados en la hoja anexa.
-						</div>
-					</div>				
+        <h2 class="card-title">¿POR QUÉ ES IMPORTANTE LA AFILIACIÓN?</h2>
+        <InfoCard
+          title="La importancia de afiliación consiste en que :"
+          items={[
+            'Garantiza la protección en caso de contingencias (necesidad): Permite acceder a servicios de salud, prestaciones económicas y otros beneficios en caso de enfermedad, accidente laboral, maternidad, etc.',
+            'Facilita el acceso a prestaciones: Permite acceder a pensiones de jubilación, incapacidad, viudedad, etc.',
+            'Es un requisito para acceder a determinados derechos laborales: Es necesario para poder ejercer derechos como el acceso a la sanidad pública, la prestación asistenciales como la acción social etc.'
+          ]}
+          variant="list"
+        />
+      </div>
+    </div>
+  </Fragment>
 
-					<div class="card my-4">
-						<h5 class="card-header">¿Quién debe afiliarse a la seguridad social?</h5>
-						<div class="card-body">
-							La persona que ejecuta una obra o presta servicios a otra en virtud de un acuerdo o contrato, y que reciba un salario o remuneración como contraprestación.
-						</div>
-					</div>
-					
-					<div class="card my-4">
-						<h5 class="card-header">¿Quién es el sujeto responsables de comunicar realizar la afiliación, altas, bajas las y cotizar a la seguridad social?</h5>
-						<div class="card-body">
-							La persona responsable y obligada de realizar la afiliación, así como comunicar las altas y bajas de las personas que ingresen o cesen de su actividad, es el empresario, asimismo de pagar las cotizaciones inherentes a dicho acto de afiliación.<br>
-							Para trabajadores independientes o AUTONOMOS, la responsabilidad de realizarla recae en los mismos.
-						</div>
-					</div>
-					
-					<div class="card my-4">
-						<h5 class="card-header">¿A partir de qué periodo se debe realizar la afiliación?</h5>
-						<div class="card-body">
-							La afiliación se debe realizar puntualmente al inicio de la actividad laboral, a más tardar al octavo dia.
-						</div>
-					</div>
-					
-					<div class="card my-4">
-						<h5 class="card-header">¿Cómo comunicar las bajas?</h5>
-						<div class="card-body">
-							Las bajas se comunican mediante carta aportando los requisitos enumerados en la hoja anexa, al término del contrato laboral y a partir de la primera quincena del mes siguiente al de los efectos de terminación de la relación contractual.
-						</div>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-	 </div>	
-	
-	</div>
-	
-	<div class="customers-box"> 
-		<div class="container">
-			<hr>
-			<h2>NUESTROS SOCIOS</h2>
-			<div class="row">
-				<div class="col-lg-12">
-					<div id="customers-slider" class="owl-carousel">
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</BaseLayout>
+  <Fragment slot="sidebar">
+    <InfoCard title="¿Cómo se produce la inscripción de empresas y la afiliación de los trabajadores?">
+      <p>
+        La inscripción de empresas y trabajadores, inicialmente es simultánea. Se produce mediante
+        la presentación por las empresas de los requisitos enumerados en la hoja anexa.
+      </p>
+    </InfoCard>
 
-<script is:inline src="/js/owl.carousel.min.js"></script>
-<script is:inline src="/js/owl.carousel_2.js"></script>
-<script is:inline src="/js/script.js"></script>
+    <InfoCard title="¿Quién debe afiliarse a la seguridad social?">
+      <p>
+        La persona que ejecuta una obra o presta servicios a otra en virtud de un acuerdo o
+        contrato, y que reciba un salario o remuneración como contraprestación.
+      </p>
+    </InfoCard>
 
-<script is:inline>
-	(function($) {
-		$(document).ready(function() {
-			if ($("#customers-slider").length) {
-				$("#customers-slider").owlCarousel({
-					items: 5,
-					loop: true,
-					margin: 15,
-					nav: false,
-					dots: false,
-					autoplay: true,
-					autoplayTimeout: 2500,
-					responsive: {
-						0: { items: 2 },
-						650: { items: 2 },
-						768: { items: 3 },
-						1000: { items: 4 },
-						1200: { items: 5 }
-					}
-				});
-			}
-		});
-	})(window.jQuery);
-</script>
+    <InfoCard title="¿Quién es el sujeto responsable de realizar la afiliación, altas, bajas y cotizar a la seguridad social?">
+      <p>
+        La persona responsable y obligada de realizar la afiliación, así como comunicar las altas y
+        bajas de las personas que ingresen o cesen de su actividad, es el empresario, asimismo de
+        pagar las cotizaciones inherentes a dicho acto de afiliación.
+      </p>
+      <p>
+        Para trabajadores independientes o AUTÓNOMOS, la responsabilidad de realizarla recae en los
+        mismos.
+      </p>
+    </InfoCard>
+
+    <InfoCard title="¿A partir de qué periodo se debe realizar la afiliación?">
+      <p>
+        La afiliación se debe realizar puntualmente al inicio de la actividad laboral, a más tardar
+        al octavo día.
+      </p>
+    </InfoCard>
+
+    <InfoCard title="Enlaces relacionados">
+      <ul>
+        <li><a href="/afiliacionee_trabajadores">Afiliación de Trabajadores</a></li>
+        <li><a href="/afiliacionee_empresas">Afiliación de Empresas</a></li>
+        <li><a href="/condiciones_adhesion">Condiciones de Adhesión</a></li>
+        <li><a href="/contacto">Contacto</a></li>
+      </ul>
+    </InfoCard>
+  </Fragment>
+</ContentWithSidebarLayout>

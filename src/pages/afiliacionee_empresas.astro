@@ -1,123 +1,95 @@
 ---
-import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
-import InfoCard from '../components/InfoCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
+import { getSocios } from '../lib/strapi';
 
 export const prerender = false;
+
+const socios = await getSocios();
 ---
 
-<ContentWithSidebarLayout
-  title="INSESO - Afiliación - Empresas"
-  currentPath="/afiliacionee_empresas"
-  headerImage="/images/trabajadores/img_silder_trabaja_02.jpg"
-  headerImageAlt="Inscripción de Empresas - INSESO"
-  showPartners={true}
->
-  <Fragment slot="main">
+<BaseLayout title="INSESO - Afiliación - Empresas" currentPath="/afiliacionee_empresas">
+  <PageHeader
+    imageSrc="/images/trabajadores/img_silder_trabaja_02.jpg"
+    imageAlt="Inscripción de Empresas - INSESO"
+  />
+
+  <div class="container">
     <div class="about-main">
       <div class="row">
-        <div class="col-lg-12">
-          <h2>Inscripción de Empresas</h2>
-          <p>
-            La inscripción de una empresa en el INSESO es un proceso obligatorio que permite a las
-            empresas cumplir con sus obligaciones en materia de seguridad social y garantizar la
-            protección de sus trabajadores.
-          </p>
-        </div>
-      </div>
-
-      <div class="row mt-4">
         <div class="col-lg-6">
-          <InfoCard
-            title="Usted es un empresario"
-            items={[
-              'Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial.',
-              'Rellenar ficha de registro de empresa',
-              'Copia de NIF.',
-              '*Copia de registro de comercio',
-              'Copia de D.I.P/Pasaporte o Residencia del responsable de la empresa.',
-              'Listado de los trabajadores y sus salarios.',
-              'Copia del estatuto de la empresa.'
-            ]}
-            variant="requirements"
-          />
+          <h2>Inscripción de Empresas</h2>
 
-          <InfoCard
-            title="Entidades Autónomas/Empresas Para Públicas"
-            items={[
-              'Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial',
-              'Rellenar ficha de registro de empresa',
-              'Copia del Decreto Ley de la creación de la empresa',
-              'Listado de los trabajadores y sus salarios',
-              'Copia de D.I.P del Director General de la empresa'
-            ]}
-            variant="requirements"
-          />
+          <div class="card my-4">
+            <h4 class="card-header">Usted es un empresario</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial.</h6></li>
+                <li><h6>Rellenar ficha de registro de empresa</h6></li>
+                <li><h6>Copia de NIF.</h6></li>
+                <li><h6>*Copia de registro de comercio</h6></li>
+                <li><h6>Copia de D.I.P/Pasaporte o Residencia del responsable de la empresa.</h6></li>
+                <li><h6>Listado de los trabajadores y sus salarios.</h6></li>
+                <li><h6>Copia del estatuto de la empresa.</h6></li>
+              </ul>
+            </div>
+          </div>
 
-          <InfoCard
-            title="Si es usted Senador O Diputado para la solicitud de su carnet"
-            items={[
-              'Copia D.I.P/Pasaporte',
-              'Rellenar ficha de afiliación',
-              'Una (1) foto tamaño carné',
-              'Credencial',
-              '5 000 FCFAs. Importe carné.'
-            ]}
-            variant="requirements"
-          />
+          <div class="card my-4">
+            <h4 class="card-header">Entidades Autonomas/Empresas Para Publicas</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial</h6></li>
+                <li><h6>Rellenar ficha de registro de empresa</h6></li>
+                <li><h6>Copia del Decreto Ley de la creación de la empresa</h6></li>
+                <li><h6>Listado de los trabajadores y sus salarios</h6></li>
+                <li><h6>Copia de D.I.P del Director General de la empresa</h6></li>
+              </ul>
+            </div>
+          </div>
 
-          <InfoCard title="Los Ministerios">
-            <p>
-              Los Ministerios se entienden automáticamente inscritos, la inscripción es de oficio,
-              al ser parte de un empleador común, que es el Gobierno.
-            </p>
-          </InfoCard>
+          <div class="card my-4">
+            <h4 class="card-header">Si es usted Senador O Diputado para la solicitud de su carnet</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Copia D.I.P/Pasaporte</h6></li>
+                <li><h6>Rellenar ficha de afiliación</h6></li>
+                <li><h6>Una (1) foto tamaño carné</h6></li>
+                <li><h6>Credencial</h6></li>
+                <li><h6>5 000 FCFAs. Importe carné.</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">Los Ministerios</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Los Ministerios se entiende automáticamente inscritos, la inscripción es de oficio, al ser parte de un empleador común, que es el Gobierno</h6></li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div class="col-lg-6">
           <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_02.jpg" alt="Inscripción Empresas" />
 
-          <InfoCard
-            title="Baja de Empresa"
-            items={[
-              'Solicitud dirigida a la Autoridad del Delegado Nacional/Regional O provincial',
-              'Copia Baja concedida por la Dirección General de Impuestos y Contribuciones',
-              'Copias de liquidaciones de los trabajadores (finiquitos) entrega a los mismos o debidamente refrendados por el Mº de Trabajo y Seguridad Social'
-            ]}
-            variant="requirements"
-          />
+          <h4 class="card-header">Baja de Empresa</h4>
+          <div class="card-body">
+            <ul>
+              <li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional O provincial</h6></li>
+              <li><h6>Copia Baja concedida por la Dirección General de Impuestos y Contribuciones</h6></li>
+              <li><h6>Copias de liquidaciones de los trabajadores (finiquitos) entrega a los mismos o debidamente refrendados por el Mº de Trabajo y Seguridad Social</h6></li>
+            </ul>
+          </div>
 
           <hr>
-
-          <img class="img-fluid rounded mb-4" src="/images/trabajadores/Solicitud.png" alt="Formulario de Solicitud" />
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/Solicitud.png" alt="Solicitud" />
         </div>
       </div>
     </div>
-  </Fragment>
+  </div>
 
-  <Fragment slot="sidebar">
-    <InfoCard title="Información importante">
-      <p>
-        <strong>Plazo de inscripción:</strong> Toda empresa debe registrarse en el INSESO dentro de
-        los 30 días siguientes a su creación o inicio de actividades.
-      </p>
-      <p>
-        <strong>Sanciones:</strong> El incumplimiento de las obligaciones de inscripción puede dar
-        lugar a sanciones administrativas y económicas.
-      </p>
-    </InfoCard>
-
-    <InfoCard title="Enlaces relacionados">
-      <ul>
-        <li><a href="/afiliacionee_trabajadores">Afiliación de Trabajadores</a></li>
-        <li><a href="/afiliacionee_autonomo">Afiliación de Autónomos</a></li>
-        <li><a href="/condiciones_adhesion">Condiciones de Adhesión</a></li>
-        <li><a href="/contacto">Contacto</a></li>
-      </ul>
-    </InfoCard>
-
-    <div class="alert alert-info">
-      <h6><i class="fas fa-info-circle"></i> Horario de atención</h6>
-      <p>Lunes - Viernes: 8:00 - 16:00</p>
-    </div>
-  </Fragment>
-</ContentWithSidebarLayout>
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

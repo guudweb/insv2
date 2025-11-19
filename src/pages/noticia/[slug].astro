@@ -9,6 +9,7 @@ import {
   formatDate,
   richTextToPlainText,
   getNoticiaVideoUrl,
+  getSocios,
   type Noticia
 } from '../../lib/strapi';
 
@@ -25,6 +26,9 @@ const noticia = await getNoticiaBySlug(slug);
 if (!noticia) {
   return Astro.redirect('/404');
 }
+
+// Obtener socios de Strapi
+const socios = await getSocios();
 
 const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : null;
 const videoUrl = getNoticiaVideoUrl(noticia); // Usa helper que prioriza videoArchivo
@@ -167,7 +171,7 @@ const breadcrumbItems = [
     </div>
   </div>
 
-  <PartnersCarousel />
+  <PartnersCarousel socios={socios} />
 </BaseLayout>
 
 <style>

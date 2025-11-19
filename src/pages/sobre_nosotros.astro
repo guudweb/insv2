@@ -1,22 +1,23 @@
 ---
-import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
 import InfoCard from '../components/InfoCard.astro';
+import { getSocios } from '../lib/strapi';
 
 export const prerender = false;
+
+// Obtener socios de Strapi
+const socios = await getSocios();
 ---
 
-<ContentWithSidebarLayout
-  title="INSESO - Sobre Nosotros"
-  currentPath="/sobre_nosotros"
-  headerImage="/images/sommes nous/slide_qsn.gif"
-  headerImageAlt="Sobre Nosotros - INSESO"
-  showPartners={true}
->
-  <Fragment slot="main">
-    <!-- Presentación General -->
+<BaseLayout title="INSESO - Sobre Nosotros" currentPath="/sobre_nosotros">
+  <PageHeader imageSrc="/images/sommes nous/slide_qsn.gif" imageAlt="Sobre Nosotros - INSESO" />
+
+  <div class="container">
     <div class="about-main">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <h2>Presentación general</h2>
           <p>
             El INSESO es una institución de la Seguridad Social encargada de gestionar el sistema de
@@ -34,18 +35,17 @@ export const prerender = false;
             solidaridad entre generaciones y categorías socioprofesionales.
           </p>
         </div>
-      </div>
-      <div class="row mt-4">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_01.jpg" alt="INSESO Instalaciones" />
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Nuestra Misión -->
-    <div class="about-inner">
+  <div class="about-inner">
+    <div class="container">
       <div class="row mb-4">
-        <div class="col-lg-12">
+        <div class="col-lg-6">
           <div class="left-ab">
             <h2>Nuestra misión</h2>
             <p>
@@ -65,32 +65,14 @@ export const prerender = false;
             />
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_02.png" alt="Misión INSESO" />
+        <div class="col-lg-6">
+          <div class="right-ab">
+            <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_02.png" alt="Misión INSESO" />
+          </div>
         </div>
       </div>
     </div>
-  </Fragment>
+  </div>
 
-  <Fragment slot="sidebar">
-    <InfoCard title="Información de contacto">
-      <p>
-        Para más información sobre INSESO y nuestros servicios, no dude en ponerse en contacto con nosotros.
-      </p>
-      <p>
-        Estamos aquí para ayudarle con cualquier consulta relacionada con la seguridad social y la
-        afiliación.
-      </p>
-    </InfoCard>
-
-    <InfoCard title="Enlaces útiles">
-      <ul>
-        <li><a href="/Prestaciones_Sociales">Prestaciones Sociales</a></li>
-        <li><a href="/condiciones_adhesion">Condiciones de Adhesión</a></li>
-        <li><a href="/contacto">Contacto</a></li>
-      </ul>
-    </InfoCard>
-  </Fragment>
-</ContentWithSidebarLayout>
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

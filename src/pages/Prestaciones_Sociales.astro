@@ -3,9 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
 import PrestacionesGrid from '../components/PrestacionesGrid.astro';
+import { getSocios } from '../lib/strapi';
 
 // Renderizar dinámicamente (SSR) para obtener datos frescos de Strapi
 export const prerender = false;
+
+// Obtener socios de Strapi
+const socios = await getSocios();
 ---
 
 <BaseLayout title="INSESO - Prestaciones Sociales" currentPath="/Prestaciones_Sociales">
@@ -23,6 +27,6 @@ export const prerender = false;
 	</div>
 
 	<PrestacionesGrid usarStrapi={true} />
-	
-	<PartnersCarousel />
+
+	<PartnersCarousel socios={socios} />
 </BaseLayout>

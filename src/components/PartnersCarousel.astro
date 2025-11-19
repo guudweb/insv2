@@ -62,28 +62,3 @@ const partners = strapiSocios.length > 0
     </div>
   </div>
 </div>
-
-<script is:inline>
-  (function($) {
-    $(document).ready(function() {
-      if ($("#customers-slider").length) {
-        $("#customers-slider").owlCarousel({
-          items: 5,
-          loop: true,
-          margin: 15,
-          nav: false,
-          dots: false,
-          autoplay: true,
-          autoplayTimeout: 2500,
-          responsive: {
-            0: { items: 2 },
-            650: { items: 2 },
-            768: { items: 3 },
-            1000: { items: 4 },
-            1200: { items: 5 }
-          }
-        });
-      }
-    });
-  })(window.jQuery);
-</script>

@@ -11,6 +11,7 @@
 import BaseLayout from './BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
+import { getSocios } from '../lib/strapi';
 
 interface Props {
   title: string;
@@ -29,6 +30,16 @@ const {
   headerImageAlt = '',
   showPartners = true
 } = Astro.props;
+
+// Obtener socios de Strapi si showPartners es true
+let socios = [];
+if (showPartners) {
+  try {
+    socios = await getSocios();
+  } catch (error) {
+    console.error('Error al obtener socios:', error);
+  }
+}
 ---
 
 <BaseLayout title={title} description={description} currentPath={currentPath}>
@@ -53,6 +64,6 @@ const {
   </div>
 
   {showPartners && (
-    <PartnersCarousel />
+    <PartnersCarousel socios={socios} />
   )}
 </BaseLayout>

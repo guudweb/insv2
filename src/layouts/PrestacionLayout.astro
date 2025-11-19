@@ -7,7 +7,7 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PrestacionesGrid from '../components/PrestacionesGrid.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
-import { getPrestacionBySlug, getStrapiImageUrl, richTextToPlainText } from '../lib/strapi';
+import { getPrestacionBySlug, getStrapiImageUrl, richTextToPlainText, getSocios } from '../lib/strapi';
 
 interface Props {
   slug: string; // Slug de Strapi (kebab-case)
@@ -31,6 +31,7 @@ const {
 
 // Cargar datos desde Strapi
 const prestacion = await getPrestacionBySlug(slug);
+const socios = await getSocios();
 
 // Usar datos de Strapi o valores por defecto
 const titulo = prestacion?.titulo || breadcrumbTitle;
@@ -89,7 +90,7 @@ const requisitosArray = requisitos?.split('\n').filter(r => r.trim()) || [];
 
   <PrestacionesGrid usarStrapi={true} />
 
-  <PartnersCarousel />
+  <PartnersCarousel socios={socios} />
 
   <div class="touch-line">
     <div class="container">
