@@ -1,0 +1,199 @@
+/* ===================================
+   MEJORAS DEL NAVBAR - INSESO
+   =================================== */
+
+/* Acercar los links al logo y centrarlos */
+.top-nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.top-nav .navbar-collapse {
+  flex-grow: 0;
+}
+
+.top-nav .navbar-nav {
+  margin-left: 2rem;
+  align-items: center;
+}
+
+/* Asegurar que el link activo mantenga el rojo */
+.navbar-expand-lg.top-nav .navbar-nav .nav-link.active {
+  color: #8c1b12 !important;
+  background-color: transparent !important;
+}
+
+/* Mantener las líneas decorativas del hover en rojo para el estado activo */
+.navbar-expand-lg.top-nav .navbar-nav .nav-link.active:before,
+.navbar-expand-lg.top-nav .navbar-nav .nav-link:before {
+  background: #8c1b12 !important;
+}
+
+.navbar-expand-lg.top-nav .navbar-nav .nav-link.active:after,
+.navbar-expand-lg.top-nav .navbar-nav .nav-link:after {
+  background: #8c1b12 !important;
+}
+
+/* Mejorar dropdown - mantener fondo rojo */
+.nav-item.dropdown:hover .dropdown-menu {
+  background-color: #6d2018 !important; /* Rojo oscuro original */
+  border-radius: 8px;
+}
+
+/* Cambiar el color del texto a BLANCO cuando está sobre fondo rojo */
+body .nav-item.dropdown:hover .dropdown-menu .dropdown-item,
+.nav-item.dropdown:hover .dropdown-menu .dropdown-item,
+.navbar-expand-lg.top-nav .navbar-nav .dropdown-menu .dropdown-item {
+  color: #ffffff !important; /* Texto blanco sobre fondo rojo */
+  background-color: transparent !important;
+}
+
+/* Hover dentro del dropdown - fondo más claro y texto blanco */
+body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
+.nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
+.navbar-expand-lg.top-nav .navbar-nav .dropdown-menu .dropdown-item:hover {
+  background-color: #8c1b12 !important; /* Rojo más claro al hover */
+  color: #ffffff !important; /* Mantener texto blanco */
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 991px) {
+  /* Hacer el navbar más compacto en mobile */
+  .top-nav .navbar-brand img {
+    max-height: 50px;
+  }
+
+  /* Mejorar el botón hamburguesa */
+  .top-nav .navbar-toggler {
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: 2px solid #8c1b12;
+    border-radius: 6px;
+  }
+
+  .top-nav .navbar-toggler:hover,
+  .top-nav .navbar-toggler:focus {
+    color: #8c1b12 !important;
+    border-color: #8c1b12 !important;
+    background-color: rgba(140, 27, 18, 0.1);
+  }
+
+  .top-nav .navbar-toggler .fas {
+    color: #8c1b12;
+  }
+
+  /* Menú colapsado en mobile */
+  .top-nav .navbar-collapse {
+    background-color: #ffffff;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Links en mobile */
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 15px;
+  }
+
+  .navbar-expand-lg.top-nav .navbar-nav .nav-item:last-child .nav-link {
+    border-bottom: none;
+  }
+
+  /* Quitar las líneas decorativas en mobile */
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link:before,
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link:after {
+    display: none;
+  }
+
+  /* Dropdown en mobile */
+  .nav-item.dropdown .dropdown-menu {
+    position: static !important;
+    transform: none !important;
+    background-color: #f8f9fa !important;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    box-shadow: none !important;
+  }
+
+  .nav-item.dropdown:hover .dropdown-menu {
+    background-color: #f8f9fa !important;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: #323232 !important;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: rgba(140, 27, 18, 0.1) !important;
+    color: #8c1b12 !important;
+  }
+
+  /* Espaciado del nav en mobile */
+  .top-nav .navbar-nav {
+    margin-left: 0;
+  }
+
+  /* Icono de dropdown en mobile */
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link i {
+    float: none;
+    margin-left: 8px;
+  }
+}
+
+/* TABLET (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .top-nav .navbar-brand img {
+    max-height: 60px;
+  }
+
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+}
+
+/* DESKTOP PEQUEÑO (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link {
+    padding: 10px 10px;
+    font-size: 14px;
+  }
+
+  .top-nav .navbar-nav {
+    margin-left: 1rem;
+  }
+}
+
+/* DESKTOP GRANDE (1200px+) */
+@media (min-width: 1200px) {
+  .navbar-expand-lg.top-nav .navbar-nav .nav-link {
+    padding: 10px 15px;
+  }
+
+  .top-nav .navbar-nav {
+    margin-left: 3rem;
+  }
+}
+
+/* Animación suave para el dropdown */
+.dropdown-menu {
+  animation: fadeInDown 0.3s ease-in-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
