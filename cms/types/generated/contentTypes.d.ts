@@ -674,6 +674,37 @@ export interface ApiSlideAfiliacionSlideAfiliacion
   };
 }
 
+export interface ApiSocioSocio extends Struct.CollectionTypeSchema {
+  collectionName: 'socios';
+  info: {
+    displayName: 'Socio';
+    pluralName: 'socios';
+    singularName: 'socio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    enlace: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::socio.socio'> &
+      Schema.Attribute.Private;
+    logo: Schema.Attribute.Media<'images'>;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    orden: Schema.Attribute.Integer &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1190,6 +1221,7 @@ declare module '@strapi/strapi' {
       'api::noticia.noticia': ApiNoticiaNoticia;
       'api::prestacion.prestacion': ApiPrestacionPrestacion;
       'api::slide-afiliacion.slide-afiliacion': ApiSlideAfiliacionSlideAfiliacion;
+      'api::socio.socio': ApiSocioSocio;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

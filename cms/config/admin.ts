@@ -31,6 +31,7 @@ export default ({ env }) => ({
           'api::prestacion.prestacion': 'prestacion',
           'api::hero-slide.hero-slide': 'hero-slide',
           'api::slide-afiliacion.slide-afiliacion': 'slide-afiliacion',
+          'api::socio.socio': 'socio',
         };
 
         const type = typeMap[uid] || 'noticia';
