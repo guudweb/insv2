@@ -16,20 +16,23 @@ const { currentPath = '/' } = Astro.props;
 				<li class="nav-item">
 					<a class={`nav-link ${currentPath === '/' ? 'active' : ''}`} href="/">INICIO</a>
 				</li>
+				<li class="nav-item">
+					<a class={`nav-link ${currentPath === '/noticias' ? 'active' : ''}`} href="/noticias">NOTICIAS</a>
+				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#" id="navbarDropdownBlog" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SOBRE NOSOTROS<i class="fas fa-sort-down"></i></a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 						<a class="dropdown-item" href="/sobre_nosotros"> PRESENTACIÓN</a>
 						<a class="dropdown-item" href="/Prestaciones_Sociales"> PRESTATIONS SOCIALES</a>
 						<a class="dropdown-item" href="/condiciones_adhesion"> CONDICIONES DE ADHESIÓN</a>
-						<a class="dropdown-item" href="#"> NUESTRAS AGENCIAS</a>
+						<a class="dropdown-item" href="/nuestras_agencias"> NUESTRAS AGENCIAS</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link" href="#" id="navbarDropdownBlog" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ASEGURADOS<i class="fas fa-sort-down"></i></a>
 					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
 						<a class="dropdown-item" href="/afiliacionee_trabajadores"> CONDICIONES DE ADHESIÓN</a>
-						<a class="dropdown-item" href="#"> DESCARGA DE FORMULARIOS</a>
+						<a class="dropdown-item" href="/descarga_formularios"> DESCARGA DE FORMULARIOS</a>
 						<a class="dropdown-item" href="#"> DECLARACIÓN Y PAGO DE CONTRIBUCIONES</a>
 						<a class="dropdown-item" href="#"> DECLARACIONES EN LÍNEA</a>
 					</div>
@@ -42,15 +45,6 @@ const { currentPath = '/' } = Astro.props;
 						<a class="dropdown-item" href="#"> DECLARACIÓN Y PAGO DE CONTRIBUCIONES</a>
 						<a class="dropdown-item" href="#"> PENAS Y SANCIONES</a>
 						<a class="dropdown-item" href="#"> DECLARACIONES EN LÍNEA</a>
-					</div>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="navbarDropdownBlog" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ESPACIO EN LÍNEA<i class="fas fa-sort-down"></i></a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-						<a class="dropdown-item" href="#"> CREAR UNA CUENTA</a>
-						<a class="dropdown-item" href="#"> ARCHIVO DE DOCUMENTOS</a>
-						<a class="dropdown-item" href="#"> ESTADO DE CONTRIBUCIONES</a>
-						<a class="dropdown-item" href="#"> RECLAMACIONES Y SEGUIMIENTO</a>
 					</div>
 				</li>
 				<li class="nav-item">

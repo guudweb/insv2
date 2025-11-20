@@ -1,0 +1,166 @@
+/* ===================================
+   MEJORAS DEL FOOTER - INSESO
+   =================================== */
+
+/* Logo del footer */
+.footer-logo {
+  max-width: 200px;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+/* Descripción del footer */
+.footer-description {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 1rem;
+}
+
+/* Mejorar los enlaces del footer */
+.footer_ul_amrc li {
+  margin-bottom: 0.5rem;
+}
+
+.footer_ul_amrc li a {
+  color: #cccccc;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer_ul_amrc li a i {
+  font-size: 10px;
+  margin-right: 8px;
+  color: #8c1b12;
+  transition: transform 0.3s ease;
+}
+
+.footer_ul_amrc li a:hover {
+  color: #ffffff;
+  padding-left: 5px;
+}
+
+.footer_ul_amrc li a:hover i {
+  transform: translateX(3px);
+}
+
+/* Información de contacto */
+.footer-contact {
+  margin-top: 1.5rem;
+}
+
+.footer-contact p {
+  color: #cccccc;
+  font-size: 14px;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.footer-contact p i {
+  color: #8c1b12;
+  margin-right: 10px;
+  min-width: 18px;
+  font-size: 14px;
+}
+
+/* Redes sociales más espaciadas */
+.footer-social {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Títulos del footer */
+.headin5_amrc {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Copyright más limpio */
+.copyright {
+  padding: 1.5rem 0;
+  font-size: 14px;
+  color: #999999;
+}
+
+.copyright a {
+  color: #8c1b12;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.copyright a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 767px) {
+  .footer .col-lg-4,
+  .footer .col-lg-3,
+  .footer .col-lg-2 {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-description {
+    text-align: center;
+  }
+
+  .footer_ul_amrc {
+    padding-left: 0;
+  }
+
+  .footer_ul_amrc li a {
+    justify-content: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-contact p {
+    justify-content: center;
+  }
+
+  .headin5_amrc {
+    text-align: center;
+  }
+}
+
+/* TABLET */
+@media (min-width: 768px) and (max-width: 991px) {
+  .footer .col-lg-4,
+  .footer .col-lg-3,
+  .footer .col-lg-2 {
+    margin-bottom: 2rem;
+  }
+
+  .footer-logo {
+    max-width: 180px;
+  }
+}
+
+/* Animación suave para los elementos del footer */
+.footer a,
+.footer i {
+  transition: all 0.3s ease;
+}
+
+/* Separador más sutil */
+.bottom_border {
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+}

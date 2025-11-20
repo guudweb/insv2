@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug } from '../../lib/strapi';
+import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl } from '../../lib/strapi';
 
 export async function getStaticPaths() {
 	const noticias = await getNoticias();
@@ -16,7 +16,8 @@ if (!noticia) {
 	return Astro.redirect('/noticias');
 }
 
-const { titulo, contenido, resumen, fechaPublicacion, autor, imagen } = noticia;
+const { titulo, contenido, resumen, fechaPublicacion, autor, imagen, tipoMedia, video, videoArchivo } = noticia;
+const videoUrl = getNoticiaVideoUrl(noticia);
 ---
 
 <BaseLayout title={`INSESO - ${titulo}`} currentPath={`/noticias/${slug}`}>
@@ -38,7 +39,25 @@ const { titulo, contenido, resumen, fechaPublicacion, autor, imagen } = noticia;
 			<div class="row">
 				<div class="col-lg-8 blog-entries">
 					<div class="card mb-4">
-						{imagen && (
+						{tipoMedia === 'video' && videoUrl ? (
+							<div class="video-container">
+								{video && !videoArchivo ? (
+									<iframe
+										width="100%"
+										height="450"
+										src={video}
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen>
+									</iframe>
+								) : (
+									<video controls width="100%" controlsList="nodownload">
+										<source src={videoUrl} type="video/mp4">
+										Tu navegador no soporta el elemento de video.
+									</video>
+								)}
+							</div>
+						) : imagen && (
 							<img
 								class="card-img-top"
 								src={getStrapiImageUrl(imagen.url)}
@@ -171,6 +190,24 @@ const { titulo, contenido, resumen, fechaPublicacion, autor, imagen } = noticia;
 </script>
 
 <style>
+	/* Video Container */
+	.video-container {
+		position: relative;
+		width: 100%;
+		background: #000;
+	}
+
+	.video-container video,
+	.video-container iframe {
+		width: 100%;
+		display: block;
+	}
+
+	.video-container video {
+		max-height: 500px;
+	}
+
+	/* Noticia Content */
 	.noticia-contenido {
 		font-size: 18px;
 		line-height: 1.8;
@@ -203,5 +240,16 @@ const { titulo, contenido, resumen, fechaPublicacion, autor, imagen } = noticia;
 
 	.noticia-contenido li {
 		margin-bottom: 0.5rem;
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 767px) {
+		.video-container iframe {
+			height: 250px;
+		}
+
+		.video-container video {
+			max-height: 300px;
+		}
 	}
 </style>

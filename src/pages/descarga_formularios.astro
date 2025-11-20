@@ -1,0 +1,790 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const categorias = [
+	{
+		titulo: 'Afiliación',
+		icono: 'fas fa-user-plus',
+		descripcion: 'Formularios para el proceso de afiliación de trabajadores y empleadores',
+		formularios: [
+			{
+				nombre: 'Solicitud de Afiliación - Trabajador',
+				descripcion: 'Formulario para que los trabajadores soliciten su afiliación al sistema de seguridad social',
+				formato: 'PDF',
+				tamano: '250 KB',
+				codigo: 'AF-001',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Afiliación - Empleador',
+				descripcion: 'Formulario para que las empresas se registren como empleadores en el sistema',
+				formato: 'PDF',
+				tamano: '320 KB',
+				codigo: 'AF-002',
+				url: '#'
+			},
+			{
+				nombre: 'Actualización de Datos del Afiliado',
+				descripcion: 'Para actualizar información personal, dirección, estado civil, etc.',
+				formato: 'PDF',
+				tamano: '180 KB',
+				codigo: 'AF-003',
+				url: '#'
+			}
+		]
+	},
+	{
+		titulo: 'Prestaciones Sociales',
+		icono: 'fas fa-hands-helping',
+		descripcion: 'Solicitudes para acceder a las diferentes prestaciones que ofrece INSESO',
+		formularios: [
+			{
+				nombre: 'Solicitud de Prestación por Enfermedad',
+				descripcion: 'Para solicitar subsidio por incapacidad temporal debido a enfermedad',
+				formato: 'PDF',
+				tamano: '290 KB',
+				codigo: 'PS-001',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Prestación por Maternidad',
+				descripcion: 'Para solicitar subsidio de maternidad durante el período de descanso',
+				formato: 'PDF',
+				tamano: '275 KB',
+				codigo: 'PS-002',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Pensión de Jubilación',
+				descripcion: 'Para solicitar pensión de jubilación al cumplir los requisitos',
+				formato: 'PDF',
+				tamano: '340 KB',
+				codigo: 'PS-003',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Pensión de Invalidez',
+				descripcion: 'Para solicitar pensión por invalidez permanente',
+				formato: 'PDF',
+				tamano: '310 KB',
+				codigo: 'PS-004',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Pensión de Supervivencia',
+				descripcion: 'Para beneficiarios de un afiliado fallecido',
+				formato: 'PDF',
+				tamano: '295 KB',
+				codigo: 'PS-005',
+				url: '#'
+			}
+		]
+	},
+	{
+		titulo: 'Declaraciones y Contribuciones',
+		icono: 'fas fa-file-invoice-dollar',
+		descripcion: 'Formularios para declaración y pago de contribuciones mensuales',
+		formularios: [
+			{
+				nombre: 'Declaración Mensual de Cotizaciones',
+				descripcion: 'Formulario para declarar las cotizaciones mensuales de los trabajadores',
+				formato: 'Excel',
+				tamano: '450 KB',
+				codigo: 'DC-001',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Fraccionamiento de Pago',
+				descripcion: 'Para solicitar facilidades de pago de deudas acumuladas',
+				formato: 'PDF',
+				tamano: '220 KB',
+				codigo: 'DC-002',
+				url: '#'
+			},
+			{
+				nombre: 'Declaración Rectificativa',
+				descripcion: 'Para corregir errores en declaraciones anteriores',
+				formato: 'PDF',
+				tamano: '200 KB',
+				codigo: 'DC-003',
+				url: '#'
+			}
+		]
+	},
+	{
+		titulo: 'Certificados y Constancias',
+		icono: 'fas fa-certificate',
+		descripcion: 'Solicitudes de certificados y constancias oficiales',
+		formularios: [
+			{
+				nombre: 'Solicitud de Certificado de Afiliación',
+				descripcion: 'Certificado que acredita su condición de afiliado al sistema',
+				formato: 'PDF',
+				tamano: '150 KB',
+				codigo: 'CC-001',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Certificado de Vida Laboral',
+				descripcion: 'Historial de períodos cotizados y empleadores',
+				formato: 'PDF',
+				tamano: '170 KB',
+				codigo: 'CC-002',
+				url: '#'
+			},
+			{
+				nombre: 'Constancia de No Deuda',
+				descripcion: 'Certificado que acredita estar al día con las obligaciones',
+				formato: 'PDF',
+				tamano: '160 KB',
+				codigo: 'CC-003',
+				url: '#'
+			}
+		]
+	},
+	{
+		titulo: 'Otros Trámites',
+		icono: 'fas fa-folder-open',
+		descripcion: 'Formularios adicionales para diversos trámites administrativos',
+		formularios: [
+			{
+				nombre: 'Formulario de Reclamaciones',
+				descripcion: 'Para presentar quejas o reclamaciones sobre servicios',
+				formato: 'PDF',
+				tamano: '190 KB',
+				codigo: 'OT-001',
+				url: '#'
+			},
+			{
+				nombre: 'Solicitud de Duplicado de Carnet',
+				descripcion: 'Para solicitar un nuevo carnet por pérdida o deterioro',
+				formato: 'PDF',
+				tamano: '140 KB',
+				codigo: 'OT-002',
+				url: '#'
+			},
+			{
+				nombre: 'Autorización de Representante',
+				descripcion: 'Para autorizar a un tercero a realizar trámites en su nombre',
+				formato: 'PDF',
+				tamano: '130 KB',
+				codigo: 'OT-003',
+				url: '#'
+			}
+		]
+	}
+];
+---
+
+<BaseLayout title="Descarga de Formularios - INSESO" description="Descarga los formularios necesarios para tus trámites con INSESO" currentPath="/descarga_formularios">
+	<!-- Page Header -->
+	<div class="page-header-formularios">
+		<div class="container">
+			<h1>Descarga de Formularios</h1>
+			<p>Encuentra y descarga los formularios necesarios para tus trámites</p>
+		</div>
+	</div>
+
+	<!-- Main Content -->
+	<div class="formularios-main">
+		<div class="container">
+			<!-- Introducción -->
+			<div class="intro-section">
+				<div class="row">
+					<div class="col-lg-8 mx-auto text-center">
+						<h2>Centro de Descargas</h2>
+						<p class="lead">Todos los formularios están disponibles en formato PDF y pueden ser descargados gratuitamente. Asegúrese de completar correctamente todos los campos requeridos antes de presentarlos en nuestras oficinas.</p>
+					</div>
+				</div>
+
+				<!-- Instrucciones -->
+				<div class="row mt-5">
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="instruccion-card">
+							<div class="paso-numero">1</div>
+							<h3>Selecciona el Formulario</h3>
+							<p>Busca el formulario que necesitas en las categorías disponibles</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="instruccion-card">
+							<div class="paso-numero">2</div>
+							<h3>Descarga y Completa</h3>
+							<p>Descarga el formulario y complétalo con letra clara y legible</p>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="instruccion-card">
+							<div class="paso-numero">3</div>
+							<h3>Presenta en Oficina</h3>
+							<p>Acude a cualquiera de nuestras oficinas con el formulario y documentación requerida</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Categorías de Formularios -->
+			{categorias.map((categoria, catIndex) => (
+				<div class="categoria-section">
+					<div class="categoria-header">
+						<div class="categoria-icon">
+							<i class={categoria.icono}></i>
+						</div>
+						<div class="categoria-info">
+							<h2>{categoria.titulo}</h2>
+							<p>{categoria.descripcion}</p>
+						</div>
+						<div class="categoria-count">
+							<span class="badge">{categoria.formularios.length} Formularios</span>
+						</div>
+					</div>
+
+					<div class="formularios-grid">
+						{categoria.formularios.map((formulario) => (
+							<div class="formulario-card">
+								<div class="formulario-header">
+									<div class="formato-badge" data-formato={formulario.formato}>
+										{formulario.formato}
+									</div>
+									<div class="codigo-badge">{formulario.codigo}</div>
+								</div>
+								<div class="formulario-body">
+									<h3>{formulario.nombre}</h3>
+									<p>{formulario.descripcion}</p>
+								</div>
+								<div class="formulario-footer">
+									<div class="formulario-meta">
+										<span class="tamano">
+											<i class="fas fa-file"></i> {formulario.tamano}
+										</span>
+									</div>
+									<a href={formulario.url} class="btn-descargar" download>
+										<i class="fas fa-download"></i> Descargar
+									</a>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			))}
+
+			<!-- Información Adicional -->
+			<div class="info-section">
+				<div class="row">
+					<div class="col-lg-6 mb-4">
+						<div class="ayuda-card">
+							<div class="ayuda-icon">
+								<i class="fas fa-question-circle"></i>
+							</div>
+							<div class="ayuda-content">
+								<h3>¿Necesitas Ayuda?</h3>
+								<p>Si tienes dudas sobre cómo completar algún formulario o qué documentos adjuntar, nuestro equipo está disponible para ayudarte.</p>
+								<a href="/contacto" class="btn-ayuda">
+									<i class="fas fa-headset"></i> Contactar Soporte
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 mb-4">
+						<div class="ayuda-card">
+							<div class="ayuda-icon">
+								<i class="fas fa-map-marked-alt"></i>
+							</div>
+							<div class="ayuda-content">
+								<h3>Nuestras Oficinas</h3>
+								<p>Encuentra la oficina más cercana a ti para presentar tus formularios y recibir atención personalizada.</p>
+								<a href="/nuestras_agencias" class="btn-ayuda">
+									<i class="fas fa-map-marker-alt"></i> Ver Ubicaciones
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Documentos Requeridos -->
+				<div class="documentos-requeridos">
+					<h3><i class="fas fa-info-circle"></i> Documentación General Requerida</h3>
+					<div class="row">
+						<div class="col-md-6">
+							<ul class="doc-list">
+								<li><i class="fas fa-check"></i> Documento Nacional de Identidad (DNI) original y copia</li>
+								<li><i class="fas fa-check"></i> Formulario completado y firmado</li>
+								<li><i class="fas fa-check"></i> Fotografía reciente tamaño carnet (2)</li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+							<ul class="doc-list">
+								<li><i class="fas fa-check"></i> Comprobante de domicilio (recibo de luz, agua, etc.)</li>
+								<li><i class="fas fa-check"></i> Certificado de nacimiento (según el trámite)</li>
+								<li><i class="fas fa-check"></i> Otros documentos específicos según el tipo de trámite</li>
+							</ul>
+						</div>
+					</div>
+					<p class="nota-importante">
+						<i class="fas fa-exclamation-triangle"></i>
+						<strong>Nota:</strong> Los requisitos pueden variar según el tipo de trámite. Consulte con nuestras oficinas para información específica.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	/* Page Header */
+	.page-header-formularios {
+		background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+		padding: 4rem 0 3rem;
+		margin-bottom: 3rem;
+		color: white;
+		text-align: center;
+	}
+
+	.page-header-formularios h1 {
+		font-size: 48px;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
+
+	.page-header-formularios p {
+		font-size: 18px;
+		opacity: 0.9;
+	}
+
+	/* Main Container */
+	.formularios-main {
+		padding: 0 0 4rem;
+	}
+
+	/* Intro Section */
+	.intro-section {
+		margin-bottom: 4rem;
+	}
+
+	.intro-section h2 {
+		font-size: 36px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 1rem;
+	}
+
+	.intro-section .lead {
+		font-size: 18px;
+		color: #666;
+		line-height: 1.8;
+	}
+
+	/* Instrucciones */
+	.instruccion-card {
+		background: white;
+		border-radius: 12px;
+		padding: 2rem;
+		text-align: center;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		height: 100%;
+		transition: all 0.3s ease;
+	}
+
+	.instruccion-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+	}
+
+	.paso-numero {
+		width: 60px;
+		height: 60px;
+		background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+		color: white;
+		font-size: 28px;
+		font-weight: 700;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0 auto 1.5rem;
+	}
+
+	.instruccion-card h3 {
+		font-size: 18px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 1rem;
+	}
+
+	.instruccion-card p {
+		color: #666;
+		font-size: 14px;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	/* Categoria Section */
+	.categoria-section {
+		margin-bottom: 4rem;
+	}
+
+	.categoria-header {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		margin-bottom: 2rem;
+		padding: 1.5rem;
+		background: #f8f9fa;
+		border-radius: 12px;
+		border-left: 5px solid #8c1b12;
+	}
+
+	.categoria-icon {
+		width: 60px;
+		height: 60px;
+		background: #8c1b12;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.categoria-icon i {
+		font-size: 28px;
+		color: white;
+	}
+
+	.categoria-info {
+		flex: 1;
+	}
+
+	.categoria-info h2 {
+		font-size: 24px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 0.3rem;
+	}
+
+	.categoria-info p {
+		color: #666;
+		font-size: 14px;
+		margin: 0;
+	}
+
+	.categoria-count .badge {
+		background: #8c1b12;
+		color: white;
+		padding: 8px 16px;
+		border-radius: 20px;
+		font-size: 13px;
+		font-weight: 600;
+	}
+
+	/* Formularios Grid */
+	.formularios-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 2rem;
+	}
+
+	.formulario-card {
+		background: white;
+		border-radius: 12px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		overflow: hidden;
+		transition: all 0.3s ease;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.formulario-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+	}
+
+	.formulario-header {
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem 1.5rem;
+		background: #f8f9fa;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.formato-badge {
+		background: #8c1b12;
+		color: white;
+		padding: 4px 12px;
+		border-radius: 4px;
+		font-size: 11px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.formato-badge[data-formato="Excel"] {
+		background: #217346;
+	}
+
+	.codigo-badge {
+		color: #666;
+		font-size: 12px;
+		font-weight: 600;
+		font-family: monospace;
+	}
+
+	.formulario-body {
+		padding: 1.5rem;
+		flex: 1;
+	}
+
+	.formulario-body h3 {
+		font-size: 17px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 0.8rem;
+		line-height: 1.4;
+	}
+
+	.formulario-body p {
+		color: #666;
+		font-size: 14px;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.formulario-footer {
+		padding: 1rem 1.5rem;
+		background: #f8f9fa;
+		border-top: 1px solid #e0e0e0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.formulario-meta {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.formulario-meta .tamano {
+		color: #666;
+		font-size: 13px;
+		display: flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.formulario-meta i {
+		color: #8c1b12;
+	}
+
+	.btn-descargar {
+		background: #8c1b12;
+		color: white;
+		padding: 8px 18px;
+		border-radius: 6px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 13px;
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		transition: all 0.3s ease;
+	}
+
+	.btn-descargar:hover {
+		background: #6d2018;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+		color: white;
+	}
+
+	/* Info Section */
+	.info-section {
+		margin-top: 4rem;
+		padding-top: 3rem;
+		border-top: 2px solid #f0f0f0;
+	}
+
+	.ayuda-card {
+		background: white;
+		border-radius: 12px;
+		padding: 2rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		display: flex;
+		gap: 1.5rem;
+		align-items: flex-start;
+		height: 100%;
+		transition: all 0.3s ease;
+	}
+
+	.ayuda-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+	}
+
+	.ayuda-icon {
+		width: 70px;
+		height: 70px;
+		background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.ayuda-icon i {
+		font-size: 32px;
+		color: white;
+	}
+
+	.ayuda-content {
+		flex: 1;
+	}
+
+	.ayuda-content h3 {
+		font-size: 20px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 0.8rem;
+	}
+
+	.ayuda-content p {
+		color: #666;
+		font-size: 14px;
+		line-height: 1.6;
+		margin-bottom: 1rem;
+	}
+
+	.btn-ayuda {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: #8c1b12;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 6px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 14px;
+		transition: all 0.3s ease;
+	}
+
+	.btn-ayuda:hover {
+		background: #6d2018;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+		color: white;
+	}
+
+	/* Documentos Requeridos */
+	.documentos-requeridos {
+		background: white;
+		border-radius: 12px;
+		padding: 2.5rem;
+		margin-top: 2rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	.documentos-requeridos h3 {
+		font-size: 22px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 2rem;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.documentos-requeridos h3 i {
+		color: #8c1b12;
+	}
+
+	.doc-list {
+		list-style: none;
+		padding: 0;
+		margin-bottom: 1.5rem;
+	}
+
+	.doc-list li {
+		padding: 0.8rem 0;
+		color: #555;
+		font-size: 15px;
+		line-height: 1.6;
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.doc-list li i {
+		color: #8c1b12;
+		margin-top: 3px;
+		font-size: 14px;
+		flex-shrink: 0;
+	}
+
+	.nota-importante {
+		background: #fff3cd;
+		border-left: 4px solid #ffc107;
+		padding: 1rem 1.5rem;
+		margin-top: 1.5rem;
+		border-radius: 6px;
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+	}
+
+	.nota-importante i {
+		color: #ffc107;
+		margin-top: 2px;
+		font-size: 18px;
+		flex-shrink: 0;
+	}
+
+	.nota-importante strong {
+		color: #856404;
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 767px) {
+		.page-header-formularios {
+			padding: 2.5rem 0 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.page-header-formularios h1 {
+			font-size: 32px;
+		}
+
+		.page-header-formularios p {
+			font-size: 16px;
+		}
+
+		.intro-section h2 {
+			font-size: 28px;
+		}
+
+		.categoria-header {
+			flex-direction: column;
+			text-align: center;
+			gap: 1rem;
+		}
+
+		.formularios-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.ayuda-card {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.ayuda-icon {
+			margin: 0 auto;
+		}
+	}
+
+	/* Tablet */
+	@media (min-width: 768px) and (max-width: 991px) {
+		.formularios-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+</style>

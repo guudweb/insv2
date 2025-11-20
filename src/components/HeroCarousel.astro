@@ -20,8 +20,17 @@ const defaultSlides = [
 	{ image: '/images/accueil/slider-06.jpg' }
 ];
 
+// Definir tipo para los slides procesados
+type ProcessedSlide = {
+	image: string;
+	title?: string;
+	subtitle?: string;
+	link?: string;
+	buttonText?: string;
+};
+
 // Usar slides de Strapi si están disponibles, sino usar los por defecto
-const slides = heroSlides.length > 0
+const slides: ProcessedSlide[] = heroSlides.length > 0
 	? heroSlides.map(slide => ({
 			image: getStrapiImageUrl(slide.imagen.url),
 			title: slide.titulo,
@@ -45,10 +54,12 @@ const slides = heroSlides.length > 0
 		</ol>
 		<div class="carousel-inner" role="listbox">
 			{slides.map((slide, index) => (
-				<div
-					class={`carousel-item ${index === 0 ? 'active' : ''}`}
-					style={`background-image: url(${slide.image})`}
-				>
+				<div class={`carousel-item ${index === 0 ? 'active' : ''}`}>
+					<img
+						src={slide.image}
+						alt={slide.title || 'INSESO Slide'}
+						class="carousel-image"
+					/>
 					{slide.title && (
 						<div class="carousel-caption d-none d-md-block">
 							{slide.title && <h2>{slide.title}</h2>}

@@ -1,0 +1,120 @@
+/* ===================================
+   MEJORAS PARA HERO CAROUSEL EN MOBILE
+   =================================== */
+
+/* Sobrescribir completamente el estilo original de style.css */
+.carousel-item {
+  position: relative !important;
+  overflow: hidden !important;
+  background: none !important;
+  background-image: none !important;
+}
+
+/* Eliminar el overlay oscuro del carousel */
+.slider-main .carousel .carousel-inner .carousel-item:before {
+  display: none !important;
+}
+
+/* Imagen con object-fit para mejor control */
+.carousel-item .carousel-image {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  display: block !important;
+  z-index: 1 !important;
+}
+
+/* Caption encima de la imagen */
+.carousel-item .carousel-caption {
+  z-index: 2 !important;
+  position: relative !important;
+}
+
+/* Desktop - mantener altura original */
+@media (min-width: 768px) {
+  .carousel-item {
+    height: 50vh;
+    min-height: 400px;
+  }
+}
+
+/* MOBILE - Optimizar para pantallas pequeñas */
+@media (max-width: 767px) {
+  /* Reducir altura en mobile para mejor visualización */
+  .carousel-item {
+    height: 35vh !important;
+    min-height: 250px !important;
+    max-height: 350px !important;
+  }
+
+  /* Asegurar que las imágenes se vean completas en mobile */
+  .carousel-item .carousel-image {
+    object-fit: cover !important;
+    object-position: center center !important;
+  }
+
+  /* Ocultar caption en mobile si existe */
+  .slider-main .carousel .carousel-item .carousel-caption {
+    display: none !important;
+  }
+
+  /* Controles más pequeños en mobile */
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  /* Indicadores más visibles en mobile */
+  .slider-main .carousel ol li {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50% !important;
+    margin: 0 4px !important;
+  }
+
+  .slider-main .carousel .carousel-indicators {
+    bottom: 10px !important;
+  }
+}
+
+/* TABLET - Tamaño intermedio */
+@media (min-width: 768px) and (max-width: 991px) {
+  .carousel-item {
+    height: 40vh !important;
+    min-height: 300px !important;
+    max-height: 400px !important;
+  }
+
+  /* Caption más pequeño en tablet */
+  .slider-main .carousel .carousel-item .carousel-caption h3 {
+    font-size: 45px !important;
+  }
+
+  .slider-main .carousel .carousel-item .carousel-caption p {
+    font-size: 24px !important;
+  }
+}
+
+/* Animación suave de transición */
+.carousel-item {
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Mejorar controles en todas las resoluciones */
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 1;
+}
