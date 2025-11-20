@@ -36,7 +36,7 @@
 /* Asegurar que data-meta esté sobre la imagen */
 #news .news-info .data-meta {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   z-index: 10;
 }
