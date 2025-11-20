@@ -161,6 +161,95 @@ export const prerender = false;
   </Fragment>
 </ContentWithSidebarLayout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const submitButton = document.getElementById('sendMessageButton') as HTMLButtonElement;
+    const successDiv = document.getElementById('success') as HTMLDivElement;
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Limpiar mensajes anteriores
+        successDiv.innerHTML = '';
+
+        // Obtener valores del formulario
+        const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+        const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+        const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+        const category = (document.getElementById('category') as HTMLSelectElement).value;
+        const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+
+        // Validación básica
+        if (!name || !email || !phone || !category || !message) {
+          showMessage('Por favor complete todos los campos', 'error');
+          return;
+        }
+
+        // Validar email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showMessage('Por favor ingrese un email válido', 'error');
+          return;
+        }
+
+        // Deshabilitar botón y mostrar estado de carga
+        submitButton.disabled = true;
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+        try {
+          const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              phone,
+              category,
+              message
+            }),
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            showMessage('¡Mensaje enviado correctamente! Nos pondremos en contacto con usted pronto.', 'success');
+            form.reset();
+          } else {
+            showMessage(data.message || 'Error al enviar el mensaje. Por favor, intente de nuevo.', 'error');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showMessage('Error al enviar el mensaje. Por favor, intente de nuevo más tarde.', 'error');
+        } finally {
+          // Restaurar botón
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+        }
+      });
+    }
+
+    function showMessage(message: string, type: 'success' | 'error') {
+      const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+      const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+
+      successDiv.innerHTML = `
+        <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+          <i class="fas ${icon}"></i> ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
+
+      // Scroll al mensaje
+      successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>
+
 <style>
   .contact-main {
     margin-bottom: 2rem;
@@ -189,6 +278,7 @@ export const prerender = false;
     padding: 0.75rem;
     font-size: 15px;
     transition: all 0.3s ease;
+    width: 100%;
   }
 
   .form-control:focus {
@@ -203,10 +293,15 @@ export const prerender = false;
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 16px 12px;
-    padding-right: 2.5rem;
-    appearance: none;
-    height: calc(1.5em + 0.75rem + 2px);
-    line-height: 1.5;
+    padding-right: 2.5rem !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    height: 47px !important;
+    min-height: 47px !important;
+    max-height: 47px !important;
+    line-height: 1.5 !important;
+    box-sizing: border-box !important;
   }
 
   select.form-control option {
@@ -237,6 +332,72 @@ export const prerender = false;
 
   .btn-primary i {
     margin-right: 0.5rem;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Alert Messages */
+  #success {
+    margin: 1.5rem 0;
+  }
+
+  .alert {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 15px;
+    position: relative;
+  }
+
+  .alert i {
+    margin-right: 0.5rem;
+  }
+
+  .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+  }
+
+  .alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+
+  .alert-dismissible {
+    padding-right: 3rem;
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: inherit;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .btn-close:hover {
+    opacity: 0.75;
+  }
+
+  .btn-close::before {
+    content: '×';
+    display: block;
   }
 
   @media (max-width: 767px) {
