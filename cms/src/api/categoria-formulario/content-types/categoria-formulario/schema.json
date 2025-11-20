@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categorias_formularios",
+  "info": {
+    "singularName": "categoria-formulario",
+    "pluralName": "categorias-formularios",
+    "displayName": "Categoría de Formulario",
+    "description": "Categorías para organizar formularios"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "maxLength": 100
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "icono": {
+      "type": "string",
+      "required": true,
+      "default": "fas fa-file"
+    },
+    "color": {
+      "type": "string",
+      "required": true,
+      "default": "#8c1b12",
+      "regex": "^#[0-9A-Fa-f]{6}$"
+    },
+    "orden": {
+      "type": "integer",
+      "default": 0
+    },
+    "activa": {
+      "type": "boolean",
+      "default": true
+    },
+    "formularios": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::formulario.formulario",
+      "mappedBy": "categoria_formulario"
+    }
+  }
+}

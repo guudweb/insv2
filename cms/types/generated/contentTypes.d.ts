@@ -430,6 +430,53 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiCategoriaFormularioCategoriaFormulario
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'categorias_formularios';
+  info: {
+    description: 'Categor\u00EDas para organizar formularios';
+    displayName: 'Categor\u00EDa de Formulario';
+    pluralName: 'categorias-formularios';
+    singularName: 'categoria-formulario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activa: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    color: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'#8c1b12'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    formularios: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::formulario.formulario'
+    >;
+    icono: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'fas fa-file'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::categoria-formulario.categoria-formulario'
+    > &
+      Schema.Attribute.Private;
+    orden: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 100;
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiCategoriaCategoria extends Struct.CollectionTypeSchema {
   collectionName: 'categorias';
   info: {
@@ -510,6 +557,58 @@ export interface ApiConfiguracionInicioConfiguracionInicio
     videoFecha: Schema.Attribute.String;
     videoTitulo: Schema.Attribute.String;
     videoUrl: Schema.Attribute.String;
+  };
+}
+
+export interface ApiFormularioFormulario extends Struct.CollectionTypeSchema {
+  collectionName: 'formularios';
+  info: {
+    description: 'Formularios descargables para tr\u00E1mites';
+    displayName: 'Formulario';
+    pluralName: 'formularios';
+    singularName: 'formulario';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    archivo: Schema.Attribute.Media<'files'>;
+    categoria_formulario: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::categoria-formulario.categoria-formulario'
+    >;
+    codigo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descargas: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    formato: Schema.Attribute.Enumeration<['PDF', 'Excel', 'Word']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'PDF'>;
+    instrucciones: Schema.Attribute.RichText;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::formulario.formulario'
+    > &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 200;
+      }>;
+    orden: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    publishedAt: Schema.Attribute.DateTime;
+    requisitos: Schema.Attribute.RichText;
+    tamano: Schema.Attribute.String;
+    thumbnail: Schema.Attribute.Media<'images'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1215,8 +1314,10 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::categoria-formulario.categoria-formulario': ApiCategoriaFormularioCategoriaFormulario;
       'api::categoria.categoria': ApiCategoriaCategoria;
       'api::configuracion-inicio.configuracion-inicio': ApiConfiguracionInicioConfiguracionInicio;
+      'api::formulario.formulario': ApiFormularioFormulario;
       'api::hero-slide.hero-slide': ApiHeroSlideHeroSlide;
       'api::noticia.noticia': ApiNoticiaNoticia;
       'api::prestacion.prestacion': ApiPrestacionPrestacion;

@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "formularios",
+  "info": {
+    "singularName": "formulario",
+    "pluralName": "formularios",
+    "displayName": "Formulario",
+    "description": "Formularios descargables para trámites"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nombre": {
+      "type": "string",
+      "required": true,
+      "maxLength": 200
+    },
+    "codigo": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "regex": "^[A-Z]{2}-[0-9]{3}$"
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "formato": {
+      "type": "enumeration",
+      "enum": ["PDF", "Excel", "Word"],
+      "default": "PDF",
+      "required": true
+    },
+    "tamano": {
+      "type": "string",
+      "required": false
+    },
+    "archivo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["files"]
+    },
+    "thumbnail": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "categoria_formulario": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::categoria-formulario.categoria-formulario",
+      "inversedBy": "formularios"
+    },
+    "orden": {
+      "type": "integer",
+      "default": 0
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    },
+    "requisitos": {
+      "type": "richtext"
+    },
+    "instrucciones": {
+      "type": "richtext"
+    },
+    "descargas": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}
