@@ -10,7 +10,7 @@ export const contactInfo = {
     address: 'Avda. de la Independencia, S/N',
     postalCode: '944',
     phone: '(+240) 333 092214',
-    email: 'info@inseso-ge.org',
+    email: 'info@inseso.org',
     hours: 'Lunes - Viernes: 8:00 - 16:00'
   },
   regional: {

@@ -15,8 +15,113 @@ export const prerender = false;
 >
   <Fragment slot="main">
     <div class="contact-main">
+      <!-- Formulario de contacto -->
+      <h3>Envíenos un mensaje</h3>
+      <form name="sentMessage" id="contactForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="name" class="form-label">Nombre y Apellidos <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  placeholder="Su nombre completo"
+                  class="form-control"
+                  id="name"
+                  required
+                  data-validation-required-message="Por favor ingrese su nombre."
+                />
+                <p class="help-block"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="email" class="form-label">Correo Electrónico <span class="text-danger">*</span></label>
+                <input
+                  type="email"
+                  placeholder="ejemplo@correo.com"
+                  class="form-control"
+                  id="email"
+                  required
+                  data-validation-required-message="Por favor ingrese su email."
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="phone" class="form-label">Número de Teléfono <span class="text-danger">*</span></label>
+                <input
+                  type="tel"
+                  placeholder="+240 XXX XXX XXX"
+                  class="form-control"
+                  id="phone"
+                  required
+                  data-validation-required-message="Por favor ingrese su teléfono."
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="category" class="form-label">Categoría / Asunto <span class="text-danger">*</span></label>
+                <select
+                  class="form-control"
+                  id="category"
+                  required
+                  data-validation-required-message="Por favor seleccione una categoría."
+                >
+                  <option value="">Seleccione una opción...</option>
+                  <option value="consulta">Consulta General</option>
+                  <option value="afiliacion">Afiliación</option>
+                  <option value="prestaciones">Prestaciones Sociales</option>
+                  <option value="reclamo">Reclamo</option>
+                  <option value="seguimiento">Seguimiento de Trámite</option>
+                  <option value="sugerencia">Sugerencia</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="message" class="form-label">Mensaje <span class="text-danger">*</span></label>
+            <textarea
+              rows="6"
+              placeholder="Escriba su mensaje aquí..."
+              class="form-control"
+              id="message"
+              required
+              data-validation-required-message="Por favor ingrese su mensaje"
+              maxlength="999"
+              style="resize:vertical"
+            ></textarea>
+            <small class="form-text text-muted">Máximo 999 caracteres</small>
+          </div>
+        </div>
+
+        <div id="success"></div>
+        <button type="submit" class="btn btn-primary btn-lg" id="sendMessageButton">
+          <i class="fas fa-paper-plane"></i> Enviar mensaje
+        </button>
+      </form>
+
+      <hr style="margin: 3rem 0;">
+
       <!-- Mapa de Google -->
-      <div style="width:100%;height:450px;border-radius:12px;overflow:hidden;border:1px solid #eee;margin-bottom:2rem">
+      <h3>Nuestra Ubicación</h3>
+      <div style="width:100%;height:450px;border-radius:12px;overflow:hidden;border:1px solid #eee;margin-top:1.5rem">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.32190665812!2d8.7290642!3d3.739865600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10669d4bd7ce0583%3A0xd4e5228a42ab40da!2sINSESO!5e0!3m2!1sfr!2scm!4v1756209327234!5m2!1sfr!2scm"
           width="100%"
@@ -27,73 +132,6 @@ export const prerender = false;
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-
-      <hr>
-
-      <!-- Formulario de contacto -->
-      <h3>Envíenos un mensaje</h3>
-      <form name="sentMessage" id="contactForm" novalidate>
-        <div class="control-group form-group">
-          <div class="controls">
-            <input
-              type="text"
-              placeholder="Nombre y apellidos"
-              class="form-control"
-              id="name"
-              required
-              data-validation-required-message="Por favor ingrese su nombre."
-            />
-            <p class="help-block"></p>
-          </div>
-        </div>
-
-        <div class="control-group form-group">
-          <div class="controls">
-            <input
-              type="tel"
-              placeholder="Número de teléfono"
-              class="form-control"
-              id="phone"
-              required
-              data-validation-required-message="Por favor ingrese su teléfono."
-            />
-          </div>
-        </div>
-
-        <div class="control-group form-group">
-          <div class="controls">
-            <input
-              type="email"
-              placeholder="Dirección de e-mail"
-              class="form-control"
-              id="email"
-              required
-              data-validation-required-message="Por favor ingrese su email."
-            />
-          </div>
-        </div>
-
-        <div class="control-group form-group">
-          <div class="controls">
-            <textarea
-              rows="5"
-              cols="100"
-              placeholder="Mensaje"
-              class="form-control"
-              id="message"
-              required
-              data-validation-required-message="Por favor ingrese su mensaje"
-              maxlength="999"
-              style="resize:none"
-            ></textarea>
-          </div>
-        </div>
-
-        <div id="success"></div>
-        <button type="submit" class="btn btn-primary" id="sendMessageButton">
-          Enviar mensaje
-        </button>
-      </form>
     </div>
   </Fragment>
 
@@ -130,13 +168,86 @@ export const prerender = false;
 
   .contact-main h3 {
     margin-bottom: 1.5rem;
+    color: #8c1b12;
+    font-weight: 700;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
   }
 
   .control-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-control {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.75rem;
+    font-size: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .form-control:focus {
+    border-color: #8c1b12;
+    box-shadow: 0 0 0 0.2rem rgba(140, 27, 18, 0.15);
+    outline: none;
+  }
+
+  select.form-control {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem;
+    appearance: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  select.form-control option {
+    padding: 0.5rem;
+    white-space: normal;
+  }
+
+  .form-text {
+    font-size: 13px;
+    margin-top: 0.25rem;
   }
 
   .btn-primary {
     margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #8c1b12;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #6d2018;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+  }
+
+  .btn-primary i {
+    margin-right: 0.5rem;
+  }
+
+  @media (max-width: 767px) {
+    .contact-main h3 {
+      font-size: 24px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 </style>

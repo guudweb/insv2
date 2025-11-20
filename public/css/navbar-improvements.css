@@ -6,7 +6,8 @@
 .top-nav .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .top-nav .navbar-collapse {
@@ -14,7 +15,7 @@
 }
 
 .top-nav .navbar-nav {
-  margin-left: 2rem;
+  margin-left: 0;
   align-items: center;
 }
 
@@ -255,7 +256,7 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   }
 
   .top-nav .navbar-nav {
-    margin-left: 1rem;
+    margin-left: 0;
   }
 }
 
@@ -266,7 +267,7 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   }
 
   .top-nav .navbar-nav {
-    margin-left: 3rem;
+    margin-left: 0;
   }
 }
 
