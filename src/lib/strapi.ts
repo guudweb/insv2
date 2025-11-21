@@ -698,3 +698,165 @@ export async function getSocioByDocumentId(documentId: string): Promise<Socio | 
     return null;
   }
 }
+
+// ==================== FORMULARIOS ====================
+
+// Interfaz para Formularios
+export interface Formulario {
+  id: number;
+  documentId: string;
+  nombre: string;
+  codigo: string;
+  descripcion: string;
+  formato: 'PDF' | 'Excel' | 'Word';
+  tamano: string | null;
+  archivo: StrapiImage | null;
+  thumbnail: StrapiImage | null;
+  categoria_formulario: CategoriaFormulario | null;
+  orden: number;
+  activo: boolean;
+  requisitos: any;
+  instrucciones: any;
+  descargas: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para Categorías de Formularios
+export interface CategoriaFormulario {
+  id: number;
+  documentId: string;
+  titulo: string;
+  descripcion: string;
+  icono: string;
+  color: string;
+  orden: number;
+  activa: boolean;
+  formularios: Formulario[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Obtener todas las categorías de formularios con sus formularios
+export async function getCategoriasFormularios(): Promise<CategoriaFormulario[]> {
+  const query = qs.stringify(
+    {
+      populate: {
+        formularios: {
+          populate: ['archivo', 'thumbnail'],
+          filters: {
+            activo: {
+              $eq: true,
+            },
+          },
+          sort: ['orden:asc'],
+        },
+      },
+      filters: {
+        activa: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/categorias-formularios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching categorias formularios: ${response.status}`);
+    }
+
+    const json: StrapiResponse<CategoriaFormulario[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener categorías de formularios:', error);
+    return [];
+  }
+}
+
+// Obtener todos los formularios
+export async function getFormularios(): Promise<Formulario[]> {
+  const query = qs.stringify(
+    {
+      populate: ['archivo', 'thumbnail', 'categoria_formulario'],
+      filters: {
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/formularios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching formularios: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Formulario[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener formularios:', error);
+    return [];
+  }
+}
+
+// Obtener un formulario por código
+export async function getFormularioByCodigo(codigo: string): Promise<Formulario | null> {
+  const query = qs.stringify(
+    {
+      filters: {
+        codigo: {
+          $eq: codigo,
+        },
+      },
+      populate: ['archivo', 'thumbnail', 'categoria_formulario'],
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/formularios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching formulario: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Formulario[]> = await response.json();
+    return json.data.length > 0 ? json.data[0] : null;
+  } catch (error) {
+    console.error('Error al obtener formulario:', error);
+    return null;
+  }
+}
+
+// Incrementar contador de descargas de un formulario
+export async function incrementarDescargasFormulario(documentId: string): Promise<void> {
+  try {
+    // Esta función requeriría un endpoint personalizado en Strapi
+    // Por ahora solo registramos el intento
+    console.log(`Descarga registrada para formulario: ${documentId}`);
+  } catch (error) {
+    console.error('Error al incrementar descargas:', error);
+  }
+}

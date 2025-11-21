@@ -7,13 +7,25 @@ interface Props {
 	title?: string;
 	description?: string;
 	currentPath?: string;
+	ogImage?: string;
+	ogType?: string;
+	articleAuthor?: string;
+	articlePublishedTime?: string;
 }
 
 const {
 	title = 'INSESO',
-	description = '',
-	currentPath = Astro.url.pathname
+	description = 'Instituto Nacional de Seguridad Social de Guinea Ecuatorial',
+	currentPath = Astro.url.pathname,
+	ogImage = '/images/logo_01.png',
+	ogType = 'website',
+	articleAuthor,
+	articlePublishedTime
 } = Astro.props;
+
+const siteUrl = Astro.url.origin;
+const canonicalURL = new URL(currentPath, siteUrl).href;
+const fullOgImage = new URL(ogImage, siteUrl).href;
 ---
 
 <!DOCTYPE html>
@@ -22,9 +34,36 @@ const {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content={description}>
-	<meta name="author" content="">
+	<meta name="author" content="INSESO">
 	<link href="/images/favicon.png" rel="icon">
+	<link rel="canonical" href={canonicalURL} />
 	<title>{title}</title>
+
+	<!-- Open Graph Meta Tags -->
+	<meta property="og:title" content={title} />
+	<meta property="og:description" content={description} />
+	<meta property="og:type" content={ogType} />
+	<meta property="og:url" content={canonicalURL} />
+	<meta property="og:image" content={fullOgImage} />
+	<meta property="og:site_name" content="INSESO" />
+	<meta property="og:locale" content="es_ES" />
+	{articlePublishedTime && (
+		<meta property="article:published_time" content={articlePublishedTime} />
+	)}
+	{articleAuthor && (
+		<meta property="article:author" content={articleAuthor} />
+	)}
+
+	<!-- Twitter Card Meta Tags -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={title} />
+	<meta name="twitter:description" content={description} />
+	<meta name="twitter:image" content={fullOgImage} />
+	<meta name="twitter:site" content="@INSESO_GQ" />
+
+	<!-- Additional SEO Meta Tags -->
+	<meta name="robots" content="index, follow" />
+	<meta name="language" content="Spanish" />
 
 	<!-- CSS Files -->
 	<link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

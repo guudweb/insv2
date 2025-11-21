@@ -16,11 +16,29 @@ if (!noticia) {
 	return Astro.redirect('/noticias');
 }
 
-const { titulo, contenido, resumen, fechaPublicacion, autor, imagen, tipoMedia, video, videoArchivo } = noticia;
+const { titulo, contenido, resumen, fechaPublicacion, autor, imagen, tipoMedia, video, videoArchivo, categoria } = noticia;
 const videoUrl = getNoticiaVideoUrl(noticia);
+
+// Obtener noticias relacionadas (misma categoría, excluyendo la actual)
+const todasLasNoticias = await getNoticias();
+const noticiasRelacionadas = todasLasNoticias
+  .filter(n => n.documentId !== noticia.documentId && n.categoria?.documentId === categoria?.documentId)
+  .slice(0, 3);
+
+// Preparar meta tags SEO
+const noticiaDescription = resumen || (contenido ? contenido.substring(0, 160) : '');
+const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo_01.png';
 ---
 
-<BaseLayout title={`INSESO - ${titulo}`} currentPath={`/noticias/${slug}`}>
+<BaseLayout
+	title={`${titulo} - INSESO`}
+	description={noticiaDescription}
+	currentPath={`/noticias/${slug}`}
+	ogImage={noticiaImage}
+	ogType="article"
+	articleAuthor={autor}
+	articlePublishedTime={fechaPublicacion}
+>
 	<div class="full-title">
 		<div class="container"><br>
 			<h1 class="text_blanc">{titulo}</h1><br>
@@ -128,6 +146,47 @@ const videoUrl = getNoticiaVideoUrl(noticia);
 		</div>
 	</div>
 
+	<!-- Noticias Relacionadas -->
+	{noticiasRelacionadas.length > 0 && (
+		<div class="related-news-section">
+			<div class="container">
+				<h2 class="section-title">
+					<i class="fas fa-newspaper"></i> Noticias Relacionadas
+				</h2>
+				<div class="row">
+					{noticiasRelacionadas.map((relacionada) => {
+						const imagenRelacionada = relacionada.imagen?.url ? getStrapiImageUrl(relacionada.imagen.url) : '/images/logo.png';
+						return (
+							<div class="col-md-4 mb-4">
+								<article class="related-card">
+									<div class="related-image">
+										<img src={imagenRelacionada} alt={relacionada.titulo} />
+										{relacionada.tipoMedia === 'video' && (
+											<div class="video-badge">
+												<i class="fas fa-play-circle"></i>
+											</div>
+										)}
+									</div>
+									<div class="related-content">
+										<span class="related-date">
+											<i class="far fa-calendar-alt"></i> {formatDate(relacionada.fechaPublicacion)}
+										</span>
+										<h3 class="related-title">
+											<a href={`/noticias/${relacionada.slug}`}>{relacionada.titulo}</a>
+										</h3>
+										<a href={`/noticias/${relacionada.slug}`} class="btn-read-more">
+											Leer más <i class="fas fa-arrow-right"></i>
+										</a>
+									</div>
+								</article>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	)}
+
 	<div class="customers-box">
 		<div class="container">
 			<hr>
@@ -189,6 +248,33 @@ const videoUrl = getNoticiaVideoUrl(noticia);
 	})(window.jQuery);
 </script>
 
+<!-- JSON-LD Structured Data for SEO -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "NewsArticle",
+	"headline": titulo,
+	"description": resumen,
+	"image": noticiaImage,
+	"datePublished": fechaPublicacion,
+	"dateModified": noticia.updatedAt,
+	"author": {
+		"@type": autor ? "Person" : "Organization",
+		"name": autor || "INSESO"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "INSESO",
+		"logo": {
+			"@type": "ImageObject",
+			"url": new URL('/images/logo_01.png', Astro.url.origin).href
+		}
+	},
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": new URL(`/noticias/${slug}`, Astro.url.origin).href
+	}
+})} />
+
 <style>
 	/* Video Container */
 	.video-container {
@@ -240,6 +326,155 @@ const videoUrl = getNoticiaVideoUrl(noticia);
 
 	.noticia-contenido li {
 		margin-bottom: 0.5rem;
+	}
+
+	/* Related News Section */
+	.related-news-section {
+		background: #f9f9f9;
+		padding: 4rem 0;
+		margin-top: 3rem;
+	}
+
+	.section-title {
+		font-size: 32px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 2.5rem;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+	}
+
+	.section-title i {
+		color: #8c1b12;
+		font-size: 28px;
+	}
+
+	.related-card {
+		background: white;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		transition: all 0.3s ease;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.related-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+	}
+
+	.related-image {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+	}
+
+	.related-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.related-image img[src*="logo.png"] {
+		object-fit: contain;
+		background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+		padding: 30px;
+	}
+
+	.related-card:hover .related-image img {
+		transform: scale(1.1);
+	}
+
+	.video-badge {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 48px;
+		color: white;
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+		opacity: 0.9;
+		transition: all 0.3s ease;
+	}
+
+	.related-card:hover .video-badge {
+		color: #8c1b12;
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1.2);
+	}
+
+	.related-content {
+		padding: 1.5rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.related-date {
+		display: block;
+		font-size: 13px;
+		color: #999;
+		margin-bottom: 0.75rem;
+	}
+
+	.related-date i {
+		color: #8c1b12;
+		margin-right: 5px;
+	}
+
+	.related-title {
+		font-size: 18px;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		flex: 1;
+		line-height: 1.4;
+	}
+
+	.related-title a {
+		color: #333;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.related-title a:hover {
+		color: #8c1b12;
+	}
+
+	.btn-read-more {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		background: #8c1b12;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 14px;
+		transition: all 0.3s ease;
+	}
+
+	.btn-read-more:hover {
+		background: #6d2018;
+		transform: translateX(4px);
+		color: white;
+	}
+
+	.btn-read-more i {
+		transition: transform 0.3s ease;
+		font-size: 12px;
+	}
+
+	.btn-read-more:hover i {
+		transform: translateX(4px);
 	}
 
 	/* Mobile Responsive */

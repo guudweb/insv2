@@ -1,0 +1,575 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getNoticias, getStrapiImageUrl, richTextToPlainText } from '../../lib/strapi';
+
+export const prerender = false;
+
+// Obtener parámetro de búsqueda
+const url = Astro.url;
+const searchQuery = url.searchParams.get('q') || '';
+
+// Obtener todas las noticias
+const todasLasNoticias = await getNoticias();
+
+// Filtrar noticias por búsqueda
+let resultadosBusqueda = todasLasNoticias;
+
+if (searchQuery) {
+  const queryLower = searchQuery.toLowerCase();
+  resultadosBusqueda = todasLasNoticias.filter(noticia => {
+    const titulo = noticia.titulo?.toLowerCase() || '';
+    const contenidoTexto = noticia.contenido ? richTextToPlainText(noticia.contenido).toLowerCase() : '';
+    const resumen = noticia.resumen?.toLowerCase() || '';
+    const autor = noticia.autor?.toLowerCase() || '';
+    const categoria = noticia.categoria?.nombre?.toLowerCase() || '';
+
+    return titulo.includes(queryLower) ||
+           contenidoTexto.includes(queryLower) ||
+           resumen.includes(queryLower) ||
+           autor.includes(queryLower) ||
+           categoria.includes(queryLower);
+  });
+}
+
+// Función para formatear fecha
+function formatDate(dateString: string) {
+  if (!dateString) return 'Fecha no disponible';
+
+  try {
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) {
+      return 'Fecha no disponible';
+    }
+    return date.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  } catch (error) {
+    return 'Fecha no disponible';
+  }
+}
+
+// Función para truncar texto
+function truncateText(text: string, maxLength: number) {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + '...';
+}
+
+// Función para resaltar términos de búsqueda
+function highlightSearchTerm(text: string, query: string) {
+  if (!query) return text;
+  const regex = new RegExp(`(${query})`, 'gi');
+  return text.replace(regex, '<mark>$1</mark>');
+}
+---
+
+<BaseLayout title={`Búsqueda: ${searchQuery} - INSESO`} currentPath="/noticias/buscar">
+  <!-- Page Header -->
+  <div class="page-header-noticias">
+    <div class="container">
+      <h1>Resultados de Búsqueda</h1>
+      {searchQuery && (
+        <p>Mostrando {resultadosBusqueda.length} resultado{resultadosBusqueda.length !== 1 ? 's' : ''} para: <strong>"{searchQuery}"</strong></p>
+      )}
+      <div class="search-form-header">
+        <form class="search-form-main" action="/noticias/buscar" method="get">
+          <div class="search-input-group-main">
+            <input
+              type="text"
+              name="q"
+              class="form-control"
+              placeholder="Buscar noticias..."
+              value={searchQuery}
+              autofocus
+            />
+            <button type="submit" class="btn-search-main">
+              <i class="fas fa-search"></i> Buscar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="noticias-main">
+    <div class="container">
+      {searchQuery === '' ? (
+        <div class="alert-info">
+          <i class="fas fa-info-circle"></i>
+          <p>Por favor, ingresa un término de búsqueda.</p>
+          <a href="/noticias" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver a Noticias
+          </a>
+        </div>
+      ) : resultadosBusqueda.length === 0 ? (
+        <div class="alert-warning">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>No se encontraron resultados</h3>
+          <p>No se encontraron noticias que coincidan con tu búsqueda "<strong>{searchQuery}</strong>".</p>
+          <p>Sugerencias:</p>
+          <ul>
+            <li>Verifica la ortografía de tu búsqueda</li>
+            <li>Intenta con palabras más generales</li>
+            <li>Usa términos diferentes</li>
+          </ul>
+          <a href="/noticias" class="btn-volver">
+            <i class="fas fa-arrow-left"></i> Volver a Noticias
+          </a>
+        </div>
+      ) : (
+        <>
+          <div class="results-info">
+            <p>
+              <i class="fas fa-check-circle"></i>
+              Se encontraron <strong>{resultadosBusqueda.length}</strong> noticia{resultadosBusqueda.length !== 1 ? 's' : ''}.
+            </p>
+            <a href="/noticias" class="btn-clear-results">
+              <i class="fas fa-times"></i> Limpiar búsqueda
+            </a>
+          </div>
+
+          <div class="noticias-grid">
+            {resultadosBusqueda.map((noticia) => {
+              const imagen = noticia.imagen?.url ? getStrapiImageUrl(noticia.imagen.url) : '/images/logo.png';
+              const contenidoTexto = noticia.contenido ? richTextToPlainText(noticia.contenido) : '';
+              const excerpt = truncateText(contenidoTexto, 150);
+
+              return (
+                <article class="noticia-card">
+                  <div class="noticia-image">
+                    <img src={imagen} alt={noticia.titulo} />
+                    {noticia.tipoMedia === 'video' && (
+                      <div class="video-overlay">
+                        <div class="play-button"></div>
+                      </div>
+                    )}
+                    {noticia.categoria && (
+                      <span class="noticia-categoria">{noticia.categoria.nombre}</span>
+                    )}
+                  </div>
+                  <div class="noticia-content">
+                    <div class="noticia-meta">
+                      <span class="noticia-date">
+                        <i class="far fa-calendar-alt"></i> {formatDate(noticia.fechaPublicacion)}
+                      </span>
+                      {noticia.autor && (
+                        <span class="noticia-autor">
+                          <i class="far fa-user"></i> {noticia.autor}
+                        </span>
+                      )}
+                    </div>
+                    <h2 class="noticia-title">
+                      <a href={`/noticias/${noticia.slug}`} set:html={highlightSearchTerm(noticia.titulo, searchQuery)}></a>
+                    </h2>
+                    <p class="noticia-excerpt" set:html={highlightSearchTerm(excerpt, searchQuery)}></p>
+                    <a href={`/noticias/${noticia.slug}`} class="btn-leer-mas">
+                      Leer más <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Page Header */
+  .page-header-noticias {
+    background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+    padding: 4rem 0 3rem;
+    margin-bottom: 3rem;
+    color: white;
+    text-align: center;
+  }
+
+  .page-header-noticias h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header-noticias p {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .page-header-noticias p strong {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .search-form-header {
+    max-width: 700px;
+    margin: 2rem auto 0;
+  }
+
+  .search-input-group-main {
+    display: flex;
+    gap: 10px;
+  }
+
+  .search-input-group-main input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .search-input-group-main input:focus {
+    outline: none;
+    border-color: white;
+    background: white;
+  }
+
+  .btn-search-main {
+    background: white;
+    color: #8c1b12;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-search-main:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Alerts */
+  .alert-info,
+  .alert-warning {
+    background: white;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .alert-info i,
+  .alert-warning i {
+    font-size: 64px;
+    color: #8c1b12;
+    margin-bottom: 1.5rem;
+  }
+
+  .alert-info h3,
+  .alert-warning h3 {
+    font-size: 28px;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .alert-info p,
+  .alert-warning p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .alert-warning ul {
+    text-align: left;
+    max-width: 400px;
+    margin: 1.5rem auto;
+    color: #666;
+  }
+
+  .alert-warning li {
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #8c1b12;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-volver:hover {
+    background: #6d2018;
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  /* Results Info */
+  .results-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+
+  .results-info p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+
+  .results-info i {
+    color: #217346;
+    margin-right: 10px;
+  }
+
+  .btn-clear-results {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f5f5f5;
+    color: #8c1b12;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-clear-results:hover {
+    background: #8c1b12;
+    color: white;
+  }
+
+  /* Highlight */
+  :global(mark) {
+    background: #ffd54f;
+    color: #333;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* News Grid */
+  .noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  @media (max-width: 991px) {
+    .noticias-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* News Card */
+  .noticia-card {
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .noticia-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+  }
+
+  .noticia-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+  }
+
+  .noticia-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .noticia-image img[src*="logo.png"] {
+    object-fit: contain;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    padding: 30px;
+  }
+
+  .noticia-card:hover .noticia-image img {
+    transform: scale(1.08);
+  }
+
+  .video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 2;
+  }
+
+  .play-button {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 0 15px 26px;
+    border-color: transparent transparent transparent white;
+    margin-left: 6px;
+  }
+
+  .noticia-card:hover .video-overlay {
+    background: rgba(140, 27, 18, 0.9);
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .noticia-categoria {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #8c1b12;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 3;
+  }
+
+  .noticia-content {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .noticia-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 13px;
+    color: #666;
+  }
+
+  .noticia-meta i {
+    color: #8c1b12;
+    margin-right: 5px;
+  }
+
+  .noticia-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .noticia-title a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .noticia-title a:hover {
+    color: #8c1b12;
+  }
+
+  .noticia-excerpt {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .btn-leer-mas {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #8c1b12;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(140, 27, 18, 0.2);
+  }
+
+  .btn-leer-mas:hover {
+    background: #6d2018;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+    color: white;
+  }
+
+  .btn-leer-mas i {
+    transition: transform 0.3s ease;
+    font-size: 12px;
+  }
+
+  .btn-leer-mas:hover i {
+    transform: translateX(4px);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 767px) {
+    .page-header-noticias {
+      padding: 2.5rem 0 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .page-header-noticias h1 {
+      font-size: 32px;
+    }
+
+    .page-header-noticias p {
+      font-size: 16px;
+    }
+
+    .search-input-group-main {
+      flex-direction: column;
+    }
+
+    .btn-search-main {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .results-info {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+</style>

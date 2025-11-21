@@ -4,12 +4,24 @@ import { getNoticias, getStrapiImageUrl, richTextToPlainText } from '../lib/stra
 
 export const prerender = false;
 
-// Obtener todas las noticias ordenadas por fecha
-const todasLasNoticias = await getNoticias();
+// Obtener parámetros de URL
+const url = Astro.url;
+const pageParam = url.searchParams.get('page');
+const categoriaParam = url.searchParams.get('categoria');
 
-// Paginación
+// Obtener todas las noticias ordenadas por fecha
+let todasLasNoticias = await getNoticias();
+
+// Filtrar por categoría si existe el parámetro
+if (categoriaParam) {
+  todasLasNoticias = todasLasNoticias.filter(noticia =>
+    noticia.categoria?.nombre?.toLowerCase() === categoriaParam.toLowerCase()
+  );
+}
+
+// Paginación dinámica
 const noticiasPerPage = 9;
-const currentPage = 1; // Esto se puede hacer dinámico más adelante
+const currentPage = pageParam ? parseInt(pageParam) : 1;
 const totalPages = Math.ceil(todasLasNoticias.length / noticiasPerPage);
 const startIndex = (currentPage - 1) * noticiasPerPage;
 const noticias = todasLasNoticias.slice(startIndex, startIndex + noticiasPerPage);
@@ -47,8 +59,15 @@ function truncateText(text: string, maxLength: number) {
   <!-- Page Header -->
   <div class="page-header-noticias">
     <div class="container">
-      <h1>Noticias</h1>
+      <h1>{categoriaParam ? `Noticias: ${categoriaParam.charAt(0).toUpperCase() + categoriaParam.slice(1)}` : 'Noticias'}</h1>
       <p>Mantente informado sobre las últimas novedades de INSESO</p>
+      {categoriaParam && (
+        <div class="filter-info">
+          <a href="/noticias" class="btn-clear-filter">
+            <i class="fas fa-times"></i> Limpiar filtro
+          </a>
+        </div>
+      )}
     </div>
   </div>
 
@@ -106,17 +125,17 @@ function truncateText(text: string, maxLength: number) {
               <nav aria-label="Navegación de páginas">
                 <ul class="pagination">
                   <li class={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-                    <a class="page-link" href={currentPage > 1 ? `/noticias?page=${currentPage - 1}` : '#'}>
+                    <a class="page-link" href={currentPage > 1 ? `/noticias?page=${currentPage - 1}${categoriaParam ? `&categoria=${categoriaParam}` : ''}` : '#'}>
                       <i class="fas fa-chevron-left"></i>
                     </a>
                   </li>
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                     <li class={`page-item ${page === currentPage ? 'active' : ''}`}>
-                      <a class="page-link" href={`/noticias?page=${page}`}>{page}</a>
+                      <a class="page-link" href={`/noticias?page=${page}${categoriaParam ? `&categoria=${categoriaParam}` : ''}`}>{page}</a>
                     </li>
                   ))}
                   <li class={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
-                    <a class="page-link" href={currentPage < totalPages ? `/noticias?page=${currentPage + 1}` : '#'}>
+                    <a class="page-link" href={currentPage < totalPages ? `/noticias?page=${currentPage + 1}${categoriaParam ? `&categoria=${categoriaParam}` : ''}` : '#'}>
                       <i class="fas fa-chevron-right"></i>
                     </a>
                   </li>
@@ -220,6 +239,32 @@ function truncateText(text: string, maxLength: number) {
   .page-header-noticias p {
     font-size: 18px;
     opacity: 0.9;
+  }
+
+  .filter-info {
+    margin-top: 1rem;
+  }
+
+  .btn-clear-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .btn-clear-filter:hover {
+    background: white;
+    color: #8c1b12;
+    border-color: white;
+    transform: translateY(-2px);
   }
 
   @media (max-width: 767px) {
