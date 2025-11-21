@@ -42,23 +42,47 @@ export const POST: APIRoute = async ({ request }) => {
       },
     });
 
-    // Mapear categorías a texto legible
-    const categoryMap: { [key: string]: string } = {
-      consulta: 'Consulta General',
-      afiliacion: 'Afiliación',
-      prestaciones: 'Prestaciones Sociales',
-      reclamo: 'Reclamo',
-      seguimiento: 'Seguimiento de Trámite',
-      sugerencia: 'Sugerencia',
-      otro: 'Otro'
+    // Mapear categorías a texto legible y emails específicos
+    const categoryMap: { [key: string]: { text: string; email: string } } = {
+      consulta: {
+        text: 'Consulta General',
+        email: 'consultas@inseso.org'
+      },
+      afiliacion: {
+        text: 'Afiliación',
+        email: 'afiliacion@inseso.org'
+      },
+      prestaciones: {
+        text: 'Prestaciones Sociales',
+        email: 'prestaciones@inseso.org'
+      },
+      reclamo: {
+        text: 'Reclamo',
+        email: 'reclamos@inseso.org'
+      },
+      seguimiento: {
+        text: 'Seguimiento de Trámite',
+        email: 'seguimiento@inseso.org'
+      },
+      sugerencia: {
+        text: 'Sugerencia',
+        email: 'sugerencias@inseso.org'
+      },
+      otro: {
+        text: 'Otro',
+        email: 'afeudjio@omnitechsl.com' //info@inseso.org
+      }
     };
 
-    const categoryText = categoryMap[category] || category;
+    const categoryData = categoryMap[category] || { text: category, email: 'info@inseso.org' };
+    const categoryText = categoryData.text;
+    const recipientEmail = categoryData.email;
 
-    // Configurar email
+    // Configurar email con destinatario específico por categoría y copia a info@
     const mailOptions = {
       from: `"Formulario INSESO" <${import.meta.env.SMTP_FROM}>`,
-      to: import.meta.env.SMTP_TO,
+      to: recipientEmail,
+      cc: 'nguemanisaac@gmail.com', //info@inseso.org
       replyTo: email,
       subject: `Nuevo mensaje de contacto - ${categoryText}`,
       html: `
