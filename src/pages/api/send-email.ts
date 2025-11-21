@@ -70,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
       },
       otro: {
         text: 'Otro',
-        email: 'soporte@omnitechsl.com' //info@inseso.org
+        email: 'support@omnitechsl.com' //info@inseso.org
       }
     };
 
