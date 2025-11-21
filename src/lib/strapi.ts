@@ -148,6 +148,7 @@ export interface Prestacion {
   imagen: StrapiImage | null;
   imagenDetalle: StrapiImage | null;
   requisitos: string | null;
+  destacado: boolean;
   orden: number;
   activo: boolean;
   createdAt: string;
@@ -851,12 +852,12 @@ export async function getFormularioByCodigo(codigo: string): Promise<Formulario 
 }
 
 // Incrementar contador de descargas de un formulario
-export async function incrementarDescargasFormulario(documentId: string): Promise<void> {
+export async function incrementarDescargasFormulario(_documentId: string): Promise<void> {
   try {
     // Esta función requeriría un endpoint personalizado en Strapi
-    // Por ahora solo registramos el intento
-    console.log(`Descarga registrada para formulario: ${documentId}`);
+    // Para implementar: crear un endpoint en Strapi que incremente el contador
+    // TODO: Implementar cuando se necesite tracking de descargas
   } catch (error) {
-    console.error('Error al incrementar descargas:', error);
+    // Error silencioso - no afecta la funcionalidad principal
   }
 }

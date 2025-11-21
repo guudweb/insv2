@@ -48,21 +48,6 @@ const videoUrl = config?.videoUrl || (noticiaPrincipal ? getNoticiaVideoUrl(noti
 const videoTitulo = config?.videoTitulo || noticiaPrincipal?.titulo || '';
 const videoFecha = config?.videoFecha || 'MALABO, 26 DE JUNIO DE 2025 - 15.00 HORAS';
 const videoDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : '');
-
-// DEBUG: Mostrar info en consola del servidor
-console.log('=== DEBUG VIDEO ===');
-console.log('noticiaPrincipal:', noticiaPrincipal ? {
-	id: noticiaPrincipal.id,
-	titulo: noticiaPrincipal.titulo,
-	tipoMedia: noticiaPrincipal.tipoMedia,
-	orden: noticiaPrincipal.orden,
-	posicion: noticiaPrincipal.posicion,
-	video: noticiaPrincipal.video,
-	videoArchivo: noticiaPrincipal.videoArchivo ? 'SI' : 'NO',
-	videoArchivoUrl: noticiaPrincipal.videoArchivo?.url
-} : 'null');
-console.log('videoUrl calculado:', videoUrl);
-console.log('===================');
 ---
 
 <BaseLayout title="INSESO - Inicio" currentPath="/">
