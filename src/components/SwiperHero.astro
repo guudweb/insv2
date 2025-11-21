@@ -45,9 +45,14 @@ const slides: ProcessedSlide[] = heroSlides.length > 0
 <header class="hero-swiper">
 	<div class="swiper heroSwiper">
 		<div class="swiper-wrapper">
-			{slides.map((slide) => (
+			{slides.map((slide, index) => (
 				<div class="swiper-slide">
-					<img src={slide.image} alt={slide.title || 'INSESO'} />
+					<img
+						src={slide.image}
+						alt={slide.title || 'INSESO'}
+						fetchpriority={index === 0 ? 'high' : 'low'}
+						loading={index === 0 ? 'eager' : 'lazy'}
+					/>
 					{slide.title && (
 						<div class="swiper-caption d-none d-md-block">
 							{slide.title && <h2>{slide.title}</h2>}

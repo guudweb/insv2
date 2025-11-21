@@ -39,6 +39,16 @@ const fullOgImage = new URL(ogImage, siteUrl).href;
 	<link rel="canonical" href={canonicalURL} />
 	<title>{title}</title>
 
+	<!-- Preconnect to external resources for faster loading -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://cdn.jsdelivr.net">
+	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+	<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+	<!-- Preload critical fonts -->
+	<link rel="preload" href="https://fonts.gstatic.com/s/worksans/v19/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K0nWNigDp6_cOyA.woff2" as="font" type="font/woff2" crossorigin>
+
 	<!-- Open Graph Meta Tags -->
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
