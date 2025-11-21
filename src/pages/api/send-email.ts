@@ -70,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
       },
       otro: {
         text: 'Otro',
-        email: 'afeudjio@omnitechsl.com' //info@inseso.org
+        email: 'soporte@omnitechsl.com' //info@inseso.org
       }
     };
 
@@ -83,7 +83,6 @@ export const POST: APIRoute = async ({ request }) => {
       from: `"Formulario INSESO" <${import.meta.env.SMTP_FROM}>`,
       to: recipientEmail,
       cc: 'nguemanisaac@gmail.com', //info@inseso.org
-      replyTo: email,
       subject: `Nuevo mensaje de contacto - ${categoryText}`,
       html: `
         <!DOCTYPE html>
