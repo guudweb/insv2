@@ -33,12 +33,12 @@ function getDateParts(dateString: string) {
           <div class="col-md-4 news-sec">
             <div class="news-info">
               <div class="image-wrapper">
-                <img src={imageUrl} class="img-responsive" alt={noticia.titulo} />
-                <div class="data-meta">
-                  <h4>{month}</h4>
-                  <h4>{day}</h4>
-                  <h4>{year}</h4>
-                </div>
+                <img src={imageUrl} class="img-responsive" alt={noticia.titulo} loading="lazy" />
+              </div>
+              <div class="data-meta">
+                <h4>{month}</h4>
+                <h4>{day}</h4>
+                <h4>{year}</h4>
               </div>
               <br />
               <a href={`/noticia/${slug}`}>

@@ -1,0 +1,74 @@
+---
+/**
+ * OptimizedImage Component
+ *
+ * Componente inteligente que optimiza imágenes automáticamente:
+ * - Para imágenes locales (importadas): usa Astro <Image> con Sharp
+ * - Para URLs remotas (Strapi): usa <img> con lazy loading
+ *
+ * Uso:
+ * ```astro
+ * // Imagen local optimizada con Sharp
+ * import miImagen from '../assets/imagen.jpg';
+ * <OptimizedImage src={miImagen} alt="Descripción" />
+ *
+ * // Imagen remota (Strapi)
+ * <OptimizedImage src="https://strapi.com/imagen.jpg" alt="Descripción" />
+ * ```
+ */
+
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: string | ImageMetadata;
+  alt: string;
+  class?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  style?: string;
+  [key: string]: any; // Para permitir atributos adicionales
+}
+
+const {
+  src,
+  alt,
+  class: className = '',
+  width,
+  height,
+  loading = 'lazy',
+  style,
+  ...rest
+} = Astro.props;
+
+// Determinar si es una imagen local (objeto) o remota (string URL)
+const isLocalImage = typeof src === 'object' && src !== null;
+const isRemoteUrl = typeof src === 'string' && (src.startsWith('http://') || src.startsWith('https://'));
+---
+
+{isLocalImage ? (
+  <!-- Imagen local: usar Astro Image con Sharp para optimización -->
+  <Image
+    src={src as ImageMetadata}
+    alt={alt}
+    class={className}
+    width={width}
+    height={height}
+    loading={loading}
+    style={style}
+    {...rest}
+  />
+) : (
+  <!-- Imagen remota o de public/: usar img normal con lazy loading -->
+  <img
+    src={src as string}
+    alt={alt}
+    class={className}
+    width={width}
+    height={height}
+    loading={loading}
+    style={style}
+    {...rest}
+  />
+)}

@@ -1,0 +1,801 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import { getSocios } from '../../lib/strapi';
+
+export const prerender = false;
+
+// Obtener socios desde Strapi
+const socios = await getSocios();
+---
+
+<BaseLayout
+  title="Penas y Sanciones para Empleadores - INSESO"
+  description="Información sobre las penas y sanciones aplicables a empleadores por incumplimiento de obligaciones con el sistema de seguridad social"
+  currentPath="/empleadores/penas-sanciones"
+>
+  <!-- Page Header -->
+  <div class="full-title">
+    <div class="container">
+      <br>
+      <h1 class="text_blanc">Penas y Sanciones</h1>
+      <br>
+      <div class="breadcrumb-main">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="/empleadores">Empleadores</a></li>
+          <li class="breadcrumb-item active">Penas y Sanciones</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container mt-5 mb-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- Introducción -->
+        <section class="content-section">
+          <div class="section-header">
+            <i class="fas fa-gavel"></i>
+            <h2>Marco Legal de Sanciones</h2>
+          </div>
+          <p class="lead">
+            El Instituto Nacional de Seguridad Social (INSESO) tiene la facultad de imponer sanciones
+            a los empleadores que incumplan con sus obligaciones establecidas en la Ley de Seguridad Social
+            de Guinea Ecuatorial.
+          </p>
+          <p>
+            El cumplimiento de las obligaciones con la seguridad social es fundamental para garantizar
+            la protección de los trabajadores y el correcto funcionamiento del sistema.
+          </p>
+        </section>
+
+        <!-- Tipos de Infracciones -->
+        <section class="content-section">
+          <div class="section-header">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>Tipos de Infracciones</h2>
+          </div>
+
+          <div class="infraction-card">
+            <div class="infraction-header leve">
+              <i class="fas fa-info-circle"></i>
+              <h3>Infracciones Leves</h3>
+            </div>
+            <div class="infraction-body">
+              <ul>
+                <li>Retraso en la presentación de declaraciones mensuales (hasta 30 días)</li>
+                <li>Errores u omisiones no sustanciales en las declaraciones</li>
+                <li>Falta de actualización de datos del empleador</li>
+                <li>No exhibir en lugar visible el certificado de afiliación</li>
+              </ul>
+              <div class="sancion-info">
+                <strong>Sanción:</strong> Multa de 100.000 a 500.000 FCFA
+              </div>
+            </div>
+          </div>
+
+          <div class="infraction-card">
+            <div class="infraction-header grave">
+              <i class="fas fa-exclamation-circle"></i>
+              <h3>Infracciones Graves</h3>
+            </div>
+            <div class="infraction-body">
+              <ul>
+                <li>No afiliar a trabajadores en el plazo establecido</li>
+                <li>Retraso en el pago de cotizaciones (de 1 a 3 meses)</li>
+                <li>Declaración inexacta de salarios o número de trabajadores</li>
+                <li>No dar de baja a trabajadores que cesan en la actividad</li>
+                <li>Obstaculizar las inspecciones de INSESO</li>
+              </ul>
+              <div class="sancion-info">
+                <strong>Sanción:</strong> Multa de 500.000 a 2.000.000 FCFA
+              </div>
+            </div>
+          </div>
+
+          <div class="infraction-card">
+            <div class="infraction-header muy-grave">
+              <i class="fas fa-ban"></i>
+              <h3>Infracciones Muy Graves</h3>
+            </div>
+            <div class="infraction-body">
+              <ul>
+                <li>No afiliar a ningún trabajador teniendo la obligación de hacerlo</li>
+                <li>Retraso en el pago de cotizaciones superior a 3 meses</li>
+                <li>Falsedad en documentos o declaraciones presentadas a INSESO</li>
+                <li>Apropiación indebida de las cotizaciones descontadas a trabajadores</li>
+                <li>Reincidencia en infracciones graves</li>
+                <li>Negarse a facilitar información o documentación requerida</li>
+              </ul>
+              <div class="sancion-info">
+                <strong>Sanción:</strong> Multa de 2.000.000 a 10.000.000 FCFA + posible cierre temporal
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recargos por Mora -->
+        <section class="content-section">
+          <div class="section-header">
+            <i class="fas fa-percent"></i>
+            <h2>Recargos por Mora en el Pago</h2>
+          </div>
+          <p>
+            Además de las sanciones, el pago fuera de plazo de las cotizaciones conlleva
+            recargos automáticos calculados sobre el importe adeudado:
+          </p>
+
+          <div class="table-responsive">
+            <table class="mora-table">
+              <thead>
+                <tr>
+                  <th>Periodo de Retraso</th>
+                  <th>Recargo Aplicable</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Hasta 1 mes</td>
+                  <td>3% del importe adeudado</td>
+                </tr>
+                <tr>
+                  <td>De 1 a 3 meses</td>
+                  <td>5% del importe adeudado</td>
+                </tr>
+                <tr>
+                  <td>De 3 a 6 meses</td>
+                  <td>10% del importe adeudado</td>
+                </tr>
+                <tr>
+                  <td>Más de 6 meses</td>
+                  <td>20% del importe adeudado + intereses de demora</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="alert-warning">
+            <i class="fas fa-exclamation-triangle"></i>
+            <strong>Importante:</strong> Los recargos se calculan automáticamente y son independientes
+            de las sanciones que puedan imponerse por la infracción.
+          </div>
+        </section>
+
+        <!-- Procedimiento Sancionador -->
+        <section class="content-section">
+          <div class="section-header">
+            <i class="fas fa-list-ol"></i>
+            <h2>Procedimiento Sancionador</h2>
+          </div>
+
+          <div class="proceso-timeline">
+            <div class="timeline-item">
+              <div class="timeline-number">1</div>
+              <div class="timeline-content">
+                <h4>Detección de la Infracción</h4>
+                <p>Por inspección, declaración o denuncia.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-number">2</div>
+              <div class="timeline-content">
+                <h4>Notificación de Cargos</h4>
+                <p>El empleador recibe notificación escrita de los hechos imputados.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-number">3</div>
+              <div class="timeline-content">
+                <h4>Plazo de Alegaciones</h4>
+                <p>15 días hábiles para presentar descargos y pruebas.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-number">4</div>
+              <div class="timeline-content">
+                <h4>Resolución</h4>
+                <p>INSESO emite resolución motivada en plazo de 30 días.</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-number">5</div>
+              <div class="timeline-content">
+                <h4>Recurso de Apelación</h4>
+                <p>Posibilidad de recurrir en 30 días ante la autoridad competente.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Medidas Cautelares -->
+        <section class="content-section">
+          <div class="section-header">
+            <i class="fas fa-shield-alt"></i>
+            <h2>Medidas Cautelares</h2>
+          </div>
+          <p>
+            En casos de infracciones muy graves, INSESO puede adoptar medidas cautelares mientras
+            se tramita el expediente:
+          </p>
+          <ul class="medidas-list">
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <strong>Suspensión de certificaciones:</strong> No emisión de certificados de no deuda
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <strong>Embargo preventivo:</strong> Retención de cuentas bancarias
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <strong>Cierre temporal:</strong> Suspensión de actividad en casos extremos
+            </li>
+            <li>
+              <i class="fas fa-check-circle"></i>
+              <strong>Inhabilitación:</strong> Para participar en licitaciones públicas
+            </li>
+          </ul>
+        </section>
+
+        <!-- Cómo Evitar Sanciones -->
+        <section class="content-section">
+          <div class="section-header">
+            <i class="fas fa-lightbulb"></i>
+            <h2>Cómo Evitar Sanciones</h2>
+          </div>
+
+          <div class="tips-grid">
+            <div class="tip-card">
+              <div class="tip-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h4>Pague a Tiempo</h4>
+              <p>Cumpla los plazos mensuales de declaración y pago de cotizaciones.</p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h4>Afilie a Todos</h4>
+              <p>Registre a todos sus trabajadores desde el primer día de trabajo.</p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <h4>Declare Correctamente</h4>
+              <p>Verifique que salarios y datos sean exactos en cada declaración.</p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <i class="fas fa-sync-alt"></i>
+              </div>
+              <h4>Actualice Datos</h4>
+              <p>Mantenga actualizada la información de su empresa y trabajadores.</p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <i class="fas fa-handshake"></i>
+              </div>
+              <h4>Colabore</h4>
+              <p>Facilite las inspecciones y proporcione documentación solicitada.</p>
+            </div>
+
+            <div class="tip-card">
+              <div class="tip-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <h4>Consulte Dudas</h4>
+              <p>Ante dudas, contacte a INSESO antes de cometer errores.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+        <!-- Contacto Urgente -->
+        <div class="sidebar-card urgente">
+          <div class="card-icon">
+            <i class="fas fa-phone-volume"></i>
+          </div>
+          <h3>¿Recibió una Notificación?</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-phone"></i> <strong>(+240) 333 092214</strong></p>
+          </div>
+        </div>
+
+        <!-- Enlaces Útiles -->
+        <div class="sidebar-card">
+          <h3><i class="fas fa-link"></i> Enlaces Útiles</h3>
+          <ul class="link-list">
+            <li><a href="/empleadores/afiliacion"><i class="fas fa-chevron-right"></i> Afiliación de Trabajadores</a></li>
+            <li><a href="/empleadores/cotizaciones"><i class="fas fa-chevron-right"></i> Cotizaciones</a></li>
+            <li><a href="/descarga_formularios"><i class="fas fa-chevron-right"></i> Formularios</a></li>
+            <li><a href="/contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nuestros Socios -->
+  <PartnersCarousel socios={socios} />
+</BaseLayout>
+
+<style>
+  /* Page Header */
+  .full-title {
+    background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+    padding: 3rem 0;
+    color: white;
+  }
+
+  .text_blanc {
+    color: white;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+  }
+
+  .breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+  }
+
+  .breadcrumb-item a:hover {
+    color: white;
+  }
+
+  .breadcrumb-item.active {
+    color: white;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  /* Content Sections */
+  .content-section {
+    background: white;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #8c1b12;
+  }
+
+  .section-header i {
+    font-size: 32px;
+    color: #8c1b12;
+  }
+
+  .section-header h2 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .lead {
+    font-size: 18px;
+    font-weight: 500;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  /* Infraction Cards */
+  .infraction-card {
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .infraction-header {
+    padding: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .infraction-header.leve {
+    background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+  }
+
+  .infraction-header.grave {
+    background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+  }
+
+  .infraction-header.muy-grave {
+    background: linear-gradient(135deg, #f44336 0%, #c62828 100%);
+  }
+
+  .infraction-header i {
+    font-size: 28px;
+  }
+
+  .infraction-header h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .infraction-body {
+    padding: 1.5rem;
+    background: white;
+  }
+
+  .infraction-body ul {
+    margin-bottom: 1.5rem;
+  }
+
+  .infraction-body li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .sancion-info {
+    background: #f5f5f5;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #8c1b12;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  /* Mora Table */
+  .mora-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+  }
+
+  .mora-table thead {
+    background: #8c1b12;
+    color: white;
+  }
+
+  .mora-table th,
+  .mora-table td {
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+  }
+
+  .mora-table tbody tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+
+  .mora-table tbody tr:hover {
+    background: #f0f0f0;
+  }
+
+  /* Alert Warning */
+  .alert-warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+  }
+
+  .alert-warning i {
+    color: #ff9800;
+    margin-right: 10px;
+  }
+
+  /* Timeline */
+  .proceso-timeline {
+    position: relative;
+    padding-left: 60px;
+  }
+
+  .proceso-timeline::before {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #e0e0e0;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-number {
+    position: absolute;
+    left: -60px;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    background: #8c1b12;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 0 2px 8px rgba(140, 27, 18, 0.3);
+  }
+
+  .timeline-content h4 {
+    color: #8c1b12;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-content p {
+    color: #666;
+    margin: 0;
+  }
+
+  /* Medidas List */
+  .medidas-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .medidas-list li {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid #8c1b12;
+    border-radius: 4px;
+  }
+
+  .medidas-list i {
+    color: #217346;
+    margin-right: 10px;
+  }
+
+  /* Tips Grid */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tip-card {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  .tip-card:hover {
+    background: white;
+    border-color: #8c1b12;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(140, 27, 18, 0.15);
+  }
+
+  .tip-icon {
+    width: 60px;
+    height: 60px;
+    background: #8c1b12;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 24px;
+  }
+
+  .tip-card h4 {
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
+
+  .tip-card p {
+    color: #666;
+    font-size: 14px;
+    margin: 0;
+  }
+
+  /* Regularización Box */
+  .regularizacion-box {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #66bb6a;
+  }
+
+  .regularizacion-box h4 {
+    color: #2e7d32;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .regularizacion-box ul {
+    margin: 1.5rem 0;
+  }
+
+  .regularizacion-box li {
+    margin-bottom: 0.75rem;
+    color: #1b5e20;
+  }
+
+  .btn-regularizar {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #4caf50;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+
+  .btn-regularizar:hover {
+    background: #388e3c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+    color: white;
+  }
+
+  /* Sidebar */
+  .sidebar-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+  }
+
+  .sidebar-card.urgente {
+    background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+    border: 2px solid #ef5350;
+  }
+
+  .sidebar-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .card-icon {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-icon i {
+    font-size: 48px;
+    color: #f44336;
+  }
+
+  .contact-info {
+    background: white;
+    padding: 1.25rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+  }
+
+  .contact-info p {
+    margin: 0.5rem 0;
+    font-size: 16px;
+  }
+
+  .contact-info i {
+    color: #8c1b12;
+    margin-right: 8px;
+  }
+
+  .small-text {
+    font-size: 13px;
+    color: #666;
+    margin-top: 1rem;
+  }
+
+  .doc-list,
+  .link-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .doc-list li,
+  .link-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .doc-list a,
+  .link-list a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+
+  .doc-list a:hover,
+  .link-list a:hover {
+    background: #f5f5f5;
+    color: #8c1b12;
+    padding-left: 1rem;
+  }
+
+  .doc-list i {
+    color: #e53935;
+  }
+
+  .link-list i {
+    color: #8c1b12;
+    font-size: 12px;
+  }
+
+  /* Responsive */
+  @media (max-width: 991px) {
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .text_blanc {
+      font-size: 32px;
+    }
+
+    .content-section {
+      padding: 1.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+    }
+
+    .proceso-timeline {
+      padding-left: 50px;
+    }
+
+    .timeline-number {
+      left: -50px;
+      width: 35px;
+      height: 35px;
+      font-size: 16px;
+    }
+  }
+</style>
+</BaseLayout>

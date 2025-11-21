@@ -20,6 +20,6 @@ const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
     </a>
   </h5>
   <a href={`/noticia/${slug}`}>
-    <img class="img-fluid" src={imageUrl} alt={noticia.titulo} />
+    <img class="img-fluid" src={imageUrl} alt={noticia.titulo} loading="lazy" />
   </a>
 </div>

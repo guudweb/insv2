@@ -43,35 +43,26 @@ const sidebarImagenBanner = config?.sidebarImagenBanner ? getStrapiImageUrl(conf
 const sidebarCardTitulo = config?.sidebarCardTitulo || '¿QUIEN DEBE AFILIARSE A LA SEGURIDAD SOCIAL?';
 const sidebarCardTexto = config?.sidebarCardTexto || 'La persona que ejecuta una obra o presta servicios a otra en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.';
 
-// Función para formatear fecha al estilo MALABO, DD DE MMMM DE YYYY
-function formatVideoDate(dateString: string | null): string {
-	if (!dateString) return 'MALABO, 26 DE JUNIO DE 2025';
+// Video: Prioriza config, luego noticia principal (con videoArchivo o video), finalmente fallback
+const videoUrl = config?.videoUrl || (noticiaPrincipal ? getNoticiaVideoUrl(noticiaPrincipal) : null) || '/video/Felicitacion del ILMO. Señor Delegado Nacional a Su Excelencia Obiang Nguema Mbasogo..mp4';
+const videoTitulo = config?.videoTitulo || noticiaPrincipal?.titulo || '';
+const videoFecha = config?.videoFecha || 'MALABO, 26 DE JUNIO DE 2025 - 15.00 HORAS';
+const videoDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : '');
 
-	try {
-		const date = new Date(dateString);
-		if (isNaN(date.getTime())) {
-			return 'MALABO, 26 DE JUNIO DE 2025';
-		}
-
-		const meses = [
-			'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
-			'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'
-		];
-
-		const dia = date.getDate();
-		const mes = meses[date.getMonth()];
-		const año = date.getFullYear();
-
-		return `MALABO, ${dia} DE ${mes} DE ${año}`;
-	} catch (error) {
-		return 'MALABO, 26 DE JUNIO DE 2025';
-	}
-}
-
-// Video: Prioriza noticia principal, luego config, finalmente fallback
-const videoUrl = (noticiaPrincipal ? getNoticiaVideoUrl(noticiaPrincipal) : null) || config?.videoUrl || '/video/Felicitacion del ILMO. Señor Delegado Nacional a Su Excelencia Obiang Nguema Mbasogo..mp4';
-const videoFecha = (noticiaPrincipal?.fechaPublicacion ? formatVideoDate(noticiaPrincipal.fechaPublicacion) : null) || config?.videoFecha || 'MALABO, 26 DE JUNIO DE 2025';
-const videoDescripcion = (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : null) || config?.videoDescripcion || '';
+// DEBUG: Mostrar info en consola del servidor
+console.log('=== DEBUG VIDEO ===');
+console.log('noticiaPrincipal:', noticiaPrincipal ? {
+	id: noticiaPrincipal.id,
+	titulo: noticiaPrincipal.titulo,
+	tipoMedia: noticiaPrincipal.tipoMedia,
+	orden: noticiaPrincipal.orden,
+	posicion: noticiaPrincipal.posicion,
+	video: noticiaPrincipal.video,
+	videoArchivo: noticiaPrincipal.videoArchivo ? 'SI' : 'NO',
+	videoArchivoUrl: noticiaPrincipal.videoArchivo?.url
+} : 'null');
+console.log('videoUrl calculado:', videoUrl);
+console.log('===================');
 ---
 
 <BaseLayout title="INSESO - Inicio" currentPath="/">
@@ -91,7 +82,7 @@ const videoDescripcion = (noticiaPrincipal?.contenido ? richTextToPlainText(noti
 				<div class="col-md-8 blog-entries">
 					<div class="card mb-4">
 						<br>
-						<img class="card-img-top" src={afiliacionImagen} alt="Card image Blog" />
+						<img class="card-img-top" src={afiliacionImagen} alt="Card image Blog" loading="lazy" />
 						<div class="card-body">
 							<h2 class="card-title">{afiliacionTitulo}</h2>
 							<p class="card-text">{afiliacionTexto}</p>
@@ -103,7 +94,7 @@ const videoDescripcion = (noticiaPrincipal?.contenido ? richTextToPlainText(noti
 				<div class="col-md-4 blog-right-side">
 					<div class="card mb-4">
 						<div class="card-img">
-							<img class="img-fluid" src={sidebarImagenBanner} alt="" />
+							<img class="img-fluid" src={sidebarImagenBanner} alt="" loading="lazy" />
 						</div>
 					</div>
 					<div class="card my-4">

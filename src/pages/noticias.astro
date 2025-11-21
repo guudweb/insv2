@@ -85,7 +85,7 @@ function truncateText(text: string, maxLength: number) {
               return (
                 <article class="noticia-card">
                   <div class="noticia-image">
-                    <img src={imagen} alt={noticia.titulo} />
+                    <img src={imagen} alt={noticia.titulo} loading="lazy" />
                     {noticia.tipoMedia === 'video' && (
                       <div class="video-overlay">
                         <div class="play-button"></div>
@@ -177,7 +177,7 @@ function truncateText(text: string, maxLength: number) {
                     <li class="recent-news-item">
                       <a href={`/noticias/${noticia.slug}`} class="recent-news-link">
                         <div class="recent-news-image">
-                          <img src={imagen} alt={noticia.titulo} />
+                          <img src={imagen} alt={noticia.titulo} loading="lazy" />
                         </div>
                         <div class="recent-news-info">
                           <h4>{noticia.titulo}</h4>
