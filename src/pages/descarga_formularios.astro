@@ -5,8 +5,8 @@ import { getCategoriasFormularios, getStrapiImageUrl } from '../lib/strapi';
 // Obtener categorías y formularios desde Strapi
 const categoriasStrapi = await getCategoriasFormularios();
 
-// Fallback a datos estáticos si no hay datos en Strapi
-const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
+// Mapear datos de Strapi
+const categorias = categoriasStrapi.map(cat => ({
 	titulo: cat.titulo,
 	icono: cat.icono,
 	color: cat.color,
@@ -16,205 +16,10 @@ const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
 		descripcion: form.descripcion,
 		formato: form.formato,
 		tamano: form.tamano || 'N/A',
-		codigo: form.codigo,
 		url: form.archivo ? getStrapiImageUrl(form.archivo.url) : '#',
 		imagen: form.thumbnail ? getStrapiImageUrl(form.thumbnail.url) : '/images/logo_01.png'
 	}))
-})) : [
-	{
-		titulo: 'Afiliación',
-		icono: 'fas fa-user-plus',
-		color: '#8c1b12',
-		descripcion: 'Formularios para afiliación y actualización de datos',
-		formularios: [
-			{
-				nombre: 'Solicitud de Afiliación - Trabajador',
-				descripcion: 'Formulario para solicitar la afiliación de trabajadores al sistema de seguridad social',
-				formato: 'PDF',
-				tamano: '250 KB',
-				codigo: 'AF-001',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Afiliación - Empleador',
-				descripcion: 'Formulario para registro de empleadores en el sistema INSESO',
-				formato: 'PDF',
-				tamano: '320 KB',
-				codigo: 'AF-002',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Actualización de Datos del Afiliado',
-				descripcion: 'Actualice su información personal y de contacto',
-				formato: 'PDF',
-				tamano: '180 KB',
-				codigo: 'AF-003',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			}
-		]
-	},
-	{
-		titulo: 'Prestaciones Sociales',
-		icono: 'fas fa-hands-helping',
-		color: '#217346',
-		descripcion: 'Solicitudes de prestaciones y pensiones',
-		formularios: [
-			{
-				nombre: 'Solicitud de Prestación por Enfermedad',
-				descripcion: 'Solicite ayuda económica por enfermedad o incapacidad temporal',
-				formato: 'PDF',
-				tamano: '290 KB',
-				codigo: 'PS-001',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Prestación por Maternidad',
-				descripcion: 'Formulario para solicitar prestación por maternidad',
-				formato: 'PDF',
-				tamano: '275 KB',
-				codigo: 'PS-002',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Pensión de Jubilación',
-				descripcion: 'Inicie su trámite de pensión por jubilación',
-				formato: 'PDF',
-				tamano: '340 KB',
-				codigo: 'PS-003',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Pensión de Invalidez',
-				descripcion: 'Solicite pensión por invalidez permanente',
-				formato: 'PDF',
-				tamano: '310 KB',
-				codigo: 'PS-004',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Pensión de Supervivencia',
-				descripcion: 'Formulario para beneficiarios de pensión de supervivencia',
-				formato: 'PDF',
-				tamano: '295 KB',
-				codigo: 'PS-005',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			}
-		]
-	},
-	{
-		titulo: 'Declaraciones y Contribuciones',
-		icono: 'fas fa-file-invoice-dollar',
-		color: '#0066cc',
-		descripcion: 'Declaraciones y pagos de cotizaciones',
-		formularios: [
-			{
-				nombre: 'Declaración Mensual de Cotizaciones',
-				descripcion: 'Plantilla Excel para declaración mensual de cotizaciones',
-				formato: 'Excel',
-				tamano: '450 KB',
-				codigo: 'DC-001',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Fraccionamiento de Pago',
-				descripcion: 'Solicite facilidades de pago para deudas pendientes',
-				formato: 'PDF',
-				tamano: '220 KB',
-				codigo: 'DC-002',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Declaración Rectificativa',
-				descripcion: 'Corrija errores en declaraciones anteriores',
-				formato: 'PDF',
-				tamano: '200 KB',
-				codigo: 'DC-003',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			}
-		]
-	},
-	{
-		titulo: 'Certificados y Constancias',
-		icono: 'fas fa-certificate',
-		color: '#d97706',
-		descripcion: 'Solicitudes de certificados y constancias',
-		formularios: [
-			{
-				nombre: 'Solicitud de Certificado de Afiliación',
-				descripcion: 'Obtenga su certificado de afiliación vigente',
-				formato: 'PDF',
-				tamano: '150 KB',
-				codigo: 'CC-001',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Certificado de Vida Laboral',
-				descripcion: 'Certificado con su historial de cotizaciones',
-				formato: 'PDF',
-				tamano: '170 KB',
-				codigo: 'CC-002',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Constancia de No Deuda',
-				descripcion: 'Documento que certifica que no tiene deudas pendientes',
-				formato: 'PDF',
-				tamano: '160 KB',
-				codigo: 'CC-003',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			}
-		]
-	},
-	{
-		titulo: 'Otros Trámites',
-		icono: 'fas fa-folder-open',
-		color: '#7c3aed',
-		descripcion: 'Formularios adicionales y servicios generales',
-		formularios: [
-			{
-				nombre: 'Formulario de Reclamaciones',
-				descripcion: 'Presente quejas o reclamaciones sobre servicios',
-				formato: 'PDF',
-				tamano: '190 KB',
-				codigo: 'OT-001',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Solicitud de Duplicado de Carnet',
-				descripcion: 'Solicite un duplicado de su carnet de afiliado',
-				formato: 'PDF',
-				tamano: '140 KB',
-				codigo: 'OT-002',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			},
-			{
-				nombre: 'Autorización de Representante',
-				descripcion: 'Autorice a un tercero para realizar trámites en su nombre',
-				formato: 'PDF',
-				tamano: '130 KB',
-				codigo: 'OT-003',
-				url: '#',
-				imagen: '/images/logo_01.png'
-			}
-		]
-	}
-];
+}));
 ---
 
 <BaseLayout title="Descarga de Formularios - INSESO" description="Descarga los formularios necesarios para tus trámites con INSESO" currentPath="/descarga_formularios">
@@ -311,7 +116,6 @@ const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
 									</div>
 								</div>
 								<div class="card-content">
-									<div class="card-codigo">{form.codigo}</div>
 									<h3>{form.nombre}</h3>
 									<p>{form.descripcion}</p>
 									<div class="card-footer">
@@ -528,15 +332,16 @@ const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 2rem;
+		padding: 0;
 		overflow: hidden;
 	}
 
 	.card-thumbnail img {
-		max-width: 120px;
-		max-height: 120px;
-		object-fit: contain;
-		opacity: 0.85;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		opacity: 0.9;
 		transition: all 0.3s ease;
 	}
 
@@ -579,19 +384,6 @@ const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
 		display: flex;
 		flex-direction: column;
 		flex: 1;
-	}
-
-	.card-codigo {
-		display: inline-block;
-		font-family: 'Courier New', monospace;
-		font-weight: 700;
-		color: #8c1b12;
-		font-size: 12px;
-		background: rgba(140, 27, 18, 0.08);
-		padding: 4px 8px;
-		border-radius: 4px;
-		margin-bottom: 0.8rem;
-		width: fit-content;
 	}
 
 	.card-content h3 {
@@ -999,13 +791,11 @@ const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
 
 			cards.forEach((card) => {
 				const nombre = card.querySelector('h3')?.textContent || '';
-				const codigo = card.querySelector('.card-codigo')?.textContent || '';
 				const formato = card.querySelector('.badge')?.textContent?.trim() || '';
 				const cardClone = card.cloneNode(true) as HTMLElement;
 
 				allFormularios.push({
 					nombre,
-					codigo,
 					formato,
 					categoria: categoryTitle,
 					element: cardClone
@@ -1030,7 +820,6 @@ const categorias = categoriasStrapi.length > 0 ? categoriasStrapi.map(cat => ({
 			let filtered = allFormularios.filter(form => {
 				const matchesQuery = query === '' ||
 					form.nombre.toLowerCase().includes(query) ||
-					form.codigo.toLowerCase().includes(query) ||
 					form.categoria.toLowerCase().includes(query);
 
 				const matchesFilter = currentFilter === 'all' || form.formato === currentFilter;

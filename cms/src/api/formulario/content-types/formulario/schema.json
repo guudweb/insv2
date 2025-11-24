@@ -14,14 +14,8 @@
   "attributes": {
     "nombre": {
       "type": "string",
-      "required": true,
-      "maxLength": 200
-    },
-    "codigo": {
-      "type": "string",
-      "required": true,
-      "unique": true,
-      "regex": "^[A-Z]{2}-[0-9]{3}$"
+      "maxLength": 200,
+      "required": true
     },
     "descripcion": {
       "type": "text",
@@ -29,9 +23,13 @@
     },
     "formato": {
       "type": "enumeration",
-      "enum": ["PDF", "Excel", "Word"],
+      "required": true,
       "default": "PDF",
-      "required": true
+      "enum": [
+        "PDF",
+        "Excel",
+        "Word"
+      ]
     },
     "tamano": {
       "type": "string",
@@ -41,13 +39,17 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["files"]
+      "allowedTypes": [
+        "files"
+      ]
     },
     "thumbnail": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "categoria_formulario": {
       "type": "relation",

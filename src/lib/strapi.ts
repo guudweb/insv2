@@ -46,7 +46,7 @@ interface StrapiImage {
   height: number;
 }
 
-// Interfaz para Categorias
+// Interfaz para Categorias de Noticias
 export interface Categoria {
   id: number;
   documentId: string;
@@ -59,6 +59,13 @@ export interface Categoria {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
+}
+
+// Interfaz para Categorías de Contacto (estáticas)
+export interface CategoriaContacto {
+  value: string;
+  label: string;
+  email: string;
 }
 
 // Interfaz para Noticias (mejorada)
@@ -860,4 +867,93 @@ export async function incrementarDescargasFormulario(_documentId: string): Promi
   } catch (error) {
     // Error silencioso - no afecta la funcionalidad principal
   }
+}
+
+// ==================== CATEGORÍAS ESTÁTICAS ====================
+
+// Obtener categorías de contacto (estáticas)
+export function getCategoriasContacto(): CategoriaContacto[] {
+  return [
+    {
+      value: 'consulta',
+      label: 'Consulta General',
+      email: 'consultas@inseso.org'
+    },
+    {
+      value: 'afiliacion',
+      label: 'Afiliación',
+      email: 'afiliacion@inseso.org'
+    },
+    {
+      value: 'prestaciones',
+      label: 'Prestaciones Sociales',
+      email: 'prestaciones@inseso.org'
+    },
+    {
+      value: 'reclamo',
+      label: 'Reclamo',
+      email: 'reclamos@inseso.org'
+    },
+    {
+      value: 'seguimiento',
+      label: 'Seguimiento de Trámite',
+      email: 'seguimiento@inseso.org'
+    },
+    {
+      value: 'sugerencia',
+      label: 'Sugerencia',
+      email: 'sugerencias@inseso.org'
+    },
+    {
+      value: 'otro',
+      label: 'Otro',
+      email: 'support@omnitechsl.com'
+    }
+  ];
+}
+
+// Obtener categorías de noticias (estáticas)
+export function getCategoriasNoticiasEstaticas(): Omit<Categoria, 'id' | 'documentId' | 'createdAt' | 'updatedAt' | 'publishedAt'>[] {
+  return [
+    {
+      nombre: 'Institucional',
+      slug: 'institucional',
+      descripcion: 'Noticias institucionales de INSESO',
+      color: '#8c1b12',
+      icono: 'fa-building',
+      activo: true
+    },
+    {
+      nombre: 'Eventos',
+      slug: 'eventos',
+      descripcion: 'Eventos y actividades de INSESO',
+      color: '#1b5e8c',
+      icono: 'fa-calendar',
+      activo: true
+    },
+    {
+      nombre: 'Prestaciones',
+      slug: 'prestaciones',
+      descripcion: 'Información sobre prestaciones sociales',
+      color: '#2e8c1b',
+      icono: 'fa-hand-holding-heart',
+      activo: true
+    },
+    {
+      nombre: 'Comunicados',
+      slug: 'comunicados',
+      descripcion: 'Comunicados oficiales',
+      color: '#8c6d1b',
+      icono: 'fa-bullhorn',
+      activo: true
+    },
+    {
+      nombre: 'Salud',
+      slug: 'salud',
+      descripcion: 'Noticias relacionadas con salud',
+      color: '#8c1b6d',
+      icono: 'fa-heartbeat',
+      activo: true
+    }
+  ];
 }

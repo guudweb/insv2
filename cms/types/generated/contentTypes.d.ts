@@ -578,9 +578,6 @@ export interface ApiFormularioFormulario extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::categoria-formulario.categoria-formulario'
     >;
-    codigo: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.Unique;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

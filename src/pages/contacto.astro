@@ -2,8 +2,12 @@
 import ContentWithSidebarLayout from '../layouts/ContentWithSidebarLayout.astro';
 import InfoCard from '../components/InfoCard.astro';
 import { contactInfo } from '../config/contact';
+import { getCategoriasContacto } from '../lib/strapi';
 
 export const prerender = false;
+
+// Obtener categorías de contacto
+const categoriasContacto = getCategoriasContacto();
 ---
 
 <ContentWithSidebarLayout
@@ -81,13 +85,9 @@ export const prerender = false;
                   data-validation-required-message="Por favor seleccione una categoría."
                 >
                   <option value="">Seleccione una opción...</option>
-                  <option value="consulta">Consulta General</option>
-                  <option value="afiliacion">Afiliación</option>
-                  <option value="prestaciones">Prestaciones Sociales</option>
-                  <option value="reclamo">Reclamo</option>
-                  <option value="seguimiento">Seguimiento de Trámite</option>
-                  <option value="sugerencia">Sugerencia</option>
-                  <option value="otro">Otro</option>
+                  {categoriasContacto.map(cat => (
+                    <option value={cat.value}>{cat.label}</option>
+                  ))}
                 </select>
               </div>
             </div>

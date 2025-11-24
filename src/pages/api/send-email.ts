@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import nodemailer from 'nodemailer';
+import { getCategoriasContacto } from '../../lib/strapi';
 
 export const prerender = false;
 
@@ -42,41 +43,12 @@ export const POST: APIRoute = async ({ request }) => {
       },
     });
 
-    // Mapear categorías a texto legible y emails específicos
-    const categoryMap: { [key: string]: { text: string; email: string } } = {
-      consulta: {
-        text: 'Consulta General',
-        email: 'consultas@inseso.org'
-      },
-      afiliacion: {
-        text: 'Afiliación',
-        email: 'afiliacion@inseso.org'
-      },
-      prestaciones: {
-        text: 'Prestaciones Sociales',
-        email: 'prestaciones@inseso.org'
-      },
-      reclamo: {
-        text: 'Reclamo',
-        email: 'reclamos@inseso.org'
-      },
-      seguimiento: {
-        text: 'Seguimiento de Trámite',
-        email: 'seguimiento@inseso.org'
-      },
-      sugerencia: {
-        text: 'Sugerencia',
-        email: 'sugerencias@inseso.org'
-      },
-      otro: {
-        text: 'Otro',
-        email: 'support@omnitechsl.com' //info@inseso.org
-      }
-    };
+    // Obtener categorías desde la función centralizada
+    const categorias = getCategoriasContacto();
+    const categoryData = categorias.find(cat => cat.value === category);
 
-    const categoryData = categoryMap[category] || { text: category, email: 'info@inseso.org' };
-    const categoryText = categoryData.text;
-    const recipientEmail = categoryData.email;
+    const categoryText = categoryData?.label || category;
+    const recipientEmail = categoryData?.email || 'info@inseso.org';
 
     // Configurar email con destinatario específico por categoría y copia a info@
     const mailOptions = {
