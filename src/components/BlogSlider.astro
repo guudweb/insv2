@@ -73,49 +73,72 @@ const items = strapiSlides.length > 0
 </div>
 
 <style>
-	.pic-link {
-		display: block;
-		text-decoration: none;
-		color: inherit;
-		cursor: pointer;
+	/* Hacer toda la card clickeable */
+	.post-slide .pic-link {
+		display: block !important;
+		text-decoration: none !important;
+		color: inherit !important;
+		cursor: pointer !important;
+		position: relative;
+		z-index: 10;
 		transition: transform 0.3s ease;
 	}
 
-	.pic-link:hover {
+	.post-slide .pic-link:hover {
 		transform: translateY(-5px);
 	}
 
-	.pic-link:hover .pic img {
-		transform: scale(1.1);
+	.post-slide .pic-link:hover .pic img {
+		transform: scale(1.1) !important;
 	}
 
-	.pic {
+	/* Asegurar que el pseudo-elemento ::after no bloquee clics */
+	.post-slide .pic {
 		overflow: hidden;
 		transition: all 0.3s ease;
+		pointer-events: auto;
 	}
 
-	.pic img {
+	.post-slide .pic::after {
+		pointer-events: none !important;
+	}
+
+	.post-slide .pic img {
 		transition: transform 0.3s ease;
+		pointer-events: none;
 	}
 
-	.category-title {
-		color: #ffffff;
+	/* Texto blanco en títulos */
+	.post-slide .category-title {
+		color: #ffffff !important;
 		text-decoration: none;
 		cursor: pointer;
+		pointer-events: none;
 	}
 
-	.post-category {
-		color: #ffffff;
+	.post-slide .post-category {
+		color: #ffffff !important;
+		pointer-events: none;
 	}
 
-	.post-category li {
-		color: #ffffff;
+	.post-slide .post-category li {
+		color: #ffffff !important;
+		pointer-events: none;
 	}
 
-	.post-category a,
-	.post-category span {
-		pointer-events: auto;
-		color: #ffffff;
+	.post-slide .post-category a,
+	.post-slide .post-category span {
+		color: #ffffff !important;
+		pointer-events: none;
+	}
+
+	/* Asegurar que el enlace sea el único elemento interactivo */
+	.post-slide a.pic-link * {
+		pointer-events: none;
+	}
+
+	.post-slide a.pic-link {
+		pointer-events: auto !important;
 	}
 </style>
 
