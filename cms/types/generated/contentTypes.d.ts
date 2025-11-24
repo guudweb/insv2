@@ -536,6 +536,7 @@ export interface ApiConfiguracionInicioConfiguracionInicio
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    imagenPrincipal: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -548,11 +549,14 @@ export interface ApiConfiguracionInicioConfiguracionInicio
     sidebarImagenBanner: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
+    tipoMediaPrincipal: Schema.Attribute.Enumeration<['video', 'imagen']> &
+      Schema.Attribute.DefaultTo<'video'>;
     tituloHero: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'JUNTOS EN CADA ETAPA DE TU VIDA'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    videoArchivoPrincipal: Schema.Attribute.Media<'videos'>;
     videoDescripcion: Schema.Attribute.Text;
     videoFecha: Schema.Attribute.String;
     videoTitulo: Schema.Attribute.String;

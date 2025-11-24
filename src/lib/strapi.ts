@@ -139,6 +139,9 @@ export interface ConfiguracionInicio {
   videoTitulo: string | null;
   videoFecha: string | null;
   videoDescripcion: string | null;
+  tipoMediaPrincipal: 'video' | 'imagen' | null;
+  videoArchivoPrincipal: StrapiImage | null;
+  imagenPrincipal: StrapiImage | null;
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
@@ -609,7 +612,7 @@ export async function getNoticiasByPosicion(posicion: string, limit?: number): P
 export async function getConfiguracionInicio(): Promise<ConfiguracionInicio | null> {
   const query = qs.stringify(
     {
-      populate: ['afiliacionImagen', 'sidebarImagenBanner'],
+      populate: ['afiliacionImagen', 'sidebarImagenBanner', 'videoArchivoPrincipal', 'imagenPrincipal'],
     },
     {
       encodeValuesOnly: true,

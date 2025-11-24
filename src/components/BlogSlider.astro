@@ -55,12 +55,14 @@ const items = strapiSlides.length > 0
 				<div id="blog-slider" class="owl-carousel">
 					{items.map(item => (
 						<div class="post-slide">
-							<div class="pic">
-								<img src={item.image} alt={item.title} loading="lazy">
-								<ul class="post-category">
-									<li><a href={item.link}>{item.title}</a></li>
-								</ul>
-							</div>
+							<a href={item.link} class="pic-link">
+								<div class="pic">
+									<img src={item.image} alt={item.title} loading="lazy">
+									<ul class="post-category">
+										<li><span class="category-title">{item.title}</span></li>
+									</ul>
+								</div>
+							</a>
 						</div>
 					))}
 				</div>
@@ -69,6 +71,53 @@ const items = strapiSlides.length > 0
 		<hr>
 	</div>
 </div>
+
+<style>
+	.pic-link {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		cursor: pointer;
+		transition: transform 0.3s ease;
+	}
+
+	.pic-link:hover {
+		transform: translateY(-5px);
+	}
+
+	.pic-link:hover .pic img {
+		transform: scale(1.1);
+	}
+
+	.pic {
+		overflow: hidden;
+		transition: all 0.3s ease;
+	}
+
+	.pic img {
+		transition: transform 0.3s ease;
+	}
+
+	.category-title {
+		color: #ffffff;
+		text-decoration: none;
+		cursor: pointer;
+	}
+
+	.post-category {
+		color: #ffffff;
+	}
+
+	.post-category li {
+		color: #ffffff;
+	}
+
+	.post-category a,
+	.post-category span {
+		pointer-events: auto;
+		color: #ffffff;
+	}
+</style>
 
 <script>
 	// Se inicializará Owl Carousel desde los scripts del layout
