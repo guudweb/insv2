@@ -1,11 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import SwiperHero from '../components/SwiperHero.astro';
-import BlogSlider from '../components/BlogSlider.astro';
-import PartnersCarousel from '../components/PartnersCarousel.astro';
-import NovedadesSection from '../components/NovedadesSection.astro';
-import NewsLateralCard from '../components/NewsLateralCard.astro';
-import UltimaHoraSection from '../components/UltimaHoraSection.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SwiperHero from '../../components/SwiperHero.astro';
+import BlogSlider from '../../components/BlogSlider.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import NovedadesSection from '../../components/NovedadesSection.astro';
+import NewsLateralCard from '../../components/NewsLateralCard.astro';
+import UltimaHoraSection from '../../components/UltimaHoraSection.astro';
 
 import {
   getConfiguracionInicio,
@@ -17,25 +17,32 @@ import {
   getStrapiImageUrl,
   richTextToPlainText,
   getNoticiaVideoUrl
-} from '../lib/strapi';
+} from '../../lib/strapi';
 
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { languages, useTranslations, type Locale } from '../../i18n/utils';
 
 export const prerender = false;
 
-// Detectar idioma actual
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+// Generar rutas estáticas para cada idioma
+export function getStaticPaths() {
+  return Object.keys(languages)
+    .filter(lang => lang !== 'es') // Excluir español (default)
+    .map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = useTranslations(locale);
 
 // Obtener datos de Strapi con el locale correcto
-const config = await getConfiguracionInicio(lang);
+const config = await getConfiguracionInicio(locale);
 const heroSlides = await getHeroSlides();
 const slidesAfiliacion = await getSlidesAfiliacion();
 const socios = await getSocios();
-const noticiaPrincipal = (await getNoticiasByPosicion('principal', 1, lang))[0];
-const noticiasLaterales = await getNoticiasByPosicion('lateral', 2, lang);
-const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 6, lang);
-const prestaciones = await getPrestaciones(lang);
+const noticiaPrincipal = (await getNoticiasByPosicion('principal', 1, locale))[0];
+const noticiasLaterales = await getNoticiasByPosicion('lateral', 2, locale);
+const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 6, locale);
+const prestaciones = await getPrestaciones(locale);
 const prestacionesDestacadas = prestaciones.filter(p => p.destacado).slice(0, 4);
 
 // Fallbacks por si no hay datos en Strapi (usar traducciones)
@@ -59,7 +66,7 @@ const mediaFecha = config?.videoFecha || 'MALABO, 26 DE JUNIO DE 2025 - 15.00 HO
 const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : '');
 ---
 
-<BaseLayout title="INSESO - Inicio" currentPath="/">
+<BaseLayout title={`INSESO - ${t('nav.home')}`} currentPath={`/${lang}`}>
 	<SwiperHero slides={heroSlides} />
 
 	<div class="container">
@@ -80,7 +87,7 @@ const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 						<div class="card-body">
 							<h2 class="card-title">{afiliacionTitulo}</h2>
 							<p class="card-text">{afiliacionTexto}</p>
-							<a href={afiliacionEnlace} class="btn btn-primary">Seguir leyendo &rarr;</a>
+							<a href={afiliacionEnlace} class="btn btn-primary">{t('common.readMore')} &rarr;</a>
 						</div>
 					</div>
 				</div>

@@ -1,0 +1,265 @@
+---
+import { languages, type Locale, getLocalizedPath, removeLocalePrefix, routeTranslations } from '../i18n/utils';
+
+interface Props {
+  currentLang: Locale;
+  currentPath?: string;
+}
+
+const { currentLang, currentPath = '/' } = Astro.props;
+
+// Remover prefijo de idioma si existe para obtener la ruta base
+const basePath = removeLocalePrefix(currentPath);
+
+// Generar URLs para cada idioma con rutas traducidas
+const langLinks = Object.entries(languages).map(([code, name]) => {
+  const targetLang = code as Locale;
+
+  // Buscar si esta ruta tiene traducción
+  let translatedPath = basePath;
+
+  // Intentar encontrar la clave de la ruta actual en el idioma actual
+  const currentRoutes = routeTranslations[currentLang];
+  const targetRoutes = routeTranslations[targetLang];
+
+  // Buscar la ruta base en las traducciones del idioma actual
+  const routeKey = Object.keys(currentRoutes).find(
+    key => currentRoutes[key] === basePath
+  );
+
+  // Si encontramos la clave, obtener su traducción en el idioma objetivo
+  if (routeKey && targetRoutes[routeKey]) {
+    translatedPath = targetRoutes[routeKey];
+  }
+
+  return {
+    code: targetLang,
+    name,
+    url: getLocalizedPath(translatedPath, targetLang),
+    active: currentLang === code
+  };
+});
+
+// Banderas emoji por idioma
+const flags: Record<Locale, string> = {
+  es: '🇪🇸',
+  fr: '🇫🇷',
+  en: '🇬🇧',
+  pt: '🇵🇹'
+};
+---
+
+<div class="language-switcher dropdown">
+  <button
+    class="btn btn-language dropdown-toggle"
+    type="button"
+    id="langDropdown"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    title="Cambiar idioma / Change language"
+    aria-label="Selector de idioma"
+  >
+    <i class="fas fa-globe me-1"></i>
+    <span class="lang-current">
+      <span class="flag-emoji">{flags[currentLang]}</span>
+      <span class="lang-code">{currentLang.toUpperCase()}</span>
+    </span>
+    <i class="fas fa-chevron-down ms-1 dropdown-icon"></i>
+  </button>
+
+  <ul class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="langDropdown">
+    {langLinks.map(lang => (
+      <li>
+        <a
+          class={`dropdown-item d-flex align-items-center ${lang.active ? 'active' : ''}`}
+          href={lang.url}
+          hreflang={lang.code}
+        >
+          <span class="flag-emoji me-2">{flags[lang.code]}</span>
+          <span class="lang-name flex-grow-1">{lang.name}</span>
+          {lang.active && <i class="fas fa-check text-white"></i>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+    display: inline-block;
+  }
+
+  .btn-language {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.875rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .btn-language:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  .btn-language:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(140, 27, 18, 0.3);
+  }
+
+  .btn-language:active {
+    transform: translateY(0);
+  }
+
+  .lang-current {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .flag-emoji {
+    font-size: 1.15rem;
+    line-height: 1;
+  }
+
+  .lang-code {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .dropdown-icon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+
+  .btn-language[aria-expanded="true"] .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu {
+    min-width: 200px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeInDown 0.3s ease;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .dropdown-item {
+    padding: 0.625rem 1rem;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #8c1b12;
+    border-left-color: #8c1b12;
+    padding-left: 1.25rem;
+  }
+
+  .dropdown-item.active {
+    background: linear-gradient(135deg, #8c1b12 0%, #7a1710 100%);
+    color: #fff;
+    font-weight: 600;
+    border-left-color: #fff;
+  }
+
+  .dropdown-item.active:hover {
+    background: linear-gradient(135deg, #7a1710 0%, #6a130e 100%);
+  }
+
+  .lang-name {
+    font-size: 0.9rem;
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 991px) {
+    .btn-language {
+      padding: 0.45rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+
+    .flag-emoji {
+      font-size: 1rem;
+    }
+
+    .dropdown-menu {
+      min-width: 180px;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .language-switcher {
+      width: 100%;
+      margin: 0.75rem 0;
+    }
+
+    .btn-language {
+      width: 100%;
+      justify-content: center;
+      padding: 0.625rem 1rem;
+      font-size: 0.875rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .dropdown-menu {
+      width: 100%;
+      min-width: auto;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .dropdown-item {
+      padding: 0.75rem 1rem;
+      font-size: 0.9375rem;
+    }
+
+    .flag-emoji {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* Responsive - Extra Small Mobile */
+  @media (max-width: 480px) {
+    .btn-language {
+      padding: 0.5rem 0.875rem;
+    }
+
+    .lang-code {
+      display: none;
+    }
+
+    .flag-emoji {
+      font-size: 1.35rem;
+    }
+  }
+</style>

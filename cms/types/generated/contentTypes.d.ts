@@ -526,41 +526,120 @@ export interface ApiConfiguracionInicioConfiguracionInicio
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    afiliacionEnlace: Schema.Attribute.String;
+    afiliacionEnlace: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     afiliacionImagen: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
-    >;
-    afiliacionTexto: Schema.Attribute.Text;
-    afiliacionTitulo: Schema.Attribute.String;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    afiliacionTexto: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    afiliacionTitulo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    imagenPrincipal: Schema.Attribute.Media<'images'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    imagenPrincipal: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::configuracion-inicio.configuracion-inicio'
-    > &
-      Schema.Attribute.Private;
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    sidebarCardTexto: Schema.Attribute.Text;
-    sidebarCardTitulo: Schema.Attribute.String;
+    sidebarCardTexto: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sidebarCardTitulo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     sidebarImagenBanner: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
-    >;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     tipoMediaPrincipal: Schema.Attribute.Enumeration<['video', 'imagen']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
       Schema.Attribute.DefaultTo<'video'>;
     tituloHero: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Schema.Attribute.DefaultTo<'JUNTOS EN CADA ETAPA DE TU VIDA'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    videoArchivoPrincipal: Schema.Attribute.Media<'videos'>;
-    videoDescripcion: Schema.Attribute.Text;
-    videoFecha: Schema.Attribute.String;
-    videoTitulo: Schema.Attribute.String;
-    videoUrl: Schema.Attribute.String;
+    videoArchivoPrincipal: Schema.Attribute.Media<'videos'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    videoDescripcion: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    videoFecha: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    videoTitulo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    videoUrl: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 
@@ -575,38 +654,106 @@ export interface ApiFormularioFormulario extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    archivo: Schema.Attribute.Media<'files'>;
+    activo: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<true>;
+    archivo: Schema.Attribute.Media<'files'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     categoria_formulario: Schema.Attribute.Relation<
       'manyToOne',
       'api::categoria-formulario.categoria-formulario'
-    >;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    descargas: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
-    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    descargas: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
+    descripcion: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     formato: Schema.Attribute.Enumeration<['PDF', 'Excel', 'Word']> &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
       Schema.Attribute.DefaultTo<'PDF'>;
-    instrucciones: Schema.Attribute.RichText;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    instrucciones: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::formulario.formulario'
-    > &
-      Schema.Attribute.Private;
+    >;
     nombre: Schema.Attribute.String &
       Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
       Schema.Attribute.SetMinMaxLength<{
         maxLength: 200;
       }>;
-    orden: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    orden: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
     publishedAt: Schema.Attribute.DateTime;
-    requisitos: Schema.Attribute.RichText;
-    tamano: Schema.Attribute.String;
-    thumbnail: Schema.Attribute.Media<'images'>;
+    requisitos: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    tamano: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    thumbnail: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -659,43 +806,120 @@ export interface ApiNoticiaNoticia extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    activo: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<true>;
     categoria: Schema.Attribute.Relation<
       'manyToOne',
       'api::categoria.categoria'
-    >;
-    contenido: Schema.Attribute.RichText;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    contenido: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    destacado: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    fechaPublicacion: Schema.Attribute.Date;
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    destacado: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    fechaPublicacion: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::noticia.noticia'
-    > &
-      Schema.Attribute.Private;
-    orden: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    >;
+    orden: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<0>;
     posicion: Schema.Attribute.Enumeration<
       ['principal', 'lateral', 'ultima-hora', 'novedad']
     > &
-      Schema.Attribute.Required;
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    resumen: Schema.Attribute.Text;
-    slug: Schema.Attribute.UID<'titulo'>;
+    resumen: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'titulo'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     tipoMedia: Schema.Attribute.Enumeration<['imagen', 'video']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
       Schema.Attribute.DefaultTo<'imagen'>;
-    titulo: Schema.Attribute.String;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    video: Schema.Attribute.String;
+    video: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     videoArchivo: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
-    >;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
   };
 }
 
@@ -709,29 +933,85 @@ export interface ApiPrestacionPrestacion extends Struct.CollectionTypeSchema {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    activo: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    descripcion: Schema.Attribute.Blocks;
-    destacado: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    descripcion: Schema.Attribute.Blocks &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    destacado: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
+    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     imagenDetalle: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
-    >;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::prestacion.prestacion'
-    > &
-      Schema.Attribute.Private;
-    orden: Schema.Attribute.Integer;
+    >;
+    orden: Schema.Attribute.Integer &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
-    requisitos: Schema.Attribute.Text;
-    resumen: Schema.Attribute.Text;
-    slug: Schema.Attribute.UID<'titulo'>;
-    titulo: Schema.Attribute.String;
+    requisitos: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    resumen: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Schema.Attribute.UID<'titulo'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

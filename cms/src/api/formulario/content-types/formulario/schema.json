@@ -10,16 +10,30 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "nombre": {
       "type": "string",
       "maxLength": 200,
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "descripcion": {
       "type": "text",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "formato": {
       "type": "enumeration",
@@ -29,11 +43,21 @@
         "PDF",
         "Excel",
         "Word"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "tamano": {
       "type": "string",
-      "required": false
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "archivo": {
       "type": "media",
@@ -41,7 +65,12 @@
       "required": false,
       "allowedTypes": [
         "files"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "thumbnail": {
       "type": "media",
@@ -49,31 +78,66 @@
       "required": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "categoria_formulario": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::categoria-formulario.categoria-formulario",
-      "inversedBy": "formularios"
+      "inversedBy": "formularios",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "orden": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "activo": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "requisitos": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "instrucciones": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "descargas": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

@@ -1,12 +1,17 @@
 ---
-// Navbar component - Barra de navegación principal
+// Navbar component - Barra de navegación principal con soporte multiidioma
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+
 const { currentPath = '/' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav">
 	<div class="container">
-		<a class="navbar-brand" href="/">
-			<img src="/images/logo.png" alt="logo" />
+		<a class="navbar-brand" href={getLocalizedPath('/', lang)}>
+			<img src="/images/logo.png" alt="INSESO" />
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="fas fa-bars"></span>
@@ -14,41 +19,44 @@ const { currentPath = '/' } = Astro.props;
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item">
-					<a class={`nav-link ${currentPath === '/' ? 'active' : ''}`} href="/">INICIO</a>
+					<a class={`nav-link ${currentPath === '/' ? 'active' : ''}`} href={getLocalizedPath('/', lang)}>{t('nav.home')}</a>
 				</li>
 				<li class="nav-item">
-					<a class={`nav-link ${currentPath === '/noticias' ? 'active' : ''}`} href="/noticias">NOTICIAS</a>
+					<a class={`nav-link ${currentPath === '/noticias' ? 'active' : ''}`} href={getLocalizedPath('/noticias', lang)}>{t('nav.news')}</a>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="navbarDropdownBlog" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">SOBRE NOSOTROS<i class="fas fa-sort-down"></i></a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-						<a class="dropdown-item" href="/sobre_nosotros"> PRESENTACIÓN</a>
-						<a class="dropdown-item" href="/Prestaciones_Sociales"> PRESTATIONS SOCIALES</a>
-						<a class="dropdown-item" href="/condiciones_adhesion"> CONDICIONES DE ADHESIÓN</a>
-						<a class="dropdown-item" href="/nuestras_agencias"> NUESTRAS AGENCIAS</a>
+					<a class="nav-link" href="#" id="navbarDropdownAbout" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{t('nav.about')}<i class="fas fa-sort-down"></i></a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownAbout">
+						<a class="dropdown-item" href={getLocalizedPath('/sobre_nosotros', lang)}>{t('nav.aboutPresentation')}</a>
+						<a class="dropdown-item" href={getLocalizedPath('/Prestaciones_Sociales', lang)}>{t('nav.aboutServices')}</a>
+						<a class="dropdown-item" href={getLocalizedPath('/condiciones_adhesion', lang)}>{t('nav.aboutConditions')}</a>
+						<a class="dropdown-item" href={getLocalizedPath('/nuestras_agencias', lang)}>{t('nav.aboutAgencies')}</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="navbarDropdownBlog" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ASEGURADOS<i class="fas fa-sort-down"></i></a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-						<a class="dropdown-item" href="/afiliacionee_trabajadores"> CONDICIONES DE ADHESIÓN</a>
-						<a class="dropdown-item" href="/descarga_formularios"> DESCARGA DE FORMULARIOS</a>
-						<a class="dropdown-item" href="#"> DECLARACIÓN Y PAGO DE CONTRIBUCIONES</a>
+					<a class="nav-link" href="#" id="navbarDropdownInsured" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{t('nav.insured')}<i class="fas fa-sort-down"></i></a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownInsured">
+						<a class="dropdown-item" href={getLocalizedPath('/afiliacionee_trabajadores', lang)}>{t('nav.insuredConditions')}</a>
+						<a class="dropdown-item" href={getLocalizedPath('/descarga_formularios', lang)}>{t('nav.insuredForms')}</a>
+						<a class="dropdown-item" href="#">{t('nav.insuredPayments')}</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="nav-link" href="#" id="navbarDropdownBlog" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">EMPLEADORES<i class="fas fa-sort-down"></i></a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-						<a class="dropdown-item" href="/afiliacionee_empresas"> CONDICIONES DE ADHESIÓN</a>
-						<a class="dropdown-item" href="/descarga_formularios"> DESCARGA DE FORMULARIOS</a>
-						<a class="dropdown-item" href="#"> DECLARACIÓN Y PAGO DE CONTRIBUCIONES</a>
-						<a class="dropdown-item" href="/empleadores/penas-sanciones"> PENAS Y SANCIONES</a>
+					<a class="nav-link" href="#" id="navbarDropdownEmployers" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{t('nav.employers')}<i class="fas fa-sort-down"></i></a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownEmployers">
+						<a class="dropdown-item" href={getLocalizedPath('/afiliacionee_empresas', lang)}>{t('nav.employersConditions')}</a>
+						<a class="dropdown-item" href={getLocalizedPath('/descarga_formularios', lang)}>{t('nav.employersForms')}</a>
+						<a class="dropdown-item" href="#">{t('nav.employersPayments')}</a>
+						<a class="dropdown-item" href={getLocalizedPath('/empleadores/penas-sanciones', lang)}>{t('nav.employersPenalties')}</a>
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="/contacto">CONTACTO</a>
+					<a class="nav-link" href={getLocalizedPath('/contacto', lang)}>{t('nav.contact')}</a>
 				</li>
 			</ul>
+
+			<!-- Selector de idioma -->
+			<LanguageSwitcher currentLang={lang} currentPath={currentPath} />
 		</div>
 	</div>
 </nav>

@@ -2,12 +2,15 @@
 // Componente PartnersCarousel - Conectado a Strapi
 import type { Socio } from '../lib/strapi';
 import { getStrapiImageUrl } from '../lib/strapi';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 interface Props {
   socios?: Socio[];
 }
 
 const { socios: strapiSocios = [] } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 // Fallback a logos estáticos si no hay datos de Strapi
 const defaultPartners = [
@@ -32,7 +35,7 @@ const partners = strapiSocios.length > 0
 <div class="container">
   <div class="customers-box">
     <hr>
-    <h2>NUESTROS SOCIOS</h2>
+    <h2>{t('home.partners')}</h2>
     <div class="row">
       <div class="col-lg-12">
         <div id="customers-slider" class="owl-carousel">

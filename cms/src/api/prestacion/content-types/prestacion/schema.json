@@ -9,20 +9,44 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "titulo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
-      "targetField": "titulo"
+      "targetField": "titulo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "descripcion": {
-      "type": "blocks"
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "resumen": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "imagen": {
       "type": "media",
@@ -32,17 +56,37 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "requisitos": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "orden": {
-      "type": "integer"
+      "type": "integer",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "activo": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "imagenDetalle": {
       "type": "media",
@@ -52,11 +96,21 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "destacado": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

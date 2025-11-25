@@ -1,0 +1,435 @@
+---
+import ContentWithSidebarLayout from '../../layouts/ContentWithSidebarLayout.astro';
+import InfoCard from '../../components/InfoCard.astro';
+import { contactInfo } from '../../config/contact';
+import { getCategoriasContacto } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+
+export const prerender = false;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Obtener categorías de contacto
+const categoriasContacto = getCategoriasContacto();
+
+// Definir getStaticPaths para generar rutas
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+---
+
+<ContentWithSidebarLayout
+  title={t('contact.pageTitle')}
+  currentPath={getLocalizedPath('/contacto', lang)}
+  headerImage="/images/sommes nous/slide_qsn_04.jpg"
+  headerImageAlt={`${t('contact.title')} - INSESO`}
+  showPartners={true}
+>
+  <Fragment slot="main">
+    <div class="contact-main">
+      <!-- Formulario de contacto -->
+      <h3>{t('contact.formTitle')}</h3>
+      <form name="sentMessage" id="contactForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="name" class="form-label">{t('contact.name')} <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  placeholder={t('contact.namePlaceholder')}
+                  class="form-control"
+                  id="name"
+                  required
+                  data-validation-required-message={t('contact.validationName')}
+                />
+                <p class="help-block"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="email" class="form-label">{t('contact.email')} <span class="text-danger">*</span></label>
+                <input
+                  type="email"
+                  placeholder={t('contact.emailPlaceholder')}
+                  class="form-control"
+                  id="email"
+                  required
+                  data-validation-required-message={t('contact.validationEmail')}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="phone" class="form-label">{t('contact.phone')} <span class="text-danger">*</span></label>
+                <input
+                  type="tel"
+                  placeholder={t('contact.phonePlaceholder')}
+                  class="form-control"
+                  id="phone"
+                  required
+                  data-validation-required-message={t('contact.validationPhone')}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="control-group form-group">
+              <div class="controls">
+                <label for="category" class="form-label">{t('contact.category')} <span class="text-danger">*</span></label>
+                <select
+                  class="form-control"
+                  id="category"
+                  required
+                  data-validation-required-message={t('contact.validationCategory')}
+                >
+                  <option value="">{t('contact.selectCategory')}</option>
+                  {categoriasContacto.map(cat => (
+                    <option value={cat.value}>{cat.label}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-group form-group">
+          <div class="controls">
+            <label for="message" class="form-label">{t('contact.message')} <span class="text-danger">*</span></label>
+            <textarea
+              rows="6"
+              placeholder={t('contact.messagePlaceholder')}
+              class="form-control"
+              id="message"
+              required
+              data-validation-required-message={t('contact.validationMessage')}
+              maxlength="999"
+              style="resize:vertical"
+            ></textarea>
+            <small class="form-text text-muted">{t('contact.maxCharacters')}</small>
+          </div>
+        </div>
+
+        <div id="success"></div>
+        <button type="submit" class="btn btn-primary btn-lg" id="sendMessageButton">
+          <i class="fas fa-paper-plane"></i> {t('contact.send')}
+        </button>
+      </form>
+
+      <hr style="margin: 3rem 0;">
+
+      <!-- Mapa de Google -->
+      <h3>{t('contact.locationTitle')}</h3>
+      <div style="width:100%;height:450px;border-radius:12px;overflow:hidden;border:1px solid #eee;margin-top:1.5rem">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.32190665812!2d8.7290642!3d3.739865600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10669d4bd7ce0583%3A0xd4e5228a42ab40da!2sINSESO!5e0!3m2!1sfr!2scm!4v1756209327234!5m2!1sfr!2scm"
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </Fragment>
+
+  <Fragment slot="sidebar">
+    <!-- Información de Contacto desde config -->
+    <div class="card mb-4">
+      <InfoCard title={t('contact.contactsTitle')}>
+        <div class="card-body">
+          <h5>{contactInfo.national.city} – {contactInfo.national.name}</h5>
+          &rarr; {contactInfo.national.address}<br>
+          &rarr; Tel.: {contactInfo.national.phone}<br>
+          &rarr; Código Postal: {contactInfo.national.postalCode}<br>
+          &rarr; Email: {contactInfo.national.email}<br>
+        </div>
+        <hr>
+        <div class="card-body">
+          <h5>{contactInfo.regional.city} – {contactInfo.regional.name}</h5>
+          &rarr; {contactInfo.regional.address}<br>
+          &rarr; Tel.: {contactInfo.regional.phone}<br>
+        </div>
+      </InfoCard>
+
+      <div class="card-img">
+        <img class="img-fluid" src="/images/contacto/contacto_pub_01.gif" alt={`${t('contact.title')} INSESO`} />
+      </div>
+    </div>
+  </Fragment>
+</ContentWithSidebarLayout>
+
+<script define:vars={{ lang, translations: {
+  required: t('contact.required'),
+  invalidEmail: t('contact.invalidEmail'),
+  successMessage: t('contact.successMessage'),
+  errorMessage: t('contact.errorMessage'),
+  errorMessageLater: t('contact.errorMessageLater'),
+  sending: t('contact.sending'),
+  send: t('contact.send')
+}}}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const submitButton = document.getElementById('sendMessageButton') as HTMLButtonElement;
+    const successDiv = document.getElementById('success') as HTMLDivElement;
+
+    if (form) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Limpiar mensajes anteriores
+        successDiv.innerHTML = '';
+
+        // Obtener valores del formulario
+        const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+        const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+        const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+        const category = (document.getElementById('category') as HTMLSelectElement).value;
+        const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
+
+        // Validación básica
+        if (!name || !email || !phone || !category || !message) {
+          showMessage(translations.required, 'error');
+          return;
+        }
+
+        // Validar email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          showMessage(translations.invalidEmail, 'error');
+          return;
+        }
+
+        // Deshabilitar botón y mostrar estado de carga
+        submitButton.disabled = true;
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${translations.sending}`;
+
+        try {
+          const response = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              phone,
+              category,
+              message,
+              lang
+            }),
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            showMessage(translations.successMessage, 'success');
+            form.reset();
+          } else {
+            showMessage(data.message || translations.errorMessage, 'error');
+          }
+        } catch (error) {
+          console.error('Error:', error);
+          showMessage(translations.errorMessageLater, 'error');
+        } finally {
+          // Restaurar botón
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+        }
+      });
+    }
+
+    function showMessage(message: string, type: 'success' | 'error') {
+      const alertClass = type === 'success' ? 'alert-success' : 'alert-danger';
+      const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+
+      successDiv.innerHTML = `
+        <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
+          <i class="fas ${icon}"></i> ${message}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
+
+      // Scroll al mensaje
+      successDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>
+
+<style>
+  .contact-main {
+    margin-bottom: 2rem;
+  }
+
+  .contact-main h3 {
+    margin-bottom: 1.5rem;
+    color: #8c1b12;
+    font-weight: 700;
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .control-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-control {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.75rem;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+
+  .form-control:focus {
+    border-color: #8c1b12;
+    box-shadow: 0 0 0 0.2rem rgba(140, 27, 18, 0.15);
+    outline: none;
+  }
+
+  select.form-control {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+    padding-right: 2.5rem !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    height: 47px !important;
+    min-height: 47px !important;
+    max-height: 47px !important;
+    line-height: 1.5 !important;
+    box-sizing: border-box !important;
+  }
+
+  select.form-control option {
+    padding: 0.5rem;
+    white-space: normal;
+  }
+
+  .form-text {
+    font-size: 13px;
+    margin-top: 0.25rem;
+  }
+
+  .btn-primary {
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #8c1b12;
+    border: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #6d2018;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+  }
+
+  .btn-primary i {
+    margin-right: 0.5rem;
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  /* Alert Messages */
+  #success {
+    margin: 1.5rem 0;
+  }
+
+  .alert {
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 15px;
+    position: relative;
+  }
+
+  .alert i {
+    margin-right: 0.5rem;
+  }
+
+  .alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+  }
+
+  .alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+  }
+
+  .alert-dismissible {
+    padding-right: 3rem;
+  }
+
+  .btn-close {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: inherit;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .btn-close:hover {
+    opacity: 0.75;
+  }
+
+  .btn-close::before {
+    content: '×';
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+    .contact-main h3 {
+      font-size: 24px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+</style>

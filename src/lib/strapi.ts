@@ -181,13 +181,14 @@ export interface Socio {
 }
 
 // Obtener todas las noticias
-export async function getNoticias(): Promise<Noticia[]> {
+export async function getNoticias(locale: string = 'es'): Promise<Noticia[]> {
   const queryParams: any = {
     populate: ['imagen', 'videoArchivo', 'categoria'],
     sort: ['fechaPublicacion:desc'],
     pagination: {
       pageSize: 100,
     },
+    locale: locale,
   };
 
   // Añadir publicationState=preview si estamos en modo preview
@@ -224,9 +225,10 @@ export async function getNoticias(): Promise<Noticia[]> {
 }
 
 // Obtener una noticia por documentId (para preview)
-export async function getNoticiaByDocumentId(documentId: string): Promise<Noticia | null> {
+export async function getNoticiaByDocumentId(documentId: string, locale: string = 'es'): Promise<Noticia | null> {
   const queryParams: any = {
     populate: ['imagen', 'videoArchivo', 'categoria'],
+    locale: locale,
   };
 
   // Añadir publicationState=preview si estamos en modo preview
@@ -263,7 +265,7 @@ export async function getNoticiaByDocumentId(documentId: string): Promise<Notici
 }
 
 // Obtener una noticia por slug
-export async function getNoticiaBySlug(slug: string): Promise<Noticia | null> {
+export async function getNoticiaBySlug(slug: string, locale: string = 'es'): Promise<Noticia | null> {
   try {
     // Primero intentar buscar por slug exacto
     const queryParams: any = {
@@ -273,6 +275,7 @@ export async function getNoticiaBySlug(slug: string): Promise<Noticia | null> {
         },
       },
       populate: ['imagen', 'videoArchivo', 'categoria'],
+      locale: locale,
     };
 
     // Añadir publicationState=preview si estamos en modo preview
@@ -301,7 +304,7 @@ export async function getNoticiaBySlug(slug: string): Promise<Noticia | null> {
     }
 
     // Si no se encuentra, buscar todas las noticias y comparar con slug generado
-    const allNoticias = await getNoticias();
+    const allNoticias = await getNoticias(locale);
     const noticia = allNoticias.find(n => getNoticiaSlug(n) === slug);
     return noticia || null;
   } catch (error) {
@@ -382,7 +385,7 @@ export function richTextToPlainText(richText: any): string {
 // ==================== PRESTACIONES ====================
 
 // Obtener todas las prestaciones
-export async function getPrestaciones(): Promise<Prestacion[]> {
+export async function getPrestaciones(locale: string = 'es'): Promise<Prestacion[]> {
   const query = qs.stringify(
     {
       populate: ['imagen', 'imagenDetalle'],
@@ -390,6 +393,7 @@ export async function getPrestaciones(): Promise<Prestacion[]> {
       pagination: {
         pageSize: 100,
       },
+      locale: locale,
     },
     {
       encodeValuesOnly: true,
@@ -412,9 +416,10 @@ export async function getPrestaciones(): Promise<Prestacion[]> {
 }
 
 // Obtener una prestación por documentId (para preview)
-export async function getPrestacionByDocumentId(documentId: string): Promise<Prestacion | null> {
+export async function getPrestacionByDocumentId(documentId: string, locale: string = 'es'): Promise<Prestacion | null> {
   const queryParams: any = {
     populate: ['imagen', 'imagenDetalle'],
+    locale: locale,
   };
 
   // Añadir publicationState=preview si estamos en modo preview
@@ -451,7 +456,7 @@ export async function getPrestacionByDocumentId(documentId: string): Promise<Pre
 }
 
 // Obtener una prestación por slug
-export async function getPrestacionBySlug(slug: string): Promise<Prestacion | null> {
+export async function getPrestacionBySlug(slug: string, locale: string = 'es'): Promise<Prestacion | null> {
   const queryParams: any = {
     filters: {
       slug: {
@@ -459,6 +464,7 @@ export async function getPrestacionBySlug(slug: string): Promise<Prestacion | nu
       },
     },
     populate: ['imagen', 'imagenDetalle'],
+    locale: locale,
   };
 
   // Añadir publicationState=preview si estamos en modo preview
@@ -569,7 +575,7 @@ export async function getSlidesAfiliacion(): Promise<SlideAfiliacion[]> {
 // ==================== NOTICIAS (CON FILTROS) ====================
 
 // Obtener noticias por posición
-export async function getNoticiasByPosicion(posicion: string, limit?: number): Promise<Noticia[]> {
+export async function getNoticiasByPosicion(posicion: string, limit?: number, locale: string = 'es'): Promise<Noticia[]> {
   const query = qs.stringify(
     {
       populate: ['imagen', 'videoArchivo', 'categoria'],
@@ -585,6 +591,7 @@ export async function getNoticiasByPosicion(posicion: string, limit?: number): P
       pagination: {
         pageSize: limit || 100,
       },
+      locale: locale,
     },
     {
       encodeValuesOnly: true,
@@ -609,10 +616,11 @@ export async function getNoticiasByPosicion(posicion: string, limit?: number): P
 // ==================== CONFIGURACIÓN INICIO ====================
 
 // Obtener configuración de inicio (Single Type)
-export async function getConfiguracionInicio(): Promise<ConfiguracionInicio | null> {
+export async function getConfiguracionInicio(locale: string = 'es'): Promise<ConfiguracionInicio | null> {
   const query = qs.stringify(
     {
       populate: ['afiliacionImagen', 'sidebarImagenBanner', 'videoArchivoPrincipal', 'imagenPrincipal'],
+      locale: locale,
     },
     {
       encodeValuesOnly: true,
@@ -751,7 +759,7 @@ export interface CategoriaFormulario {
 }
 
 // Obtener todas las categorías de formularios con sus formularios
-export async function getCategoriasFormularios(): Promise<CategoriaFormulario[]> {
+export async function getCategoriasFormularios(locale: string = 'es'): Promise<CategoriaFormulario[]> {
   const query = qs.stringify(
     {
       populate: {
@@ -774,6 +782,7 @@ export async function getCategoriasFormularios(): Promise<CategoriaFormulario[]>
       pagination: {
         pageSize: 100,
       },
+      locale: locale,
     },
     {
       encodeValuesOnly: true,
@@ -796,7 +805,7 @@ export async function getCategoriasFormularios(): Promise<CategoriaFormulario[]>
 }
 
 // Obtener todos los formularios
-export async function getFormularios(): Promise<Formulario[]> {
+export async function getFormularios(locale: string = 'es'): Promise<Formulario[]> {
   const query = qs.stringify(
     {
       populate: ['archivo', 'thumbnail', 'categoria_formulario'],
@@ -809,6 +818,7 @@ export async function getFormularios(): Promise<Formulario[]> {
       pagination: {
         pageSize: 100,
       },
+      locale: locale,
     },
     {
       encodeValuesOnly: true,
@@ -831,7 +841,7 @@ export async function getFormularios(): Promise<Formulario[]> {
 }
 
 // Obtener un formulario por código
-export async function getFormularioByCodigo(codigo: string): Promise<Formulario | null> {
+export async function getFormularioByCodigo(codigo: string, locale: string = 'es'): Promise<Formulario | null> {
   const query = qs.stringify(
     {
       filters: {
@@ -840,6 +850,7 @@ export async function getFormularioByCodigo(codigo: string): Promise<Formulario 
         },
       },
       populate: ['archivo', 'thumbnail', 'categoria_formulario'],
+      locale: locale,
     },
     {
       encodeValuesOnly: true,

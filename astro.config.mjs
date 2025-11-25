@@ -7,6 +7,15 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone'
   }),
+  // Configuración de internacionalización
+  i18n: {
+    defaultLocale: 'es',
+    locales: ['es', 'fr', 'en', 'pt'],
+    routing: {
+      prefixDefaultLocale: false,
+      redirectToDefaultLocale: false
+    }
+  },
   build: {
     assets: 'assets'
   },

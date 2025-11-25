@@ -9,14 +9,28 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "tituloHero": {
       "type": "string",
-      "default": "JUNTOS EN CADA ETAPA DE TU VIDA"
+      "default": "JUNTOS EN CADA ETAPA DE TU VIDA",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "afiliacionTitulo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "afiliacionImagen": {
       "type": "media",
@@ -26,13 +40,28 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "afiliacionTexto": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "afiliacionEnlace": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "sidebarImagenBanner": {
       "type": "media",
@@ -42,25 +71,60 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "sidebarCardTitulo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "sidebarCardTexto": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "videoUrl": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "videoTitulo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "videoFecha": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "videoDescripcion": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "tipoMediaPrincipal": {
       "type": "enumeration",
@@ -68,21 +132,36 @@
         "video",
         "imagen"
       ],
-      "default": "video"
+      "default": "video",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "videoArchivoPrincipal": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "videos"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "imagenPrincipal": {
       "type": "media",
       "multiple": false,
       "allowedTypes": [
         "images"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }

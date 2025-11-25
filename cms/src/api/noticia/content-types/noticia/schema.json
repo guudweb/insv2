@@ -9,23 +9,52 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "titulo": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "slug": {
       "type": "uid",
-      "targetField": "titulo"
+      "targetField": "titulo",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "resumen": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "contenido": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "fechaPublicacion": {
-      "type": "date"
+      "type": "date",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "imagen": {
       "type": "media",
@@ -35,10 +64,20 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "video": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "tipoMedia": {
       "type": "enumeration",
@@ -46,13 +85,23 @@
       "enum": [
         "imagen",
         "video"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "categoria": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::categoria.categoria",
-      "inversedBy": "noticias"
+      "inversedBy": "noticias",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "posicion": {
       "type": "enumeration",
@@ -62,19 +111,39 @@
         "lateral",
         "ultima-hora",
         "novedad"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "orden": {
       "type": "integer",
-      "default": 0
+      "default": 0,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "destacado": {
       "type": "boolean",
-      "default": false
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "activo": {
       "type": "boolean",
-      "default": true
+      "default": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     },
     "videoArchivo": {
       "type": "media",
@@ -84,7 +153,12 @@
         "files",
         "videos",
         "audios"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
     }
   }
 }
