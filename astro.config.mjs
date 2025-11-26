@@ -1,6 +1,8 @@
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
 
+import tailwindcss from '@tailwindcss/vite';
+
 // https://astro.build/config
 export default defineConfig({
   output: 'server', // SSR por defecto (en Astro 5, 'hybrid' se cambió a 'server')
@@ -37,6 +39,8 @@ export default defineConfig({
           'isotope-layout/js/layout-modes/vertical'
         ]
       }
-    }
+    },
+
+    plugins: [tailwindcss()]
   }
 });

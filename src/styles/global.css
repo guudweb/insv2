@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* Custom Tailwind theme extensions */
+@theme {
+  --color-inseso-primary: #8c1b12;
+  --color-inseso-dark: #7a1710;
+  --color-inseso-darker: #6a130e;
+}
