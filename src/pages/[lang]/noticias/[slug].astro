@@ -1,0 +1,545 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl } from '../../../lib/strapi';
+import { languages, useTranslations, type Locale, getLocalizedPath } from '../../../i18n/utils';
+
+export const prerender = false;
+
+// Generar rutas estáticas para cada idioma y slug de noticia
+export async function getStaticPaths() {
+	const paths: { params: { lang: string; slug: string } }[] = [];
+
+	for (const lang of Object.keys(languages).filter(l => l !== 'es')) {
+		const noticias = await getNoticias(lang);
+		for (const noticia of noticias) {
+			paths.push({
+				params: { lang, slug: getNoticiaSlug(noticia) }
+			});
+		}
+	}
+
+	return paths;
+}
+
+const { lang, slug } = Astro.params;
+const locale = lang as Locale;
+const t = useTranslations(locale);
+
+const noticia = await getNoticiaBySlug(slug as string, locale);
+
+if (!noticia) {
+	return Astro.redirect(`/${lang}/noticias`);
+}
+
+const { titulo, contenido, resumen, fechaPublicacion, autor, imagen, tipoMedia, video, videoArchivo, categoria } = noticia;
+const videoUrl = getNoticiaVideoUrl(noticia);
+
+// Obtener noticias relacionadas (misma categoría, excluyendo la actual)
+const todasLasNoticias = await getNoticias(locale);
+const noticiasRelacionadas = todasLasNoticias
+	.filter(n => n.documentId !== noticia.documentId && n.categoria?.documentId === categoria?.documentId)
+	.slice(0, 3);
+
+// Preparar meta tags SEO
+const noticiaDescription = resumen || (contenido ? contenido.substring(0, 160) : '');
+const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo_01.png';
+
+// Rutas localizadas
+const contactPath = getLocalizedPath('/contacto', locale);
+const newsPath = `/${lang}/noticias`;
+
+// Textos traducidos
+const backToNews = locale === 'fr' ? 'Retour aux Actualités' :
+                   locale === 'en' ? 'Back to News' :
+                   locale === 'pt' ? 'Voltar às Notícias' : 'Volver a Noticias';
+
+const summaryTitle = locale === 'fr' ? 'Résumé' :
+                     locale === 'en' ? 'Summary' :
+                     locale === 'pt' ? 'Resumo' : 'Resumen';
+
+const shareTitle = locale === 'fr' ? 'Partager' :
+                   locale === 'en' ? 'Share' :
+                   locale === 'pt' ? 'Compartilhar' : 'Compartir';
+
+const contactTitle = locale === 'fr' ? 'Contact' :
+                     locale === 'en' ? 'Contact' :
+                     locale === 'pt' ? 'Contato' : 'Contacto';
+
+const relatedTitle = locale === 'fr' ? 'Actualités Connexes' :
+                     locale === 'en' ? 'Related News' :
+                     locale === 'pt' ? 'Notícias Relacionadas' : 'Noticias Relacionadas';
+
+const partnersTitle = locale === 'fr' ? 'NOS PARTENAIRES' :
+                      locale === 'en' ? 'OUR PARTNERS' :
+                      locale === 'pt' ? 'NOSSOS PARCEIROS' : 'NUESTROS SOCIOS';
+
+const breadcrumbHome = locale === 'fr' ? 'Accueil' :
+                       locale === 'en' ? 'Home' :
+                       locale === 'pt' ? 'Início' : 'Inicio';
+
+const breadcrumbNews = locale === 'fr' ? 'Actualités' :
+                       locale === 'en' ? 'News' :
+                       locale === 'pt' ? 'Notícias' : 'Noticias';
+---
+
+<BaseLayout
+	title={`${titulo} - INSESO`}
+	description={noticiaDescription}
+	currentPath={`/${lang}/noticias/${slug}`}
+	ogImage={noticiaImage}
+	ogType="article"
+	articleAuthor={autor}
+	articlePublishedTime={fechaPublicacion}
+>
+	<div class="full-title">
+		<div class="container"><br>
+			<h1 class="text_blanc">{titulo}</h1><br>
+			<div class="breadcrumb-main">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href={`/${lang}`}>{breadcrumbHome}</a></li>
+					<li class="breadcrumb-item"><a href={newsPath}>{breadcrumbNews}</a></li>
+					<li class="breadcrumb-item active">{titulo}</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+
+	<div class="blog-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 blog-entries">
+					<div class="card mb-4">
+						{tipoMedia === 'video' && videoUrl ? (
+							<div class="video-container">
+								{video && !videoArchivo ? (
+									<iframe
+										width="100%"
+										height="450"
+										src={video}
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen>
+									</iframe>
+								) : (
+									<video controls width="100%" controlsList="nodownload">
+										<source src={videoUrl} type="video/mp4">
+										{locale === 'fr' ? 'Votre navigateur ne supporte pas la vidéo.' :
+										 locale === 'en' ? 'Your browser does not support the video element.' :
+										 locale === 'pt' ? 'Seu navegador não suporta o elemento de vídeo.' :
+										 'Tu navegador no soporta el elemento de video.'}
+									</video>
+								)}
+							</div>
+						) : imagen && (
+							<img
+								class="card-img-top"
+								src={getStrapiImageUrl(imagen.url)}
+								alt={imagen.alternativeText || titulo}
+							/>
+						)}
+						<div class="card-body">
+							<p class="text-muted">
+								<i class="fas fa-calendar"></i> {formatDate(fechaPublicacion)}
+								{autor && (
+									<> | <i class="fas fa-user"></i> {autor}</>
+								)}
+							</p>
+							<hr>
+
+							<div class="noticia-contenido" set:html={contenido} />
+						</div>
+					</div>
+
+					<div class="text-center my-4">
+						<a href={newsPath} class="btn btn-secondary">
+							<i class="fas fa-arrow-left"></i> {backToNews}
+						</a>
+					</div>
+				</div>
+
+				<div class="col-md-4 blog-right-side">
+					<div class="card my-4">
+						<h5 class="card-header">{summaryTitle}</h5>
+						<div class="card-body">
+							<p>{resumen}</p>
+						</div>
+					</div>
+
+					<div class="card my-4">
+						<h5 class="card-header">{shareTitle}</h5>
+						<div class="card-body text-center">
+							<a
+								href={`https://www.facebook.com/sharer/sharer.php?u=${Astro.url}`}
+								target="_blank"
+								class="btn btn-primary m-1"
+							>
+								<i class="fab fa-facebook-f"></i> Facebook
+							</a>
+							<a
+								href={`https://twitter.com/intent/tweet?url=${Astro.url}&text=${titulo}`}
+								target="_blank"
+								class="btn btn-info m-1"
+							>
+								<i class="fab fa-twitter"></i> Twitter
+							</a>
+						</div>
+					</div>
+
+					<div class="card my-4">
+						<h5 class="card-header">{contactTitle}</h5>
+						<div class="card-body">
+							<p><strong>INSESO</strong></p>
+							<p>Tel.: (+240) 333 092214</p>
+							<p>Email: info@inseso.org</p>
+							<a href={contactPath} class="btn btn-primary btn-block">
+								{t('news.contact')}
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Noticias Relacionadas -->
+	{noticiasRelacionadas.length > 0 && (
+		<div class="related-news-section">
+			<div class="container">
+				<h2 class="section-title">
+					<i class="fas fa-newspaper"></i> {relatedTitle}
+				</h2>
+				<div class="row">
+					{noticiasRelacionadas.map((relacionada) => {
+						const imagenRelacionada = relacionada.imagen?.url ? getStrapiImageUrl(relacionada.imagen.url) : '/images/logo.png';
+						return (
+							<div class="col-md-4 mb-4">
+								<article class="related-card">
+									<div class="related-image">
+										<img src={imagenRelacionada} alt={relacionada.titulo} />
+										{relacionada.tipoMedia === 'video' && (
+											<div class="video-badge">
+												<i class="fas fa-play-circle"></i>
+											</div>
+										)}
+									</div>
+									<div class="related-content">
+										<span class="related-date">
+											<i class="far fa-calendar-alt"></i> {formatDate(relacionada.fechaPublicacion)}
+										</span>
+										<h3 class="related-title">
+											<a href={`/${lang}/noticias/${relacionada.slug}`}>{relacionada.titulo}</a>
+										</h3>
+										<a href={`/${lang}/noticias/${relacionada.slug}`} class="btn-read-more">
+											{t('news.readMore')} <i class="fas fa-arrow-right"></i>
+										</a>
+									</div>
+								</article>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	)}
+
+	<div class="customers-box">
+		<div class="container">
+			<hr>
+			<h2>{partnersTitle}</h2>
+			<div class="row">
+				<div class="col-lg-12">
+					<div id="customers-slider" class="owl-carousel">
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_00.jpg" alt="" />
+						</div>
+						<div class="mb-4">
+							<img class="img-fluid" src="/images/partner/img_partner_logo_01.jpg" alt="" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>
+
+<script is:inline>
+	(function($) {
+		$(document).ready(function() {
+			if ($("#customers-slider").length) {
+				$("#customers-slider").owlCarousel({
+					items: 5,
+					loop: true,
+					margin: 15,
+					nav: false,
+					dots: false,
+					autoplay: true,
+					autoplayTimeout: 2500,
+					responsive: {
+						0: { items: 2 },
+						650: { items: 2 },
+						768: { items: 3 },
+						1000: { items: 4 },
+						1200: { items: 5 }
+					}
+				});
+			}
+		});
+	})(window.jQuery);
+</script>
+
+<!-- JSON-LD Structured Data for SEO -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "NewsArticle",
+	"headline": titulo,
+	"description": resumen,
+	"image": noticiaImage,
+	"datePublished": fechaPublicacion,
+	"dateModified": noticia.updatedAt,
+	"author": {
+		"@type": autor ? "Person" : "Organization",
+		"name": autor || "INSESO"
+	},
+	"publisher": {
+		"@type": "Organization",
+		"name": "INSESO",
+		"logo": {
+			"@type": "ImageObject",
+			"url": new URL('/images/logo_01.png', Astro.url.origin).href
+		}
+	},
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": new URL(`/${lang}/noticias/${slug}`, Astro.url.origin).href
+	}
+})} />
+
+<style>
+	/* Video Container */
+	.video-container {
+		position: relative;
+		width: 100%;
+		background: #000;
+	}
+
+	.video-container video,
+	.video-container iframe {
+		width: 100%;
+		display: block;
+	}
+
+	.video-container video {
+		max-height: 500px;
+	}
+
+	/* Noticia Content */
+	.noticia-contenido {
+		font-size: 18px;
+		line-height: 1.8;
+	}
+
+	.noticia-contenido p {
+		margin-bottom: 1.5rem;
+	}
+
+	.noticia-contenido h2,
+	.noticia-contenido h3,
+	.noticia-contenido h4 {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: #8c1b12;
+	}
+
+	.noticia-contenido img {
+		max-width: 100%;
+		height: auto;
+		margin: 2rem 0;
+		border-radius: 8px;
+	}
+
+	.noticia-contenido ul,
+	.noticia-contenido ol {
+		margin-bottom: 1.5rem;
+		padding-left: 2rem;
+	}
+
+	.noticia-contenido li {
+		margin-bottom: 0.5rem;
+	}
+
+	/* Related News Section */
+	.related-news-section {
+		background: #f9f9f9;
+		padding: 4rem 0;
+		margin-top: 3rem;
+	}
+
+	.section-title {
+		font-size: 32px;
+		font-weight: 700;
+		color: #333;
+		margin-bottom: 2.5rem;
+		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 15px;
+	}
+
+	.section-title i {
+		color: #8c1b12;
+		font-size: 28px;
+	}
+
+	.related-card {
+		background: white;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+		transition: all 0.3s ease;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.related-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+	}
+
+	.related-image {
+		position: relative;
+		width: 100%;
+		height: 200px;
+		overflow: hidden;
+	}
+
+	.related-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	.related-image img[src*="logo.png"] {
+		object-fit: contain;
+		background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+		padding: 30px;
+	}
+
+	.related-card:hover .related-image img {
+		transform: scale(1.1);
+	}
+
+	.video-badge {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 48px;
+		color: white;
+		text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+		opacity: 0.9;
+		transition: all 0.3s ease;
+	}
+
+	.related-card:hover .video-badge {
+		color: #8c1b12;
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1.2);
+	}
+
+	.related-content {
+		padding: 1.5rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.related-date {
+		display: block;
+		font-size: 13px;
+		color: #999;
+		margin-bottom: 0.75rem;
+	}
+
+	.related-date i {
+		color: #8c1b12;
+		margin-right: 5px;
+	}
+
+	.related-title {
+		font-size: 18px;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		flex: 1;
+		line-height: 1.4;
+	}
+
+	.related-title a {
+		color: #333;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.related-title a:hover {
+		color: #8c1b12;
+	}
+
+	.btn-read-more {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		background: #8c1b12;
+		color: white;
+		padding: 10px 20px;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 14px;
+		transition: all 0.3s ease;
+	}
+
+	.btn-read-more:hover {
+		background: #6d2018;
+		transform: translateX(4px);
+		color: white;
+	}
+
+	.btn-read-more i {
+		transition: transform 0.3s ease;
+		font-size: 12px;
+	}
+
+	.btn-read-more:hover i {
+		transform: translateX(4px);
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 767px) {
+		.video-container iframe {
+			height: 250px;
+		}
+
+		.video-container video {
+			max-height: 300px;
+		}
+	}
+</style>

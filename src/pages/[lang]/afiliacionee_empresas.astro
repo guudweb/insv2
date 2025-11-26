@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+
+export const prerender = false;
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const socios = await getSocios();
+---
+
+<BaseLayout title={t('companyAffiliation.pageTitle')} currentPath={getLocalizedPath('/afiliacionee_empresas', lang)}>
+  <PageHeader
+    imageSrc="/images/trabajadores/img_silder_trabaja_02.jpg"
+    imageAlt={t('companyAffiliation.headerAlt')}
+  />
+
+  <div class="container">
+    <div class="about-main">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>{t('companyAffiliation.title')}</h2>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('companyAffiliation.entrepreneurTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('companyAffiliation.entreReq1')}</h6></li>
+                <li><h6>{t('companyAffiliation.entreReq2')}</h6></li>
+                <li><h6>{t('companyAffiliation.entreReq3')}</h6></li>
+                <li><h6>{t('companyAffiliation.entreReq4')}</h6></li>
+                <li><h6>{t('companyAffiliation.entreReq5')}</h6></li>
+                <li><h6>{t('companyAffiliation.entreReq6')}</h6></li>
+                <li><h6>{t('companyAffiliation.entreReq7')}</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('companyAffiliation.publicEntitiesTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('companyAffiliation.publicReq1')}</h6></li>
+                <li><h6>{t('companyAffiliation.publicReq2')}</h6></li>
+                <li><h6>{t('companyAffiliation.publicReq3')}</h6></li>
+                <li><h6>{t('companyAffiliation.publicReq4')}</h6></li>
+                <li><h6>{t('companyAffiliation.publicReq5')}</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('companyAffiliation.senatorTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('companyAffiliation.senatorReq1')}</h6></li>
+                <li><h6>{t('companyAffiliation.senatorReq2')}</h6></li>
+                <li><h6>{t('companyAffiliation.senatorReq3')}</h6></li>
+                <li><h6>{t('companyAffiliation.senatorReq4')}</h6></li>
+                <li><h6>{t('companyAffiliation.senatorReq5')}</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('companyAffiliation.ministriesTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('companyAffiliation.ministriesText')}</h6></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_02.jpg" alt={t('companyAffiliation.imageAlt')} />
+
+          <h4 class="card-header">{t('companyAffiliation.terminationTitle')}</h4>
+          <div class="card-body">
+            <ul>
+              <li><h6>{t('companyAffiliation.termReq1')}</h6></li>
+              <li><h6>{t('companyAffiliation.termReq2')}</h6></li>
+              <li><h6>{t('companyAffiliation.termReq3')}</h6></li>
+            </ul>
+          </div>
+
+          <hr>
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/Solicitud.png" alt={t('companyAffiliation.requestAlt')} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

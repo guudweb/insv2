@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+
+export const prerender = false;
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const socios = await getSocios();
+---
+
+<BaseLayout title={t('workerAffiliation.pageTitle')} currentPath={getLocalizedPath('/afiliacionee_trabajadores', lang)}>
+  <PageHeader
+    imageSrc="/images/trabajadores/img_silder_trabaja_01.jpg"
+    imageAlt={t('workerAffiliation.headerAlt')}
+  />
+
+  <div class="container">
+    <div class="about-main">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>{t('workerAffiliation.title')}</h2>
+          <p>{t('workerAffiliation.description')}</p>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('workerAffiliation.privateSectorTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('workerAffiliation.privateReq1')}</h6></li>
+                <li><h6>{t('workerAffiliation.privateReq2')}</h6></li>
+                <li><h6>{t('workerAffiliation.privateReq3')}</h6></li>
+                <li><h6>{t('workerAffiliation.privateReq4')}</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('workerAffiliation.publicSectorTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('workerAffiliation.publicReq1')}</h6></li>
+                <li><h6>{t('workerAffiliation.publicReq2')}</h6></li>
+                <li><h6>{t('workerAffiliation.publicReq3')}</h6></li>
+                <li><h6>{t('workerAffiliation.publicReq4')}</h6></li>
+                <li><h6>{t('workerAffiliation.publicReq5')}</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('workerAffiliation.autonomousTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('workerAffiliation.autonomousReq1')}</h6></li>
+                <li><h6>{t('workerAffiliation.autonomousReq2')}</h6></li>
+                <li><h6>{t('workerAffiliation.autonomousReq3')}</h6></li>
+                <li><h6>{t('workerAffiliation.autonomousReq4')}</h6></li>
+                <li><h6>{t('workerAffiliation.autonomousReq5')}</h6></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_01.png" alt={t('workerAffiliation.imageAlt')} />
+
+          <h4 class="card-header">{t('workerAffiliation.terminationTitle')}</h4>
+          <div class="card-body">
+            <ul>
+              <li><h6>{t('workerAffiliation.terminationReq1')}</h6></li>
+              <li><h6>{t('workerAffiliation.terminationReq2')}</h6></li>
+              <li><h6>{t('workerAffiliation.terminationReq3')}</h6></li>
+            </ul>
+          </div>
+
+          <hr>
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/Solicitud.png" alt={t('workerAffiliation.requestAlt')} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

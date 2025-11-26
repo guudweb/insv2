@@ -95,34 +95,42 @@ export const routeTranslations: Record<Locale, Record<string, string>> = {
     '/contacto': '/contacto',
     '/sobre_nosotros': '/sobre_nosotros',
     '/descarga_formularios': '/descarga_formularios',
+    '/condiciones_adhesion': '/condiciones_adhesion',
+    '/nuestras_agencias': '/nuestras_agencias',
     '/afiliacion': '/afiliacion',
     '/prestacion': '/prestacion'
   },
   fr: {
     '/': '/',
-    '/noticias': '/actualites',
-    '/contacto': '/contact',
-    '/sobre_nosotros': '/a-propos',
-    '/descarga_formularios': '/telechargement-formulaires',
-    '/afiliacion': '/affiliation',
-    '/prestacion': '/prestation'
+    '/noticias': '/noticias',
+    '/contacto': '/contacto',
+    '/sobre_nosotros': '/sobre_nosotros',
+    '/descarga_formularios': '/descarga_formularios',
+    '/condiciones_adhesion': '/condiciones_adhesion',
+    '/nuestras_agencias': '/nuestras_agencias',
+    '/afiliacion': '/afiliacion',
+    '/prestacion': '/prestacion'
   },
   en: {
     '/': '/',
-    '/noticias': '/news',
-    '/contacto': '/contact',
-    '/sobre_nosotros': '/about-us',
-    '/descarga_formularios': '/download-forms',
-    '/afiliacion': '/affiliation',
-    '/prestacion': '/benefit'
+    '/noticias': '/noticias',
+    '/contacto': '/contacto',
+    '/sobre_nosotros': '/sobre_nosotros',
+    '/descarga_formularios': '/descarga_formularios',
+    '/condiciones_adhesion': '/condiciones_adhesion',
+    '/nuestras_agencias': '/nuestras_agencias',
+    '/afiliacion': '/afiliacion',
+    '/prestacion': '/prestacion'
   },
   pt: {
     '/': '/',
     '/noticias': '/noticias',
-    '/contacto': '/contato',
-    '/sobre_nosotros': '/sobre-nos',
-    '/descarga_formularios': '/download-formularios',
-    '/afiliacion': '/afiliacao',
+    '/contacto': '/contacto',
+    '/sobre_nosotros': '/sobre_nosotros',
+    '/descarga_formularios': '/descarga_formularios',
+    '/condiciones_adhesion': '/condiciones_adhesion',
+    '/nuestras_agencias': '/nuestras_agencias',
+    '/afiliacion': '/afiliacion',
     '/prestacion': '/prestacao'
   }
 };

@@ -1,8 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getNoticias, getStrapiImageUrl, richTextToPlainText } from '../lib/strapi';
+import { useTranslations } from '../i18n/utils';
 
 export const prerender = false;
+
+const lang = 'es';
+const t = useTranslations(lang);
 
 // Obtener parámetros de URL
 const url = Astro.url;
@@ -10,7 +14,7 @@ const pageParam = url.searchParams.get('page');
 const categoriaParam = url.searchParams.get('categoria');
 
 // Obtener todas las noticias ordenadas por fecha
-let todasLasNoticias = await getNoticias();
+let todasLasNoticias = await getNoticias(lang);
 
 // Filtrar por categoría si existe el parámetro
 if (categoriaParam) {
@@ -31,12 +35,12 @@ const noticiasRecientes = todasLasNoticias.slice(0, 5);
 
 // Función para formatear fecha
 function formatDate(dateString: string) {
-  if (!dateString) return 'Fecha no disponible';
+  if (!dateString) return t('news.dateUnavailable');
 
   try {
     const date = new Date(dateString);
     if (isNaN(date.getTime())) {
-      return 'Fecha no disponible';
+      return t('news.dateUnavailable');
     }
     return date.toLocaleDateString('es-ES', {
       year: 'numeric',
@@ -44,7 +48,7 @@ function formatDate(dateString: string) {
       day: 'numeric'
     });
   } catch (error) {
-    return 'Fecha no disponible';
+    return t('news.dateUnavailable');
   }
 }
 

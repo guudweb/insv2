@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import InfoCard from '../../components/InfoCard.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
+
+export const prerender = false;
+
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const socios = await getSocios();
+---
+
+<BaseLayout title={t('membership.pageTitle')} currentPath={getLocalizedPath('/condiciones_adhesion', lang)}>
+  <PageHeader
+    imageSrc="/images/assurés/slide_asegurados_01.jpg"
+    imageAlt={t('membership.headerAlt')}
+  />
+
+  <div class="blog-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 blog-entries">
+          <div class="card mb-4">
+            <img class="card-img-top" src="/images/assurés/asegurados_01.jpg" alt={t('membership.affiliationAlt')} /><br>
+            <div class="card-body">
+              <h2 class="card-title">{t('membership.functionTitle')}</h2>
+              <p class="card-text">{t('membership.functionText')}</p><br>
+
+              <h2 class="card-title">{t('membership.impliesTitle')}</h2>
+              <InfoCard
+                title={t('membership.impliesSubtitle')}
+                items={[
+                  t('membership.implies1'),
+                  t('membership.implies2'),
+                  t('membership.implies3')
+                ]}
+                variant="list"
+              />
+
+              <h2 class="card-title">{t('membership.importanceTitle')}</h2>
+              <InfoCard
+                title={t('membership.importanceSubtitle')}
+                items={[
+                  t('membership.importance1'),
+                  t('membership.importance2'),
+                  t('membership.importance3')
+                ]}
+                variant="list"
+              />
+              <br>
+
+              <h2 class="card-title">{t('membership.registrationTitle')}</h2>
+              <p class="card-text">{t('membership.registrationText')}</p><br>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4 blog-right-side">
+          <InfoCard title={t('membership.whoShouldTitle')}>
+            <p>{t('membership.whoShouldText')}</p>
+          </InfoCard>
+
+          <div class="card mb-4">
+            <div class="card-img">
+              <img class="img-fluid" src="/images/assurés/asegurados_pub_02.gif" alt="INSESO" />
+            </div>
+          </div>
+
+          <InfoCard title={t('membership.whoResponsibleTitle')}>
+            <p>{t('membership.whoResponsibleText1')}</p>
+            <p>{t('membership.whoResponsibleText2')}</p>
+          </InfoCard>
+
+          <InfoCard title={t('membership.whenTitle')}>
+            <p>{t('membership.whenText')}</p>
+          </InfoCard>
+
+          <InfoCard title={t('membership.terminationTitle')}>
+            <p>{t('membership.terminationText')}</p>
+          </InfoCard>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de requisitos para afiliación -->
+  <div class="portfolio-col">
+    <div class="container">
+      <h3>{t('membership.requirementsTitle')}</h3><br>
+      <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <img class="card-img-top" src="/images/assurés/asegurados_02.jpg" alt={t('membership.privateSectorAlt')} />
+            <div class="card-body">
+              <h4><a href={getLocalizedPath('/afiliacionee_trabajadores', lang)}>{t('membership.privateSectorTitle')}</a></h4>
+              <p>{t('membership.privateSectorText')}</p><br><br><br><br>
+              <a href={getLocalizedPath('/afiliacionee_trabajadores', lang)} class="btn btn-primary">{t('common.readMore')} &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <img class="card-img-top" src="/images/assurés/asegurados_03.jpg" alt={t('membership.autonomousAlt')} />
+            <div class="card-body">
+              <h4><a href={getLocalizedPath('/afiliacionee_trabajadores', lang)}>{t('membership.autonomousTitle')}</a></h4>
+              <p>{t('membership.autonomousText')}</p><br><br>
+              <a href={getLocalizedPath('/afiliacionee_trabajadores', lang)} class="btn btn-primary">{t('common.readMore')} &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <img class="card-img-top" src="/images/assurés/asegurados_04.jpg" alt={t('membership.publicSectorAlt')} />
+            <div class="card-body">
+              <h4><a href={getLocalizedPath('/afiliacionee_trabajadores', lang)}>{t('membership.publicSectorTitle')}</a></h4>
+              <p>{t('membership.publicSectorText')}</p><br>
+              <a href={getLocalizedPath('/afiliacionee_trabajadores', lang)} class="btn btn-primary">{t('common.readMore')} &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

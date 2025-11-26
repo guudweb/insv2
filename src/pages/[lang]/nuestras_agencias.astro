@@ -1,64 +1,73 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { useTranslations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
 
-const t = useTranslations('es');
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const agencias = [
 	{
 		ciudad: 'Malabo',
-		region: 'Región Insular',
+		region: t('agencies.insularRegion'),
 		localidades: [
 			{
-				nombre: 'Oficina Central - Malabo Centro',
+				nombre: t('agencies.centralOffice') + ' - Malabo Centro',
 				direccion: 'Avenida de la Independencia, Malabo',
 				telefono: '+240 XXX XXX XXX',
 				email: 'malabo.centro@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
+				horario: t('agencies.schedule'),
 				coordenadas: { lat: 3.7523, lng: 8.7741 }
 			},
 			{
-				nombre: 'Oficina Malabo II',
+				nombre: t('agencies.office') + ' Malabo II',
 				direccion: 'Barrio de Ela Nguema, Malabo',
 				telefono: '+240 XXX XXX XXX',
 				email: 'malabo.elanguema@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
+				horario: t('agencies.schedule'),
 				coordenadas: { lat: 3.7500, lng: 8.7800 }
 			},
 			{
-				nombre: 'Oficina Malabo III',
+				nombre: t('agencies.office') + ' Malabo III',
 				direccion: 'Barrio de Semu, Malabo',
 				telefono: '+240 XXX XXX XXX',
 				email: 'malabo.semu@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
+				horario: t('agencies.schedule'),
 				coordenadas: { lat: 3.7480, lng: 8.7720 }
 			}
 		]
 	},
 	{
 		ciudad: 'Bata',
-		region: 'Región Continental',
+		region: t('agencies.continentalRegion'),
 		localidades: [
 			{
-				nombre: 'Oficina Regional - Bata',
+				nombre: t('agencies.regionalOffice') + ' - Bata',
 				direccion: 'Avenida de la Libertad, Bata',
 				telefono: '+240 XXX XXX XXX',
 				email: 'bata@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
+				horario: t('agencies.schedule'),
 				coordenadas: { lat: 1.8639, lng: 9.7622 }
 			}
 		]
 	},
 	{
 		ciudad: 'Annobón',
-		region: 'Región Insular',
+		region: t('agencies.insularRegion'),
 		localidades: [
 			{
-				nombre: 'Oficina de Annobón',
+				nombre: t('agencies.office') + ' Annobón',
 				direccion: 'San Antonio de Palé, Annobón',
 				telefono: '+240 XXX XXX XXX',
 				email: 'annobon@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
+				horario: t('agencies.schedule'),
 				coordenadas: { lat: -1.4263, lng: 5.6360 }
 			}
 		]
@@ -66,12 +75,12 @@ const agencias = [
 ];
 ---
 
-<BaseLayout title="Nuestras Agencias - INSESO" description="Encuentra la oficina de INSESO más cercana a ti" currentPath="/nuestras_agencias">
+<BaseLayout title={t('agencies.pageTitle')} description={t('agencies.description')} currentPath={getLocalizedPath('/nuestras_agencias', lang)}>
 	<!-- Page Header -->
 	<div class="page-header-agencias">
 		<div class="container">
-			<h1>Nuestras Agencias</h1>
-			<p>Estamos cerca de ti en todo el territorio nacional</p>
+			<h1>{t('agencies.title')}</h1>
+			<p>{t('agencies.subtitle')}</p>
 		</div>
 	</div>
 
@@ -82,19 +91,19 @@ const agencias = [
 			<div class="intro-section">
 				<div class="row align-items-center">
 					<div class="col-lg-8">
-						<h2>Red de Oficinas a Nivel Nacional</h2>
-						<p class="lead">INSESO cuenta con una amplia red de oficinas distribuidas estratégicamente en todo el territorio nacional para brindar un servicio cercano y de calidad a todos nuestros afiliados.</p>
-						<p>Nuestras oficinas están equipadas para atenderte en todos los servicios de afiliación, prestaciones sociales, información y trámites administrativos.</p>
+						<h2>{t('agencies.networkTitle')}</h2>
+						<p class="lead">{t('agencies.networkDescription')}</p>
+						<p>{t('agencies.servicesDescription')}</p>
 					</div>
 					<div class="col-lg-4">
 						<div class="stats-box">
 							<div class="stat-item">
 								<div class="stat-number">5</div>
-								<div class="stat-label">Oficinas</div>
+								<div class="stat-label">{t('agencies.offices')}</div>
 							</div>
 							<div class="stat-item">
 								<div class="stat-number">3</div>
-								<div class="stat-label">Ciudades</div>
+								<div class="stat-label">{t('agencies.cities')}</div>
 							</div>
 						</div>
 					</div>
@@ -113,7 +122,7 @@ const agencias = [
 							<p class="region-label">{ciudad.region}</p>
 						</div>
 						<div class="ciudad-count">
-							<span class="badge">{ciudad.localidades.length} {ciudad.localidades.length === 1 ? 'Oficina' : 'Oficinas'}</span>
+							<span class="badge">{ciudad.localidades.length} {ciudad.localidades.length === 1 ? t('agencies.officeSingular') : t('agencies.officePlural')}</span>
 						</div>
 					</div>
 
@@ -131,35 +140,35 @@ const agencias = [
 										<div class="oficina-detail">
 											<i class="fas fa-map-marker-alt"></i>
 											<div>
-												<strong>Dirección</strong>
+												<strong>{t('agencies.address')}</strong>
 												<p>{oficina.direccion}</p>
 											</div>
 										</div>
 										<div class="oficina-detail">
 											<i class="fas fa-phone"></i>
 											<div>
-												<strong>Teléfono</strong>
+												<strong>{t('agencies.phone')}</strong>
 												<p><a href={`tel:${oficina.telefono}`}>{oficina.telefono}</a></p>
 											</div>
 										</div>
 										<div class="oficina-detail">
 											<i class="fas fa-envelope"></i>
 											<div>
-												<strong>Email</strong>
+												<strong>{t('agencies.email')}</strong>
 												<p><a href={`mailto:${oficina.email}`}>{oficina.email}</a></p>
 											</div>
 										</div>
 										<div class="oficina-detail">
 											<i class="fas fa-clock"></i>
 											<div>
-												<strong>Horario de Atención</strong>
+												<strong>{t('agencies.scheduleLabel')}</strong>
 												<p>{oficina.horario}</p>
 											</div>
 										</div>
 									</div>
 									<div class="oficina-footer">
 										<a href={`https://www.google.com/maps?q=${oficina.coordenadas.lat},${oficina.coordenadas.lng}`} target="_blank" class="btn-ver-mapa">
-											<i class="fas fa-map"></i> Ver en Google Maps
+											<i class="fas fa-map"></i> {t('agencies.viewOnMap')}
 										</a>
 									</div>
 								</div>
@@ -177,9 +186,9 @@ const agencias = [
 							<div class="info-icon">
 								<i class="fas fa-question-circle"></i>
 							</div>
-							<h3>¿Necesitas Ayuda?</h3>
-							<p>Nuestro personal está capacitado para ayudarte con cualquier consulta o trámite.</p>
-							<a href="/contacto" class="btn-info">Contactar</a>
+							<h3>{t('agencies.needHelp')}</h3>
+							<p>{t('agencies.needHelpDescription')}</p>
+							<a href={getLocalizedPath('/contacto', lang)} class="btn-info">{t('agencies.contact')}</a>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
@@ -187,9 +196,9 @@ const agencias = [
 							<div class="info-icon">
 								<i class="fas fa-file-download"></i>
 							</div>
-							<h3>Descarga Formularios</h3>
-							<p>Descarga los formularios necesarios antes de acudir a nuestras oficinas.</p>
-							<a href="/descarga_formularios" class="btn-info">Descargar</a>
+							<h3>{t('agencies.downloadForms')}</h3>
+							<p>{t('agencies.downloadFormsDescription')}</p>
+							<a href={getLocalizedPath('/descarga_formularios', lang)} class="btn-info">{t('common.download')}</a>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
@@ -197,9 +206,9 @@ const agencias = [
 							<div class="info-icon">
 								<i class="fas fa-calendar-check"></i>
 							</div>
-							<h3>Cita Previa</h3>
-							<p>Solicita una cita previa para ser atendido de manera más rápida.</p>
-							<a href="/contacto" class="btn-info">Solicitar Cita</a>
+							<h3>{t('agencies.appointment')}</h3>
+							<p>{t('agencies.appointmentDescription')}</p>
+							<a href={getLocalizedPath('/contacto', lang)} class="btn-info">{t('agencies.requestAppointment')}</a>
 						</div>
 					</div>
 				</div>

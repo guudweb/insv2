@@ -1,0 +1,772 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getNoticias, getStrapiImageUrl, richTextToPlainText } from '../../lib/strapi';
+import { languages, useTranslations, type Locale, getLocalizedPath } from '../../i18n/utils';
+
+export const prerender = false;
+
+// Generar rutas estáticas para cada idioma (excepto español)
+export function getStaticPaths() {
+	return Object.keys(languages)
+		.filter(lang => lang !== 'es')
+		.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = useTranslations(locale);
+
+// Obtener parámetros de URL
+const url = Astro.url;
+const pageParam = url.searchParams.get('page');
+const categoriaParam = url.searchParams.get('categoria');
+
+// Obtener todas las noticias ordenadas por fecha con el locale correcto
+let todasLasNoticias = await getNoticias(locale);
+
+// Filtrar por categoría si existe el parámetro
+if (categoriaParam) {
+	todasLasNoticias = todasLasNoticias.filter(noticia =>
+		noticia.categoria?.nombre?.toLowerCase() === categoriaParam.toLowerCase()
+	);
+}
+
+// Paginación dinámica
+const noticiasPerPage = 9;
+const currentPage = pageParam ? parseInt(pageParam) : 1;
+const totalPages = Math.ceil(todasLasNoticias.length / noticiasPerPage);
+const startIndex = (currentPage - 1) * noticiasPerPage;
+const noticias = todasLasNoticias.slice(startIndex, startIndex + noticiasPerPage);
+
+// Noticias recientes para sidebar (últimas 5)
+const noticiasRecientes = todasLasNoticias.slice(0, 5);
+
+// Función para formatear fecha según el locale
+function formatDate(dateString: string) {
+	if (!dateString) return t('news.dateUnavailable');
+
+	try {
+		const date = new Date(dateString);
+		if (isNaN(date.getTime())) {
+			return t('news.dateUnavailable');
+		}
+		const localeMap: Record<string, string> = {
+			es: 'es-ES',
+			fr: 'fr-FR',
+			en: 'en-GB',
+			pt: 'pt-PT'
+		};
+		return date.toLocaleDateString(localeMap[locale] || 'es-ES', {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+		});
+	} catch (error) {
+		return t('news.dateUnavailable');
+	}
+}
+
+// Función para truncar texto
+function truncateText(text: string, maxLength: number) {
+	if (text.length <= maxLength) return text;
+	return text.substring(0, maxLength) + '...';
+}
+
+// Rutas localizadas
+const basePath = `/${lang}/noticias`;
+const contactPath = getLocalizedPath('/contacto', locale);
+---
+
+<BaseLayout title={t('news.pageTitle')} currentPath={basePath}>
+	<!-- Page Header -->
+	<div class="page-header-noticias">
+		<div class="container">
+			<h1>{categoriaParam ? `${t('news.title')}: ${categoriaParam.charAt(0).toUpperCase() + categoriaParam.slice(1)}` : t('news.title')}</h1>
+			<p>{t('news.pageSubtitle')}</p>
+			{categoriaParam && (
+				<div class="filter-info">
+					<a href={basePath} class="btn-clear-filter">
+						<i class="fas fa-times"></i> {t('news.clearFilter')}
+					</a>
+				</div>
+			)}
+		</div>
+	</div>
+
+	<div class="noticias-main">
+		<div class="container">
+			<div class="row">
+				<!-- Main Content - News Grid -->
+				<div class="col-lg-8">
+					<div class="noticias-grid">
+						{noticias.map((noticia) => {
+							const imagen = noticia.imagen?.url ? getStrapiImageUrl(noticia.imagen.url) : '/images/logo.png';
+							const contenidoTexto = noticia.contenido ? richTextToPlainText(noticia.contenido) : '';
+							const excerpt = truncateText(contenidoTexto, 150);
+
+							return (
+								<article class="noticia-card">
+									<div class="noticia-image">
+										<img src={imagen} alt={noticia.titulo} loading="lazy" />
+										{noticia.tipoMedia === 'video' && (
+											<div class="video-overlay">
+												<div class="play-button"></div>
+											</div>
+										)}
+										{noticia.categoria && (
+											<span class="noticia-categoria">{noticia.categoria}</span>
+										)}
+									</div>
+									<div class="noticia-content">
+										<div class="noticia-meta">
+											<span class="noticia-date">
+												<i class="far fa-calendar-alt"></i> {formatDate(noticia.fechaPublicacion)}
+											</span>
+											{noticia.autor && (
+												<span class="noticia-autor">
+													<i class="far fa-user"></i> {noticia.autor}
+												</span>
+											)}
+										</div>
+										<h2 class="noticia-title">
+											<a href={`/${lang}/noticias/${noticia.slug}`}>{noticia.titulo}</a>
+										</h2>
+										<p class="noticia-excerpt">{excerpt}</p>
+										<a href={`/${lang}/noticias/${noticia.slug}`} class="btn-leer-mas">
+											{t('news.readMore')} <i class="fas fa-arrow-right"></i>
+										</a>
+									</div>
+								</article>
+							);
+						})}
+					</div>
+
+					<!-- Pagination -->
+					{totalPages > 1 && (
+						<div class="pagination-container">
+							<nav aria-label="Page navigation">
+								<ul class="pagination">
+									<li class={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+										<a class="page-link" href={currentPage > 1 ? `${basePath}?page=${currentPage - 1}${categoriaParam ? `&categoria=${categoriaParam}` : ''}` : '#'}>
+											<i class="fas fa-chevron-left"></i>
+										</a>
+									</li>
+									{Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+										<li class={`page-item ${page === currentPage ? 'active' : ''}`}>
+											<a class="page-link" href={`${basePath}?page=${page}${categoriaParam ? `&categoria=${categoriaParam}` : ''}`}>{page}</a>
+										</li>
+									))}
+									<li class={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+										<a class="page-link" href={currentPage < totalPages ? `${basePath}?page=${currentPage + 1}${categoriaParam ? `&categoria=${categoriaParam}` : ''}` : '#'}>
+											<i class="fas fa-chevron-right"></i>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					)}
+				</div>
+
+				<!-- Sidebar -->
+				<div class="col-lg-4">
+					<aside class="noticias-sidebar">
+						<!-- Búsqueda -->
+						<div class="sidebar-widget search-widget">
+							<h3 class="widget-title">{t('news.searchNews')}</h3>
+							<form class="search-form" action={`${basePath}/buscar`} method="get">
+								<div class="search-input-group">
+									<input
+										type="text"
+										name="q"
+										class="form-control"
+										placeholder={t('news.searchPlaceholder')}
+										required
+									/>
+									<button type="submit" class="btn-search">
+										<i class="fas fa-search"></i>
+									</button>
+								</div>
+							</form>
+						</div>
+
+						<!-- Noticias Recientes -->
+						<div class="sidebar-widget recent-news-widget">
+							<h3 class="widget-title">{t('news.recentNews')}</h3>
+							<ul class="recent-news-list">
+								{noticiasRecientes.map((noticia) => {
+									const imagen = noticia.imagen?.url ? getStrapiImageUrl(noticia.imagen.url) : '/images/logo.png';
+									return (
+										<li class="recent-news-item">
+											<a href={`/${lang}/noticias/${noticia.slug}`} class="recent-news-link">
+												<div class="recent-news-image">
+													<img src={imagen} alt={noticia.titulo} loading="lazy" />
+												</div>
+												<div class="recent-news-info">
+													<h4>{noticia.titulo}</h4>
+													<span class="recent-news-date">
+														<i class="far fa-calendar-alt"></i> {formatDate(noticia.fechaPublicacion)}
+													</span>
+												</div>
+											</a>
+										</li>
+									);
+								})}
+							</ul>
+						</div>
+
+						<!-- Categorías -->
+						<div class="sidebar-widget categories-widget">
+							<h3 class="widget-title">{t('news.categories')}</h3>
+							<ul class="categories-list">
+								<li><a href={`${basePath}?categoria=institucional`}><i class="fas fa-chevron-right"></i> {t('news.categoryInstitutional')}</a></li>
+								<li><a href={`${basePath}?categoria=prestaciones`}><i class="fas fa-chevron-right"></i> {t('news.categoryBenefits')}</a></li>
+								<li><a href={`${basePath}?categoria=afiliacion`}><i class="fas fa-chevron-right"></i> {t('news.categoryAffiliation')}</a></li>
+								<li><a href={`${basePath}?categoria=eventos`}><i class="fas fa-chevron-right"></i> {t('news.categoryEvents')}</a></li>
+								<li><a href={`${basePath}?categoria=comunicados`}><i class="fas fa-chevron-right"></i> {t('news.categoryAnnouncements')}</a></li>
+							</ul>
+						</div>
+
+						<!-- Banner Contacto -->
+						<div class="sidebar-widget contact-widget">
+							<div class="contact-banner">
+								<i class="fas fa-phone-alt"></i>
+								<h3>{t('news.needHelp')}</h3>
+								<p>{t('news.contactTeam')}</p>
+								<a href={contactPath} class="btn btn-contact">{t('news.contact')}</a>
+							</div>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</div>
+</BaseLayout>
+
+<style>
+	/* Page Header */
+	.page-header-noticias {
+		background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+		padding: 4rem 0 3rem;
+		margin-bottom: 3rem;
+		color: white;
+		text-align: center;
+	}
+
+	.page-header-noticias h1 {
+		font-size: 48px;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
+
+	.page-header-noticias p {
+		font-size: 18px;
+		opacity: 0.9;
+	}
+
+	.filter-info {
+		margin-top: 1rem;
+	}
+
+	.btn-clear-filter {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: rgba(255, 255, 255, 0.2);
+		color: white;
+		padding: 8px 20px;
+		border-radius: 20px;
+		text-decoration: none;
+		font-size: 14px;
+		font-weight: 600;
+		border: 2px solid rgba(255, 255, 255, 0.3);
+		transition: all 0.3s ease;
+	}
+
+	.btn-clear-filter:hover {
+		background: white;
+		color: #8c1b12;
+		border-color: white;
+		transform: translateY(-2px);
+	}
+
+	@media (max-width: 767px) {
+		.page-header-noticias {
+			padding: 2.5rem 0 2rem;
+			margin-bottom: 2rem;
+		}
+
+		.page-header-noticias h1 {
+			font-size: 32px;
+		}
+
+		.page-header-noticias p {
+			font-size: 16px;
+		}
+	}
+
+	/* Main Container */
+	.noticias-main {
+		padding: 0 0 4rem;
+	}
+
+	/* News Grid */
+	.noticias-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 2rem;
+		margin-bottom: 3rem;
+	}
+
+	@media (max-width: 991px) {
+		.noticias-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	/* News Card */
+	.noticia-card {
+		background: white;
+		border-radius: 0;
+		overflow: hidden;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+		transition: all 0.3s ease;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		border: none;
+	}
+
+	.noticia-card:hover {
+		transform: translateY(-8px);
+		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+	}
+
+	.noticia-image {
+		position: relative;
+		width: 100%;
+		height: 220px;
+		overflow: hidden;
+	}
+
+	.noticia-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: transform 0.3s ease;
+	}
+
+	/* Logo fallback styling */
+	.noticia-image img[src*="logo.png"] {
+		object-fit: contain;
+		background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+		padding: 30px;
+	}
+
+	.noticia-card:hover .noticia-image img {
+		transform: scale(1.08);
+	}
+
+	/* Video Overlay */
+	.video-overlay {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 80px;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background: rgba(0, 0, 0, 0.7);
+		border-radius: 50%;
+		transition: all 0.3s ease;
+		z-index: 2;
+		cursor: pointer;
+	}
+
+	/* CSS Play Button Triangle */
+	.play-button {
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 15px 0 15px 26px;
+		border-color: transparent transparent transparent white;
+		margin-left: 6px;
+	}
+
+	.noticia-card:hover .video-overlay {
+		background: rgba(140, 27, 18, 0.9);
+		transform: translate(-50%, -50%) scale(1.1);
+	}
+
+	.noticia-categoria {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		background: #8c1b12;
+		color: white;
+		padding: 6px 16px;
+		border-radius: 20px;
+		font-size: 12px;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+		z-index: 3;
+	}
+
+	.noticia-content {
+		padding: 1.5rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.noticia-meta {
+		display: flex;
+		gap: 1.5rem;
+		margin-bottom: 1rem;
+		font-size: 13px;
+		color: #666;
+	}
+
+	.noticia-meta i {
+		color: #8c1b12;
+		margin-right: 5px;
+	}
+
+	.noticia-title {
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		line-height: 1.4;
+	}
+
+	.noticia-title a {
+		color: #333;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.noticia-title a:hover {
+		color: #8c1b12;
+	}
+
+	.noticia-excerpt {
+		color: #666;
+		font-size: 14px;
+		line-height: 1.6;
+		margin-bottom: 1.5rem;
+		flex: 1;
+	}
+
+	.btn-leer-mas {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		background: #8c1b12;
+		color: white;
+		font-weight: 600;
+		font-size: 14px;
+		text-decoration: none;
+		padding: 12px 24px;
+		border-radius: 6px;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 8px rgba(140, 27, 18, 0.2);
+	}
+
+	.btn-leer-mas:hover {
+		background: #6d2018;
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+		color: white;
+	}
+
+	.btn-leer-mas i {
+		transition: transform 0.3s ease;
+		font-size: 12px;
+	}
+
+	.btn-leer-mas:hover i {
+		transform: translateX(4px);
+	}
+
+	/* Pagination */
+	.pagination-container {
+		display: flex;
+		justify-content: center;
+		margin-top: 3rem;
+	}
+
+	.pagination {
+		display: flex;
+		gap: 8px;
+		list-style: none;
+		padding: 0;
+	}
+
+	.page-item {
+		margin: 0;
+	}
+
+	.page-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border: 2px solid #e0e0e0;
+		border-radius: 8px;
+		color: #333;
+		text-decoration: none;
+		font-weight: 600;
+		transition: all 0.3s ease;
+	}
+
+	.page-link:hover {
+		background: #8c1b12;
+		color: white;
+		border-color: #8c1b12;
+	}
+
+	.page-item.active .page-link {
+		background: #8c1b12;
+		color: white;
+		border-color: #8c1b12;
+	}
+
+	.page-item.disabled .page-link {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+
+	.page-item.disabled .page-link:hover {
+		background: transparent;
+		color: #333;
+		border-color: #e0e0e0;
+	}
+
+	/* Sidebar */
+	.noticias-sidebar {
+		position: sticky;
+		top: 20px;
+	}
+
+	.sidebar-widget {
+		background: white;
+		border-radius: 12px;
+		padding: 2rem;
+		margin-bottom: 2rem;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	}
+
+	.widget-title {
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: #333;
+		padding-bottom: 1rem;
+		border-bottom: 3px solid #8c1b12;
+	}
+
+	/* Search Widget */
+	.search-input-group {
+		position: relative;
+		display: flex;
+	}
+
+	.search-input-group input {
+		flex: 1;
+		padding: 12px 50px 12px 15px;
+		border: 2px solid #e0e0e0;
+		border-radius: 8px;
+		font-size: 14px;
+		transition: border-color 0.3s ease;
+	}
+
+	.search-input-group input:focus {
+		outline: none;
+		border-color: #8c1b12;
+	}
+
+	.btn-search {
+		position: absolute;
+		right: 5px;
+		top: 50%;
+		transform: translateY(-50%);
+		background: #8c1b12;
+		color: white;
+		border: none;
+		width: 40px;
+		height: 35px;
+		border-radius: 6px;
+		cursor: pointer;
+		transition: background 0.3s ease;
+	}
+
+	.btn-search:hover {
+		background: #6d2018;
+	}
+
+	/* Recent News Widget */
+	.recent-news-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.recent-news-item {
+		margin-bottom: 1.5rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid #e0e0e0;
+	}
+
+	.recent-news-item:last-child {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: none;
+	}
+
+	.recent-news-link {
+		display: flex;
+		gap: 15px;
+		text-decoration: none;
+		color: #333;
+		transition: all 0.3s ease;
+	}
+
+	.recent-news-link:hover {
+		color: #8c1b12;
+	}
+
+	.recent-news-image {
+		width: 80px;
+		height: 80px;
+		border-radius: 8px;
+		overflow: hidden;
+		flex-shrink: 0;
+	}
+
+	.recent-news-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	/* Logo fallback styling for recent news */
+	.recent-news-image img[src*="logo.png"] {
+		object-fit: contain;
+		background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+		padding: 15px;
+	}
+
+	.recent-news-info {
+		flex: 1;
+	}
+
+	.recent-news-info h4 {
+		font-size: 14px;
+		font-weight: 600;
+		margin-bottom: 8px;
+		line-height: 1.4;
+	}
+
+	.recent-news-date {
+		font-size: 12px;
+		color: #999;
+	}
+
+	.recent-news-date i {
+		color: #8c1b12;
+	}
+
+	/* Categories Widget */
+	.categories-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.categories-list li {
+		margin-bottom: 0.8rem;
+	}
+
+	.categories-list li:last-child {
+		margin-bottom: 0;
+	}
+
+	.categories-list a {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 10px 15px;
+		color: #666;
+		text-decoration: none;
+		border-radius: 8px;
+		transition: all 0.3s ease;
+		font-size: 15px;
+	}
+
+	.categories-list a i {
+		color: #8c1b12;
+		font-size: 12px;
+	}
+
+	.categories-list a:hover {
+		background: #f5f5f5;
+		color: #8c1b12;
+		padding-left: 20px;
+	}
+
+	/* Contact Widget */
+	.contact-banner {
+		background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+		color: white;
+		text-align: center;
+		padding: 2.5rem 1.5rem;
+		border-radius: 12px;
+	}
+
+	.contact-banner i {
+		font-size: 48px;
+		margin-bottom: 1rem;
+		opacity: 0.9;
+	}
+
+	.contact-banner h3 {
+		font-size: 22px;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
+
+	.contact-banner p {
+		font-size: 14px;
+		opacity: 0.9;
+		margin-bottom: 1.5rem;
+	}
+
+	.btn-contact {
+		background: white;
+		color: #8c1b12;
+		padding: 12px 30px;
+		border-radius: 25px;
+		text-decoration: none;
+		font-weight: 600;
+		display: inline-block;
+		transition: all 0.3s ease;
+	}
+
+	.btn-contact:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+		color: #8c1b12;
+	}
+
+	/* Mobile Responsive */
+	@media (max-width: 991px) {
+		.noticias-sidebar {
+			position: static;
+			margin-top: 3rem;
+		}
+	}
+</style>

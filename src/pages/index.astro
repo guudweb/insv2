@@ -30,7 +30,7 @@ const t = useTranslations(lang);
 // Obtener datos de Strapi con el locale correcto
 const config = await getConfiguracionInicio(lang);
 const heroSlides = await getHeroSlides();
-const slidesAfiliacion = await getSlidesAfiliacion();
+const slidesAfiliacion = await getSlidesAfiliacion(lang);
 const socios = await getSocios();
 const noticiaPrincipal = (await getNoticiasByPosicion('principal', 1, lang))[0];
 const noticiasLaterales = await getNoticiasByPosicion('lateral', 2, lang);

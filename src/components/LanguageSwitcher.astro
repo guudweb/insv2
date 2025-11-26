@@ -47,6 +47,14 @@ const flags: Record<Locale, string> = {
   en: '🇬🇧',
   pt: '🇵🇹'
 };
+
+// Nombres cortos de idiomas para mostrar en el botón
+const shortNames: Record<Locale, string> = {
+  es: 'Español',
+  fr: 'Français',
+  en: 'English',
+  pt: 'Português'
+};
 ---
 
 <div class="language-switcher dropdown">
@@ -63,7 +71,7 @@ const flags: Record<Locale, string> = {
     <i class="fas fa-globe me-1"></i>
     <span class="lang-current">
       <span class="flag-emoji">{flags[currentLang]}</span>
-      <span class="lang-code">{currentLang.toUpperCase()}</span>
+      <span class="lang-name-short">{shortNames[currentLang]}</span>
     </span>
     <i class="fas fa-chevron-down ms-1 dropdown-icon"></i>
   </button>
@@ -85,69 +93,74 @@ const flags: Record<Locale, string> = {
   </ul>
 </div>
 
-<style>
+<style is:global>
   .language-switcher {
     position: relative;
     display: inline-block;
   }
 
-  .btn-language {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    padding: 0.5rem 0.875rem;
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
+  .language-switcher .btn-language {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem 0.875rem !important;
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 6px !important;
+    color: #fff !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
   }
 
-  .btn-language:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.3);
+  .language-switcher .btn-language:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
     transform: translateY(-1px);
   }
 
-  .btn-language:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(140, 27, 18, 0.3);
+  .language-switcher .btn-language:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(140, 27, 18, 0.3) !important;
   }
 
-  .btn-language:active {
+  .language-switcher .btn-language:active {
     transform: translateY(0);
   }
 
-  .lang-current {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
+  .language-switcher .lang-current {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.375rem !important;
   }
 
-  .flag-emoji {
-    font-size: 1.15rem;
-    line-height: 1;
+  .language-switcher .flag-emoji {
+    font-size: 1.15rem !important;
+    line-height: 1 !important;
   }
 
-  .lang-code {
-    font-weight: 600;
-    letter-spacing: 0.5px;
+  .language-switcher .lang-name-short {
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 0.875rem !important;
+    color: #fff !important;
   }
 
-  .dropdown-icon {
+  .language-switcher .dropdown-icon {
     font-size: 0.7rem;
     transition: transform 0.3s ease;
   }
 
-  .btn-language[aria-expanded="true"] .dropdown-icon {
+  .language-switcher .btn-language[aria-expanded="true"] .dropdown-icon {
     transform: rotate(180deg);
   }
 
-  .dropdown-menu {
+  .language-switcher .dropdown-menu {
     min-width: 200px;
     margin-top: 0.5rem;
     padding: 0.5rem 0;
@@ -169,7 +182,7 @@ const flags: Record<Locale, string> = {
     }
   }
 
-  .dropdown-item {
+  .language-switcher .dropdown-item {
     padding: 0.625rem 1rem;
     color: #333;
     text-decoration: none;
@@ -178,40 +191,40 @@ const flags: Record<Locale, string> = {
     border-left: 3px solid transparent;
   }
 
-  .dropdown-item:hover {
+  .language-switcher .dropdown-item:hover {
     background-color: #f8f9fa;
     color: #8c1b12;
     border-left-color: #8c1b12;
     padding-left: 1.25rem;
   }
 
-  .dropdown-item.active {
+  .language-switcher .dropdown-item.active {
     background: linear-gradient(135deg, #8c1b12 0%, #7a1710 100%);
     color: #fff;
     font-weight: 600;
     border-left-color: #fff;
   }
 
-  .dropdown-item.active:hover {
+  .language-switcher .dropdown-item.active:hover {
     background: linear-gradient(135deg, #7a1710 0%, #6a130e 100%);
   }
 
-  .lang-name {
+  .language-switcher .lang-name {
     font-size: 0.9rem;
   }
 
   /* Responsive - Tablet */
   @media (max-width: 991px) {
-    .btn-language {
-      padding: 0.45rem 0.75rem;
-      font-size: 0.8125rem;
+    .language-switcher .btn-language {
+      padding: 0.45rem 0.75rem !important;
+      font-size: 0.8125rem !important;
     }
 
-    .flag-emoji {
-      font-size: 1rem;
+    .language-switcher .flag-emoji {
+      font-size: 1rem !important;
     }
 
-    .dropdown-menu {
+    .language-switcher .dropdown-menu {
       min-width: 180px;
     }
   }
@@ -223,43 +236,49 @@ const flags: Record<Locale, string> = {
       margin: 0.75rem 0;
     }
 
-    .btn-language {
-      width: 100%;
-      justify-content: center;
-      padding: 0.625rem 1rem;
-      font-size: 0.875rem;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+    .language-switcher .btn-language {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 0.625rem 1rem !important;
+      font-size: 0.875rem !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
     }
 
-    .dropdown-menu {
+    .language-switcher .dropdown-menu {
       width: 100%;
       min-width: auto;
       margin-top: 0.5rem;
       border-radius: 6px;
     }
 
-    .dropdown-item {
+    .language-switcher .dropdown-item {
       padding: 0.75rem 1rem;
       font-size: 0.9375rem;
     }
 
-    .flag-emoji {
-      font-size: 1.25rem;
+    .language-switcher .flag-emoji {
+      font-size: 1.25rem !important;
+    }
+
+    .language-switcher .lang-name-short {
+      display: inline-block !important;
+      font-size: 0.85rem !important;
     }
   }
 
   /* Responsive - Extra Small Mobile */
   @media (max-width: 480px) {
-    .btn-language {
-      padding: 0.5rem 0.875rem;
+    .language-switcher .btn-language {
+      padding: 0.5rem 0.875rem !important;
     }
 
-    .lang-code {
-      display: none;
+    .language-switcher .lang-name-short {
+      display: inline-block !important;
+      font-size: 0.8rem !important;
     }
 
-    .flag-emoji {
-      font-size: 1.35rem;
+    .language-switcher .flag-emoji {
+      font-size: 1.1rem !important;
     }
   }
 </style>

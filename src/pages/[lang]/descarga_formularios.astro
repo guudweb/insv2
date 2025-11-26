@@ -1,13 +1,23 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCategoriasFormularios, getStrapiImageUrl } from '../lib/strapi';
-import { useTranslations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCategoriasFormularios, getStrapiImageUrl } from '../../lib/strapi';
+import { languages, useTranslations, type Locale, getLocalizedPath } from '../../i18n/utils';
 
-const lang = 'es';
-const t = useTranslations(lang);
+export const prerender = false;
 
-// Obtener categorías y formularios desde Strapi
-const categoriasStrapi = await getCategoriasFormularios(lang);
+// Generar rutas estáticas para cada idioma (excepto español)
+export function getStaticPaths() {
+	return Object.keys(languages)
+		.filter(lang => lang !== 'es')
+		.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = useTranslations(locale);
+
+// Obtener categorías y formularios desde Strapi con el locale
+const categoriasStrapi = await getCategoriasFormularios(locale);
 
 // Mapear datos de Strapi
 const categorias = categoriasStrapi.map(cat => ({
@@ -24,14 +34,19 @@ const categorias = categoriasStrapi.map(cat => ({
 		imagen: form.thumbnail ? getStrapiImageUrl(form.thumbnail.url) : '/images/logo_01.png'
 	}))
 }));
+
+// Rutas localizadas
+const basePath = `/${lang}/descarga_formularios`;
+const contactPath = getLocalizedPath('/contacto', locale);
+const agenciesPath = getLocalizedPath('/nuestras_agencias', locale);
 ---
 
-<BaseLayout title="Descarga de Formularios - INSESO" description="Descarga los formularios necesarios para tus trámites con INSESO" currentPath="/descarga_formularios">
+<BaseLayout title={t('forms.pageTitle')} description={t('forms.pageSubtitle')} currentPath={basePath}>
 	<!-- Page Header -->
 	<div class="page-header">
 		<div class="container">
-			<h1><i class="fas fa-download"></i> Descarga de Formularios</h1>
-			<p>Encuentra y descarga los formularios necesarios para tus trámites con INSESO</p>
+			<h1><i class="fas fa-download"></i> {t('forms.title')}</h1>
+			<p>{t('forms.pageSubtitle')}</p>
 		</div>
 	</div>
 
@@ -42,17 +57,17 @@ const categorias = categoriasStrapi.map(cat => ({
 			<div class="instrucciones-rapidas">
 				<div class="instruccion">
 					<i class="fas fa-search"></i>
-					<span>Busca tu formulario</span>
+					<span>{t('forms.step1')}</span>
 				</div>
 				<div class="divider">→</div>
 				<div class="instruccion">
 					<i class="fas fa-download"></i>
-					<span>Descarga y completa</span>
+					<span>{t('forms.step2')}</span>
 				</div>
 				<div class="divider">→</div>
 				<div class="instruccion">
 					<i class="fas fa-building"></i>
-					<span>Presenta en oficina</span>
+					<span>{t('forms.step3')}</span>
 				</div>
 			</div>
 
@@ -64,7 +79,7 @@ const categorias = categoriasStrapi.map(cat => ({
 						type="text"
 						id="searchInput"
 						class="search-input"
-						placeholder="Buscar formulario por nombre, código o categoría..."
+						placeholder={t('forms.searchPlaceholder')}
 					/>
 					<button id="clearSearch" class="clear-btn" style="display: none;">
 						<i class="fas fa-times"></i>
@@ -72,13 +87,13 @@ const categorias = categoriasStrapi.map(cat => ({
 				</div>
 				<div class="filter-buttons">
 					<button class="filter-btn active" data-filter="all">
-						<i class="fas fa-th"></i> Todos
+						<i class="fas fa-th"></i> {t('forms.all')}
 					</button>
 					<button class="filter-btn" data-filter="PDF">
-						<i class="fas fa-file-pdf"></i> PDF
+						<i class="fas fa-file-pdf"></i> {t('forms.pdf')}
 					</button>
 					<button class="filter-btn" data-filter="Excel">
-						<i class="fas fa-file-excel"></i> Excel
+						<i class="fas fa-file-excel"></i> {t('forms.excel')}
 					</button>
 				</div>
 			</div>
@@ -87,7 +102,7 @@ const categorias = categoriasStrapi.map(cat => ({
 				<div class="results-header">
 					<span id="resultsCount"></span>
 					<button id="closeResults" class="btn-close-results">
-						<i class="fas fa-times"></i> Cerrar búsqueda
+						<i class="fas fa-times"></i> {t('forms.closeSearch')}
 					</button>
 				</div>
 				<div id="resultsContainer" class="formularios-grid"></div>
@@ -104,7 +119,7 @@ const categorias = categoriasStrapi.map(cat => ({
 							<h2>{categoria.titulo}</h2>
 							<p>{categoria.descripcion}</p>
 						</div>
-						<span class="badge-count">{categoria.formularios.length} formularios</span>
+						<span class="badge-count">{categoria.formularios.length} {t('forms.formsCount')}</span>
 					</div>
 
 					<div class="formularios-grid">
@@ -127,7 +142,7 @@ const categorias = categoriasStrapi.map(cat => ({
 											<i class="fas fa-file"></i> {form.tamano}
 										</span>
 										<a href={form.url} class="btn-download" download>
-											<i class="fas fa-download"></i> Descargar
+											<i class="fas fa-download"></i> {t('common.download')}
 										</a>
 									</div>
 								</div>
@@ -146,10 +161,10 @@ const categorias = categoriasStrapi.map(cat => ({
 								<i class="fas fa-question-circle"></i>
 							</div>
 							<div class="info-content">
-								<h3>¿Necesitas ayuda?</h3>
-								<p>Nuestro equipo está disponible para asistirte con cualquier consulta sobre los formularios</p>
-								<a href="/contacto" class="info-link">
-									Contactar con soporte <i class="fas fa-arrow-right"></i>
+								<h3>{t('forms.needHelp')}</h3>
+								<p>{t('forms.helpDescription')}</p>
+								<a href={contactPath} class="info-link">
+									{t('forms.contactSupport')} <i class="fas fa-arrow-right"></i>
 								</a>
 							</div>
 						</div>
@@ -160,10 +175,10 @@ const categorias = categoriasStrapi.map(cat => ({
 								<i class="fas fa-map-marker-alt"></i>
 							</div>
 							<div class="info-content">
-								<h3>Nuestras oficinas</h3>
-								<p>Visita nuestras oficinas en Malabo y Bata para entregar tus formularios</p>
-								<a href="/nuestras_agencias" class="info-link">
-									Ver ubicaciones <i class="fas fa-arrow-right"></i>
+								<h3>{t('forms.ourOffices')}</h3>
+								<p>{t('forms.officesDescription')}</p>
+								<a href={agenciesPath} class="info-link">
+									{t('forms.viewLocations')} <i class="fas fa-arrow-right"></i>
 								</a>
 							</div>
 						</div>
@@ -774,19 +789,19 @@ const categorias = categoriasStrapi.map(cat => ({
 	}
 </style>
 
-<script>
+<script define:vars={{ foundSingular: t('forms.foundSingular'), foundPlural: t('forms.foundPlural'), noResults: t('forms.noResults') }}>
 	document.addEventListener('DOMContentLoaded', () => {
-		const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-		const clearSearch = document.getElementById('clearSearch') as HTMLButtonElement;
+		const searchInput = document.getElementById('searchInput');
+		const clearSearch = document.getElementById('clearSearch');
 		const filterButtons = document.querySelectorAll('.filter-btn');
-		const searchResults = document.getElementById('searchResults') as HTMLDivElement;
-		const resultsContainer = document.getElementById('resultsContainer') as HTMLDivElement;
-		const resultsCount = document.getElementById('resultsCount') as HTMLSpanElement;
-		const closeResults = document.getElementById('closeResults') as HTMLButtonElement;
+		const searchResults = document.getElementById('searchResults');
+		const resultsContainer = document.getElementById('resultsContainer');
+		const resultsCount = document.getElementById('resultsCount');
+		const closeResults = document.getElementById('closeResults');
 		const categoriaSections = document.querySelectorAll('.categoria-section');
 
 		let currentFilter = 'all';
-		let allFormularios: any[] = [];
+		let allFormularios = [];
 
 		// Recopilar todos los formularios
 		categoriaSections.forEach((section) => {
@@ -796,7 +811,7 @@ const categorias = categoriasStrapi.map(cat => ({
 			cards.forEach((card) => {
 				const nombre = card.querySelector('h3')?.textContent || '';
 				const formato = card.querySelector('.badge')?.textContent?.trim() || '';
-				const cardClone = card.cloneNode(true) as HTMLElement;
+				const cardClone = card.cloneNode(true);
 
 				allFormularios.push({
 					nombre,
@@ -815,7 +830,7 @@ const categorias = categoriasStrapi.map(cat => ({
 				// Mostrar todo
 				searchResults.style.display = 'none';
 				categoriaSections.forEach(section => {
-					(section as HTMLElement).classList.remove('hidden');
+					section.classList.remove('hidden');
 				});
 				return;
 			}
@@ -838,20 +853,20 @@ const categorias = categoriasStrapi.map(cat => ({
 					resultsContainer.appendChild(form.element.cloneNode(true));
 				});
 
-				resultsCount.textContent = `${filtered.length} formulario${filtered.length !== 1 ? 's' : ''} encontrado${filtered.length !== 1 ? 's' : ''}`;
+				resultsCount.textContent = `${filtered.length} ${filtered.length !== 1 ? foundPlural : foundSingular}`;
 				searchResults.style.display = 'block';
 
 				// Ocultar categorías
 				categoriaSections.forEach(section => {
-					(section as HTMLElement).classList.add('hidden');
+					section.classList.add('hidden');
 				});
 			} else {
-				resultsContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 3rem;">No se encontraron formularios que coincidan con tu búsqueda</p>';
-				resultsCount.textContent = '0 formularios encontrados';
+				resultsContainer.innerHTML = `<p style="text-align: center; color: #999; padding: 3rem;">${noResults}</p>`;
+				resultsCount.textContent = `0 ${foundPlural}`;
 				searchResults.style.display = 'block';
 
 				categoriaSections.forEach(section => {
-					(section as HTMLElement).classList.add('hidden');
+					section.classList.add('hidden');
 				});
 			}
 		}
@@ -894,7 +909,7 @@ const categorias = categoriasStrapi.map(cat => ({
 
 			searchResults.style.display = 'none';
 			categoriaSections.forEach(section => {
-				(section as HTMLElement).classList.remove('hidden');
+				section.classList.remove('hidden');
 			});
 		});
 	});

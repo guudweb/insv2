@@ -1,19 +1,29 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import PartnersCarousel from '../../components/PartnersCarousel.astro';
-import { getSocios } from '../../lib/strapi';
-import { useTranslations } from '../../i18n/utils';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PartnersCarousel from '../../../components/PartnersCarousel.astro';
+import { getSocios } from '../../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../../i18n/utils';
 
 export const prerender = false;
 
-const t = useTranslations('es');
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const socios = await getSocios();
 ---
 
 <BaseLayout
   title={t('penalties.pageTitle')}
   description={t('penalties.pageDescription')}
-  currentPath="/empleadores/penas-sanciones"
+  currentPath={getLocalizedPath('/empleadores/penas-sanciones', lang)}
 >
   <!-- Page Header -->
   <div class="full-title">
@@ -23,8 +33,8 @@ const socios = await getSocios();
       <br>
       <div class="breadcrumb-main">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">{t('penalties.breadcrumbHome')}</a></li>
-          <li class="breadcrumb-item"><a href="/empleadores">{t('penalties.breadcrumbEmployers')}</a></li>
+          <li class="breadcrumb-item"><a href={getLocalizedPath('/', lang)}>{t('penalties.breadcrumbHome')}</a></li>
+          <li class="breadcrumb-item"><a href={getLocalizedPath('/empleadores', lang)}>{t('penalties.breadcrumbEmployers')}</a></li>
           <li class="breadcrumb-item active">{t('penalties.breadcrumbPenalties')}</li>
         </ol>
       </div>
@@ -92,19 +102,19 @@ const socios = await getSocios();
           <div class="infraction-card">
             <div class="infraction-header muy-grave">
               <i class="fas fa-ban"></i>
-              <h3>Infracciones Muy Graves</h3>
+              <h3>{t('penalties.verySeriousInfractions')}</h3>
             </div>
             <div class="infraction-body">
               <ul>
-                <li>No afiliar a ningún trabajador teniendo la obligación de hacerlo</li>
-                <li>Retraso en el pago de cotizaciones superior a 3 meses</li>
-                <li>Falsedad en documentos o declaraciones presentadas a INSESO</li>
-                <li>Apropiación indebida de las cotizaciones descontadas a trabajadores</li>
-                <li>Reincidencia en infracciones graves</li>
-                <li>Negarse a facilitar información o documentación requerida</li>
+                <li>{t('penalties.verySeriousInfraction1')}</li>
+                <li>{t('penalties.verySeriousInfraction2')}</li>
+                <li>{t('penalties.verySeriousInfraction3')}</li>
+                <li>{t('penalties.verySeriousInfraction4')}</li>
+                <li>{t('penalties.verySeriousInfraction5')}</li>
+                <li>{t('penalties.verySeriousInfraction6')}</li>
               </ul>
               <div class="sancion-info">
-                <strong>Sanción:</strong> Multa de 2.000.000 a 10.000.000 FCFA + posible cierre temporal
+                <strong>{t('penalties.penaltyLabel')}</strong> {t('penalties.verySeriousPenalty')}
               </div>
             </div>
           </div>
@@ -114,37 +124,34 @@ const socios = await getSocios();
         <section class="content-section">
           <div class="section-header">
             <i class="fas fa-percent"></i>
-            <h2>Recargos por Mora en el Pago</h2>
+            <h2>{t('penalties.latePaymentTitle')}</h2>
           </div>
-          <p>
-            Además de las sanciones, el pago fuera de plazo de las cotizaciones conlleva
-            recargos automáticos calculados sobre el importe adeudado:
-          </p>
+          <p>{t('penalties.latePaymentIntro')}</p>
 
           <div class="table-responsive">
             <table class="mora-table">
               <thead>
                 <tr>
-                  <th>Periodo de Retraso</th>
-                  <th>Recargo Aplicable</th>
+                  <th>{t('penalties.delayPeriod')}</th>
+                  <th>{t('penalties.applicableSurcharge')}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Hasta 1 mes</td>
-                  <td>3% del importe adeudado</td>
+                  <td>{t('penalties.delay1Month')}</td>
+                  <td>{t('penalties.surcharge1Month')}</td>
                 </tr>
                 <tr>
-                  <td>De 1 a 3 meses</td>
-                  <td>5% del importe adeudado</td>
+                  <td>{t('penalties.delay1to3Months')}</td>
+                  <td>{t('penalties.surcharge1to3Months')}</td>
                 </tr>
                 <tr>
-                  <td>De 3 a 6 meses</td>
-                  <td>10% del importe adeudado</td>
+                  <td>{t('penalties.delay3to6Months')}</td>
+                  <td>{t('penalties.surcharge3to6Months')}</td>
                 </tr>
                 <tr>
-                  <td>Más de 6 meses</td>
-                  <td>20% del importe adeudado + intereses de demora</td>
+                  <td>{t('penalties.delayOver6Months')}</td>
+                  <td>{t('penalties.surchargeOver6Months')}</td>
                 </tr>
               </tbody>
             </table>
@@ -152,8 +159,7 @@ const socios = await getSocios();
 
           <div class="alert-warning">
             <i class="fas fa-exclamation-triangle"></i>
-            <strong>Importante:</strong> Los recargos se calculan automáticamente y son independientes
-            de las sanciones que puedan imponerse por la infracción.
+            <strong>{t('penalties.importantNote')}</strong> {t('penalties.surchargeNote')}
           </div>
         </section>
 
@@ -161,47 +167,47 @@ const socios = await getSocios();
         <section class="content-section">
           <div class="section-header">
             <i class="fas fa-list-ol"></i>
-            <h2>Procedimiento Sancionador</h2>
+            <h2>{t('penalties.procedureTitle')}</h2>
           </div>
 
           <div class="proceso-timeline">
             <div class="timeline-item">
               <div class="timeline-number">1</div>
               <div class="timeline-content">
-                <h4>Detección de la Infracción</h4>
-                <p>Por inspección, declaración o denuncia.</p>
+                <h4>{t('penalties.step1Title')}</h4>
+                <p>{t('penalties.step1Text')}</p>
               </div>
             </div>
 
             <div class="timeline-item">
               <div class="timeline-number">2</div>
               <div class="timeline-content">
-                <h4>Notificación de Cargos</h4>
-                <p>El empleador recibe notificación escrita de los hechos imputados.</p>
+                <h4>{t('penalties.step2Title')}</h4>
+                <p>{t('penalties.step2Text')}</p>
               </div>
             </div>
 
             <div class="timeline-item">
               <div class="timeline-number">3</div>
               <div class="timeline-content">
-                <h4>Plazo de Alegaciones</h4>
-                <p>15 días hábiles para presentar descargos y pruebas.</p>
+                <h4>{t('penalties.step3Title')}</h4>
+                <p>{t('penalties.step3Text')}</p>
               </div>
             </div>
 
             <div class="timeline-item">
               <div class="timeline-number">4</div>
               <div class="timeline-content">
-                <h4>Resolución</h4>
-                <p>INSESO emite resolución motivada en plazo de 30 días.</p>
+                <h4>{t('penalties.step4Title')}</h4>
+                <p>{t('penalties.step4Text')}</p>
               </div>
             </div>
 
             <div class="timeline-item">
               <div class="timeline-number">5</div>
               <div class="timeline-content">
-                <h4>Recurso de Apelación</h4>
-                <p>Posibilidad de recurrir en 30 días ante la autoridad competente.</p>
+                <h4>{t('penalties.step5Title')}</h4>
+                <p>{t('penalties.step5Text')}</p>
               </div>
             </div>
           </div>
@@ -211,28 +217,25 @@ const socios = await getSocios();
         <section class="content-section">
           <div class="section-header">
             <i class="fas fa-shield-alt"></i>
-            <h2>Medidas Cautelares</h2>
+            <h2>{t('penalties.precautionaryTitle')}</h2>
           </div>
-          <p>
-            En casos de infracciones muy graves, INSESO puede adoptar medidas cautelares mientras
-            se tramita el expediente:
-          </p>
+          <p>{t('penalties.precautionaryIntro')}</p>
           <ul class="medidas-list">
             <li>
               <i class="fas fa-check-circle"></i>
-              <strong>Suspensión de certificaciones:</strong> No emisión de certificados de no deuda
+              <strong>{t('penalties.measure1Title')}</strong> {t('penalties.measure1Text')}
             </li>
             <li>
               <i class="fas fa-check-circle"></i>
-              <strong>Embargo preventivo:</strong> Retención de cuentas bancarias
+              <strong>{t('penalties.measure2Title')}</strong> {t('penalties.measure2Text')}
             </li>
             <li>
               <i class="fas fa-check-circle"></i>
-              <strong>Cierre temporal:</strong> Suspensión de actividad en casos extremos
+              <strong>{t('penalties.measure3Title')}</strong> {t('penalties.measure3Text')}
             </li>
             <li>
               <i class="fas fa-check-circle"></i>
-              <strong>Inhabilitación:</strong> Para participar en licitaciones públicas
+              <strong>{t('penalties.measure4Title')}</strong> {t('penalties.measure4Text')}
             </li>
           </ul>
         </section>
@@ -241,7 +244,7 @@ const socios = await getSocios();
         <section class="content-section">
           <div class="section-header">
             <i class="fas fa-lightbulb"></i>
-            <h2>Cómo Evitar Sanciones</h2>
+            <h2>{t('penalties.avoidTitle')}</h2>
           </div>
 
           <div class="tips-grid">
@@ -249,48 +252,48 @@ const socios = await getSocios();
               <div class="tip-icon">
                 <i class="fas fa-calendar-check"></i>
               </div>
-              <h4>Pague a Tiempo</h4>
-              <p>Cumpla los plazos mensuales de declaración y pago de cotizaciones.</p>
+              <h4>{t('penalties.tip1Title')}</h4>
+              <p>{t('penalties.tip1Text')}</p>
             </div>
 
             <div class="tip-card">
               <div class="tip-icon">
                 <i class="fas fa-users"></i>
               </div>
-              <h4>Afilie a Todos</h4>
-              <p>Registre a todos sus trabajadores desde el primer día de trabajo.</p>
+              <h4>{t('penalties.tip2Title')}</h4>
+              <p>{t('penalties.tip2Text')}</p>
             </div>
 
             <div class="tip-card">
               <div class="tip-icon">
                 <i class="fas fa-file-alt"></i>
               </div>
-              <h4>Declare Correctamente</h4>
-              <p>Verifique que salarios y datos sean exactos en cada declaración.</p>
+              <h4>{t('penalties.tip3Title')}</h4>
+              <p>{t('penalties.tip3Text')}</p>
             </div>
 
             <div class="tip-card">
               <div class="tip-icon">
                 <i class="fas fa-sync-alt"></i>
               </div>
-              <h4>Actualice Datos</h4>
-              <p>Mantenga actualizada la información de su empresa y trabajadores.</p>
+              <h4>{t('penalties.tip4Title')}</h4>
+              <p>{t('penalties.tip4Text')}</p>
             </div>
 
             <div class="tip-card">
               <div class="tip-icon">
                 <i class="fas fa-handshake"></i>
               </div>
-              <h4>Colabore</h4>
-              <p>Facilite las inspecciones y proporcione documentación solicitada.</p>
+              <h4>{t('penalties.tip5Title')}</h4>
+              <p>{t('penalties.tip5Text')}</p>
             </div>
 
             <div class="tip-card">
               <div class="tip-icon">
                 <i class="fas fa-phone"></i>
               </div>
-              <h4>Consulte Dudas</h4>
-              <p>Ante dudas, contacte a INSESO antes de cometer errores.</p>
+              <h4>{t('penalties.tip6Title')}</h4>
+              <p>{t('penalties.tip6Text')}</p>
             </div>
           </div>
         </section>
@@ -303,7 +306,7 @@ const socios = await getSocios();
           <div class="card-icon">
             <i class="fas fa-phone-volume"></i>
           </div>
-          <h3>¿Recibió una Notificación?</h3>
+          <h3>{t('penalties.notificationQuestion')}</h3>
           <div class="contact-info">
             <p><i class="fas fa-phone"></i> <strong>(+240) 333 092214</strong></p>
           </div>
@@ -311,12 +314,11 @@ const socios = await getSocios();
 
         <!-- Enlaces Útiles -->
         <div class="sidebar-card">
-          <h3><i class="fas fa-link"></i> Enlaces Útiles</h3>
+          <h3><i class="fas fa-link"></i> {t('penalties.usefulLinks')}</h3>
           <ul class="link-list">
-            <li><a href="/empleadores/afiliacion"><i class="fas fa-chevron-right"></i> Afiliación de Trabajadores</a></li>
-            <li><a href="/empleadores/cotizaciones"><i class="fas fa-chevron-right"></i> Cotizaciones</a></li>
-            <li><a href="/descarga_formularios"><i class="fas fa-chevron-right"></i> Formularios</a></li>
-            <li><a href="/contacto"><i class="fas fa-chevron-right"></i> Contacto</a></li>
+            <li><a href={getLocalizedPath('/afiliacionee_trabajadores', lang)}><i class="fas fa-chevron-right"></i> {t('penalties.linkAffiliation')}</a></li>
+            <li><a href={getLocalizedPath('/descarga_formularios', lang)}><i class="fas fa-chevron-right"></i> {t('penalties.linkForms')}</a></li>
+            <li><a href={getLocalizedPath('/contacto', lang)}><i class="fas fa-chevron-right"></i> {t('penalties.linkContact')}</a></li>
           </ul>
         </div>
       </div>
@@ -620,50 +622,6 @@ const socios = await getSocios();
     margin: 0;
   }
 
-  /* Regularización Box */
-  .regularizacion-box {
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-    padding: 2rem;
-    border-radius: 12px;
-    border: 2px solid #66bb6a;
-  }
-
-  .regularizacion-box h4 {
-    color: #2e7d32;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-
-  .regularizacion-box ul {
-    margin: 1.5rem 0;
-  }
-
-  .regularizacion-box li {
-    margin-bottom: 0.75rem;
-    color: #1b5e20;
-  }
-
-  .btn-regularizar {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #4caf50;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    margin-top: 1rem;
-  }
-
-  .btn-regularizar:hover {
-    background: #388e3c;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
-    color: white;
-  }
-
   /* Sidebar */
   .sidebar-card {
     background: white;
@@ -715,24 +673,15 @@ const socios = await getSocios();
     margin-right: 8px;
   }
 
-  .small-text {
-    font-size: 13px;
-    color: #666;
-    margin-top: 1rem;
-  }
-
-  .doc-list,
   .link-list {
     list-style: none;
     padding: 0;
   }
 
-  .doc-list li,
   .link-list li {
     margin-bottom: 0.75rem;
   }
 
-  .doc-list a,
   .link-list a {
     color: #333;
     text-decoration: none;
@@ -744,15 +693,10 @@ const socios = await getSocios();
     transition: all 0.3s ease;
   }
 
-  .doc-list a:hover,
   .link-list a:hover {
     background: #f5f5f5;
     color: #8c1b12;
     padding-left: 1rem;
-  }
-
-  .doc-list i {
-    color: #e53935;
   }
 
   .link-list i {
@@ -792,4 +736,3 @@ const socios = await getSocios();
     }
   }
 </style>
-</BaseLayout>

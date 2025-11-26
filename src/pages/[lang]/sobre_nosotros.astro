@@ -1,20 +1,29 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import PartnersCarousel from '../components/PartnersCarousel.astro';
-import InfoCard from '../components/InfoCard.astro';
-import { getSocios } from '../lib/strapi';
-import { useTranslations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import InfoCard from '../../components/InfoCard.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
 
 export const prerender = false;
 
-const t = useTranslations('es');
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 // Obtener socios de Strapi
 const socios = await getSocios();
 ---
 
-<BaseLayout title={t('about.pageTitle')} currentPath="/sobre_nosotros">
+<BaseLayout title={t('about.pageTitle')} currentPath={getLocalizedPath('/sobre_nosotros', lang)}>
   <PageHeader imageSrc="/images/sommes nous/slide_qsn.gif" imageAlt={t('about.headerAlt')} />
 
   <div class="container">

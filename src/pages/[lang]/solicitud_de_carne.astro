@@ -1,17 +1,27 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import PageHeader from '../components/PageHeader.astro';
-import PartnersCarousel from '../components/PartnersCarousel.astro';
-import { getSocios } from '../lib/strapi';
-import { useTranslations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../../i18n/utils';
 
 export const prerender = false;
 
-const t = useTranslations('es');
+export async function getStaticPaths() {
+  return [
+    { params: { lang: 'fr' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'pt' } }
+  ];
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const socios = await getSocios();
 ---
 
-<BaseLayout title={t('cardRequest.pageTitle')} currentPath="/solicitud_de_carne">
+<BaseLayout title={t('cardRequest.pageTitle')} currentPath={getLocalizedPath('/solicitud_de_carne', lang)}>
   <PageHeader
     imageSrc="/images/trabajadores/img_silder_trabaja_02.jpg"
     imageAlt={t('cardRequest.headerAlt')}

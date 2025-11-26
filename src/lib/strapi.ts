@@ -538,7 +538,7 @@ export async function getHeroSlides(): Promise<HeroSlide[]> {
 // ==================== SLIDES AFILIACIÓN ====================
 
 // Obtener todos los slides de afiliación
-export async function getSlidesAfiliacion(): Promise<SlideAfiliacion[]> {
+export async function getSlidesAfiliacion(locale: string = 'es'): Promise<SlideAfiliacion[]> {
   const query = qs.stringify(
     {
       populate: ['imagen'],
@@ -551,6 +551,7 @@ export async function getSlidesAfiliacion(): Promise<SlideAfiliacion[]> {
       pagination: {
         pageSize: 100,
       },
+      locale: locale,
     },
     {
       encodeValuesOnly: true,
