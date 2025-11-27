@@ -2,13 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl } from '../../lib/strapi';
 
-export async function getStaticPaths() {
-	const noticias = await getNoticias();
-	return noticias.map((noticia) => ({
-		params: { slug: getNoticiaSlug(noticia) },
-	}));
-}
-
 const { slug } = Astro.params;
 const noticia = await getNoticiaBySlug(slug);
 

@@ -409,6 +409,11 @@
     "linkForms": "Formulários",
     "linkContact": "Contato"
   },
+  "prestaciones": {
+    "pageTitle": "INSESO - Prestações Sociais",
+    "title": "PRESTAÇÕES SOCIAIS",
+    "description": "O regime de Segurança Social concederá as seguintes prestações:"
+  },
   "about": {
     "pageTitle": "INSESO - Sobre Nós",
     "headerAlt": "Sobre Nós - INSESO",

@@ -1,6 +1,7 @@
 ---
 import type { Noticia } from '../lib/strapi';
 import { getStrapiImageUrl } from '../lib/strapi';
+import { getLangFromUrl, getLocalizedPath } from '../i18n/utils';
 
 interface Props {
   noticia: Noticia;
@@ -8,18 +9,20 @@ interface Props {
 }
 
 const { noticia, variant = 'default' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 
 const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
 const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
+const noticiaUrl = getLocalizedPath(`/noticias/${slug}`, lang);
 ---
 
 <div class="card my-4">
   <h5 class="card-header">
-    <a href={`/noticia/${slug}`} class="text-decoration-none text-white">
+    <a href={noticiaUrl} class="text-decoration-none text-white">
       {noticia.titulo}
     </a>
   </h5>
-  <a href={`/noticia/${slug}`}>
+  <a href={noticiaUrl}>
     <img class="img-fluid" src={imageUrl} alt={noticia.titulo} loading="lazy" />
   </a>
 </div>

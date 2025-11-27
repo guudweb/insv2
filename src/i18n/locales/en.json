@@ -409,6 +409,11 @@
     "linkForms": "Forms",
     "linkContact": "Contact"
   },
+  "prestaciones": {
+    "pageTitle": "INSESO - Social Benefits",
+    "title": "SOCIAL BENEFITS",
+    "description": "The Social Security system shall grant the following benefits:"
+  },
   "about": {
     "pageTitle": "INSESO - About Us",
     "headerAlt": "About Us - INSESO",

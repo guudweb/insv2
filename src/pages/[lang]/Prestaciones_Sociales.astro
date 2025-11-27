@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Breadcrumb from '../components/Breadcrumb.astro';
-import PartnersCarousel from '../components/PartnersCarousel.astro';
-import PrestacionesGrid from '../components/PrestacionesGrid.astro';
-import { getSocios } from '../lib/strapi';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import PrestacionesGrid from '../../components/PrestacionesGrid.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, type Locale } from '../../i18n/utils';
 
 // Renderizar dinámicamente (SSR) para obtener datos frescos de Strapi
 export const prerender = false;
 
-// Obtener idioma y traducciones
-const lang = getLangFromUrl(Astro.url);
+// Obtener idioma de la URL
+const lang = Astro.params.lang as Locale;
 const t = useTranslations(lang);
 
 // Obtener socios de Strapi

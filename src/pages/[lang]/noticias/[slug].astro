@@ -5,22 +5,6 @@ import { languages, useTranslations, type Locale, getLocalizedPath } from '../..
 
 export const prerender = false;
 
-// Generar rutas estáticas para cada idioma y slug de noticia
-export async function getStaticPaths() {
-	const paths: { params: { lang: string; slug: string } }[] = [];
-
-	for (const lang of Object.keys(languages).filter(l => l !== 'es')) {
-		const noticias = await getNoticias(lang);
-		for (const noticia of noticias) {
-			paths.push({
-				params: { lang, slug: getNoticiaSlug(noticia) }
-			});
-		}
-	}
-
-	return paths;
-}
-
 const { lang, slug } = Astro.params;
 const locale = lang as Locale;
 const t = useTranslations(locale);

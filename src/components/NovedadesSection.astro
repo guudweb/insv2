@@ -1,21 +1,25 @@
 ---
 import type { Prestacion } from '../lib/strapi';
 import { getStrapiImageUrl } from '../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 
 interface Props {
   prestaciones: Prestacion[];
 }
 
 const { prestaciones } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="portfolio-col">
   <div class="container">
-    <h2 class="card-header">NOVEDADES</h2>
+    <h2 class="card-header">{t('home.services')}</h2>
     <div class="row">
       {prestaciones.map((prestacion) => {
         const imageUrl = prestacion.imagen ? getStrapiImageUrl(prestacion.imagen.url) : '/images/default-prestacion.jpg';
         const slug = prestacion.slug;
+        const prestacionUrl = getLocalizedPath(`/Prestaciones_Sociales`, lang);
 
         return (
           <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
@@ -23,13 +27,13 @@ const { prestaciones } = Astro.props;
               <img class="card-img-top" src={imageUrl} alt={prestacion.titulo} loading="lazy" />
               <div class="card-body">
                 <h4>
-                  <a href={`/prestacion/${slug}`}>{prestacion.titulo}</a>
+                  <a href={prestacionUrl}>{prestacion.titulo}</a>
                 </h4>
                 <p>{prestacion.resumen}</p>
                 <br />
                 <br />
-                <a href={`/prestacion/${slug}`} class="btn btn-primary">
-                  Seguir leyendo &rarr;
+                <a href={prestacionUrl} class="btn btn-primary">
+                  {t('common.readMore')} &rarr;
                 </a>
               </div>
             </div>

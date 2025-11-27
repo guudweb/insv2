@@ -1,20 +1,27 @@
 ---
 import type { Noticia } from '../lib/strapi';
 import { getStrapiImageUrl, formatDate } from '../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from '../i18n/utils';
 
 interface Props {
   noticias: Noticia[];
 }
 
 const { noticias } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
-function getDateParts(dateString: string) {
+function getDateParts(dateString: string, locale: Locale) {
   const date = new Date(dateString);
-  const months = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO',
-                  'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'];
+  const monthNames: Record<Locale, string[]> = {
+    es: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+    fr: ['JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'],
+    en: ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'],
+    pt: ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO']
+  };
 
   return {
-    month: months[date.getMonth()],
+    month: monthNames[locale][date.getMonth()],
     day: String(date.getDate()).padStart(2, '0'),
     year: date.getFullYear()
   };
@@ -27,7 +34,8 @@ function getDateParts(dateString: string) {
       {noticias.map((noticia) => {
         const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
         const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
-        const { month, day, year } = getDateParts(noticia.fechaPublicacion);
+        const noticiaUrl = getLocalizedPath(`/noticias/${slug}`, lang);
+        const { month, day, year } = getDateParts(noticia.fechaPublicacion, lang);
 
         return (
           <div class="col-md-4 news-sec">
@@ -41,12 +49,12 @@ function getDateParts(dateString: string) {
                 <h4>{year}</h4>
               </div>
               <br />
-              <a href={`/noticia/${slug}`}>
+              <a href={noticiaUrl}>
                 <h2>{noticia.titulo}</h2>
               </a>
               <p>{noticia.resumen}</p>
-              <a href={`/noticia/${slug}`} class="btn btn-primary">
-                Seguir leyendo &rarr;
+              <a href={noticiaUrl} class="btn btn-primary">
+                {t('common.readMore')} &rarr;
               </a>
             </div>
             <br />

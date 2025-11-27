@@ -12,15 +12,6 @@ const t = useTranslations(lang);
 
 // Obtener categorías de contacto
 const categoriasContacto = getCategoriasContacto();
-
-// Definir getStaticPaths para generar rutas
-export async function getStaticPaths() {
-  return [
-    { params: { lang: 'fr' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'pt' } }
-  ];
-}
 ---
 
 <ContentWithSidebarLayout

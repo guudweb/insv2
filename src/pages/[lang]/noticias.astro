@@ -5,13 +5,6 @@ import { languages, useTranslations, type Locale, getLocalizedPath } from '../..
 
 export const prerender = false;
 
-// Generar rutas estáticas para cada idioma (excepto español)
-export function getStaticPaths() {
-	return Object.keys(languages)
-		.filter(lang => lang !== 'es')
-		.map(lang => ({ params: { lang } }));
-}
-
 const { lang } = Astro.params;
 const locale = lang as Locale;
 const t = useTranslations(locale);
