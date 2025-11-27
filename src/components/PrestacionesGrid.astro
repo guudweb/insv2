@@ -12,6 +12,7 @@
 
 import type { Prestacion } from '../lib/strapi';
 import { getPrestaciones, getStrapiImageUrl } from '../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 
 interface Props {
   prestaciones?: Prestacion[];
@@ -19,6 +20,8 @@ interface Props {
 }
 
 const { prestaciones: prestacionesProp, usarStrapi = false } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 // Mapeo de slugs de Strapi (kebab-case) a URLs de páginas Astro (con guiones bajos)
 const slugToPageUrl: Record<string, string> = {
@@ -122,20 +125,23 @@ if (usarStrapi) {
 <div class="services-bar">
   <div class="container">
     <div class="row">
-      {prestacionesData.map((prestacion) => (
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100">
-            <div class="card-img">
-              <img class="img-fluid" src={prestacion.imagen} alt={prestacion.titulo} />
-            </div>
-            <div class="card-body">
-              <h4 class="card-header">{prestacion.titulo}</h4>
-              {prestacion.espacioBr && <br>}
-              <a href={`/${prestacion.slug}`} class="btn btn-primary">Seguir leyendo &rarr;</a>
+      {prestacionesData.map((prestacion) => {
+        const prestacionUrl = getLocalizedPath(`/${prestacion.slug}`, lang);
+        return (
+          <div class="col-lg-4 mb-4">
+            <div class="card h-100">
+              <div class="card-img">
+                <img class="img-fluid" src={prestacion.imagen} alt={prestacion.titulo} />
+              </div>
+              <div class="card-body">
+                <h4 class="card-header">{prestacion.titulo}</h4>
+                {prestacion.espacioBr && <br>}
+                <a href={prestacionUrl} class="btn btn-primary">{t('common.readMore')} &rarr;</a>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 </div>

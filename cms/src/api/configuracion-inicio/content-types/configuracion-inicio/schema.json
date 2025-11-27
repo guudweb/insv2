@@ -17,12 +17,12 @@
   "attributes": {
     "tituloHero": {
       "type": "string",
-      "default": "JUNTOS EN CADA ETAPA DE TU VIDA",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "default": "JUNTOS EN CADA ETAPA DE TU VIDA"
     },
     "afiliacionTitulo": {
       "type": "string",
@@ -34,18 +34,18 @@
     },
     "afiliacionImagen": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
       "multiple": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      ]
     },
     "afiliacionTexto": {
       "type": "text",
@@ -59,24 +59,24 @@
       "type": "string",
       "pluginOptions": {
         "i18n": {
-          "localized": false
+          "localized": true
         }
       }
     },
     "sidebarImagenBanner": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
       "multiple": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      ]
     },
     "sidebarCardTitulo": {
       "type": "string",
@@ -128,40 +128,40 @@
     },
     "tipoMediaPrincipal": {
       "type": "enumeration",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": "video",
       "enum": [
         "video",
         "imagen"
-      ],
-      "default": "video",
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      ]
     },
     "videoArchivoPrincipal": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
       "multiple": false,
       "allowedTypes": [
         "videos"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
+      ]
     },
     "imagenPrincipal": {
       "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ],
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

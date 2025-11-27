@@ -535,7 +535,7 @@ export interface ApiConfiguracionInicioConfiguracionInicio
     afiliacionEnlace: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: false;
+          localized: true;
         };
       }>;
     afiliacionImagen: Schema.Attribute.Media<

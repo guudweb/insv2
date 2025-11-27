@@ -10,6 +10,27 @@ interface Props {
 const { prestaciones } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+// Mapeo de slugs de Strapi (kebab-case) a URLs de páginas Astro (con guiones bajos)
+const slugToPageUrl: Record<string, string> = {
+  'prestaciones-medico-farmaceuticas': 'Prestaciones_Médico_Farmacéuticas',
+  'subsidio-de-incapacidad-temporal': 'Subsidio_de_incapacidad_temporal',
+  'subsidio-por-maternidad': 'Subsidio_por_maternidad',
+  'prestaciones-por-invalidez': 'Prestaciones_por_invalidez',
+  'pension-por-vejez': 'Pensión_por_vejez',
+  'prestaciones-por-muerte-y-supervivencia': 'Prestaciones_por_muerte_y_supervivencia',
+  'proteccion-al-empleo': 'Protección_al_empleo',
+  'subsidios-familiares': 'Subsidios_familiares',
+  'servicios-sociales': 'Servicios_sociales'
+};
+
+// Función helper para convertir slug de Strapi a URL de página
+function getPageUrl(slug: string): string {
+  if (slugToPageUrl[slug]) {
+    return slugToPageUrl[slug];
+  }
+  return `prestacion/${slug}`;
+}
 ---
 
 <div class="portfolio-col">
@@ -18,8 +39,8 @@ const t = useTranslations(lang);
     <div class="row">
       {prestaciones.map((prestacion) => {
         const imageUrl = prestacion.imagen ? getStrapiImageUrl(prestacion.imagen.url) : '/images/default-prestacion.jpg';
-        const slug = prestacion.slug;
-        const prestacionUrl = getLocalizedPath(`/Prestaciones_Sociales`, lang);
+        const pageUrl = getPageUrl(prestacion.slug);
+        const prestacionUrl = getLocalizedPath(`/${pageUrl}`, lang);
 
         return (
           <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
