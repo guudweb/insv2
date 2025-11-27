@@ -9,6 +9,11 @@ const t = useTranslations(lang);
 ---
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-light top-nav">
+	<!-- Language Switcher para desktop (fuera del container, fijo a la derecha) -->
+	<div class="lang-switcher-desktop d-none d-lg-block">
+		<LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+	</div>
+
 	<div class="container">
 		<a class="navbar-brand" href={getLocalizedPath('/', lang)}>
 			<img src="/images/logo.png" alt="INSESO" />
@@ -17,7 +22,7 @@ const t = useTranslations(lang);
 			<span class="fas fa-bars"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
-			<ul class="navbar-nav ml-auto">
+			<ul class="navbar-nav">
 				<li class="nav-item">
 					<a class={`nav-link ${currentPath === '/' ? 'active' : ''}`} href={getLocalizedPath('/', lang)}>{t('nav.home')}</a>
 				</li>
@@ -55,8 +60,45 @@ const t = useTranslations(lang);
 				</li>
 			</ul>
 
-			<!-- Selector de idioma -->
-			<LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+			<!-- Language Switcher para móvil (dentro del menú colapsable) -->
+			<div class="lang-switcher-mobile d-lg-none">
+				<LanguageSwitcher currentLang={lang} currentPath={currentPath} />
+			</div>
 		</div>
 	</div>
 </nav>
+
+<style is:global>
+	/* Desktop: Language switcher fijo al extremo derecho, fuera del container */
+	@media (min-width: 992px) {
+		.top-nav {
+			position: relative;
+		}
+
+		.lang-switcher-desktop {
+			position: absolute;
+			right: 1.5rem;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 100;
+		}
+	}
+
+	/* Mobile: Language switcher dentro del menú colapsable */
+	@media (max-width: 991px) {
+		.lang-switcher-mobile {
+			margin-top: 1rem;
+			padding-top: 1rem;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+			width: 100%;
+		}
+
+		.lang-switcher-mobile .language-switcher .dropdown-menu {
+			position: relative !important;
+			width: 100%;
+			margin-top: 0.5rem;
+			transform: none !important;
+			top: auto !important;
+		}
+	}
+</style>
