@@ -1,0 +1,20 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="prestaciones-por-invalidez"
+  pageTitle="INSESO - Prestaciones por Invalidez"
+  breadcrumbTitle="PRESTACIONES POR INVALIDEZ"
+  currentPath="/Prestaciones_por_invalidez"
+  defaultDescripcion="La prestación por invalidez se otorgara en los casos de incapacidad parcial permanente para la profesión habitual, total permanente para todo trabajo y gran invalidez. La prestación por incapacidad parcial permanente para la profesión habitual derivada de enfermedad común, consistirá en un subsidio del 40% del salario base de cotización durante un periodo de tres meses, contados a partir de la declaración de incapacidad."
+  defaultRequisitos={`- Alta médica del hospital (original)
+- Certificado médico que reconoce y determine su grado de invalidez (original)
+- Carta de la empresa reconociendo su invalidez (original)
+- Copia del carnet del INSESO actualizado
+- Copia del DIP
+- Rellenar el impreso de solicitud dirigida al Delegado Nacional`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_04.jpg"
+/>

@@ -8,6 +8,7 @@ import Breadcrumb from '../components/Breadcrumb.astro';
 import PrestacionesGrid from '../components/PrestacionesGrid.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
 import { getPrestacionBySlug, getStrapiImageUrl, richTextToPlainText, getSocios } from '../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 
 interface Props {
   slug: string; // Slug de Strapi (kebab-case)
@@ -29,8 +30,73 @@ const {
   defaultImagen = '/images/prestaciones/prestaciones_detail_01.jpg'
 } = Astro.props;
 
-// Cargar datos desde Strapi
-const prestacion = await getPrestacionBySlug(slug);
+// Detectar idioma y cargar traducciones
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Mapeo de slug español de Strapi a slugs localizados por idioma
+const slugsByLocale: Record<string, Record<string, string>> = {
+  'pension-por-vejez': {
+    es: 'pension-por-vejez',
+    en: 'old-age-pension',
+    fr: 'pension-de-vieillesse',
+    pt: 'pensao-por-velhice'
+  },
+  'prestaciones-medico-farmaceuticas': {
+    es: 'prestaciones-medico-farmaceuticas',
+    en: 'medical-pharmaceutical-benefits',
+    fr: 'prestations-medico-pharmaceutiques',
+    pt: 'beneficios-medico-farmaceuticos'
+  },
+  'subsidio-de-incapacidad-temporal': {
+    es: 'subsidio-de-incapacidad-temporal',
+    en: 'temporary-disability-allowance',
+    fr: 'allocation-dincapacite-temporaire',
+    pt: 'subsidio-de-incapacidade-temporaria'
+  },
+  'subsidio-por-maternidad': {
+    es: 'subsidio-por-maternidad',
+    en: 'maternity-allowance',
+    fr: 'allocation-de-maternite',
+    pt: 'subsidio-de-maternidade'
+  },
+  'prestaciones-por-invalidez': {
+    es: 'prestaciones-por-invalidez',
+    en: 'disability-benefits',
+    fr: 'prestations-dinvalidite',
+    pt: 'prestacoes-por-invalidez'
+  },
+  'prestaciones-por-muerte-y-supervivencia': {
+    es: 'prestaciones-por-muerte-y-supervivencia',
+    en: 'death-and-survivors-benefits',
+    fr: 'prestations-de-deces-et-de-survie',
+    pt: 'prestacoes-por-morte-e-sobrevivencia'
+  },
+  'proteccion-al-empleo': {
+    es: 'proteccion-al-empleo',
+    en: 'employment-protection',
+    fr: 'protection-de-lemploi',
+    pt: 'protecao-ao-emprego'
+  },
+  'subsidios-familiares': {
+    es: 'subsidios-familiares',
+    en: 'family-allowances',
+    fr: 'allocations-familiales',
+    pt: 'subsidios-familiares'
+  },
+  'servicios-sociales': {
+    es: 'servicios-sociales',
+    en: 'social-services',
+    fr: 'services-sociaux',
+    pt: 'servicos-sociais'
+  }
+};
+
+// Obtener el slug localizado para Strapi
+const localizedSlug = slugsByLocale[slug]?.[lang] || slug;
+
+// Cargar datos desde Strapi con el idioma y slug correctos
+const prestacion = await getPrestacionBySlug(localizedSlug, lang);
 const socios = await getSocios();
 
 // Usar datos de Strapi o valores por defecto
@@ -47,9 +113,9 @@ const requisitosArray = requisitos?.split('\n').filter(r => r.trim()) || [];
 
 <BaseLayout title={pageTitle} currentPath={currentPath}>
   <Breadcrumb
-    title={breadcrumbTitle}
+    title={titulo}
     items={[
-      { label: 'Prestaciones Sociales', href: '/Prestaciones_Sociales' }
+      { label: t('prestaciones.title'), href: getLocalizedPath('/Prestaciones_Sociales', lang) }
     ]}
   />
 
@@ -73,7 +139,7 @@ const requisitosArray = requisitos?.split('\n').filter(r => r.trim()) || [];
         <div class="col-md-4 blog-right-side">
           {requisitosArray.length > 0 && (
             <div class="card my-4">
-              <h5 class="card-header">Requisitos:</h5>
+              <h5 class="card-header">{t('prestacionDetail.requirements')}:</h5>
               <div class="card-body">
                 <ul>
                   {requisitosArray.map((req) => (
@@ -99,7 +165,7 @@ const requisitosArray = requisitos?.split('\n').filter(r => r.trim()) || [];
           <p></p>
         </div>
         <div class="col-md-4">
-          <a class="btn btn-lg btn-secondary btn-block" href="#"> Contacte con nosotros </a>
+          <a class="btn btn-lg btn-secondary btn-block" href={getLocalizedPath('/contacto', lang)}> {t('common.contactUs')} </a>
         </div>
       </div>
     </div>

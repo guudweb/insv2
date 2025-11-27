@@ -1,0 +1,17 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="subsidio-de-incapacidad-temporal"
+  pageTitle="INSESO - Subsidio de Incapacidad Temporal"
+  breadcrumbTitle="SUBSIDIO DE INCAPACIDAD TEMPORAL"
+  currentPath="/Subsidio_de_incapacidad_temporal"
+  defaultDescripcion="El subsidio de incapacidad temporal es una cantidad de dinero que se abona a un trabajador cuando se encuentra en situación de incapacidad temporal para el trabajo a causa de un accidente de trabajo o una enfermedad profesional."
+  defaultRequisitos={`- El subsidio por incapacidad temporal se otorgara a los asegurados en los casos de enfermedad, accidente de trabajo y enfermedad profesional que impidan el desarrollo de la actividad laboral
+- La cuantía del subsidio por incapacidad temporal será del 50% de salario base de cotización
+- Para tener derecho al subsidio de incapacidad temporal, será requisito que el asegurado haya acreditado como mínimo, un año de cotización en el periodo inmediatamente anterior a la incapacidad`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_02.jpg"
+/>

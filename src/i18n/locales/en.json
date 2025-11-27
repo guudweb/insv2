@@ -48,7 +48,11 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "close": "Close",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "contactUs": "Contact us"
+  },
+  "prestacionDetail": {
+    "requirements": "Requirements"
   },
   "home": {
     "hero": "TOGETHER IN EVERY STAGE OF YOUR LIFE",

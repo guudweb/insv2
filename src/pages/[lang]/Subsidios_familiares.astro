@@ -1,0 +1,18 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="subsidios-familiares"
+  pageTitle="INSESO - Subsidios Familiares"
+  breadcrumbTitle="SUBSIDIOS FAMILIARES"
+  currentPath="/Subsidios_familiares"
+  defaultDescripcion="Los subsidios familiares de protección a la familia se otorgaran a los asegurados casados, viudos con hijos y solteros con hijos naturales reconocidos en el momento del nacimiento de estos. También a los asegurados que acrediten tener a su cargo exclusivo ascendientes o hermanos huérfanos. El subsidio familiar se otorgara a través de un fondo familiar, distribuido por un sistema de puntos de evaluación familiar que determinara la cuantía de la prestación."
+  defaultRequisitos={`CONDICIONES GENERALES:
+- Estar afiliado al sistema de seguridad social
+- Tener uno o varios hijos a cargo
+- Haber declarado los hijos a la caja`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_08.jpg"
+/>

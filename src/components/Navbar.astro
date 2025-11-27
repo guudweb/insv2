@@ -73,6 +73,7 @@ const t = useTranslations(lang);
 	@media (min-width: 992px) {
 		.top-nav {
 			position: relative;
+			z-index: 1050;
 		}
 
 		.lang-switcher-desktop {
@@ -80,7 +81,11 @@ const t = useTranslations(lang);
 			right: 1.5rem;
 			top: 50%;
 			transform: translateY(-50%);
-			z-index: 100;
+			z-index: 9999;
+		}
+
+		.lang-switcher-desktop .dropdown-menu {
+			z-index: 10000 !important;
 		}
 	}
 

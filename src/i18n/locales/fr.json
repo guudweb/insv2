@@ -48,7 +48,11 @@
     "submit": "Envoyer",
     "cancel": "Annuler",
     "close": "Fermer",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "contactUs": "Contactez-nous"
+  },
+  "prestacionDetail": {
+    "requirements": "Conditions requises"
   },
   "home": {
     "hero": "ENSEMBLE À CHAQUE ÉTAPE DE VOTRE VIE",

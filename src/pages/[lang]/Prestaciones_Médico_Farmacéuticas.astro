@@ -1,0 +1,18 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="prestaciones-medico-farmaceuticas"
+  pageTitle="INSESO - Prestaciones Médico Farmacéuticas"
+  breadcrumbTitle="PRESTACIONES MEDICO-FARMACEUTICAS"
+  currentPath="/Prestaciones_Médico_Farmacéuticas"
+  defaultDescripcion="El régimen de Seguridad Social otorgará asistencia médico-farmacéutica en las contingencias de enfermedad, maternidad, accidente de trabajo o enfermedad profesional."
+  defaultRequisitos={`Serán beneficiarios de la asistencia médico-farmacéutica:
+- Por enfermedad, el asegurado, su cónyuge e hijos, los inválidos con subsidio y los pensionistas
+- Por maternidad, la asegurada y cónyuge del asegurado
+- Por accidente de trabajo y enfermedad profesional, los asegurados`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_01.jpg"
+/>

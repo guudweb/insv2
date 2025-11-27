@@ -1,0 +1,22 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="subsidio-por-maternidad"
+  pageTitle="INSESO - Subsidio por Maternidad"
+  breadcrumbTitle="SUBSIDIO POR MATERNIDAD"
+  currentPath="/Subsidio_por_maternidad"
+  defaultDescripcion="El subsidio de maternidad se otorgara a las aseguradas en el periodo de las seis semanas posteriores al parto. La cuantía del subsidio de maternidad, será del 50% del salario base de cotización. Para tener derecho al subsidio por maternidad, la asegurada deberá tener acreditados doce meses de cotización en el periodo inmediatamente anterior al parto, y cumplir los requisitos que reglamentariamente se establezcan."
+  defaultRequisitos={`- Alta médica del hospital (original)
+- Copia del certificado de nacimiento
+- Baja laboral de la empresa (original)
+- Copia del DIP
+- Copia del carnet del INSESO actualizado
+- Número de cuenta bancaria
+- Copia del cuaderno de control pre-natal
+- Rellenar impreso de solicitud dirigida al Delegado Nacional`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_03.jpg"
+/>

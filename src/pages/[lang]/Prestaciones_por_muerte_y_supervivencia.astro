@@ -1,0 +1,21 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="prestaciones-por-muerte-y-supervivencia"
+  pageTitle="INSESO - Prestaciones por Muerte y Supervivencia"
+  breadcrumbTitle="PRESTACIONES POR MUERTE Y SUPERVIVENCIA"
+  currentPath="/Prestaciones_por_muerte_y_supervivencia"
+  defaultDescripcion="En caso de muerte del asegurado o del pensionista cualquiera que fuera la causa, se otorgara las pensiones siguientes: Por gastos de sepelio, Viudedad y Orfandad. La prestación por viudedad se otorgara al conyugue del causante."
+  defaultRequisitos={`Requisitos gastos de sepelio:
+- Copia del certificado de defunción
+- Copia del carnet del INSESO del causante si lo tuviese
+- Factura de los gastos de sepelio
+- Copia del DIP del solicitante
+- Número de cuenta bancaria
+- Rellenar impreso de solicitud dirigida al Delegado Nacional`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_06.jpg"
+/>

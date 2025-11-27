@@ -23,8 +23,9 @@ const { prestaciones: prestacionesProp, usarStrapi = false } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-// Mapeo de slugs de Strapi (kebab-case) a URLs de páginas Astro (con guiones bajos)
+// Mapeo de slugs de Strapi (todos los idiomas) a URLs de páginas Astro
 const slugToPageUrl: Record<string, string> = {
+  // Español
   'prestaciones-medico-farmaceuticas': 'Prestaciones_Médico_Farmacéuticas',
   'subsidio-de-incapacidad-temporal': 'Subsidio_de_incapacidad_temporal',
   'subsidio-por-maternidad': 'Subsidio_por_maternidad',
@@ -33,7 +34,37 @@ const slugToPageUrl: Record<string, string> = {
   'prestaciones-por-muerte-y-supervivencia': 'Prestaciones_por_muerte_y_supervivencia',
   'proteccion-al-empleo': 'Protección_al_empleo',
   'subsidios-familiares': 'Subsidios_familiares',
-  'servicios-sociales': 'Servicios_sociales'
+  'servicios-sociales': 'Servicios_sociales',
+  // English
+  'medical-pharmaceutical-benefits': 'Prestaciones_Médico_Farmacéuticas',
+  'temporary-disability-allowance': 'Subsidio_de_incapacidad_temporal',
+  'maternity-allowance': 'Subsidio_por_maternidad',
+  'disability-benefits': 'Prestaciones_por_invalidez',
+  'old-age-pension': 'Pensión_por_vejez',
+  'death-and-survivors-benefits': 'Prestaciones_por_muerte_y_supervivencia',
+  'employment-protection': 'Protección_al_empleo',
+  'family-allowances': 'Subsidios_familiares',
+  'social-services': 'Servicios_sociales',
+  // Français
+  'prestations-medico-pharmaceutiques': 'Prestaciones_Médico_Farmacéuticas',
+  'allocation-dincapacite-temporaire': 'Subsidio_de_incapacidad_temporal',
+  'allocation-de-maternite': 'Subsidio_por_maternidad',
+  'prestations-dinvalidite': 'Prestaciones_por_invalidez',
+  'pension-de-vieillesse': 'Pensión_por_vejez',
+  'prestations-de-deces-et-de-survie': 'Prestaciones_por_muerte_y_supervivencia',
+  'protection-de-lemploi': 'Protección_al_empleo',
+  'allocations-familiales': 'Subsidios_familiares',
+  'services-sociaux': 'Servicios_sociales',
+  // Português
+  'beneficios-medico-farmaceuticos': 'Prestaciones_Médico_Farmacéuticas',
+  'subsidio-de-incapacidade-temporaria': 'Subsidio_de_incapacidad_temporal',
+  'subsidio-de-maternidade': 'Subsidio_por_maternidad',
+  'prestacoes-por-invalidez': 'Prestaciones_por_invalidez',
+  'pensao-por-velhice': 'Pensión_por_vejez',
+  'prestacoes-por-morte-e-sobrevivencia': 'Prestaciones_por_muerte_y_supervivencia',
+  'protecao-ao-emprego': 'Protección_al_empleo',
+  // 'subsidios-familiares' is the same in Spanish and Portuguese (already mapped above)
+  'servicos-sociais': 'Servicios_sociales'
 };
 
 // Función helper para convertir slug de Strapi a URL de página
@@ -108,8 +139,8 @@ const prestacionesEstaticas = [
 let prestacionesData;
 
 if (usarStrapi) {
-  // Cargar desde Strapi
-  const prestacionesStrapi = prestacionesProp || await getPrestaciones();
+  // Cargar desde Strapi con el idioma correcto
+  const prestacionesStrapi = prestacionesProp || await getPrestaciones(lang);
   prestacionesData = prestacionesStrapi.map(p => ({
     titulo: p.titulo,
     slug: getPageUrl(p.slug), // Convertir slug de Strapi a URL de página

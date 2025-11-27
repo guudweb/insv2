@@ -48,7 +48,11 @@
     "submit": "Enviar",
     "cancel": "Cancelar",
     "close": "Cerrar",
-    "loading": "Cargando..."
+    "loading": "Cargando...",
+    "contactUs": "Contacte con nosotros"
+  },
+  "prestacionDetail": {
+    "requirements": "Requisitos"
   },
   "home": {
     "hero": "JUNTOS EN CADA ETAPA DE TU VIDA",

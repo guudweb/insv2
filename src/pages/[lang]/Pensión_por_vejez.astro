@@ -1,0 +1,20 @@
+---
+import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
+
+// Renderizar dinámicamente (SSR) para obtener datos frescos de Strapi
+export const prerender = false;
+---
+
+<PrestacionLayout
+  slug="pension-por-vejez"
+  pageTitle="INSESO - Pensión por Vejez"
+  breadcrumbTitle="PENSIÓN POR VEJEZ"
+  currentPath="/Pensión_por_vejez"
+  defaultDescripcion="La pensión por vejez se otorga al asegurado que hubiere cumplido la edad de sesenta años, y tuviese acreditados al menos, ciento veinte meses de cotización, de los cuales, sesenta correspondan a los diez años inmediatamente anteriores. La cuantía de la pensión de vejez con diez años de cotización, será el 40% del salario base medio de cotización calculado con arreglo al promedio de los últimos años."
+  defaultRequisitos={`- Copia del DIP del beneficiario
+- Copia del carnet de INSESO
+- Tres últimas nóminas
+- Cesantía laboral
+- Solicitud`}
+  defaultImagen="/images/prestaciones/prestaciones_detail_05.jpg"
+/>
