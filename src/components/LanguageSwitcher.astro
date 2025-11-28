@@ -1,5 +1,6 @@
 ---
 import { languages, type Locale, getLocalizedPath, removeLocalePrefix, routeTranslations } from '../i18n/utils';
+import { getPrestacionBySlug, getPrestacionSlugsByDocumentId, getNoticiaBySlug, getNoticiaSlugsByDocumentId } from '../lib/strapi';
 
 interface Props {
   currentLang: Locale;
@@ -11,25 +12,57 @@ const { currentLang, currentPath = '/' } = Astro.props;
 // Remover prefijo de idioma si existe para obtener la ruta base
 const basePath = removeLocalePrefix(currentPath);
 
+// Detectar si estamos en una página de prestación dinámica
+const prestacionMatch = basePath.match(/^\/prestacion\/(.+)$/);
+const currentPrestacionSlug = prestacionMatch ? prestacionMatch[1] : null;
+
+// Detectar si estamos en una página de noticia individual
+const noticiaMatch = basePath.match(/^\/noticias\/(.+)$/);
+const currentNoticiaSlug = noticiaMatch ? noticiaMatch[1] : null;
+
+// Si estamos en una página de prestación, obtener los slugs en todos los idiomas
+let prestacionSlugs: Record<string, string> = {};
+if (currentPrestacionSlug) {
+  const currentPrestacion = await getPrestacionBySlug(currentPrestacionSlug, currentLang);
+  if (currentPrestacion?.documentId) {
+    prestacionSlugs = await getPrestacionSlugsByDocumentId(currentPrestacion.documentId);
+  }
+}
+
+// Si estamos en una página de noticia, obtener los slugs en todos los idiomas
+let noticiaSlugs: Record<string, string> = {};
+if (currentNoticiaSlug) {
+  const currentNoticia = await getNoticiaBySlug(currentNoticiaSlug, currentLang);
+  if (currentNoticia?.documentId) {
+    noticiaSlugs = await getNoticiaSlugsByDocumentId(currentNoticia.documentId);
+  }
+}
+
 // Generar URLs para cada idioma con rutas traducidas
 const langLinks = Object.entries(languages).map(([code, name]) => {
   const targetLang = code as Locale;
-
-  // Buscar si esta ruta tiene traducción
   let translatedPath = basePath;
 
-  // Intentar encontrar la clave de la ruta actual en el idioma actual
-  const currentRoutes = routeTranslations[currentLang];
-  const targetRoutes = routeTranslations[targetLang];
+  // Si es una página de prestación, usar el slug del idioma correspondiente
+  if (currentPrestacionSlug && prestacionSlugs[targetLang]) {
+    translatedPath = `/prestacion/${prestacionSlugs[targetLang]}`;
+  }
+  // Si es una página de noticia, usar el slug del idioma correspondiente
+  else if (currentNoticiaSlug && noticiaSlugs[targetLang]) {
+    translatedPath = `/noticias/${noticiaSlugs[targetLang]}`;
+  }
+  // Para otras páginas, buscar en routeTranslations
+  else {
+    const currentRoutes = routeTranslations[currentLang];
+    const targetRoutes = routeTranslations[targetLang];
 
-  // Buscar la ruta base en las traducciones del idioma actual
-  const routeKey = Object.keys(currentRoutes).find(
-    key => currentRoutes[key] === basePath
-  );
+    const routeKey = Object.keys(currentRoutes).find(
+      key => currentRoutes[key] === basePath
+    );
 
-  // Si encontramos la clave, obtener su traducción en el idioma objetivo
-  if (routeKey && targetRoutes[routeKey]) {
-    translatedPath = targetRoutes[routeKey];
+    if (routeKey && targetRoutes[routeKey]) {
+      translatedPath = targetRoutes[routeKey];
+    }
   }
 
   return {

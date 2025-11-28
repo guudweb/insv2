@@ -280,7 +280,9 @@
     "downloadFormsDescription": "Téléchargez les formulaires nécessaires avant de vous rendre dans nos bureaux.",
     "appointment": "Rendez-vous",
     "appointmentDescription": "Demandez un rendez-vous pour être servi plus rapidement.",
-    "requestAppointment": "Demander un Rendez-vous"
+    "requestAppointment": "Demander un Rendez-vous",
+    "cityCenter": "Centre-ville",
+    "headquarters": "Siège"
   },
   "autonomousAffiliation": {
     "pageTitle": "INSESO - Affiliation - Indépendant",

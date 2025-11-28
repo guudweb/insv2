@@ -104,7 +104,7 @@ if (usarStrapi) {
   <div class="container">
     <div class="row">
       {prestacionesData.map((prestacion) => {
-        const prestacionUrl = getLocalizedPath(`/${prestacion.slug}`, lang);
+        const prestacionUrl = getLocalizedPath(prestacion.slug, lang);
         return (
           <div class="col-lg-4 mb-4">
             <div class="card h-100">

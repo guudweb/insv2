@@ -280,7 +280,9 @@
     "downloadFormsDescription": "Download the necessary forms before visiting our offices.",
     "appointment": "Appointment",
     "appointmentDescription": "Request an appointment to be served faster.",
-    "requestAppointment": "Request Appointment"
+    "requestAppointment": "Request Appointment",
+    "cityCenter": "City Center",
+    "headquarters": "Headquarters"
   },
   "autonomousAffiliation": {
     "pageTitle": "INSESO - Affiliation - Self-Employed",

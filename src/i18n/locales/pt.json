@@ -280,7 +280,9 @@
     "downloadFormsDescription": "Baixe os formulários necessários antes de visitar nossos escritórios.",
     "appointment": "Agendamento",
     "appointmentDescription": "Solicite um agendamento para ser atendido mais rapidamente.",
-    "requestAppointment": "Solicitar Agendamento"
+    "requestAppointment": "Solicitar Agendamento",
+    "cityCenter": "Centro da Cidade",
+    "headquarters": "Sede"
   },
   "autonomousAffiliation": {
     "pageTitle": "INSESO - Afiliação - Autónomo",

@@ -8,28 +8,29 @@ const agencias = [
 	{
 		ciudad: 'Malabo',
 		region: 'Región Insular',
+		imagen: '/images/inseso-sede.webp',
 		localidades: [
 			{
-				nombre: 'Oficina Central - Malabo Centro',
-				direccion: 'Avenida de la Independencia, Malabo',
+				nombre: 'Oficina Central - Centro de la Ciudad',
+				direccion: 'Centro de la Ciudad, Malabo',
 				telefono: '+240 XXX XXX XXX',
 				email: 'malabo.centro@inseso.gq',
 				horario: 'Lunes a Viernes: 8:00 - 16:00',
 				coordenadas: { lat: 3.7523, lng: 8.7741 }
 			},
 			{
-				nombre: 'Oficina Malabo II',
-				direccion: 'Barrio de Ela Nguema, Malabo',
+				nombre: 'Oficina Santa María',
+				direccion: 'Barrio Santa María, Malabo',
 				telefono: '+240 XXX XXX XXX',
-				email: 'malabo.elanguema@inseso.gq',
+				email: 'malabo.santamaria@inseso.gq',
 				horario: 'Lunes a Viernes: 8:00 - 16:00',
 				coordenadas: { lat: 3.7500, lng: 8.7800 }
 			},
 			{
-				nombre: 'Oficina Malabo III',
-				direccion: 'Barrio de Semu, Malabo',
+				nombre: 'Oficina Malabo 2',
+				direccion: 'Malabo 2, Malabo',
 				telefono: '+240 XXX XXX XXX',
-				email: 'malabo.semu@inseso.gq',
+				email: 'malabo2@inseso.gq',
 				horario: 'Lunes a Viernes: 8:00 - 16:00',
 				coordenadas: { lat: 3.7480, lng: 8.7720 }
 			}
@@ -117,7 +118,22 @@ const agencias = [
 						</div>
 					</div>
 
-					<div class="row">
+						<div class="row">
+						{ciudad.imagen && (
+							<div class="col-lg-6 col-md-6 mb-4">
+								<div class="oficina-card sede-card">
+									<div class="oficina-header">
+										<div class="oficina-icon sede-icon">
+											<i class="fas fa-landmark"></i>
+										</div>
+										<h3>Sede INSESO {ciudad.ciudad}</h3>
+									</div>
+									<div class="sede-imagen">
+										<img src={ciudad.imagen} alt={`Sede INSESO ${ciudad.ciudad}`} class="img-fluid" />
+									</div>
+								</div>
+							</div>
+						)}
 						{ciudad.localidades.map((oficina) => (
 							<div class="col-lg-6 col-md-6 mb-4">
 								<div class="oficina-card">
@@ -295,6 +311,30 @@ const agencias = [
 	/* Ciudad Section */
 	.ciudad-section {
 		margin-bottom: 4rem;
+	}
+
+	/* Sede Card */
+	.sede-card {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.sede-icon {
+		background: linear-gradient(135deg, #8c1b12 0%, #b22222 100%) !important;
+	}
+
+	.sede-imagen {
+		flex: 1;
+		overflow: hidden;
+		border-radius: 0 0 12px 12px;
+	}
+
+	.sede-imagen img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		min-height: 250px;
 	}
 
 	.ciudad-header {

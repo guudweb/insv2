@@ -323,7 +323,9 @@
     "downloadFormsDescription": "Descarga los formularios necesarios antes de acudir a nuestras oficinas.",
     "appointment": "Cita Previa",
     "appointmentDescription": "Solicita una cita previa para ser atendido de manera más rápida.",
-    "requestAppointment": "Solicitar Cita"
+    "requestAppointment": "Solicitar Cita",
+    "cityCenter": "Centro de la Ciudad",
+    "headquarters": "Sede"
   },
   "penalties": {
     "pageTitle": "Penas y Sanciones para Empleadores - INSESO",

@@ -2,7 +2,7 @@
 
 Sitio web oficial del Instituto Nacional de Seguridad Social de Guinea Ecuatorial.
 
-**Versión:** 2.0 (Astro + Strapi v5)
+**Versión:** 2.1 (Astro + Strapi v5)
 **Estado:** ✅ Producción
 **Última actualización:** Noviembre 2025
 
@@ -14,10 +14,13 @@ Sitio web oficial del Instituto Nacional de Seguridad Social de Guinea Ecuatoria
 2. [Tecnologías](#tecnologías)
 3. [Arquitectura](#arquitectura)
 4. [Características Principales](#características-principales)
+   - [Sistema Multilingüe](#sistema-multilingüe-i18n)
+   - [Página de Agencias](#página-de-agencias)
 5. [Guía de Uso para Editores](#guía-de-uso-para-editores-strapi)
 6. [Desarrollo y Mantenimiento](#desarrollo-y-mantenimiento)
 7. [Deployment](#deployment)
 8. [Documentación Adicional](#documentación-adicional)
+9. [Changelog](#changelog)
 
 ---
 
@@ -28,6 +31,7 @@ INSESO es un sitio web moderno desarrollado con **Astro 5** (frontend) y **Strap
 ### Características Principales
 
 - ✅ **Sistema de Gestión de Contenido**: Strapi v5 para administración fácil sin código
+- ✅ **Multilingüe Completo**: 4 idiomas (Español, Francés, Inglés, Portugués) con i18n
 - ✅ **Rendimiento Optimizado**: Lazy loading, Sharp, optimización automática de imágenes
 - ✅ **Responsive Design**: Compatible con todos los dispositivos (móvil, tablet, desktop)
 - ✅ **SEO Optimizado**: Meta tags, sitemap, rendimiento Google PageSpeed >90
@@ -36,6 +40,7 @@ INSESO es un sitio web moderno desarrollado con **Astro 5** (frontend) y **Strap
 - ✅ **Páginas Dinámicas**: Todo el contenido gestionado desde Strapi
 - ✅ **Email por Categoría**: Sistema de contacto con routing automático
 - ✅ **Configuración Flexible**: Homepage configurable desde Strapi
+- ✅ **Rich Text desde Strapi**: Soporte completo para texto enriquecido con estilos
 
 ---
 
@@ -81,25 +86,42 @@ inseso.org_V2/
 │   │   ├── noticias.astro        # Listado de noticias
 │   │   ├── noticias/[slug].astro # Detalle de noticia
 │   │   ├── prestacion/[slug].astro # Detalle de prestación
+│   │   ├── nuestras_agencias.astro # Página de agencias
 │   │   ├── descarga_formularios.astro # Sistema de formularios
 │   │   ├── contacto.astro        # Formulario de contacto
+│   │   ├── [lang]/               # Páginas multilingües
+│   │   │   ├── index.astro       # Homepage localizada
+│   │   │   ├── noticias/[slug].astro # Noticias localizadas
+│   │   │   ├── prestacion/[slug].astro # Prestaciones localizadas
+│   │   │   ├── nuestras_agencias.astro # Agencias localizadas
+│   │   │   └── ...               # Otras páginas localizadas
 │   │   ├── api/
 │   │   │   └── send-email.ts     # API de envío de emails
 │   │   └── preview/              # Sistema de preview
 │   ├── components/               # Componentes reutilizables
 │   │   ├── Navbar.astro
 │   │   ├── Footer.astro
+│   │   ├── LanguageSwitcher.astro # Selector de idioma inteligente
 │   │   ├── SwiperHero.astro      # Carousel hero principal
 │   │   ├── BlogSlider.astro      # Cards de afiliación
+│   │   ├── PrestacionesGrid.astro # Grid de prestaciones
 │   │   ├── OptimizedImage.astro  # Optimización de imágenes
 │   │   ├── NovedadesSection.astro
 │   │   ├── UltimaHoraSection.astro
 │   │   └── NewsLateralCard.astro
 │   ├── layouts/                  # Layouts base
 │   │   ├── BaseLayout.astro
+│   │   ├── PrestacionLayout.astro # Layout para prestaciones
 │   │   └── ContentWithSidebarLayout.astro
+│   ├── i18n/                     # Internacionalización
+│   │   ├── utils.ts              # Funciones de i18n
+│   │   └── locales/              # Archivos de traducción
+│   │       ├── es.json           # Español (default)
+│   │       ├── en.json           # Inglés
+│   │       ├── fr.json           # Francés
+│   │       └── pt.json           # Portugués
 │   ├── lib/                      # Librerías y utilidades
-│   │   └── strapi.ts             # Cliente Strapi con TypeScript
+│   │   └── strapi.ts             # Cliente Strapi con TypeScript + Rich Text
 │   ├── config/                   # Configuración
 │   │   └── contact.ts            # Info de contacto
 │   └── assets/                   # Assets optimizados
@@ -169,11 +191,66 @@ inseso.org_V2/
 - Confirmación de envío
 
 ### 🎯 Prestaciones
-- Página de detalle individual
-- Requisitos y documentación
-- Imágenes optimizadas
-- Destacados en homepage
+- Página de detalle individual con rutas dinámicas
+- Contenido Rich Text con estilos (negritas, listas, enlaces)
+- Requisitos y documentación en sidebar
+- Imágenes optimizadas desde Strapi
+- Grid de prestaciones con enlaces localizados
 - Sistema de activación/desactivación
+
+### 🌍 Sistema Multilingüe (i18n)
+
+El sitio soporta 4 idiomas con contenido localizado desde Strapi:
+
+| Idioma | Código | URL Pattern | Ejemplo |
+|--------|--------|-------------|---------|
+| Español | `es` | Sin prefijo (default) | `/prestacion/pension-por-vejez` |
+| Francés | `fr` | `/fr/...` | `/fr/prestacion/pension-de-retraite` |
+| Inglés | `en` | `/en/...` | `/en/prestacion/old-age-pension` |
+| Portugués | `pt` | `/pt/...` | `/pt/prestacion/pensao-por-velhice` |
+
+#### Características del Sistema i18n:
+
+- **Selector de idioma inteligente**: Mantiene la página actual al cambiar idioma
+- **Slugs localizados**: URLs amigables en cada idioma desde Strapi
+- **Traducciones UI**: Textos de interfaz en archivos JSON (`src/i18n/locales/`)
+- **Contenido dinámico**: Prestaciones y noticias con slugs por idioma
+- **documentId de Strapi**: Vinculación entre versiones de diferentes idiomas
+
+#### Archivos de Traducción:
+
+```
+src/i18n/
+├── utils.ts          # Funciones: getLangFromUrl, useTranslations, getLocalizedPath
+└── locales/
+    ├── es.json       # ~400 traducciones
+    ├── en.json       # English translations
+    ├── fr.json       # Traductions françaises
+    └── pt.json       # Traduções portuguesas
+```
+
+### 🏢 Página de Agencias
+
+Muestra las oficinas de INSESO organizadas por ciudad:
+
+- **Malabo** (Región Insular):
+  - Sede Central con imagen
+  - Centro de la Ciudad
+  - Santa María
+  - Malabo 2
+
+- **Bata** (Región Continental):
+  - Oficinas en barrios principales
+
+- **Annobón**:
+  - Oficina regional
+
+Cada oficina muestra:
+- Dirección
+- Teléfono
+- Email
+- Horario de atención
+- Enlace a Google Maps
 
 ---
 
@@ -486,6 +563,41 @@ cd cms && npm run start    # Iniciar Strapi en producción
 | **configuracion-inicio** | Single Type | Configuración de homepage |
 
 Ver schemas completos en: `cms/src/api/`
+
+#### Funciones Principales en strapi.ts
+
+```typescript
+// Obtener contenido
+getPrestaciones(locale)           // Lista de prestaciones por idioma
+getPrestacionBySlug(slug, locale) // Prestación individual
+getNoticias(locale)               // Lista de noticias
+getNoticiaBySlug(slug, locale)    // Noticia individual
+
+// Multilingüe
+getPrestacionSlugsByDocumentId(documentId) // Slugs en todos los idiomas
+getNoticiaSlugsByDocumentId(documentId)    // Slugs de noticia por idioma
+
+// Rich Text
+richTextToHtml(richText)          // Convierte Rich Text de Strapi a HTML
+richTextToPlainText(richText)     // Convierte a texto plano
+
+// Utilidades
+getStrapiImageUrl(url)            // URL completa de imagen
+formatStrapiDate(date, locale)    // Formateo de fechas localizado
+```
+
+#### Soporte Rich Text
+
+La función `richTextToHtml()` convierte el formato Rich Text de Strapi v5 a HTML:
+
+- **Párrafos** (`<p>`)
+- **Encabezados** (`<h1>` - `<h6>`)
+- **Listas** ordenadas y no ordenadas
+- **Texto con estilos**: negrita, cursiva, subrayado, tachado
+- **Enlaces** con target="_blank"
+- **Código** inline y bloques
+- **Citas** (blockquote)
+- **Imágenes** embebidas
 
 ---
 
@@ -814,5 +926,38 @@ Todos los derechos reservados © 2025 INSESO - Instituto Nacional de Seguridad S
 ---
 
 **Última actualización:** Noviembre 2025
-**Versión:** 2.0.0
+**Versión:** 2.1.0
 **Estado:** ✅ En Producción
+
+---
+
+## 📝 Changelog
+
+### v2.1.0 (Noviembre 2025)
+
+#### Nuevas Características
+- **Sistema Multilingüe Completo**: Soporte para 4 idiomas (ES, EN, FR, PT)
+- **Selector de Idioma Inteligente**: Mantiene la página actual al cambiar idioma
+- **Páginas Dinámicas Localizadas**: Prestaciones y noticias con slugs por idioma
+- **Rich Text desde Strapi**: Función `richTextToHtml()` para contenido formateado
+- **Página de Agencias Mejorada**: Cards de oficinas con imagen de sede
+
+#### Mejoras
+- URLs localizadas sin doble slash
+- Language switcher funcional en páginas dinámicas (prestaciones, noticias)
+- Archivos de traducción completos (~400 claves por idioma)
+- Soporte para `documentId` de Strapi para vincular contenido entre idiomas
+- Grid de prestaciones con enlaces correctos por idioma
+
+#### Archivos Nuevos/Modificados
+- `src/i18n/` - Sistema de internacionalización
+- `src/components/LanguageSwitcher.astro` - Selector de idioma
+- `src/pages/[lang]/` - Todas las páginas localizadas
+- `src/lib/strapi.ts` - Funciones Rich Text y slugs por documentId
+
+### v2.0.0 (Octubre 2025)
+- Migración a Astro 5 + Strapi v5
+- Sistema de noticias con categorías
+- Sistema de formularios descargables
+- Optimización de rendimiento (Sharp, lazy loading)
+- Sistema de contacto con routing por categoría

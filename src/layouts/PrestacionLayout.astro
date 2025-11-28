@@ -7,7 +7,7 @@ import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import PrestacionesGrid from '../components/PrestacionesGrid.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
-import { getPrestacionBySlug, getStrapiImageUrl, richTextToPlainText, getSocios } from '../lib/strapi';
+import { getPrestacionBySlug, getStrapiImageUrl, richTextToHtml, getSocios } from '../lib/strapi';
 import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
 
 interface Props {
@@ -101,7 +101,7 @@ const socios = await getSocios();
 
 // Usar datos de Strapi o valores por defecto
 const titulo = prestacion?.titulo || breadcrumbTitle;
-const descripcion = richTextToPlainText(prestacion?.descripcion) || defaultDescripcion;
+const descripcionHtml = richTextToHtml(prestacion?.descripcion) || (defaultDescripcion ? `<p>${defaultDescripcion}</p>` : '');
 const requisitos = prestacion?.requisitos || defaultRequisitos;
 const imagenDetalle = prestacion?.imagenDetalle
   ? getStrapiImageUrl(prestacion.imagenDetalle.url)
@@ -128,9 +128,9 @@ const requisitosArray = requisitos?.split('\n').filter(r => r.trim()) || [];
           <img class="img-fluid rounded" src={imagenDetalle} alt={titulo} />
           <hr>
 
-          {descripcion && (
+          {descripcionHtml && (
             <blockquote class="blockquote">
-              <p class="mb-0">{descripcion}</p>
+              <div class="prestacion-content" set:html={descripcionHtml} />
             </blockquote>
           )}
         </div>

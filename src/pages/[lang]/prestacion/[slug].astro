@@ -7,7 +7,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 import PrestacionesGrid from '../../../components/PrestacionesGrid.astro';
 import PartnersCarousel from '../../../components/PartnersCarousel.astro';
-import { getPrestacionBySlug, getStrapiImageUrl, richTextToPlainText, getSocios } from '../../../lib/strapi';
+import { getPrestacionBySlug, getStrapiImageUrl, richTextToHtml, getSocios } from '../../../lib/strapi';
 import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from '../../../i18n/utils';
 
 export const prerender = false;
@@ -27,7 +27,7 @@ if (!prestacion) {
 
 // Extraer datos de la prestación
 const titulo = prestacion.titulo;
-const descripcion = richTextToPlainText(prestacion.descripcion) || '';
+const descripcionHtml = richTextToHtml(prestacion.descripcion) || '';
 const requisitos = prestacion.requisitos || '';
 const imagenDetalle = prestacion.imagenDetalle
   ? getStrapiImageUrl(prestacion.imagenDetalle.url)
@@ -58,9 +58,9 @@ const contactPath = getLocalizedPath('/contacto', locale);
           <img class="img-fluid rounded" src={imagenDetalle} alt={titulo} />
           <hr>
 
-          {descripcion && (
+          {descripcionHtml && (
             <blockquote class="blockquote">
-              <p class="mb-0">{descripcion}</p>
+              <div class="prestacion-content" set:html={descripcionHtml} />
             </blockquote>
           )}
         </div>

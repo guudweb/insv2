@@ -313,6 +313,39 @@ export async function getNoticiaBySlug(slug: string, locale: string = 'es'): Pro
   }
 }
 
+// Obtener los slugs de una noticia en todos los idiomas usando documentId
+export async function getNoticiaSlugsByDocumentId(documentId: string): Promise<Record<string, string>> {
+  const locales = ['es', 'fr', 'en', 'pt'];
+  const slugs: Record<string, string> = {};
+
+  for (const locale of locales) {
+    try {
+      const query = qs.stringify({
+        populate: ['imagen'],
+        locale: locale,
+      }, {
+        encodeValuesOnly: true,
+      });
+
+      const response = await fetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`);
+
+      if (response.ok) {
+        const json: StrapiResponse<Noticia> = await response.json();
+        if (json.data?.slug) {
+          slugs[locale] = json.data.slug;
+        } else if (json.data?.titulo) {
+          // Si no tiene slug, generar uno desde el título
+          slugs[locale] = generateSlug(json.data.titulo);
+        }
+      }
+    } catch (error) {
+      // Silently continue if locale not found
+    }
+  }
+
+  return slugs;
+}
+
 // Helper para obtener URL completa de imagen
 export function getStrapiImageUrl(url: string): string {
   if (!url) return '';
@@ -376,6 +409,95 @@ export function richTextToPlainText(richText: any): string {
         }
         return '';
       })
+      .join('\n');
+  }
+
+  return '';
+}
+
+// Helper para convertir Rich Text de Strapi a HTML
+export function richTextToHtml(richText: any): string {
+  if (!richText) return '';
+  if (typeof richText === 'string') return `<p>${richText}</p>`;
+
+  // Si es un array de bloques (Strapi v5 Rich Text)
+  if (Array.isArray(richText)) {
+    return richText
+      .map((block: any) => {
+        const type = block.type;
+
+        // Procesar los hijos del bloque
+        const processChildren = (children: any[]): string => {
+          if (!children) return '';
+          return children
+            .map((child: any) => {
+              let text = child.text || '';
+
+              // Aplicar estilos inline
+              if (child.bold) text = `<strong>${text}</strong>`;
+              if (child.italic) text = `<em>${text}</em>`;
+              if (child.underline) text = `<u>${text}</u>`;
+              if (child.strikethrough) text = `<s>${text}</s>`;
+              if (child.code) text = `<code>${text}</code>`;
+
+              // Si es un enlace
+              if (child.type === 'link' && child.url) {
+                const linkText = processChildren(child.children);
+                return `<a href="${child.url}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+              }
+
+              return text;
+            })
+            .join('');
+        };
+
+        // Procesar según el tipo de bloque
+        switch (type) {
+          case 'paragraph':
+            const pContent = processChildren(block.children);
+            return pContent ? `<p>${pContent}</p>` : '';
+
+          case 'heading':
+            const level = block.level || 2;
+            const hContent = processChildren(block.children);
+            return `<h${level}>${hContent}</h${level}>`;
+
+          case 'list':
+            const listTag = block.format === 'ordered' ? 'ol' : 'ul';
+            const listItems = block.children
+              .map((item: any) => {
+                const itemContent = processChildren(item.children);
+                return `<li>${itemContent}</li>`;
+              })
+              .join('');
+            return `<${listTag}>${listItems}</${listTag}>`;
+
+          case 'quote':
+            const quoteContent = processChildren(block.children);
+            return `<blockquote>${quoteContent}</blockquote>`;
+
+          case 'code':
+            const codeContent = processChildren(block.children);
+            return `<pre><code>${codeContent}</code></pre>`;
+
+          case 'image':
+            if (block.image?.url) {
+              const imgUrl = getStrapiImageUrl(block.image.url);
+              const alt = block.image.alternativeText || '';
+              return `<img src="${imgUrl}" alt="${alt}" class="img-fluid" />`;
+            }
+            return '';
+
+          default:
+            // Para tipos desconocidos, intentar procesar como párrafo
+            if (block.children) {
+              const defaultContent = processChildren(block.children);
+              return defaultContent ? `<p>${defaultContent}</p>` : '';
+            }
+            return '';
+        }
+      })
+      .filter(Boolean)
       .join('\n');
   }
 
@@ -496,6 +618,36 @@ export async function getPrestacionBySlug(slug: string, locale: string = 'es'): 
     console.error('Error al obtener prestación:', error);
     return null;
   }
+}
+
+// Obtener los slugs de una prestación en todos los idiomas usando documentId
+export async function getPrestacionSlugsByDocumentId(documentId: string): Promise<Record<string, string>> {
+  const locales = ['es', 'fr', 'en', 'pt'];
+  const slugs: Record<string, string> = {};
+
+  for (const locale of locales) {
+    try {
+      const query = qs.stringify({
+        populate: ['imagen'],
+        locale: locale,
+      }, {
+        encodeValuesOnly: true,
+      });
+
+      const response = await fetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`);
+
+      if (response.ok) {
+        const json: StrapiResponse<Prestacion> = await response.json();
+        if (json.data?.slug) {
+          slugs[locale] = json.data.slug;
+        }
+      }
+    } catch (error) {
+      // Silently continue if locale not found
+    }
+  }
+
+  return slugs;
 }
 
 // ==================== HERO SLIDES ====================
