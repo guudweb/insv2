@@ -1,9 +1,31 @@
 import { defineConfig } from 'astro/config';
 import node from '@astrojs/node';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://inseso.org',
   output: 'server', // SSR por defecto (en Astro 5, 'hybrid' se cambió a 'server')
+  integrations: [
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es-GQ',
+          fr: 'fr-GQ',
+          en: 'en-GQ',
+          pt: 'pt-GQ'
+        }
+      },
+      filter: (page) =>
+        !page.includes('/admin') &&
+        !page.includes('/api') &&
+        !page.includes('/404'),
+      changefreq: 'weekly',
+      priority: 0.7,
+      lastmod: new Date()
+    })
+  ],
   adapter: node({
     mode: 'standalone'
   }),
