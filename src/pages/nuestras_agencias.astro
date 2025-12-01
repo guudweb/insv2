@@ -11,28 +11,25 @@ const agencias = [
 		imagen: '/images/inseso-sede.webp',
 		localidades: [
 			{
-				nombre: 'Oficina Central - Centro de la Ciudad',
-				direccion: 'Centro de la Ciudad, Malabo',
+				nombre: 'Oficina Central - Malabo II',
+				direccion: 'Malabo II, Malabo',
 				telefono: '+240 XXX XXX XXX',
-				email: 'malabo.centro@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
-				coordenadas: { lat: 3.7523, lng: 8.7741 }
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
 			},
 			{
 				nombre: 'Oficina Santa María',
 				direccion: 'Barrio Santa María, Malabo',
 				telefono: '+240 XXX XXX XXX',
-				email: 'malabo.santamaria@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
-				coordenadas: { lat: 3.7500, lng: 8.7800 }
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
 			},
 			{
 				nombre: 'Oficina Malabo 2',
 				direccion: 'Malabo 2, Malabo',
 				telefono: '+240 XXX XXX XXX',
-				email: 'malabo2@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
-				coordenadas: { lat: 3.7480, lng: 8.7720 }
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
 			}
 		]
 	},
@@ -44,9 +41,36 @@ const agencias = [
 				nombre: 'Oficina Regional - Bata',
 				direccion: 'Avenida de la Libertad, Bata',
 				telefono: '+240 XXX XXX XXX',
-				email: 'bata@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
-				coordenadas: { lat: 1.8639, lng: 9.7622 }
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
+			}
+		]
+	},
+	{
+		ciudad: 'Mongomo',
+		region: 'Región Continental',
+		imagen: '/images/03.jpg',
+		localidades: [
+			{
+				nombre: 'Delegación Mongomo',
+				direccion: 'Mongomo, Wele-Nzas',
+				telefono: '+240 XXX XXX XXX',
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
+			}
+		]
+	},
+	{
+		ciudad: 'Evinayong',
+		region: 'Región Continental',
+		imagen: '/images/evina.png',
+		localidades: [
+			{
+				nombre: 'Delegación Evinayong',
+				direccion: 'Evinayong, Centro Sur',
+				telefono: '+240 XXX XXX XXX',
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
 			}
 		]
 	},
@@ -58,9 +82,8 @@ const agencias = [
 				nombre: 'Oficina de Annobón',
 				direccion: 'San Antonio de Palé, Annobón',
 				telefono: '+240 XXX XXX XXX',
-				email: 'annobon@inseso.gq',
-				horario: 'Lunes a Viernes: 8:00 - 16:00',
-				coordenadas: { lat: -1.4263, lng: 5.6360 }
+				email: 'info@inseso.org',
+				horario: 'Lunes a Viernes: 8:00 - 16:00'
 			}
 		]
 	}
@@ -90,11 +113,11 @@ const agencias = [
 					<div class="col-lg-4">
 						<div class="stats-box">
 							<div class="stat-item">
-								<div class="stat-number">5</div>
+								<div class="stat-number">8</div>
 								<div class="stat-label">Oficinas</div>
 							</div>
 							<div class="stat-item">
-								<div class="stat-number">3</div>
+								<div class="stat-number">5</div>
 								<div class="stat-label">Ciudades</div>
 							</div>
 						</div>
@@ -126,10 +149,10 @@ const agencias = [
 										<div class="oficina-icon sede-icon">
 											<i class="fas fa-landmark"></i>
 										</div>
-										<h3>Sede INSESO {ciudad.ciudad}</h3>
+										<h3>{ciudad.ciudad === 'Malabo' ? `Sede INSESO ${ciudad.ciudad}` : `Delegación ${ciudad.ciudad}`}</h3>
 									</div>
 									<div class="sede-imagen">
-										<img src={ciudad.imagen} alt={`Sede INSESO ${ciudad.ciudad}`} class="img-fluid" />
+										<img src={ciudad.imagen} alt={ciudad.ciudad === 'Malabo' ? `Sede INSESO ${ciudad.ciudad}` : `Delegación ${ciudad.ciudad}`} class="img-fluid" />
 									</div>
 								</div>
 							</div>
@@ -172,11 +195,6 @@ const agencias = [
 												<p>{oficina.horario}</p>
 											</div>
 										</div>
-									</div>
-									<div class="oficina-footer">
-										<a href={`https://www.google.com/maps?q=${oficina.coordenadas.lat},${oficina.coordenadas.lng}`} target="_blank" class="btn-ver-mapa">
-											<i class="fas fa-map"></i> Ver en Google Maps
-										</a>
 									</div>
 								</div>
 							</div>
@@ -491,35 +509,6 @@ const agencias = [
 	.oficina-detail a:hover {
 		color: #6d2018;
 		text-decoration: underline;
-	}
-
-	.oficina-footer {
-		padding: 1rem 1.5rem;
-		background: #f8f9fa;
-		border-top: 1px solid #e0e0e0;
-	}
-
-	.btn-ver-mapa {
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		gap: 8px;
-		background: #8c1b12;
-		color: white;
-		padding: 10px 20px;
-		border-radius: 6px;
-		text-decoration: none;
-		font-weight: 600;
-		font-size: 14px;
-		transition: all 0.3s ease;
-		width: 100%;
-	}
-
-	.btn-ver-mapa:hover {
-		background: #6d2018;
-		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
-		color: white;
 	}
 
 	/* Info Adicional */

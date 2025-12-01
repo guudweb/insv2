@@ -282,7 +282,8 @@
     "appointmentDescription": "Request an appointment to be served faster.",
     "requestAppointment": "Request Appointment",
     "cityCenter": "City Center",
-    "headquarters": "Headquarters"
+    "headquarters": "Headquarters",
+    "delegation": "Delegation"
   },
   "autonomousAffiliation": {
     "pageTitle": "INSESO - Affiliation - Self-Employed",

@@ -282,7 +282,8 @@
     "appointmentDescription": "Solicite um agendamento para ser atendido mais rapidamente.",
     "requestAppointment": "Solicitar Agendamento",
     "cityCenter": "Centro da Cidade",
-    "headquarters": "Sede"
+    "headquarters": "Sede",
+    "delegation": "Delegação"
   },
   "autonomousAffiliation": {
     "pageTitle": "INSESO - Afiliação - Autónomo",

@@ -325,7 +325,8 @@
     "appointmentDescription": "Solicita una cita previa para ser atendido de manera más rápida.",
     "requestAppointment": "Solicitar Cita",
     "cityCenter": "Centro de la Ciudad",
-    "headquarters": "Sede"
+    "headquarters": "Sede",
+    "delegation": "Delegación"
   },
   "penalties": {
     "pageTitle": "Penas y Sanciones para Empleadores - INSESO",
