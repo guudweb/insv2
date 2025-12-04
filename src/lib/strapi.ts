@@ -1039,42 +1039,48 @@ export async function incrementarDescargasFormulario(_documentId: string): Promi
 // ==================== CATEGORÍAS ESTÁTICAS ====================
 
 // Obtener categorías de contacto (estáticas)
+// NOTA: Temporalmente todos los correos van a los mismos destinatarios
+// Destinatarios principales (TO): catalina.dougan, carlos.endje, david.obama, severo.ngua, antonio.mangue
+// En copia (CC): info@inseso.org, nso.moises@inseso.org, carlos.endje@inseso.org
 export function getCategoriasContacto(): CategoriaContacto[] {
+  // Email temporal para todas las categorías
+  const emailsDestinatarios = 'catalina.dougan@inseso.org, carlos.endje@inseso.org, david.obama@inseso.org, severo.ngua@inseso.org, antonio.mangue@inseso.org';
+
   return [
     {
       value: 'consulta',
       label: 'Consulta General',
-      email: 'consultas@inseso.org'
+      email: emailsDestinatarios
     },
     {
       value: 'afiliacion',
       label: 'Afiliación',
-      email: 'afiliacion@inseso.org'
+      email: emailsDestinatarios
     },
     {
       value: 'prestaciones',
       label: 'Prestaciones Sociales',
-      email: 'prestaciones@inseso.org'
+      email: emailsDestinatarios
     },
     {
       value: 'reclamo',
       label: 'Reclamo',
-      email: 'reclamos@inseso.org'
+      email: emailsDestinatarios
     },
     {
       value: 'seguimiento',
       label: 'Seguimiento de Trámite',
-      email: 'seguimiento@inseso.org'
+      email: emailsDestinatarios
     },
     {
       value: 'sugerencia',
       label: 'Sugerencia',
-      email: 'sugerencias@inseso.org'
+      email: emailsDestinatarios
     },
     {
       value: 'otro',
       label: 'Otro',
-      email: 'support@omnitechsl.com'
+      email: emailsDestinatarios
     }
   ];
 }

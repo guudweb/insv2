@@ -50,11 +50,13 @@ export const POST: APIRoute = async ({ request }) => {
     const categoryText = categoryData?.label || category;
     const recipientEmail = categoryData?.email || 'info@inseso.org';
 
-    // Configurar email con destinatario específico por categoría y copia a info@
+    // Configurar email con destinatarios y copias
+    // TO: catalina.dougan, carlos.endje, david.obama, severo.ngua, antonio.mangue
+    // CC: info@inseso.org, nso.moises@inseso.org, carlos.endje@inseso.org
     const mailOptions = {
       from: `"Formulario INSESO" <${import.meta.env.SMTP_FROM}>`,
       to: recipientEmail,
-      cc: 'nguemanisaac@gmail.com', //info@inseso.org
+      cc: 'info@inseso.org, nso.moises@inseso.org, carlos.endje@inseso.org',
       subject: `Nuevo mensaje de contacto - ${categoryText}`,
       html: `
         <!DOCTYPE html>
