@@ -59,7 +59,14 @@ const mediaFecha = config?.videoFecha || 'MALABO, 26 DE JUNIO DE 2025 - 15.00 HO
 const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : '');
 ---
 
-<BaseLayout title="INSESO - Inicio" currentPath="/">
+<BaseLayout
+	title="INSESO | Instituto Nacional de Seguridad Social de Guinea Ecuatorial"
+	description="Portal oficial de INSESO Guinea Ecuatorial. Información sobre afiliación, prestaciones sociales, trámites, formularios y red de oficinas en Malabo, Bata y más."
+	currentPath="/"
+>
+	<!-- H1 oculto visualmente para SEO -->
+	<h1 class="visually-hidden">Instituto Nacional de Seguridad Social de Guinea Ecuatorial - INSESO</h1>
+
 	<SwiperHero slides={heroSlides} />
 
 	<div class="container">

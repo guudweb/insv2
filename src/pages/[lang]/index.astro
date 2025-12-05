@@ -59,7 +59,14 @@ const mediaFecha = config?.videoFecha || 'MALABO, 26 DE JUNIO DE 2025 - 15.00 HO
 const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : '');
 ---
 
-<BaseLayout title={`INSESO - ${t('nav.home')}`} currentPath={`/${lang}`}>
+<BaseLayout
+	title={t('home.seoTitle')}
+	description={t('home.seoDescription')}
+	currentPath={`/${lang}`}
+>
+	<!-- H1 oculto visualmente para SEO -->
+	<h1 class="visually-hidden">{t('home.h1')}</h1>
+
 	<SwiperHero slides={heroSlides} />
 
 	<div class="container">
