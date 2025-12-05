@@ -36,11 +36,19 @@ const ogLocales: Record<Locale, string> = {
 	pt: 'pt_PT'
 };
 
+// Mapa de hreflang ISO estándar
+const hreflangMap: Record<Locale, string> = {
+	es: 'es',
+	fr: 'fr',
+	en: 'en',
+	pt: 'pt'
+};
+
 // URLs alternativas para hreflang
 const siteUrl = Astro.site || Astro.url.origin;
 const basePath = removeLocalePrefix(currentPath);
 const alternateUrls = getAlternateUrls(basePath, siteUrl);
-const canonicalURL = alternateUrls[lang];
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).href;
 const fullOgImage = new URL(ogImage, siteUrl).href;
 ---
 
@@ -54,11 +62,13 @@ const fullOgImage = new URL(ogImage, siteUrl).href;
 	<link href="/images/favicon.png" rel="icon">
 	<link rel="canonical" href={canonicalURL} />
 
-	<!-- Hreflang tags for multilingual SEO -->
+	<!-- Hreflang tags for multilingual SEO (ISO standard codes) -->
 	{Object.entries(alternateUrls).map(([locale, url]) => (
-		<link rel="alternate" hreflang={locale} href={url} />
+		<link rel="alternate" hreflang={hreflangMap[locale as Locale]} href={url} />
 	))}
 	<link rel="alternate" hreflang="x-default" href={alternateUrls.es} />
+	<!-- Self-referential alternate link -->
+	<link rel="alternate" hreflang={hreflangMap[lang]} href={canonicalURL} />
 
 	<title>{title}</title>
 
