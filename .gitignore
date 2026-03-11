@@ -30,3 +30,5 @@ npm-debug.log*
 # IDE
 .vscode/
 .idea/
+public/images.zip
+.gitignore

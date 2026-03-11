@@ -740,7 +740,7 @@ export async function getNoticiasByPosicion(posicion: string, limit?: number, lo
           $eq: true,
         },
       },
-      sort: ['orden:asc'],
+      sort: ['fechaPublicacion:desc'],
       pagination: {
         pageSize: limit || 100,
       },

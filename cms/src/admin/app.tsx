@@ -4,11 +4,11 @@ export default {
   config: {
     locales: [
       // 'ar',
-      // 'fr',
+      'fr',
       // 'cs',
       // 'de',
       // 'dk',
-      // 'es',
+      'es',
       // 'he',
       // 'id',
       // 'it',
