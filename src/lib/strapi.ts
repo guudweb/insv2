@@ -415,10 +415,88 @@ export function richTextToPlainText(richText: any): string {
   return '';
 }
 
+// Escapa el HTML del texto que viene de Strapi
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Aplica el formato inline de Markdown (imágenes, enlaces, negrita, cursiva, código)
+// y conserva los saltos de línea simples como <br>
+function inlineMarkdownToHtml(text: string): string {
+  return escapeHtml(text)
+    .replace(
+      /!\[([^\]]*)\]\(([^)\s]+)\)/g,
+      (_m, alt, url) => `<img src="${getStrapiImageUrl(url)}" alt="${alt}" class="img-fluid" />`
+    )
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^_])__([^_]+)__/g, '$1<strong>$2</strong>')
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
+    .replace(/\n/g, '<br />');
+}
+
+// Convierte el Markdown del campo "richtext" de Strapi a HTML.
+// Sin esta conversión los saltos de línea y párrafos escritos en Strapi
+// se pierden al insertarlos con set:html, porque el navegador colapsa los \n.
+export function markdownToHtml(text: string): string {
+  if (!text) return '';
+
+  // Si el contenido ya viene como HTML, se respeta tal cual
+  if (/<(p|div|h[1-6]|ul|ol|br|img|blockquote)\b/i.test(text)) return text;
+
+  const bloques = text
+    .replace(/\r\n/g, '\n')
+    // Los encabezados siempre forman su propio bloque
+    .replace(/^(#{1,6}\s+.*)$/gm, '\n$1\n')
+    .split(/\n{2,}/);
+
+  return bloques
+    .map((bloque) => {
+      const contenido = bloque.trim();
+      if (!contenido) return '';
+
+      const encabezado = contenido.match(/^(#{1,6})\s+(.*)$/);
+      if (encabezado) {
+        const nivel = encabezado[1].length;
+        return `<h${nivel}>${inlineMarkdownToHtml(encabezado[2])}</h${nivel}>`;
+      }
+
+      const lineas = contenido.split('\n');
+
+      if (lineas.every((linea) => /^\s*[-*+]\s+/.test(linea))) {
+        const items = lineas
+          .map((linea) => `<li>${inlineMarkdownToHtml(linea.replace(/^\s*[-*+]\s+/, ''))}</li>`)
+          .join('');
+        return `<ul>${items}</ul>`;
+      }
+
+      if (lineas.every((linea) => /^\s*\d+[.)]\s+/.test(linea))) {
+        const items = lineas
+          .map((linea) => `<li>${inlineMarkdownToHtml(linea.replace(/^\s*\d+[.)]\s+/, ''))}</li>`)
+          .join('');
+        return `<ol>${items}</ol>`;
+      }
+
+      if (lineas.every((linea) => /^\s*>\s?/.test(linea))) {
+        const cita = lineas.map((linea) => linea.replace(/^\s*>\s?/, '')).join('\n');
+        return `<blockquote>${inlineMarkdownToHtml(cita)}</blockquote>`;
+      }
+
+      return `<p>${inlineMarkdownToHtml(contenido)}</p>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+}
+
 // Helper para convertir Rich Text de Strapi a HTML
 export function richTextToHtml(richText: any): string {
   if (!richText) return '';
-  if (typeof richText === 'string') return `<p>${richText}</p>`;
+  if (typeof richText === 'string') return markdownToHtml(richText);
 
   // Si es un array de bloques (Strapi v5 Rich Text)
   if (Array.isArray(richText)) {

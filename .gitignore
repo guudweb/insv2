@@ -32,3 +32,5 @@ npm-debug.log*
 .idea/
 public/images.zip
 .gitignore
+.claude
+/docs

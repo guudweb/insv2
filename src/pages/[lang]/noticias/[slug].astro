@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl } from '../../../lib/strapi';
+import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl, richTextToHtml, richTextToPlainText } from '../../../lib/strapi';
 import { languages, useTranslations, type Locale, getLocalizedPath } from '../../../i18n/utils';
 
 export const prerender = false;
@@ -17,6 +17,7 @@ if (!noticia) {
 
 const { titulo, contenido, resumen, fechaPublicacion, autor, imagen, tipoMedia, video, videoArchivo, categoria } = noticia;
 const videoUrl = getNoticiaVideoUrl(noticia);
+const contenidoHtml = richTextToHtml(contenido);
 
 // Obtener noticias relacionadas (misma categoría, excluyendo la actual)
 const todasLasNoticias = await getNoticias(locale);
@@ -25,7 +26,7 @@ const noticiasRelacionadas = todasLasNoticias
 	.slice(0, 3);
 
 // Preparar meta tags SEO
-const noticiaDescription = resumen || (contenido ? contenido.substring(0, 160) : '');
+const noticiaDescription = resumen || richTextToPlainText(contenido).substring(0, 160);
 const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo_01.png';
 
 // Rutas localizadas
@@ -130,7 +131,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 							</p>
 							<hr>
 
-							<div class="noticia-contenido" set:html={contenido} />
+							<div class="noticia-contenido" set:html={contenidoHtml} />
 						</div>
 					</div>
 
