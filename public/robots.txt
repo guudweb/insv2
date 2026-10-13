@@ -1,0 +1,20 @@
+# Robots.txt para INSESO - Instituto Nacional de Seguridad Social de Guinea Ecuatorial
+# https://inseso.org
+
+User-agent: *
+Allow: /
+
+# Directorios restringidos
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+
+# Archivos sensibles
+Disallow: /*.json$
+Disallow: /*.xml$
+
+# Crawl delay para ser amigable con el servidor
+Crawl-delay: 1
+
+# Sitemap
+Sitemap: https://inseso.org/sitemap-index.xml

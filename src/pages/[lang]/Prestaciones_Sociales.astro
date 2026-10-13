@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import PrestacionesGrid from '../../components/PrestacionesGrid.astro';
+import { getSocios } from '../../lib/strapi';
+import { getLangFromUrl, useTranslations, type Locale } from '../../i18n/utils';
+
+// Renderizar dinámicamente (SSR) para obtener datos frescos de Strapi
+export const prerender = false;
+
+// Obtener idioma de la URL
+const lang = Astro.params.lang as Locale;
+const t = useTranslations(lang);
+
+// Obtener socios de Strapi
+const socios = await getSocios();
+---
+
+<BaseLayout title={t('prestaciones.pageTitle')} currentPath="/Prestaciones_Sociales">
+<Breadcrumb
+	title={t('prestaciones.title')}
+	items={[]}
+/>
+
+    <!-- CAMBIO INSESO 2026-10-13 R2: se retira el banner médico genérico; el catálogo tiene sus ocho imágenes propias. -->
+
+	<div class="container">
+		<h1 class="py-4">{t('prestaciones.description')}</h1>
+	</div>
+
+	<PrestacionesGrid usarStrapi={true} />
+
+	<PartnersCarousel socios={socios} />
+</BaseLayout>

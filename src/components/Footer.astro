@@ -1,0 +1,74 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+// CAMBIO INSESO 2026-10-13 R2: enlace Formularios dirige a la solicitud común de prestaciones.
+// Footer component
+import TikTokLink from './TikTokLink.astro';
+import { contactInfo } from '../config/contact';
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<footer class="footer">
+	<div class="container bottom_border">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<img class="footer-logo" src="/images/footer-nuevo.png" alt="INSESO Logo" />
+				<p class="footer-description">{t('footer.description')}</p>
+			</div>
+
+			<div class="col-lg-3 col-md-6 col-sm-6">
+				<h5 class="headin5_amrc col_white_amrc pt2">{t('footer.quickLinks')}</h5>
+				<ul class="footer_ul_amrc">
+					<li><a href={getLocalizedPath('/condiciones_adhesion', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkConditions')}</a></li>
+					<li><a href={getLocalizedPath('/sobre_nosotros', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkAbout')}</a></li>
+					<li><a href={getLocalizedPath('/Prestaciones_Sociales', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkServices')}</a></li>
+					<li><a href={getLocalizedPath('/contacto', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkContact')}</a></li>
+				</ul>
+			</div>
+
+			<div class="col-lg-2 col-md-6 col-sm-6">
+				<h5 class="headin5_amrc col_white_amrc pt2">{t('footer.services')}</h5>
+				<ul class="footer_ul_amrc">
+					<li><a href={getLocalizedPath('/formulario-prestaciones', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkForms')}</a></li>
+					<li><a href={getLocalizedPath('/Prestaciones_Sociales', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkBenefits')}</a></li>
+					<li><a href={getLocalizedPath('/noticias', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkNews')}</a></li>
+					<li><a href={getLocalizedPath('/empleadores/penas-sanciones', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkPenalties')}</a></li>
+				</ul>
+			</div>
+
+			<div class="col-lg-3 col-md-6 col-sm-12">
+				<h5 class="headin5_amrc col_white_amrc pt2">{t('footer.followUs')}</h5>
+				<ul class="footer-social">
+					<!-- CAMBIO INSESO R3: icono de TikTok; URL oficial pendiente de confirmar. -->
+					<li><TikTokLink /></li>
+					<li><a class="facebook hb-xs-margin" href="https://www.facebook.com/share/19mnxTyaUk/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><span class="hb hb-xs spin hb-facebook"><i class="fab fa-facebook-f"></i></span></a></li>
+					<li><a class="twitter hb-xs-margin" href="https://x.com/inseso_ge" target="_blank" rel="noopener noreferrer" aria-label="X"><span class="hb hb-xs spin hb-twitter"><span aria-hidden="true" style="font-weight:700">𝕏</span></span></a></li>
+					<li><a class="instagram hb-xs-margin" href="https://www.instagram.com/inseso_ge/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><span class="hb hb-xs spin hb-instagram"><i class="fab fa-instagram"></i></span></a></li>
+				</ul>
+				<div class="footer-contact">
+					<p><i class="fas fa-map-marker-alt"></i> Malabo, {t('footer.country')}</p>
+					<p><i class="fas fa-phone"></i> (+240) 333 092214</p>
+					<p><i class="fas fa-envelope"></i> info@inseso.org</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<p class="copyright text-center">{t('footer.allRightsReserved')} &copy; 2026 INSESO</p>
+	</div>
+</footer>
+
+<style>
+	.omnitech-link {
+		color: #0066cc !important;
+		text-decoration: none;
+		font-weight: 600;
+	}
+
+	.omnitech-link:hover {
+		color: #0052a3 !important;
+		text-decoration: underline;
+	}
+</style>

@@ -1,0 +1,198 @@
+---
+import {benefitCatalog} from '../../data/benefit-catalog';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SwiperHero from '../../components/SwiperHero.astro';
+import BlogSlider from '../../components/BlogSlider.astro';
+import PartnersCarousel from '../../components/PartnersCarousel.astro';
+import NovedadesSection from '../../components/NovedadesSection.astro';
+import NewsLateralCard from '../../components/NewsLateralCard.astro';
+import UltimaHoraSection from '../../components/UltimaHoraSection.astro';
+
+import {
+  getConfiguracionInicio,
+  getNoticiasByPosicion,
+  getPrestaciones,
+  getHeroSlides,
+  getSlidesAfiliacion,
+  getSocios,
+  getStrapiImageUrl,
+  richTextToPlainText,
+  getNoticiaVideoUrl
+} from '../../lib/strapi';
+
+import { languages, useTranslations, getLocalizedPath, type Locale } from '../../i18n/utils';
+
+export const prerender = false;
+
+const { lang } = Astro.params;
+const locale = lang as Locale;
+const t = useTranslations(locale);
+
+// Obtener datos de Strapi con el locale correcto
+const config = await getConfiguracionInicio(locale);
+const heroSlides = await getHeroSlides();
+const slidesAfiliacion = await getSlidesAfiliacion(locale);
+const socios = await getSocios();
+const noticiaPrincipal = (await getNoticiasByPosicion('principal', 1, locale))[0];
+const noticiasLaterales = await getNoticiasByPosicion('lateral', 2, locale);
+const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 6, locale);
+const prestaciones = await getPrestaciones(locale);
+// CAMBIO INSESO 2026-10-13 R2: destacados limitados a las ocho prestaciones autorizadas.
+const allowedSlugs = new Set(['subsidio-por-maternidad','prestaciones-por-invalidez','subsidio-de-incapacidad-temporal','discapacidad','pension-por-vejez','gastos-de-sepelio','viudedad','orfandad']);
+const prestacionesDestacadas = benefitCatalog.slice(0,4).map(b=>({...b,imagen:{url:b.imagen},resumen:'Información y requisitos de la prestación'}));
+
+// Fallbacks por si no hay datos en Strapi (usar traducciones)
+const tituloHero = config?.tituloHero || t('home.hero');
+const afiliacionTitulo = config?.afiliacionTitulo || t('nav.aboutConditions');
+const afiliacionImagen = config?.afiliacionImagen ? getStrapiImageUrl(config.afiliacionImagen.url) : '/images/img_acc_04.jpg';
+const afiliacionTexto = config?.afiliacionTexto || 'La función principal de la afiliación a la seguridad social es incorporar a una persona al sistema de seguridad social y, por lo tanto, garantizar su acceso a las prestaciones y servicios que este ofrece. La afiliación es obligatoria para las personas que realizan una actividad laboral que las incluye en el sistema.';
+const afiliacionEnlace = config?.afiliacionEnlace ? (/^https?:/.test(config.afiliacionEnlace) ? config.afiliacionEnlace : getLocalizedPath(config.afiliacionEnlace, locale)) : getLocalizedPath('/condiciones_adhesion', locale);
+
+const sidebarImagenBanner = config?.sidebarImagenBanner ? getStrapiImageUrl(config.sidebarImagenBanner.url) : '/images/accueil/inicio_pub_01.gif';
+const sidebarCardTitulo = config?.sidebarCardTitulo || '¿QUIEN DEBE AFILIARSE A LA SEGURIDAD SOCIAL?';
+const sidebarCardTexto = config?.sidebarCardTexto || 'La persona que ejecuta una obra o presta servicios a otra en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.';
+
+// Media Principal: Soporta video o imagen desde config o noticia principal
+const tipoMediaPrincipal = config?.tipoMediaPrincipal || (noticiaPrincipal?.tipoMedia) || 'video';
+const videoUrl = config?.videoUrl || (noticiaPrincipal ? getNoticiaVideoUrl(noticiaPrincipal) : null) || '/video/Felicitacion del ILMO. Señor Delegado Nacional a Su Excelencia Obiang Nguema Mbasogo..mp4';
+const videoArchivoPrincipal = config?.videoArchivoPrincipal ? getStrapiImageUrl(config.videoArchivoPrincipal.url) : null;
+const imagenPrincipal = config?.imagenPrincipal ? getStrapiImageUrl(config.imagenPrincipal.url) : null;
+const mediaTitulo = config?.videoTitulo || noticiaPrincipal?.titulo || '';
+const mediaFecha = noticiaPrincipal?.fechaPublicacion ? new Intl.DateTimeFormat(locale, {dateStyle:'long'}).format(new Date(noticiaPrincipal.fechaPublicacion)) : (config?.videoFecha || '');
+const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenido ? richTextToPlainText(noticiaPrincipal.contenido) : '');
+---
+
+<BaseLayout
+	title={t('home.seoTitle')}
+	description={t('home.seoDescription')}
+	currentPath={`/${lang}`}
+>
+	<!-- H1 oculto visualmente para SEO -->
+	<h1 class="visually-hidden">{t('home.h1')}</h1>
+
+	<SwiperHero slides={heroSlides} />
+
+	<div class="container">
+		<div class="portfolio-main">
+			<h2>{tituloHero}</h2>
+		</div>
+	</div>
+
+	<BlogSlider slides={slidesAfiliacion} />
+
+	<div class="blog-main">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 blog-entries">
+					<div class="card mb-4">
+						<br>
+						<img class="card-img-top" src={afiliacionImagen} alt="Card image Blog" loading="lazy" />
+						<div class="card-body">
+							<h2 class="card-title">{afiliacionTitulo}</h2>
+							<p class="card-text">{afiliacionTexto}</p>
+							<a href={afiliacionEnlace} class="btn btn-primary">{t('common.readMore')} &rarr;</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-4 blog-right-side">
+					<div class="card mb-4">
+						<div class="card-img">
+							<img class="img-fluid" src={sidebarImagenBanner} alt="Banner informativo de INSESO" loading="lazy" />
+						</div>
+					</div>
+					<div class="card my-4">
+						<h5 class="card-header">{sidebarCardTitulo}</h5>
+						<div class="card-body">
+							{sidebarCardTexto}
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+	{prestacionesDestacadas.length > 0 && (
+		<NovedadesSection prestaciones={prestacionesDestacadas} />
+	)}
+
+	<div class="blog-main">
+		<div class="container">
+			<h2 class="card-header">{t('home.latestNews')}</h2>
+			<div class="row">
+				<div class="col-lg-8">
+					{tipoMediaPrincipal === 'imagen' && imagenPrincipal ? (
+						<img src={imagenPrincipal} alt={mediaTitulo} class="img-fluid w-100" style="max-height: 450px; object-fit: cover;" />
+					) : tipoMediaPrincipal === 'video' && noticiaPrincipal?.video && !noticiaPrincipal.videoArchivo ? (
+						<iframe
+							width="100%"
+							height="450"
+							src={noticiaPrincipal.video}
+							style="border: 0;"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen>
+						</iframe>
+					) : (
+						<video controls width="100%" style="max-height: 450px;">
+							<source src={videoArchivoPrincipal || videoUrl} type="video/mp4">
+						</video>
+					)}
+					<hr><p>{mediaFecha}</p><hr>
+					{mediaDescripcion && (
+						mediaDescripcion.split('\n').map((paragraph: string) => (
+							paragraph.trim() && <p class="lead">{paragraph}</p>
+						))
+					)}
+				</div>
+				<div class="col-md-4 blog-right-side">
+					{noticiasLaterales.map((noticia) => (
+						<NewsLateralCard noticia={noticia} />
+					))}
+				</div>
+			</div>
+			<h2 class="card-header">{t('home.breakingNews')}</h2>
+		</div>
+	</div>
+
+	{noticiasUltimaHora.length > 0 && (
+		<UltimaHoraSection noticias={noticiasUltimaHora} />
+	)}
+
+	<PartnersCarousel socios={socios} />
+
+</BaseLayout>
+
+<script is:inline src="/js/imagesloaded.pkgd.min.js"></script>
+<script is:inline src="/js/isotope.pkgd.min.js"></script>
+<script is:inline src="/js/filter.js"></script>
+<script is:inline src="/js/jquery.appear.js"></script>
+<script is:inline src="/js/owl.carousel.min.js"></script>
+<script is:inline src="/js/owl.carousel_2.js"></script>
+<script is:inline src="/js/script.js"></script>
+
+<script is:inline>
+	// Asegurar que Owl Carousel se inicialice correctamente
+	(function($) {
+		$(document).ready(function() {
+			// Blog slider
+			if ($("#blog-slider").length) {
+				$("#blog-slider").owlCarousel({
+					items: 3,
+					loop: true,
+					margin: 15,
+					nav: false,
+					dots: false,
+					autoplay: true,
+					autoplayTimeout: 3000,
+					responsive: {
+						0: { items: 1 },
+						650: { items: 1 },
+						768: { items: 2 },
+						1000: { items: 3 }
+					}
+				});
+			}
+		});
+	})(window.jQuery);
+</script>

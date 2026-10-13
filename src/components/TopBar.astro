@@ -1,0 +1,32 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+// TopBar component - Barra superior con redes sociales y contacto
+import TikTokLink from './TikTokLink.astro';
+import { contactInfo } from '../config/contact';
+---
+
+<div class="top-bar">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="social-media">
+					<ul>
+						<li><a href="https://www.facebook.com/share/19mnxTyaUk/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+						<li><a href="https://x.com/inseso_ge" target="_blank" rel="noopener noreferrer"><span aria-hidden="true" style="font-weight:700">𝕏</span></a></li>
+						<li><a href="https://www.instagram.com/inseso_ge/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></li>
+<!-- CAMBIO INSESO R3: TikTok visible; enlace se activa tras confirmar la cuenta. -->
+<li><TikTokLink /></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="contact-details">
+					<ul>
+						<li><i class="fas fa-phone fa-rotate-90"></i> {contactInfo.national.phone}</li>
+						<li><i class="fas fa-map-marker-alt"></i> {contactInfo.national.postalCode} {contactInfo.national.city} – {contactInfo.national.name}</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,89 @@
+---
+// CAMBIO INSESO 2026-10-13 R2: textos de la web publicados conservados; imágenes adaptadas a identidad verde.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
+import { getSocios } from '../lib/strapi';
+
+export const prerender = false;
+
+const socios = await getSocios();
+---
+
+<BaseLayout title="INSESO - Afiliación - Trabajadores" currentPath="/afiliacionee_trabajadores">
+  <PageHeader
+    imageSrc="/images/adaptadas/workers-header.png"
+    imageAlt="Afiliación de Trabajadores - INSESO"
+  />
+
+  <div class="container">
+    <div class="about-main">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>Afiliación de los Trabajadores</h2>
+          <p>
+            Es el acto por el que un trabajador, ya sea por cuenta ajena en el sector privado o público
+            o por cuenta propia, se inscribe oficialmente en el INSESO para poder recibir protección social:
+            pensión, asistencia sanitaria, subsidio de enfermedad o accidente, prestaciones familiares, etc.
+          </p>
+
+          <div class="card my-4">
+            <h4 class="card-header">Sector Privado Y Autónomo</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Rellenar ficha de afiliación</h6></li>
+                <li><h6>Copia de D.I.P/Pasaporte o Residencia para extranjeros</h6></li>
+                <li><h6>Una (1) foto tamaño carné</h6></li>
+                <li><h6>**Copia del contrato de trabajo</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">Sector publico</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Copia del nombramiento o contrato</h6></li>
+                <li><h6>Copia TRES (3) últimas nominas</h6></li>
+                <li><h6>Copia del D.I.P/Pasaporte</h6></li>
+                <li><h6>Rellenar ficha de afiliación</h6></li>
+                <li><h6>Una (1) foto tamaño carné</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">Trabajador Autonomo Y/O Profesional De Libre Ejercicio</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial.</h6></li>
+                <li><h6>Certificado médico</h6></li>
+                <li><h6>Declaración del salario, el mínimo actual reconocido es de 300 000 FCFAs.</h6></li>
+                <li><h6>Copia del D.I.P/ Pasaporte o Residencia para expatriados</h6></li>
+                <li><h6>Rellenar ficha de afiliación</h6></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4 institution-photo" src="/images/adaptadas/workers-main.png" alt="Afiliación Trabajadores" />
+
+          <h4 class="card-header">Baja del trabajador</h4>
+          <div class="card-body">
+            <ul>
+              <li><h6>Solicitud dirigida a la Autoridad del Delegado Nacional/Regional o Provincial</h6></li>
+              <li><h6>Copia carta de despido por razones que fueran con entrega Y recibí del trabajador</h6></li>
+              <li><h6>Copia liquidación practicada ( finiquito) con entrega al trabajador</h6></li>
+            </ul>
+          </div>
+
+          <hr>
+          <img class="img-fluid rounded mb-4 institution-photo" src="/images/adaptadas/card-application.png" alt="Solicitud" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

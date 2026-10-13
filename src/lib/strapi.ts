@@ -1,0 +1,1240 @@
+// Librería para conectar con Strapi
+import qs from 'qs';
+import legacyBenefits from '../data/legacy-benefits.json';
+
+const STRAPI_URL = import.meta.env.STRAPI_URL || 'http://localhost:1337';
+
+async function cmsFetch(url: string, options: RequestInit = {}) {
+ return fetch(url, {...options,signal:options.signal || AbortSignal.timeout(5000)});
+}
+
+// Preview context para mantener el estado de preview
+interface PreviewContext {
+  enabled: boolean;
+  status?: string;
+}
+
+import { AsyncLocalStorage } from 'node:async_hooks';
+export const previewStorage = new AsyncLocalStorage<PreviewContext>();
+export function setPreviewContext(enabled: boolean, status?: string) {
+ const context = previewStorage.getStore();
+ if (context) Object.assign(context,{enabled,status});
+}
+export function getPreviewContext(): PreviewContext { return previewStorage.getStore() || {enabled:false}; }
+interface StrapiResponse<T> {
+  data: T;
+  meta: {
+    pagination?: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
+}
+
+// Strapi v5 estructura - datos directos sin "attributes"
+interface StrapiImage {
+  id: number;
+  documentId: string;
+  url: string;
+  alternativeText: string | null;
+  name: string;
+  width: number;
+  height: number;
+}
+
+// Interfaz para Categorias de Noticias
+export interface Categoria {
+  id: number;
+  documentId: string;
+  nombre: string;
+  slug: string;
+  descripcion: string | null;
+  color: string;
+  icono: string | null;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para Categorías de Contacto (estáticas)
+export interface CategoriaContacto {
+  value: string;
+  label: string;
+  email: string;
+}
+
+// Interfaz para Noticias (mejorada)
+export interface Noticia {
+  id: number;
+  documentId: string;
+  titulo: string;
+  slug: string | null;
+  contenido: any;
+  resumen: string | null;
+  fechaPublicacion: string;
+  autor: string | null;
+  imagen: StrapiImage | null;
+  video: string | null; // URL externa (YouTube, Vimeo, etc.)
+  videoArchivo: StrapiImage | null; // Video subido a Strapi
+  tipoMedia: 'imagen' | 'video';
+  categoria: Categoria | null;
+  posicion: 'principal' | 'lateral' | 'ultima-hora' | 'novedad';
+  orden: number;
+  destacado: boolean;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para HeroSlides
+export interface HeroSlide {
+  id: number;
+  documentId: string;
+  titulo: string | null;
+  subtitulo: string | null;
+  imagen: StrapiImage;
+  enlace: string | null;
+  textoBoton: string | null;
+  orden: number;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para SlideAfiliacion
+export interface SlideAfiliacion {
+  id: number;
+  documentId: string;
+  titulo: string;
+  imagen: StrapiImage;
+  enlace: string;
+  descripcion: string | null;
+  orden: number;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para ConfiguracionInicio (Single Type)
+export interface ConfiguracionInicio {
+  id: number;
+  documentId: string;
+  tituloHero: string | null;
+  afiliacionTitulo: string | null;
+  afiliacionImagen: StrapiImage | null;
+  afiliacionTexto: string | null;
+  afiliacionEnlace: string | null;
+  sidebarImagenBanner: StrapiImage | null;
+  sidebarCardTitulo: string | null;
+  sidebarCardTexto: string | null;
+  videoUrl: string | null;
+  videoTitulo: string | null;
+  videoFecha: string | null;
+  videoDescripcion: string | null;
+  tipoMediaPrincipal: 'video' | 'imagen' | null;
+  videoArchivoPrincipal: StrapiImage | null;
+  imagenPrincipal: StrapiImage | null;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para Prestaciones
+export interface Prestacion {
+  validado?: boolean;
+  fechaRevision?: string;
+  formulario?: {archivo?: StrapiImage};
+  id: number;
+  documentId: string;
+  titulo: string;
+  slug: string;
+  descripcion: string;
+  resumen: string | null;
+  imagen: StrapiImage | null;
+  imagenDetalle: StrapiImage | null;
+  requisitos: string | null;
+  destacado: boolean;
+  orden: number;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para Socios
+export interface Socio {
+  id: number;
+  documentId: string;
+  nombre: string;
+  logo: StrapiImage;
+  enlace: string | null;
+  orden: number;
+  activo: boolean;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Obtener todas las noticias
+export async function getNoticias(locale: string = 'es'): Promise<Noticia[]> {
+  const queryParams: any = {
+    populate: ['imagen', 'videoArchivo', 'categoria'],
+    sort: ['fechaPublicacion:desc'],
+    pagination: {
+      pageSize: 100,
+    },
+    locale: locale,
+  };
+
+  // Añadir publicationState=preview si estamos en modo preview
+  if (getPreviewContext().enabled) {
+    queryParams.publicationState = 'preview';
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (getPreviewContext().enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await cmsFetch(`${STRAPI_URL}/api/noticias?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching noticias: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Noticia[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener noticias:', error);
+    return [];
+  }
+}
+
+// Obtener una noticia por documentId (para preview)
+export async function getNoticiaByDocumentId(documentId: string, locale: string = 'es'): Promise<Noticia | null> {
+  const queryParams: any = {
+    populate: ['imagen', 'videoArchivo', 'categoria'],
+    locale: locale,
+  };
+
+  // Añadir publicationState=preview si estamos en modo preview
+  if (getPreviewContext().enabled) {
+    queryParams.publicationState = 'preview';
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (getPreviewContext().enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await cmsFetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching noticia: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Noticia> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener noticia:', error);
+    return null;
+  }
+}
+
+// Obtener una noticia por slug
+export async function getNoticiaBySlug(slug: string, locale: string = 'es'): Promise<Noticia | null> {
+  try {
+    // Primero intentar buscar por slug exacto
+    const queryParams: any = {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+      },
+      populate: ['imagen', 'videoArchivo', 'categoria'],
+      locale: locale,
+    };
+
+    // Añadir publicationState=preview si estamos en modo preview
+    if (getPreviewContext().enabled) {
+      queryParams.publicationState = 'preview';
+    }
+
+    const queryBySlug = qs.stringify(queryParams, {
+      encodeValuesOnly: true,
+    });
+
+    const headers: HeadersInit = {};
+    if (getPreviewContext().enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const responseBySlug = await cmsFetch(`${STRAPI_URL}/api/noticias?${queryBySlug}`, {
+      headers,
+    });
+
+    if (responseBySlug.ok) {
+      const jsonBySlug: StrapiResponse<Noticia[]> = await responseBySlug.json();
+      if (jsonBySlug.data.length > 0) {
+        return jsonBySlug.data[0];
+      }
+    }
+
+    // Si no se encuentra, buscar todas las noticias y comparar con slug generado
+    const allNoticias = await getNoticias(locale);
+    const noticia = allNoticias.find(n => getNoticiaSlug(n) === slug);
+    return noticia || null;
+  } catch (error) {
+    console.error('Error al obtener noticia:', error);
+    return null;
+  }
+}
+
+// Obtener los slugs de una noticia en todos los idiomas usando documentId
+export async function getNoticiaSlugsByDocumentId(documentId: string): Promise<Record<string, string>> {
+  const locales = ['es', 'fr', 'en', 'pt'];
+  const slugs: Record<string, string> = {};
+
+  for (const locale of locales) {
+    try {
+      const query = qs.stringify({
+        populate: ['imagen'],
+        locale: locale,
+      }, {
+        encodeValuesOnly: true,
+      });
+
+      const response = await cmsFetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`);
+
+      if (response.ok) {
+        const json: StrapiResponse<Noticia> = await response.json();
+        if (json.data?.slug) {
+          slugs[locale] = json.data.slug;
+        } else if (json.data?.titulo) {
+          // Si no tiene slug, generar uno desde el título
+          slugs[locale] = generateSlug(json.data.titulo);
+        }
+      }
+    } catch (error) {
+      // Silently continue if locale not found
+    }
+  }
+
+  return slugs;
+}
+
+// Helper para obtener URL completa de imagen
+export function getStrapiImageUrl(url: string): string {
+  if (!url) return '';
+  // CAMBIO INSESO 2026-10-13 R2: ilustraciones y PDF locales no se solicitan a Strapi.
+  if (url.startsWith('/images/') || url.startsWith('/formularios/')) return url;
+  if (url.startsWith('http')) return url;
+  return `${STRAPI_URL}${url}`;
+}
+
+// Helper para formatear fecha
+export function formatDate(dateString: string): string {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('es-ES', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+
+// Helper para generar slug desde título si no existe
+export function generateSlug(titulo: string): string {
+  return titulo
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Eliminar acentos
+    .replace(/[^a-z0-9\s-]/g, '') // Eliminar caracteres especiales
+    .trim()
+    .replace(/\s+/g, '-') // Reemplazar espacios con guiones
+    .replace(/-+/g, '-'); // Eliminar guiones duplicados
+}
+
+// Helper para obtener el slug de una noticia
+export function getNoticiaSlug(noticia: Noticia): string {
+  return noticia.slug || generateSlug(noticia.titulo);
+}
+
+// Helper para obtener URL de video (prioriza videoArchivo sobre video)
+export function getNoticiaVideoUrl(noticia: Noticia): string | null {
+  // Prioridad 1: Video subido a Strapi
+  if (noticia.videoArchivo?.url) {
+    return getStrapiImageUrl(noticia.videoArchivo.url);
+  }
+  // Prioridad 2: URL externa
+  if (noticia.video) {
+    return noticia.video;
+  }
+  return null;
+}
+
+// Helper para convertir Rich Text de Strapi a texto plano
+export function richTextToPlainText(richText: any): string {
+  if (!richText) return '';
+  if (typeof richText === 'string') return richText;
+
+  // Si es un array de bloques (Strapi v5 Rich Text)
+  if (Array.isArray(richText)) {
+    return richText
+      .map((block: any) => {
+        if (block.children) {
+          return block.children
+            .map((child: any) => child.text || '')
+            .join('');
+        }
+        return '';
+      })
+      .join('\n');
+  }
+
+  return '';
+}
+
+// Escapa el HTML del texto que viene de Strapi
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// Aplica el formato inline de Markdown (imágenes, enlaces, negrita, cursiva, código)
+// y conserva los saltos de línea simples como <br>
+function inlineMarkdownToHtml(text: string): string {
+  return escapeHtml(text)
+    .replace(
+      /!\[([^\]]*)\]\(([^)\s]+)\)/g,
+      (_m, alt, url) => `<img src="${getStrapiImageUrl(url)}" alt="${alt}" class="img-fluid" />`
+    )
+    .replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^_])__([^_]+)__/g, '$1<strong>$2</strong>')
+    .replace(/(^|[^*])\*([^*\n]+)\*/g, '$1<em>$2</em>')
+    .replace(/\n/g, '<br />');
+}
+
+// Convierte el Markdown del campo "richtext" de Strapi a HTML.
+// Sin esta conversión los saltos de línea y párrafos escritos en Strapi
+// se pierden al insertarlos con set:html, porque el navegador colapsa los \n.
+export function markdownToHtml(text: string): string {
+  if (!text) return '';
+
+  // Si el contenido ya viene como HTML, se respeta tal cual
+  if (/<(p|div|h[1-6]|ul|ol|br|img|blockquote)\b/i.test(text)) return text;
+
+  const bloques = text
+    .replace(/\r\n/g, '\n')
+    // Los encabezados siempre forman su propio bloque
+    .replace(/^(#{1,6}\s+.*)$/gm, '\n$1\n')
+    .split(/\n{2,}/);
+
+  return bloques
+    .map((bloque) => {
+      const contenido = bloque.trim();
+      if (!contenido) return '';
+
+      const encabezado = contenido.match(/^(#{1,6})\s+(.*)$/);
+      if (encabezado) {
+        const nivel = encabezado[1].length;
+        return `<h${nivel}>${inlineMarkdownToHtml(encabezado[2])}</h${nivel}>`;
+      }
+
+      const lineas = contenido.split('\n');
+
+      if (lineas.every((linea) => /^\s*[-*+]\s+/.test(linea))) {
+        const items = lineas
+          .map((linea) => `<li>${inlineMarkdownToHtml(linea.replace(/^\s*[-*+]\s+/, ''))}</li>`)
+          .join('');
+        return `<ul>${items}</ul>`;
+      }
+
+      if (lineas.every((linea) => /^\s*\d+[.)]\s+/.test(linea))) {
+        const items = lineas
+          .map((linea) => `<li>${inlineMarkdownToHtml(linea.replace(/^\s*\d+[.)]\s+/, ''))}</li>`)
+          .join('');
+        return `<ol>${items}</ol>`;
+      }
+
+      if (lineas.every((linea) => /^\s*>\s?/.test(linea))) {
+        const cita = lineas.map((linea) => linea.replace(/^\s*>\s?/, '')).join('\n');
+        return `<blockquote>${inlineMarkdownToHtml(cita)}</blockquote>`;
+      }
+
+      return `<p>${inlineMarkdownToHtml(contenido)}</p>`;
+    })
+    .filter(Boolean)
+    .join('\n');
+}
+
+// Helper para convertir Rich Text de Strapi a HTML
+export function richTextToHtml(richText: any): string {
+  if (!richText) return '';
+  if (typeof richText === 'string') return markdownToHtml(richText);
+
+  // Si es un array de bloques (Strapi v5 Rich Text)
+  if (Array.isArray(richText)) {
+    return richText
+      .map((block: any) => {
+        const type = block.type;
+
+        // Procesar los hijos del bloque
+        const processChildren = (children: any[]): string => {
+          if (!children) return '';
+          return children
+            .map((child: any) => {
+              let text = child.text || '';
+
+              // Aplicar estilos inline
+              if (child.bold) text = `<strong>${text}</strong>`;
+              if (child.italic) text = `<em>${text}</em>`;
+              if (child.underline) text = `<u>${text}</u>`;
+              if (child.strikethrough) text = `<s>${text}</s>`;
+              if (child.code) text = `<code>${text}</code>`;
+
+              // Si es un enlace
+              if (child.type === 'link' && child.url) {
+                const linkText = processChildren(child.children);
+                return `<a href="${child.url}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+              }
+
+              return text;
+            })
+            .join('');
+        };
+
+        // Procesar según el tipo de bloque
+        switch (type) {
+          case 'paragraph':
+            const pContent = processChildren(block.children);
+            return pContent ? `<p>${pContent}</p>` : '';
+
+          case 'heading':
+            const level = block.level || 2;
+            const hContent = processChildren(block.children);
+            return `<h${level}>${hContent}</h${level}>`;
+
+          case 'list':
+            const listTag = block.format === 'ordered' ? 'ol' : 'ul';
+            const listItems = block.children
+              .map((item: any) => {
+                const itemContent = processChildren(item.children);
+                return `<li>${itemContent}</li>`;
+              })
+              .join('');
+            return `<${listTag}>${listItems}</${listTag}>`;
+
+          case 'quote':
+            const quoteContent = processChildren(block.children);
+            return `<blockquote>${quoteContent}</blockquote>`;
+
+          case 'code':
+            const codeContent = processChildren(block.children);
+            return `<pre><code>${codeContent}</code></pre>`;
+
+          case 'image':
+            if (block.image?.url) {
+              const imgUrl = getStrapiImageUrl(block.image.url);
+              const alt = block.image.alternativeText || '';
+              return `<img src="${imgUrl}" alt="${alt}" class="img-fluid" />`;
+            }
+            return '';
+
+          default:
+            // Para tipos desconocidos, intentar procesar como párrafo
+            if (block.children) {
+              const defaultContent = processChildren(block.children);
+              return defaultContent ? `<p>${defaultContent}</p>` : '';
+            }
+            return '';
+        }
+      })
+      .filter(Boolean)
+      .join('\n');
+  }
+
+  return '';
+}
+
+// ==================== PRESTACIONES ====================
+
+// Obtener todas las prestaciones
+export async function getPrestaciones(locale: string = 'es'): Promise<Prestacion[]> {
+  const query = qs.stringify(
+    {
+      populate: {imagen:true,imagenDetalle:true,formulario:{populate:['archivo']}},
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching prestaciones: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Prestacion[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener prestaciones:', error);
+    return [];
+  }
+}
+
+// Obtener una prestación por documentId (para preview)
+export async function getPrestacionByDocumentId(documentId: string, locale: string = 'es'): Promise<Prestacion | null> {
+  const queryParams: any = {
+    populate: {imagen:true,imagenDetalle:true,formulario:{populate:['archivo']}},
+    locale: locale,
+  };
+
+  // Añadir publicationState=preview si estamos en modo preview
+  if (getPreviewContext().enabled) {
+    queryParams.publicationState = 'preview';
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (getPreviewContext().enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching prestacion: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Prestacion> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener prestación:', error);
+    return null;
+  }
+}
+
+// Obtener una prestación por slug
+export async function getPrestacionBySlug(slug: string, locale: string = 'es'): Promise<Prestacion | null> {
+  const queryParams: any = {
+    filters: {
+      slug: {
+        $eq: slug,
+      },
+    },
+    populate: {imagen:true,imagenDetalle:true,formulario:{populate:['archivo']}},
+    locale: locale,
+  };
+
+  // Añadir publicationState=preview si estamos en modo preview
+  if (getPreviewContext().enabled) {
+    queryParams.publicationState = 'preview';
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+    if (getPreviewContext().enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching prestacion: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Prestacion[]> = await response.json();
+    if (json.data.length > 0) return json.data[0];
+    throw new Error('No existe ficha publicada; usar respaldo local');
+  } catch (error) {
+    console.error('Error al obtener prestación:', error);
+    const legacy = (legacyBenefits as Record<string, any>)[slug];
+    if (legacy) return {titulo:legacy.titulo,slug,requisitos:legacy.requisitos,descripcion:[{type:'paragraph',children:[{type:'text',text:legacy.descripcion}]}]} as Prestacion;
+    return null;
+  }
+}
+
+// Obtener los slugs de una prestación en todos los idiomas usando documentId
+export async function getPrestacionSlugsByDocumentId(documentId: string): Promise<Record<string, string>> {
+  const locales = ['es', 'fr', 'en', 'pt'];
+  const slugs: Record<string, string> = {};
+
+  for (const locale of locales) {
+    try {
+      const query = qs.stringify({
+        populate: ['imagen'],
+        locale: locale,
+      }, {
+        encodeValuesOnly: true,
+      });
+
+      const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`);
+
+      if (response.ok) {
+        const json: StrapiResponse<Prestacion> = await response.json();
+        if (json.data?.slug) {
+          slugs[locale] = json.data.slug;
+        }
+      }
+    } catch (error) {
+      // Silently continue if locale not found
+    }
+  }
+
+  return slugs;
+}
+
+// ==================== HERO SLIDES ====================
+
+// Obtener todos los hero slides
+export async function getHeroSlides(): Promise<HeroSlide[]> {
+  const query = qs.stringify(
+    {
+      populate: ['imagen'],
+      filters: {
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/hero-slides?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching hero slides: ${response.status}`);
+    }
+
+    const json: StrapiResponse<HeroSlide[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener hero slides:', error);
+    return [];
+  }
+}
+
+// ==================== SLIDES AFILIACIÓN ====================
+
+// Obtener todos los slides de afiliación
+export async function getSlidesAfiliacion(locale: string = 'es'): Promise<SlideAfiliacion[]> {
+  const query = qs.stringify(
+    {
+      populate: ['imagen'],
+      filters: {
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/slide-afiliacions?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching slides afiliacion: ${response.status}`);
+    }
+
+    const json: StrapiResponse<SlideAfiliacion[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener slides de afiliación:', error);
+    return [];
+  }
+}
+
+// ==================== NOTICIAS (CON FILTROS) ====================
+
+// Obtener noticias por posición
+export async function getNoticiasByPosicion(posicion: string, limit?: number, locale: string = 'es'): Promise<Noticia[]> {
+  const query = qs.stringify(
+    {
+      populate: ['imagen', 'videoArchivo', 'categoria'],
+      filters: {
+        posicion: {
+          $eq: posicion,
+        },
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['fechaPublicacion:desc'],
+      pagination: {
+        pageSize: limit || 100,
+      },
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/noticias?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching noticias: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Noticia[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener noticias por posición:', error);
+    return [];
+  }
+}
+
+// ==================== CONFIGURACIÓN INICIO ====================
+
+// Obtener configuración de inicio (Single Type)
+export async function getConfiguracionInicio(locale: string = 'es'): Promise<ConfiguracionInicio | null> {
+  const query = qs.stringify(
+    {
+      populate: ['afiliacionImagen', 'sidebarImagenBanner', 'videoArchivoPrincipal', 'imagenPrincipal'],
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/configuracion-inicio?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching configuracion inicio: ${response.status}`);
+    }
+
+    const json: StrapiResponse<ConfiguracionInicio> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener configuración de inicio:', error);
+    return null;
+  }
+}
+
+// ==================== SOCIOS ====================
+
+// Obtener todos los socios
+export async function getSocios(): Promise<Socio[]> {
+  const query = qs.stringify(
+    {
+      populate: ['logo'],
+      filters: {
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/socios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching socios: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Socio[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener socios:', error);
+    return [];
+  }
+}
+
+// Obtener un socio por documentId (para preview)
+export async function getSocioByDocumentId(documentId: string): Promise<Socio | null> {
+  const queryParams: any = {
+    populate: ['logo'],
+  };
+
+  // Añadir publicationState=preview si estamos en modo preview
+  if (getPreviewContext().enabled) {
+    queryParams.publicationState = 'preview';
+  }
+
+  const query = qs.stringify(queryParams, {
+    encodeValuesOnly: true,
+  });
+
+  try {
+    const headers: HeadersInit = {};
+
+    // Habilitar content source maps en modo preview
+    if (getPreviewContext().enabled) {
+      headers['strapi-encode-source-maps'] = 'true';
+    }
+
+    const response = await cmsFetch(`${STRAPI_URL}/api/socios/${documentId}?${query}`, {
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error(`Error fetching socio: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Socio> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener socio:', error);
+    return null;
+  }
+}
+
+// ==================== FORMULARIOS ====================
+
+// Interfaz para Formularios
+export interface Formulario {
+  id: number;
+  documentId: string;
+  nombre: string;
+  codigo: string;
+  descripcion: string;
+  formato: 'PDF' | 'Excel' | 'Word';
+  tamano: string | null;
+  archivo: StrapiImage | null;
+  thumbnail: StrapiImage | null;
+  categoria_formulario: CategoriaFormulario | null;
+  orden: number;
+  activo: boolean;
+  requisitos: any;
+  instrucciones: any;
+  descargas: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Interfaz para Categorías de Formularios
+export interface CategoriaFormulario {
+  id: number;
+  documentId: string;
+  titulo: string;
+  descripcion: string;
+  icono: string;
+  color: string;
+  orden: number;
+  activa: boolean;
+  formularios: Formulario[];
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+}
+
+// Obtener todas las categorías de formularios con sus formularios
+export async function getCategoriasFormularios(locale: string = 'es'): Promise<CategoriaFormulario[]> {
+  const query = qs.stringify(
+    {
+      populate: {
+        formularios: {
+          populate: ['archivo', 'thumbnail'],
+          filters: {
+            activo: {
+              $eq: true,
+            },
+          },
+          sort: ['orden:asc'],
+        },
+      },
+      filters: {
+        activa: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/categorias-formularios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching categorias formularios: ${response.status}`);
+    }
+
+    const json: StrapiResponse<CategoriaFormulario[]> = await response.json();
+    const categories = json.data;
+    const moved: Formulario[] = [];
+    for (const category of categories) {
+      category.formularios = (category.formularios || []).filter(form => {
+        const name = form.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+        if (/solicitud.*prestacion|benefit.*application|demande.*prestation|pedido.*presta/.test(name)) { moved.push(form); return false; }
+        return true;
+      });
+    }
+    if (moved.length) {
+      const title = {es:'Prestaciones',fr:'Prestations',en:'Benefits',pt:'Prestações'}[locale] || 'Prestaciones';
+      const existing = categories.find(cat => /prestacion|prestation|benefit|prestaç/i.test(cat.titulo));
+      if (existing) existing.formularios.push(...moved);
+      else categories.push({titulo:title,icono:'fas fa-file-alt',color:'#2d762f',descripcion:'',formularios:moved} as CategoriaFormulario);
+    }
+    return categories;
+  } catch (error) {
+    console.error('Error al obtener categorías de formularios:', error);
+    return [];
+  }
+}
+
+// Obtener todos los formularios
+export async function getFormularios(locale: string = 'es'): Promise<Formulario[]> {
+  const query = qs.stringify(
+    {
+      populate: ['archivo', 'thumbnail', 'categoria_formulario'],
+      filters: {
+        activo: {
+          $eq: true,
+        },
+      },
+      sort: ['orden:asc'],
+      pagination: {
+        pageSize: 100,
+      },
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/formularios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching formularios: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Formulario[]> = await response.json();
+    return json.data;
+  } catch (error) {
+    console.error('Error al obtener formularios:', error);
+    return [];
+  }
+}
+
+// Obtener un formulario por código
+export async function getFormularioByCodigo(codigo: string, locale: string = 'es'): Promise<Formulario | null> {
+  const query = qs.stringify(
+    {
+      filters: {
+        codigo: {
+          $eq: codigo,
+        },
+      },
+      populate: ['archivo', 'thumbnail', 'categoria_formulario'],
+      locale: locale,
+    },
+    {
+      encodeValuesOnly: true,
+    }
+  );
+
+  try {
+    const response = await cmsFetch(`${STRAPI_URL}/api/formularios?${query}`);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching formulario: ${response.status}`);
+    }
+
+    const json: StrapiResponse<Formulario[]> = await response.json();
+    return json.data.length > 0 ? json.data[0] : null;
+  } catch (error) {
+    console.error('Error al obtener formulario:', error);
+    return null;
+  }
+}
+
+// Incrementar contador de descargas de un formulario
+export async function incrementarDescargasFormulario(_documentId: string): Promise<void> {
+  try {
+    // Esta función requeriría un endpoint personalizado en Strapi
+    // Para implementar: crear un endpoint en Strapi que incremente el contador
+    // TODO: Implementar cuando se necesite tracking de descargas
+  } catch (error) {
+    // Error silencioso - no afecta la funcionalidad principal
+  }
+}
+
+// ==================== CATEGORÍAS ESTÁTICAS ====================
+
+// Obtener categorías de contacto (estáticas)
+// NOTA: Temporalmente todos los correos van a los mismos destinatarios
+// Destinatarios principales (TO): catalina.dougan, carlos.endje, david.obama, severo.ngua, antonio.mangue
+// En copia (CC): info@inseso.org, nso.moises@inseso.org, carlos.endje@inseso.org
+export function getCategoriasContacto(): CategoriaContacto[] {
+  // Email temporal para todas las categorías
+  const emailsDestinatarios = 'catalina.dougan@inseso.org, carlos.endje@inseso.org, david.obama@inseso.org, severo.ngua@inseso.org, antonio.mangue@inseso.org';
+
+  return [
+    {
+      value: 'consulta',
+      label: 'Consulta General',
+      email: emailsDestinatarios
+    },
+    {
+      value: 'afiliacion',
+      label: 'Afiliación',
+      email: emailsDestinatarios
+    },
+    {
+      value: 'prestaciones',
+      label: 'Prestaciones Sociales',
+      email: emailsDestinatarios
+    },
+    {
+      value: 'reclamo',
+      label: 'Reclamo',
+      email: emailsDestinatarios
+    },
+    {
+      value: 'seguimiento',
+      label: 'Seguimiento de Trámite',
+      email: emailsDestinatarios
+    },
+    {
+      value: 'sugerencia',
+      label: 'Sugerencia',
+      email: emailsDestinatarios
+    },
+    {
+      value: 'otro',
+      label: 'Otro',
+      email: emailsDestinatarios
+    }
+  ];
+}
+
+// Obtener categorías de noticias (estáticas)
+export function getCategoriasNoticiasEstaticas(): Omit<Categoria, 'id' | 'documentId' | 'createdAt' | 'updatedAt' | 'publishedAt'>[] {
+  return [
+    {
+      nombre: 'Institucional',
+      slug: 'institucional',
+      descripcion: 'Noticias institucionales de INSESO',
+      color: '#2d762f',
+      icono: 'fa-building',
+      activo: true
+    },
+    {
+      nombre: 'Eventos',
+      slug: 'eventos',
+      descripcion: 'Eventos y actividades de INSESO',
+      color: '#1b5e8c',
+      icono: 'fa-calendar',
+      activo: true
+    },
+    {
+      nombre: 'Prestaciones',
+      slug: 'prestaciones',
+      descripcion: 'Información sobre prestaciones sociales',
+      color: '#2e8c1b',
+      icono: 'fa-hand-holding-heart',
+      activo: true
+    },
+    {
+      nombre: 'Comunicados',
+      slug: 'comunicados',
+      descripcion: 'Comunicados oficiales',
+      color: '#8c6d1b',
+      icono: 'fa-bullhorn',
+      activo: true
+    },
+    {
+      nombre: 'Salud',
+      slug: 'salud',
+      descripcion: 'Noticias relacionadas con salud',
+      color: '#8c1b6d',
+      icono: 'fa-heartbeat',
+      activo: true
+    }
+  ];
+}
+
+export async function getInstitutionalDocuments(locale: string) {
+ try {
+  const query=qs.stringify({locale,populate:['archivo'],filters:{activo:{$eq:true}},sort:['fechaRevision:desc'],pagination:{pageSize:100}},{encodeValuesOnly:true});
+  const res=await cmsFetch(`${STRAPI_URL}/api/documentos-institucionales?${query}`);
+  if(!res.ok)return [];
+  return (await res.json()).data || [];
+ } catch {return [];}
+}

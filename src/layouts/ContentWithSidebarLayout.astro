@@ -1,0 +1,70 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+/**
+ * ContentWithSidebarLayout - Layout para páginas con contenido principal y sidebar
+ *
+ * @param title - Título de la página para el <title>
+ * @param description - Meta descripción de la página
+ * @param currentPath - Ruta actual para navegación activa
+ * @param headerImage - Imagen del encabezado (opcional)
+ * @param headerImageAlt - Alt text de la imagen del encabezado
+ */
+import BaseLayout from './BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
+import { getSocios } from '../lib/strapi';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPath?: string;
+  headerImage?: string;
+  headerImageAlt?: string;
+  showPartners?: boolean;
+}
+
+const {
+  title,
+  description = '',
+  currentPath = Astro.url.pathname,
+  headerImage,
+  headerImageAlt = '',
+  showPartners = true
+} = Astro.props;
+
+// Obtener socios de Strapi si showPartners es true
+let socios = [];
+if (showPartners) {
+  try {
+    socios = await getSocios();
+  } catch (error) {
+    console.error('Error al obtener socios:', error);
+  }
+}
+---
+
+<BaseLayout title={title} description={description} currentPath={currentPath}>
+  {headerImage && (
+    <PageHeader imageSrc={headerImage} imageAlt={headerImageAlt} />
+  )}
+
+  <div class="blog-main">
+    <div class="container">
+      <div class="row">
+        <!-- Contenido Principal -->
+        <div class="col-md-8 blog-entries">
+          <slot name="main" />
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-4 blog-right-side">
+          <slot name="sidebar" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {showPartners && (
+    <PartnersCarousel socios={socios} />
+  )}
+</BaseLayout>

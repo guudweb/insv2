@@ -1,0 +1,149 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+// Blog Slider component - Conectado a Strapi
+import type { SlideAfiliacion } from '../lib/strapi';
+import { getStrapiImageUrl } from '../lib/strapi';
+
+interface Props {
+	slides?: SlideAfiliacion[];
+}
+
+const { slides: strapiSlides = [] } = Astro.props;
+
+// Fallback a slides estáticos si no hay datos de Strapi
+const defaultItems = [
+	{
+		image: '/images/img_acc-01.jpg',
+		title: 'ES USTED AUTÓNOMO',
+		link: '/afiliacionee_trabajadores',
+		description: ''
+	},
+	{
+		image: '/images/img_acc_02.jpg',
+		title: 'USTED ES UN EMPLEADO',
+		link: '/afiliacionee_trabajadores',
+		description: ''
+	},
+	{
+		image: '/images/img_acc_03.jpg',
+		title: 'USTED ES EMPRESARIO',
+		link: '/afiliacionee_empresas',
+		description: ''
+	},
+	{
+		image: '/images/img_acc_13.jpg',
+		title: 'SOLICITUD DE CARNÉ',
+		link: '#',
+		description: ''
+	}
+];
+
+// Usar slides de Strapi si están disponibles, sino usar los por defecto
+const items = strapiSlides.length > 0
+	? strapiSlides.map(slide => ({
+			image: getStrapiImageUrl(slide.imagen.url),
+			title: slide.titulo,
+			link: slide.enlace,
+			description: slide.descripcion || ''
+		}))
+	: defaultItems;
+---
+
+<div class="blog-slide">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="blog-slider" class="owl-carousel">
+					{items.map(item => (
+						<div class="post-slide">
+							<a href={item.link} class="pic-link">
+								<div class="pic">
+									<img src={item.image} alt={item.title} loading="lazy">
+									<ul class="post-category">
+										<li><span class="category-title">{item.title}</span></li>
+									</ul>
+								</div>
+							</a>
+						</div>
+					))}
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+</div>
+
+<style>
+	/* Hacer toda la card clickeable */
+	.post-slide .pic-link {
+		display: block !important;
+		text-decoration: none !important;
+		color: inherit !important;
+		cursor: pointer !important;
+		position: relative;
+		z-index: 10;
+		transition: transform 0.3s ease;
+	}
+
+	.post-slide .pic-link:hover {
+		transform: translateY(-5px);
+	}
+
+	.post-slide .pic-link:hover .pic img {
+		transform: scale(1.1) !important;
+	}
+
+	/* Asegurar que el pseudo-elemento ::after no bloquee clics */
+	.post-slide .pic {
+		overflow: hidden;
+		transition: all 0.3s ease;
+		pointer-events: auto;
+	}
+
+	.post-slide .pic::after {
+		pointer-events: none !important;
+	}
+
+	.post-slide .pic img {
+		transition: transform 0.3s ease;
+		pointer-events: none;
+	}
+
+	/* Texto blanco en títulos */
+	.post-slide .category-title {
+		color: #ffffff !important;
+		text-decoration: none;
+		cursor: pointer;
+		pointer-events: none;
+	}
+
+	.post-slide .post-category {
+		color: #ffffff !important;
+		pointer-events: none;
+	}
+
+	.post-slide .post-category li {
+		color: #ffffff !important;
+		pointer-events: none;
+	}
+
+	.post-slide .post-category a,
+	.post-slide .post-category span {
+		color: #ffffff !important;
+		pointer-events: none;
+	}
+
+	/* Asegurar que el enlace sea el único elemento interactivo */
+	.post-slide a.pic-link * {
+		pointer-events: none;
+	}
+
+	.post-slide a.pic-link {
+		pointer-events: auto !important;
+	}
+</style>
+
+<script>
+	// Se inicializará Owl Carousel desde los scripts del layout
+	// o se puede migrar a Swiper.js en el futuro
+</script>

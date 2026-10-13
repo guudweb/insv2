@@ -1,0 +1,8 @@
+---
+// CAMBIO INSESO 2026-10-13 R2: plantilla compartida por ubicación, fotografía y datos juntos.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import OfficesDirectory from '../../components/OfficesDirectory.astro';
+import {getLangFromUrl,useTranslations} from '../../i18n/utils';
+const t=useTranslations(getLangFromUrl(Astro.url));
+---
+<BaseLayout title={t('agencies.pageTitle')} currentPath={Astro.url.pathname}><OfficesDirectory/></BaseLayout>

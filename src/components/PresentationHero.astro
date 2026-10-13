@@ -1,0 +1,7 @@
+---
+// CAMBIO INSESO 2026-10-13 R2: cuatro imágenes verdes; mismo orden y 3 segundos por fotograma.
+---
+<div class="presentation-hero" role="img" aria-label="Presentación del INSESO y sus servicios"><div class="slides">
+{[0,1,2,3].map(i=><img src={`/images/adaptadas/presentation-${i}.png`} alt="" width="2048" height="683" style={`--frame:${i}`} loading={i===0?'eager':'lazy'}/>)}
+</div></div>
+<style>.presentation-hero{width:100%;background:#17522a}.slides{position:relative;width:100%;aspect-ratio:3/1;overflow:hidden}.slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;animation:show-frame 12s infinite;animation-delay:calc(var(--frame)*3s)}.slides img:first-child{opacity:1}@keyframes show-frame{0%,24.99%{opacity:1}25%,100%{opacity:0}}@media(prefers-reduced-motion:reduce){.slides img{animation:none}.slides img:first-child{opacity:1}}</style>

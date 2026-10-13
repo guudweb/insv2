@@ -1,0 +1,10 @@
+---
+// CAMBIO INSESO 2026-10-13 R2: catálogo de ocho fichas, sin médico-farmacéuticas ni categorías ajenas al documento.
+import {benefitCatalog} from '../data/benefit-catalog';
+import {getLangFromUrl,getLocalizedPath,useTranslations} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url),t=useTranslations(lang);
+---
+<div class="services-bar"><div class="container"><div class="benefit-grid">
+{benefitCatalog.map(b=><article class="benefit-card"><a href={getLocalizedPath(`/prestacion/${b.slug}`,lang)} aria-label={b.titulo}><img src={b.imagen} alt={b.titulo} width="720" height="420" loading="lazy"/></a><div><h2>{b.titulo}</h2><a class="btn btn-primary" href={getLocalizedPath(`/prestacion/${b.slug}`,lang)}>{t('common.readMore')} <span aria-hidden="true">→</span></a></div></article>)}
+</div></div></div>
+<style>.benefit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}.benefit-card{background:white;border:1px solid #deeadf;border-radius:18px;overflow:hidden;box-shadow:0 5px 20px #17522a0a;display:flex;flex-direction:column}.benefit-card img{width:100%;height:auto;aspect-ratio:12/7;object-fit:contain;background:#eff7f0}.benefit-card>div{padding:1.5rem;display:flex;flex-direction:column;flex:1}.benefit-card h2{font-size:1.35rem;line-height:1.4;margin-bottom:1.5rem}.benefit-card .btn{margin-top:auto;align-self:flex-start}@media(max-width:991px){.benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:575px){.benefit-grid{grid-template-columns:1fr}}</style>

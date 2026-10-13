@@ -1,0 +1,330 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+import benefits from '../data/benefits.json';
+import { languages, type Locale, getLocalizedPath, removeLocalePrefix, routeTranslations } from '../i18n/utils';
+import { getPrestacionBySlug, getPrestacionSlugsByDocumentId, getNoticiaBySlug, getNoticiaSlugsByDocumentId } from '../lib/strapi';
+
+interface Props {
+  currentLang: Locale;
+  currentPath?: string;
+  instance?: string;
+}
+
+const { currentLang, currentPath = '/' } = Astro.props;
+
+// Remover prefijo de idioma si existe para obtener la ruta base
+const basePath = removeLocalePrefix(currentPath);
+
+// Detectar si estamos en una página de prestación dinámica
+const prestacionMatch = basePath.match(/^\/prestacion\/(.+)$/);
+const currentPrestacionSlug = prestacionMatch ? prestacionMatch[1] : null;
+
+// Detectar si estamos en una página de noticia individual
+const noticiaMatch = basePath.match(/^\/noticias\/(.+)$/);
+const currentNoticiaSlug = noticiaMatch ? noticiaMatch[1] : null;
+
+// Si estamos en una página de prestación, obtener los slugs en todos los idiomas
+let prestacionSlugs: Record<string, string> = {};
+if (currentPrestacionSlug && !benefits.some(b => b.slug === currentPrestacionSlug)) {
+  const currentPrestacion = await getPrestacionBySlug(currentPrestacionSlug, currentLang);
+  if (currentPrestacion?.documentId) {
+    prestacionSlugs = await getPrestacionSlugsByDocumentId(currentPrestacion.documentId);
+  }
+}
+
+// Si estamos en una página de noticia, obtener los slugs en todos los idiomas
+let noticiaSlugs: Record<string, string> = {};
+if (currentNoticiaSlug) {
+  const currentNoticia = await getNoticiaBySlug(currentNoticiaSlug, currentLang);
+  if (currentNoticia?.documentId) {
+    noticiaSlugs = await getNoticiaSlugsByDocumentId(currentNoticia.documentId);
+  }
+}
+
+// Generar URLs para cada idioma con rutas traducidas
+const langLinks = Object.entries(languages).map(([code, name]) => {
+  const targetLang = code as Locale;
+  let translatedPath = basePath;
+
+  // Si es una página de prestación, usar el slug del idioma correspondiente
+  if (currentPrestacionSlug && benefits.some(b => b.slug === currentPrestacionSlug)) {
+    translatedPath = `/prestacion/${currentPrestacionSlug}`;
+  }
+  else if (currentPrestacionSlug && prestacionSlugs[targetLang]) {
+    translatedPath = `/prestacion/${prestacionSlugs[targetLang]}`;
+  }
+  // Si es una página de noticia, usar el slug del idioma correspondiente
+  else if (currentNoticiaSlug && noticiaSlugs[targetLang]) {
+    translatedPath = `/noticias/${noticiaSlugs[targetLang]}`;
+  }
+  // Para otras páginas, buscar en routeTranslations
+  else if (currentPrestacionSlug || currentNoticiaSlug) {
+    translatedPath = currentPrestacionSlug ? '/Prestaciones_Sociales' : '/noticias';
+  }
+  else {
+    const currentRoutes = routeTranslations[currentLang];
+    const targetRoutes = routeTranslations[targetLang];
+
+    const routeKey = Object.keys(currentRoutes).find(
+      key => currentRoutes[key] === basePath
+    );
+
+    if (routeKey && targetRoutes[routeKey]) {
+      translatedPath = targetRoutes[routeKey];
+    }
+  }
+
+  return {
+    code: targetLang,
+    name,
+    url: getLocalizedPath(translatedPath, targetLang),
+    missing: Boolean(currentNoticiaSlug && !noticiaSlugs[targetLang] && targetLang !== currentLang),
+    active: currentLang === code
+  };
+});
+
+// Banderas emoji por idioma
+const flags: Record<Locale, string> = {
+  es: '🇪🇸',
+  fr: '🇫🇷',
+  en: '🇬🇧',
+  pt: '🇵🇹'
+};
+
+// Nombres cortos de idiomas para mostrar en el botón
+const shortNames: Record<Locale, string> = {
+  es: 'Español',
+  fr: 'Français',
+  en: 'English',
+  pt: 'Português'
+};
+---
+
+<div class="language-switcher dropdown">
+  <button
+    class="btn btn-language dropdown-toggle"
+    type="button"
+    id={`langDropdown-${Astro.props.instance || "desktop"}`}
+    data-bs-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    title="Cambiar idioma / Change language"
+    aria-label="Selector de idioma"
+  >
+    <i class="fas fa-globe me-1"></i>
+    <span class="lang-current">
+      <span class="flag-emoji">{flags[currentLang]}</span>
+      <span class="lang-name-short">{shortNames[currentLang]}</span>
+    </span>
+    <i class="fas fa-chevron-down ms-1 dropdown-icon"></i>
+  </button>
+
+  <ul class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby={`langDropdown-${Astro.props.instance || "desktop"}`}>
+    {langLinks.map(lang => (
+      <li>
+        <a
+          class={`dropdown-item d-flex align-items-center ${lang.active ? 'active' : ''}`}
+          href={lang.url}
+          hreflang={lang.code}
+          title={lang.missing ? ({es:"Traducción no disponible: abrir noticias",fr:"Traduction indisponible : actualités",en:"Translation unavailable: open news",pt:"Tradução indisponível: notícias"}[currentLang]) : lang.name}
+        >
+          <span class="flag-emoji me-2">{flags[lang.code]}</span>
+          <span class="lang-name flex-grow-1">{lang.name}</span>
+          {lang.active && <i class="fas fa-check text-white"></i>}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style is:global>
+  .language-switcher {
+    position: relative;
+    display: inline-block;
+  }
+
+  .language-switcher .btn-language {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    padding: 0.5rem 0.875rem !important;
+    background-color: transparent !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 6px !important;
+    color: #000000 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    white-space: nowrap !important;
+  }
+
+  .language-switcher .btn-language:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    transform: translateY(-1px);
+  }
+
+  .language-switcher .btn-language:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(45, 118, 47, 0.3) !important;
+  }
+
+  .language-switcher .btn-language:active {
+    transform: translateY(0);
+  }
+
+  .language-switcher .lang-current {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+  }
+
+  .language-switcher .flag-emoji {
+    font-size: 1.15rem !important;
+    line-height: 1 !important;
+  }
+
+  .language-switcher .lang-name-short {
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    font-size: 0.875rem !important;
+    color: #000000 !important;
+  }
+
+  .language-switcher .dropdown-icon {
+    font-size: 0.7rem;
+    transition: transform 0.3s ease;
+  }
+
+  .language-switcher .btn-language[aria-expanded="true"] .dropdown-icon {
+    transform: rotate(180deg);
+  }
+
+  .language-switcher .dropdown-menu {
+    min-width: 200px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    animation: fadeInDown 0.3s ease;
+    z-index: 9999 !important;
+    position: absolute !important;
+  }
+
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .language-switcher .dropdown-item {
+    padding: 0.625rem 1rem;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+  }
+
+  .language-switcher .dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #2d762f;
+    border-left-color: #2d762f;
+    padding-left: 1.25rem;
+  }
+
+  .language-switcher .dropdown-item.active {
+    background: linear-gradient(135deg, #2d762f 0%, #225924 100%);
+    color: #fff;
+    font-weight: 600;
+    border-left-color: #fff;
+  }
+
+  .language-switcher .dropdown-item.active:hover {
+    background: linear-gradient(135deg, #225924 0%, #17522a 100%);
+  }
+
+  .language-switcher .lang-name {
+    font-size: 0.9rem;
+  }
+
+  /* Responsive - Tablet */
+  @media (max-width: 991px) {
+    .language-switcher .btn-language {
+      padding: 0.45rem 0.75rem !important;
+      font-size: 0.8125rem !important;
+    }
+
+    .language-switcher .flag-emoji {
+      font-size: 1rem !important;
+    }
+
+    .language-switcher .dropdown-menu {
+      min-width: 180px;
+    }
+  }
+
+  /* Responsive - Mobile */
+  @media (max-width: 768px) {
+    .language-switcher {
+      width: 100%;
+      margin: 0.75rem 0;
+    }
+
+    .language-switcher .btn-language {
+      width: 100% !important;
+      justify-content: center !important;
+      padding: 0.625rem 1rem !important;
+      font-size: 0.875rem !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    .language-switcher .dropdown-menu {
+      width: 100%;
+      min-width: auto;
+      margin-top: 0.5rem;
+      border-radius: 6px;
+    }
+
+    .language-switcher .dropdown-item {
+      padding: 0.75rem 1rem;
+      font-size: 0.9375rem;
+    }
+
+    .language-switcher .flag-emoji {
+      font-size: 1.25rem !important;
+    }
+
+    .language-switcher .lang-name-short {
+      display: inline-block !important;
+      font-size: 0.85rem !important;
+    }
+  }
+
+  /* Responsive - Extra Small Mobile */
+  @media (max-width: 480px) {
+    .language-switcher .btn-language {
+      padding: 0.5rem 0.875rem !important;
+    }
+
+    .language-switcher .lang-name-short {
+      display: inline-block !important;
+      font-size: 0.8rem !important;
+    }
+
+    .language-switcher .flag-emoji {
+      font-size: 1.1rem !important;
+    }
+  }
+</style>

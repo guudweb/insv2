@@ -1,0 +1,72 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PartnersCarousel from '../components/PartnersCarousel.astro';
+import { getSocios } from '../lib/strapi';
+import { useTranslations } from '../i18n/utils';
+
+export const prerender = false;
+
+const t = useTranslations('es');
+const socios = await getSocios();
+---
+
+<BaseLayout title={t('cardRequest.pageTitle')} currentPath="/solicitud_de_carne">
+  <PageHeader
+    imageSrc="/images/adaptadas/companies-header.png"
+    imageAlt={t('cardRequest.headerAlt')}
+  />
+
+  <div class="container">
+    <div class="about-main">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>{t('cardRequest.title')}</h2>
+          <p>{t('cardRequest.description')}</p>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('cardRequest.requirementsTitle')}</h4>
+            <div class="card-body">
+              <ul>
+                <li><h6>{t('cardRequest.req1')}</h6></li>
+                <li><h6>{t('cardRequest.req2')}</h6></li>
+                <li><h6>{t('cardRequest.req3')}</h6></li>
+                <li><h6>{t('cardRequest.req4')}</h6></li>
+                <li><h6>{t('cardRequest.req5')}</h6></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card my-4">
+            <h4 class="card-header">{t('cardRequest.duplicateTitle')}</h4>
+            <div class="card-body">
+              <p>{t('cardRequest.duplicateIntro')}</p>
+              <ul>
+                <li><h6>{t('cardRequest.dupReq1')}</h6></li>
+                <li><h6>{t('cardRequest.dupReq2')}</h6></li>
+                <li><h6>{t('cardRequest.dupReq3')}</h6></li>
+                <li><h6>{t('cardRequest.dupReq4')}</h6></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_02.jpg" alt={t('cardRequest.imageAlt')} />
+
+          <h4 class="card-header">{t('cardRequest.deliveryTitle')}</h4>
+          <div class="card-body">
+            <p><strong>{t('cardRequest.normalDelivery')}</strong> {t('cardRequest.normalTime')}<br>
+            <strong>{t('cardRequest.urgentDelivery')}</strong> {t('cardRequest.urgentTime')}</p>
+          </div>
+
+          <hr>
+          <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_03.jpg" alt={t('cardRequest.officesAlt')} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <PartnersCarousel socios={socios} />
+</BaseLayout>

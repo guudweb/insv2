@@ -1,0 +1,67 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+import type { Noticia } from '../lib/strapi';
+import { getStrapiImageUrl, formatDate } from '../lib/strapi';
+import { getLangFromUrl, useTranslations, getLocalizedPath, type Locale } from '../i18n/utils';
+
+interface Props {
+  noticias: Noticia[];
+}
+
+const { noticias } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+function getDateParts(dateString: string, locale: Locale) {
+  const date = new Date(dateString);
+  const monthNames: Record<Locale, string[]> = {
+    es: ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE'],
+    fr: ['JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'],
+    en: ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'],
+    pt: ['JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO', 'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO']
+  };
+
+  return {
+    month: monthNames[locale][date.getMonth()],
+    day: String(date.getDate()).padStart(2, '0'),
+    year: date.getFullYear()
+  };
+}
+---
+
+<section id="news">
+  <div class="container">
+    <div class="row">
+      {noticias.map((noticia) => {
+        const imageUrl = noticia.imagen ? getStrapiImageUrl(noticia.imagen.url) : '/images/default-news.jpg';
+        const slug = noticia.slug || noticia.titulo.toLowerCase().replace(/\s+/g, '-');
+        const noticiaUrl = getLocalizedPath(`/noticias/${slug}`, lang);
+        const { month, day, year } = getDateParts(noticia.fechaPublicacion, lang);
+
+        return (
+          <div class="col-md-4 news-sec">
+            <div class="news-info">
+              <div class="image-wrapper">
+                <img src={imageUrl} class="img-responsive" alt={noticia.titulo} loading="lazy" />
+              </div>
+              <div class="data-meta">
+                <h4>{month}</h4>
+                <h4>{day}</h4>
+                <h4>{year}</h4>
+              </div>
+              <br />
+              <a href={noticiaUrl}>
+                <h2>{noticia.titulo}</h2>
+              </a>
+              <p>{noticia.resumen}</p>
+              <a href={noticiaUrl} class="btn btn-primary">
+                {t('common.readMore')} &rarr;
+              </a>
+            </div>
+            <br />
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

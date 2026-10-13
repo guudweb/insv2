@@ -1,0 +1,70 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+// Componente PartnersCarousel - Conectado a Strapi
+import type { Socio } from '../lib/strapi';
+import { getStrapiImageUrl } from '../lib/strapi';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+interface Props {
+  socios?: Socio[];
+}
+
+const { socios: strapiSocios = [] } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Fallback a logos estáticos si no hay datos de Strapi
+const defaultPartners = [
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 1', link: null },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 2', link: null },
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 3', link: null },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 4', link: null },
+  { logo: '/images/partner/img_partner_logo_00.jpg', alt: 'Socio 5', link: null },
+  { logo: '/images/partner/img_partner_logo_01.jpg', alt: 'Socio 6', link: null },
+];
+
+// Usar socios de Strapi si están disponibles, sino usar los por defecto
+const partners = strapiSocios.length > 0
+  ? strapiSocios.map(socio => ({
+      logo: getStrapiImageUrl(socio.logo.url),
+      alt: socio.logo.alternativeText || socio.nombre,
+      link: socio.enlace
+    }))
+  : defaultPartners;
+---
+
+<div class="container">
+  <div class="customers-box">
+    <hr>
+    <h2>{t('home.partners')}</h2>
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="customers-slider" class="owl-carousel">
+          {partners.map((partner) => (
+            <div class="mb-4 d-flex align-items-center justify-content-center" style="height: 120px;">
+              {partner.link ? (
+                <a href={partner.link} target="_blank" rel="noopener noreferrer" class="d-block">
+                  <img
+                    class="img-fluid"
+                    src={partner.logo}
+                    alt={partner.alt}
+                    loading="lazy"
+                    style="max-height: 100px; width: auto; object-fit: contain;"
+                  />
+                </a>
+              ) : (
+                <img
+                  class="img-fluid"
+                  src={partner.logo}
+                  alt={partner.alt}
+                  loading="lazy"
+                  style="max-height: 100px; width: auto; object-fit: contain;"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+{
+  "subsidio-por-maternidad": {
+    "titulo": "SUBSIDIO POR MATERNIDAD",
+    "descripcion": "El subsidio de maternidad se otorgara a las aseguradas en el periodo de las seis semanas posteriores al parto. La cuantía del subsidio de maternidad, será del 50% del salario base de cotización. Para tener derecho al subsidio por maternidad, la asegurada deberá tener acreditados doce meses de cotización en el periodo inmediatamente anterior al parto, y cumplir los requisitos que reglamentariamente se establezcan.",
+    "requisitos": "- Alta médica del hospital (original)\n- Copia del certificado de nacimiento\n- Baja laboral de la empresa (original)\n- Copia del DIP\n- Copia del carnet del INSESO actualizado\n- Número de cuenta bancaria\n- Copia del cuaderno de control pre-natal\n- Rellenar impreso de solicitud dirigida al Delegado Nacional"
+  },
+  "subsidio-de-incapacidad-temporal": {
+    "titulo": "SUBSIDIO DE INCAPACIDAD TEMPORAL",
+    "descripcion": "El subsidio de incapacidad temporal es una cantidad de dinero que se abona a un trabajador cuando se encuentra en situación de incapacidad temporal para el trabajo a causa de un accidente de trabajo o una enfermedad profesional.",
+    "requisitos": "- El subsidio por incapacidad temporal se otorgara a los asegurados en los casos de enfermedad, accidente de trabajo y enfermedad profesional que impidan el desarrollo de la actividad laboral\n- La cuantía del subsidio por incapacidad temporal será del 50% de salario base de cotización\n- Para tener derecho al subsidio de incapacidad temporal, será requisito que el asegurado haya acreditado como mínimo, un año de cotización en el periodo inmediatamente anterior a la incapacidad"
+  },
+  "proteccion-al-empleo": {
+    "titulo": "PROTECCIÓN AL EMPLEO",
+    "descripcion": "La protección del empleo se refiere a todas las normas, leyes y medidas destinadas a garantizar la estabilidad del puesto de trabajo de un empleado y protegerlo contra el despido improcedente o injustificado.",
+    "requisitos": "Para la protección contra el paro se establecerán los siguientes servicios:\n- De orientación y formación profesional\n- De empleo y colocación\n- De promoción de empleo en los casos de paro tecnológico\n- De promoción de empleo cooperativo y de desarrollo de poblados"
+  },
+  "servicios-sociales": {
+    "titulo": "SERVICIOS SOCIALES",
+    "descripcion": "Se trata de un servicio de ayuda y apoyo destinado a mejorar las condiciones de vida de las personas con dificultades o en situación de vulnerabilidad (pobreza, enfermedad, desempleo, etc.). El objetivo principal es ayudar a las personas y familias a encontrar soluciones a sus problemas sociales, mejorar su bienestar y facilitar su integración social.",
+    "requisitos": "Ámbitos de intervención de los servicios sociales:\n- De protección infantil\n- De atención a los ancianos\n- De previsión, tratamiento, rehabilitación e integración de los disminuidos físicos o mentales\n- De capacitación y promoción de la mujer"
+  },
+  "prestaciones-por-invalidez": {
+    "titulo": "PRESTACIONES POR INVALIDEZ",
+    "descripcion": "La prestación por invalidez se otorgara en los casos de incapacidad parcial permanente para la profesión habitual, total permanente para todo trabajo y gran invalidez. La prestación por incapacidad parcial permanente para la profesión habitual derivada de enfermedad común, consistirá en un subsidio del 40% del salario base de cotización durante un periodo de tres meses, contados a partir de la declaración de incapacidad.",
+    "requisitos": "- Alta médica del hospital (original)\n- Certificado médico que reconoce y determine su grado de invalidez (original)\n- Carta de la empresa reconociendo su invalidez (original)\n- Copia del carnet del INSESO actualizado\n- Copia del DIP\n- Rellenar el impreso de solicitud dirigida al Delegado Nacional"
+  },
+  "pension-por-vejez": {
+    "titulo": "PENSIÓN POR VEJEZ",
+    "descripcion": "La pensión por vejez se otorga al asegurado que hubiere cumplido la edad de sesenta años, y tuviese acreditados al menos, ciento veinte meses de cotización, de los cuales, sesenta correspondan a los diez años inmediatamente anteriores. La cuantía de la pensión de vejez con diez años de cotización, será el 40% del salario base medio de cotización calculado con arreglo al promedio de los últimos años.",
+    "requisitos": "- Copia del DIP del beneficiario\n- Copia del carnet de INSESO\n- Tres últimas nóminas\n- Cesantía laboral\n- Solicitud"
+  },
+  "prestaciones-medico-farmaceuticas": {
+    "titulo": "PRESTACIONES MEDICO-FARMACEUTICAS",
+    "descripcion": "El régimen de Seguridad Social otorgará asistencia médico-farmacéutica en las contingencias de enfermedad, maternidad, accidente de trabajo o enfermedad profesional.",
+    "requisitos": "Serán beneficiarios de la asistencia médico-farmacéutica:\n- Por enfermedad, el asegurado, su cónyuge e hijos, los inválidos con subsidio y los pensionistas\n- Por maternidad, la asegurada y cónyuge del asegurado\n- Por accidente de trabajo y enfermedad profesional, los asegurados"
+  },
+  "subsidios-familiares": {
+    "titulo": "SUBSIDIOS FAMILIARES",
+    "descripcion": "Los subsidios familiares de protección a la familia se otorgaran a los asegurados casados, viudos con hijos y solteros con hijos naturales reconocidos en el momento del nacimiento de estos. También a los asegurados que acrediten tener a su cargo exclusivo ascendientes o hermanos huérfanos. El subsidio familiar se otorgara a través de un fondo familiar, distribuido por un sistema de puntos de evaluación familiar que determinara la cuantía de la prestación.",
+    "requisitos": "CONDICIONES GENERALES:\n- Estar afiliado al sistema de seguridad social\n- Tener uno o varios hijos a cargo\n- Haber declarado los hijos a la caja"
+  },
+  "prestaciones-por-muerte-y-supervivencia": {
+    "titulo": "PRESTACIONES POR MUERTE Y SUPERVIVENCIA",
+    "descripcion": "En caso de muerte del asegurado o del pensionista cualquiera que fuera la causa, se otorgara las pensiones siguientes: Por gastos de sepelio, Viudedad y Orfandad. La prestación por viudedad se otorgara al conyugue del causante.",
+    "requisitos": "Requisitos gastos de sepelio:\n- Copia del certificado de defunción\n- Copia del carnet del INSESO del causante si lo tuviese\n- Factura de los gastos de sepelio\n- Copia del DIP del solicitante\n- Número de cuenta bancaria\n- Rellenar impreso de solicitud dirigida al Delegado Nacional"
+  }
+}
