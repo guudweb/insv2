@@ -1,4 +1,6 @@
 ---
+// CAMBIO INSESO FINAL: contenido externo bajo acción explícita.
+import ExternalMedia from '../../components/ExternalMedia.astro';
 // CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
@@ -71,12 +73,7 @@ const breadcrumbItems = [
             <div class="mb-4">
               {videoUrl.includes('youtube.com') || videoUrl.includes('youtu.be') || videoUrl.includes('vimeo.com') ? (
                 <div class="ratio ratio-16x9">
-                  <iframe
-                    src={videoUrl}
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                  </iframe>
+                  <ExternalMedia src={videoUrl} />
                 </div>
               ) : (
                 <video controls width="100%" class="mb-3">

@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "descarga del original sin introducir datos",
+    "impresión vacía e inválida bloqueada",
+    "vista de impresión en PDF",
+    "firma en papel",
+    "sin opción de correo"
+  ]
+}

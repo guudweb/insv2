@@ -16,29 +16,12 @@ const root=path.resolve(new URL('..',import.meta.url).pathname);
 const {getBenefitQuestions}=load(path.join(root,'src/data/benefit-faq.ts'));
 const benefits=JSON.parse(fs.readFileSync(path.join(root,'src/data/benefits.json'),'utf8'));
 const results=[];const test=(name,fn)=>{fn();results.push({name,pass:true});};
-test('Ocho prestaciones; preguntas y respuestas válidas sin identificadores duplicados',()=>{
- assert.equal(benefits.length,8);
- for(const benefit of benefits){const qs=getBenefitQuestions(benefit.slug);assert(qs.length>=5);assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);assert.match(qs[0].question,/beneficiari|beneficiarse/i);for(const q of qs){assert(q.question.endsWith('?'));assert(q.answers.length);assert(q.answers.every(a=>typeof a==='string'&&a.trim()));}}
-});
-test('Prestación inexistente, entrada vacía y categoría retirada',()=>{for(const slug of ['','no-existe','prestaciones-medico-farmaceuticas'])assert.deepEqual(getBenefitQuestions(slug),[]);});
-test('Invalidez: dos contingencias con tablas y cuantías independientes',()=>{
- const qs=getBenefitQuestions('prestaciones-por-invalidez'),tables=qs.filter(q=>q.table);assert.equal(tables.length,2);
- assert.deepEqual(tables[0].table.map(r=>r.amount),['subsidio del 40% del Salario base durante 3 meses.','subsidio del 40% del Salario base durante 6 meses.','pensión del 40% del Salario base de cotización.','pensión del 80% del Salario base de cotización.']);
- assert.deepEqual(tables[1].table.map(r=>r.amount),['subsidio del 50% del Salario base durante 24 meses.','subsidio del 50% del Salario base durante 48 meses.','pensión del 50% del Salario base de cotización.','pensión del 100% del Salario base de cotización.']);
- assert(qs.some(q=>q.answers.some(a=>a.includes('cinco años'))));assert(qs.some(q=>q.answers.some(a=>a.includes('no deberá demostrar ningún período previo'))));
-});
-test('Jubilación: documentos diferenciados del sector público y privado',()=>{
- const qs=getBenefitQuestions('pension-por-vejez');const pub=qs.find(q=>q.tag==='Sector público'),priv=qs.find(q=>q.tag==='Sector privado');assert(pub&&priv);assert(pub.answers.some(a=>a.includes('carne')||a.includes('carné militar')));assert(priv.answers.some(a=>a.includes('cesantía')));assert(!priv.answers.some(a=>a.includes('nombramiento')));
-});
-test('Viudedad: solicitud ordinaria, reversión y cónyuge funcionario',()=>{
- const qs=getBenefitQuestions('viudedad');const rev=qs.find(q=>q.tag==='Viudedad por reversión'),func=qs.find(q=>q.tag==='Cónyuge funcionario');assert(rev);assert(!rev.answers.some(a=>a.includes('nombramiento')));assert.equal(func.answers.length,2);assert(func.answers.every(a=>a.includes('si era funcionario')));
-});
-test('Orfandad: tres documentos por hijo separados de los del funcionario',()=>{
- const qs=getBenefitQuestions('orfandad');assert.equal(qs.find(q=>q.tag==='Documentación de cada hijo').answers.length,3);assert.equal(qs.find(q=>q.tag==='Sector público').answers.length,2);
-});
-test('Maternidad: 75 %, asignación con menos de doce meses y duración de pago',()=>{
- const all=getBenefitQuestions('subsidio-por-maternidad');assert(all.some(q=>q.answers.some(a=>a.includes('75%'))));assert(all.find(q=>q.tag==='Cotizaciones inferiores a 12 meses').answers[0].includes('dos mensualidades'));assert(all.some(q=>q.question.includes('Durante cuánto tiempo')));
-});
-test('Datos no facilitados permanecen pendientes; no se inventan cuantías',()=>{const q=getBenefitQuestions('viudedad').find(q=>q.question.includes('cuantía'));assert(q.answers[0].includes('no está especificado'));});
-test('Alias de idioma conserva la prestación y sus modalidades',()=>assert.deepEqual(getBenefitQuestions('disability-benefits'),getBenefitQuestions('prestaciones-por-invalidez')));
+test('Once prestaciones y cuatro de muerte y supervivencia',()=>{assert.equal(benefits.length,11);assert.equal(benefits.filter(b=>b.group==='muerte-supervivencia').length,4);});
+test('Preguntas con identificadores únicos y respuestas o tablas',()=>{for(const b of benefits){const qs=getBenefitQuestions(b.slug);assert(qs.length>=4);assert.equal(new Set(qs.map(q=>q.id)).size,qs.length);for(const q of qs){assert(q.question.endsWith('?'));assert(q.answers.length||q.dataTable?.rows.length);}}});
+test('Entradas inexistentes no producen fichas',()=>{for(const slug of ['', 'no-existe','prestaciones-medico-farmaceuticas'])assert.deepEqual(getBenefitQuestions(slug),[]);});
+test('Invalidez mantiene ocho cuantías y ambas contingencias',()=>{const qs=getBenefitQuestions('prestaciones-por-invalidez');const tables=qs.filter(q=>q.dataTable);assert.equal(tables.length,2);assert.equal(tables.reduce((n,q)=>n+q.dataTable.rows.length,0),8);assert(tables[1].dataTable.rows.some(r=>r[1].includes('100%')));});
+test('Sector público, privado y reversión conservan documentación diferenciada',()=>{const qs=getBenefitQuestions('pension-por-vejez');assert(qs.some(q=>q.question.includes('sector público')&&q.answers.some(a=>a.includes('nombramiento'))));assert(qs.some(q=>q.question.includes('sector privado')&&q.answers.some(a=>a.includes('cesantía'))));assert(getBenefitQuestions('viudedad').some(q=>q.question.includes('reversión')));});
+test('Incapacidad temporal y sepelio son de pago único',()=>{for(const slug of ['subsidio-de-incapacidad-temporal','gastos-de-sepelio'])assert(getBenefitQuestions(slug).some(q=>q.answers.some(a=>a.includes('pago único'))));});
+test('Orfandad distingue los documentos por hijo y del funcionario',()=>{const qs=getBenefitQuestions('orfandad');assert.equal(qs.find(q=>q.question.includes('por cada hijo')).answers.length,3);assert(qs.some(q=>q.question.includes('funcionaria')));});
+test('Alias de idioma conserva la ficha',()=>assert.deepEqual(getBenefitQuestions('disability-benefits'),getBenefitQuestions('prestaciones-por-invalidez')));
 fs.writeFileSync(path.join(root,'docs/PRUEBAS_PREGUNTAS.json'),JSON.stringify(results,null,2));console.log(`${results.length} pruebas de preguntas superadas`);

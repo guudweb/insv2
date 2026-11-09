@@ -5,22 +5,24 @@
     "about": "SOBRE NOSOTROS",
     "aboutPresentation": "PRESENTACIÓN",
     "aboutServices": "PRESTACIONES SOCIALES",
-    "aboutConditions": "CONDICIONES DE ADHESIÓN",
-    "aboutAgencies": "NUESTRAS AGENCIAS",
+    "aboutConditions": "Condiciones generales de adhesión",
+    "aboutAgencies": "NUESTRAS DELEGACIONES",
     "insured": "ASEGURADOS",
     "insuredConditions": "Afiliación de trabajadores",
-    "insuredForms": "DESCARGA DE FORMULARIOS",
+    "insuredForms": "Descarga de formularios",
     "insuredPayments": "DECLARACIÓN Y PAGO DE CONTRIBUCIONES",
     "employers": "EMPLEADORES",
     "employersConditions": "Afiliación de empresas",
-    "employersForms": "DESCARGA DE FORMULARIOS",
+    "employersForms": "Descarga de formularios",
     "employersPayments": "DECLARACIÓN Y PAGO DE CONTRIBUCIONES",
     "employersPenalties": "PENAS Y SANCIONES",
-    "contact": "CONTACTO"
+    "contact": "CONTACTO",
+    "workerConditions": "Afiliación de trabajadores",
+    "employerConditions": "Inscripción de empresas"
   },
   "footer": {
     "allRightsReserved": "Todos los derechos reservados",
-    "description": "Instituto Nacional de Seguridad Social de Guinea Ecuatorial. Comprometidos con tu bienestar y seguridad social.",
+    "description": "Instituto de Seguridad Social de Guinea Ecuatorial. Comprometidos con tu bienestar y seguridad social.",
     "quickLinks": "Enlaces rápidos",
     "services": "Servicios",
     "linkConditions": "Condiciones de Adhesión",
@@ -61,9 +63,9 @@
     "breakingNews": "NOTICIAS DE ÚLTIMA HORA",
     "services": "PRESTACIONES",
     "partners": "NUESTROS SOCIOS",
-    "seoTitle": "INSESO | Instituto Nacional de Seguridad Social de Guinea Ecuatorial",
+    "seoTitle": "INSESO | Instituto de Seguridad Social de Guinea Ecuatorial",
     "seoDescription": "Página web oficial de INSESO Guinea Ecuatorial. Encuentra información sobre afiliación, prestaciones sociales, trámites, formularios y red de oficinas en Malabo, Bata y más.",
-    "h1": "Instituto Nacional de Seguridad Social de Guinea Ecuatorial - INSESO"
+    "h1": "Instituto de Seguridad Social de Guinea Ecuatorial - INSESO"
   },
   "news": {
     "title": "Noticias",
@@ -185,7 +187,7 @@
     "req3": "Una (1) foto tamaño carné",
     "req4": "Comprobante de afiliación o número de seguridad social",
     "req5": "5,000 FCFAs - Importe del carné",
-    "duplicateTitle": "Duplicado de carné",
+    "duplicateTitle": "Extravío. Duplicado de carné",
     "duplicateDescription": "En caso de pérdida o robo, debe presentar:",
     "dupReq1": "Denuncia policial",
     "dupReq2": "Copia de D.I.P",
@@ -263,30 +265,30 @@
     "pageTitle": "INSESO - Condiciones de Adhesión",
     "headerAlt": "Condiciones de Adhesión - INSESO",
     "affiliationAlt": "Afiliación INSESO",
-    "functionTitle": "LA FUNCIÓN DE AFILIACIÓN",
+    "functionTitle": "LA FUNCIÓN DE Afiliación",
     "functionText": "La función principal de la afiliación a la seguridad social es incorporar a una persona al sistema de seguridad social y, por lo tanto, garantizar su acceso a las prestaciones y servicios que este ofrece. La afiliación es obligatoria para las personas que realizan una actividad laboral que las incluye en el sistema.",
-    "impliesTitle": "¿QUÉ IMPLICA LA AFILIACIÓN?",
+    "impliesTitle": "¿QUÉ IMPLICA LA Afiliación?",
     "impliesSubtitle": "La afiliación implica:",
     "implies1": "Identificación: La persona que se afilia recibe un Número de la Seguridad Social (NUSS), que la identifica dentro del sistema",
     "implies2": "Registro: La afiliación se realiza a través del servicio de Control General de Afiliación",
     "implies3": "Derechos y obligaciones: La afiliación establece los derechos y obligaciones de la persona dentro del sistema, como el derecho a recibir prestaciones por enfermedad, maternidad, vejez etc., y la obligación de cotizar a la seguridad social.",
-    "importanceTitle": "¿POR QUÉ ES IMPORTANTE LA AFILIACIÓN?",
+    "importanceTitle": "¿POR QUÉ ES IMPORTANTE LA Afiliación?",
     "importanceSubtitle": "La importancia de afiliación consiste en que:",
     "importance1": "Garantiza la protección en caso de contingencias (necesidad): Permite acceder a servicios de salud, prestaciones económicas y otros beneficios en caso de enfermedad, accidente laboral, maternidad, etc.",
     "importance2": "Facilita el acceso a prestaciones: Permite acceder a pensiones de jubilación, incapacidad, viudedad, etc.",
     "importance3": "Es un requisito para acceder a determinados derechos laborales: Es necesario para poder ejercer derechos como el acceso a la sanidad pública, la prestación asistenciales como la acción social etc.",
-    "registrationTitle": "¿CÓMO SE PRODUCE LA INSCRIPCIÓN DE EMPRESAS Y LA AFILIACIÓN DE LOS TRABAJADORES?",
+    "registrationTitle": "¿CÓMO SE PRODUCE LA INSCRIPCIÓN DE EMPRESAS Y LA Afiliación DE LOS TRABAJADORES?",
     "registrationText": "La inscripción de empresas y trabajadores, inicialmente es simultánea. Se produce mediante la presentación por las empresas de los requisitos enumerados en la hoja anexa.",
     "whoShouldTitle": "¿QUIÉN DEBE AFILIARSE A LA SEGURIDAD SOCIAL?",
     "whoShouldText": "La persona que ejecuta una obra o presta servicios a otra en virtud de un acuerdo o contrato, y que reciba un salario o remuneración como contraprestación.",
-    "whoResponsibleTitle": "¿QUIÉN ES EL SUJETO RESPONSABLE DE REALIZAR LA AFILIACIÓN, ALTAS, BAJAS Y COTIZAR A LA SEGURIDAD SOCIAL?",
+    "whoResponsibleTitle": "¿QUIÉN ES EL SUJETO RESPONSABLE DE REALIZAR LA Afiliación, ALTAS, BAJAS Y COTIZAR A LA SEGURIDAD SOCIAL?",
     "whoResponsibleText1": "La persona responsable y obligada de realizar la afiliación, así como comunicar las altas y bajas de las personas que ingresen o cesen de su actividad, es el empresario, asimismo de pagar las cotizaciones inherentes a dicho acto de afiliación.",
     "whoResponsibleText2": "Para trabajadores independientes o AUTÓNOMOS, la responsabilidad de realizarla recae en los mismos.",
-    "whenTitle": "¿A PARTIR DE QUÉ PERIODO SE DEBE REALIZAR LA AFILIACIÓN?",
+    "whenTitle": "¿A PARTIR DE QUÉ PERIODO SE DEBE REALIZAR LA Afiliación?",
     "whenText": "La afiliación se debe realizar puntualmente al inicio de la actividad laboral, a más tardar al octavo día.",
     "terminationTitle": "¿CÓMO COMUNICAR LAS BAJAS?",
     "terminationText": "Las bajas se comunican mediante carta aportando los requisitos enumerados en la hoja anexa, al término del contrato laboral y a partir de la primera quincena del mes siguiente al de los efectos de terminación de la relación contractual.",
-    "requirementsTitle": "REQUISITOS PARA LA AFILIACION DE TRABAJADORES",
+    "requirementsTitle": "REQUISITOS PARA LA Afiliación DE TRABAJADORES",
     "privateSectorTitle": "TRABAJADORES DEL SECTOR PRIVADO",
     "privateSectorAlt": "Sector Privado",
     "privateSectorText": "En términos sencillos, los trabajadores del sector privado son todos aquellos que trabajan en empresas u organizaciones que no pertenecen al Estado.",
@@ -298,8 +300,8 @@
     "publicSectorText": "Los trabajadores del sector público son personas que trabajan para el Estado, las autoridades locales o los establecimientos públicos. En otras palabras, prestan servicios por cuenta del Estado, a menudo pagados con dinero público (impuestos)."
   },
   "agencies": {
-    "pageTitle": "INSESO - Nuestras Agencias",
-    "title": "Nuestras Agencias",
+    "pageTitle": "INSESO - Nuestras delegaciones",
+    "title": "Nuestras delegaciones",
     "subtitle": "Estamos cerca de ti en todo el territorio nacional",
     "description": "Encuentra la oficina de INSESO más cercana a ti",
     "networkTitle": "Red de Oficinas a Nivel Nacional",
@@ -341,7 +343,7 @@
     "breadcrumbEmployers": "Empleadores",
     "breadcrumbPenalties": "Penas y Sanciones",
     "legalFrameworkTitle": "Marco Legal de Sanciones",
-    "legalFrameworkLead": "El Instituto Nacional de Seguridad Social (INSESO) tiene la facultad de imponer sanciones a los empleadores que incumplan con sus obligaciones establecidas en la Ley de Seguridad Social de Guinea Ecuatorial.",
+    "legalFrameworkLead": "El Instituto de Seguridad Social (INSESO) tiene la facultad de imponer sanciones a los empleadores que incumplan con sus obligaciones establecidas en la Ley de Seguridad Social de Guinea Ecuatorial.",
     "legalFrameworkText": "El cumplimiento de las obligaciones con la seguridad social es fundamental para garantizar la protección de los trabajadores y el correcto funcionamiento del sistema.",
     "infractionTypesTitle": "Tipos de Infracciones",
     "minorInfractions": "Infracciones Leves",
@@ -441,5 +443,210 @@
     "commitment2": "Recaudación y gestión rigurosas de las cotizaciones",
     "commitment3": "Pago de las prestaciones de la Seguridad Social conforme a los derechos adquiridos",
     "commitment4": "Sensibilización en materia de protección social y prevención de riesgos laborales"
+  },
+  "organization": {
+    "government": "Órganos de gobierno",
+    "intro": "Conozca a las autoridades que encabezan la organización del Instituto de Seguridad Social.",
+    "viewChart": "Ver organigrama",
+    "president": "Presidente del Consejo de Administración",
+    "delegate": "Delegada Nacional",
+    "secretary": "Secretaria General",
+    "structure": "Estructura institucional",
+    "chart": "Organigrama del INSESO",
+    "chartIntro": "La estructura conecta los órganos de dirección, las unidades de apoyo y los servicios de la institución.",
+    "council": "Consejo de Administración",
+    "board": "Consejo Directivo",
+    "legal": "Asesoría Jurídica",
+    "cabinet": "Gabinete de la Delegada",
+    "advisory": "Consejería",
+    "services": [
+      "Servicios Técnicos",
+      "Servicios Médicos",
+      "Administración General",
+      "Intervención General",
+      "Servicio de Estudios, Estadísticas y Formación",
+      "Inspección General de Servicios y Auditorías Internas",
+      "Servicio de Control Externo y Seguridad Laboral",
+      "Servicio de Control General de Afiliación y Atención al Asegurado",
+      "Servicio de Informática y Transformación Digital",
+      "Servicio Especial de Discapacitados"
+    ]
+  },
+  "benefitGroups": {
+    "general": "Prestaciones generales",
+    "survival": "Muerte y supervivencia",
+    "survivalTitle": "Prestaciones por muerte y supervivencia",
+    "navigation": "Familias de prestaciones"
+  },
+  "attention": {
+    "title": "Cita previa",
+    "intro": "Reserve su cita y reciba el justificante por correo electrónico. La atención y los trámites se completan presencialmente.",
+    "steps": [
+      "Trámite",
+      "Delegación",
+      "Requisitos",
+      "Fecha y hora",
+      "Sus datos",
+      "Confirmación"
+    ],
+    "service": "Seleccione el trámite",
+    "office": "Elija la delegación",
+    "benefit": "Seleccione la prestación",
+    "requirements": "Documentación que debe llevar",
+    "readMore": "Consultar requisitos completos",
+    "date": "Fecha",
+    "time": "Hora disponible",
+    "name": "Nombre y apellidos",
+    "email": "Correo electrónico para el justificante",
+    "ack": "He leído la información sobre el tratamiento de mis datos.",
+    "submit": "Confirmar cita",
+    "choose": "Seleccione una opción",
+    "loading": "Consultando disponibilidad…",
+    "disabled": "Las reservas por internet todavía no están habilitadas. Puede solicitar información en info@inseso.org o llamar al 1066.",
+    "empty": "No quedan horas disponibles para esa fecha. Elija otro día.",
+    "noOffices": "No hay delegaciones habilitadas para este trámite. Consulte con INSESO.",
+    "error": "No se ha podido completar la operación. Revise los datos y vuelva a intentarlo.",
+    "taken": "Ese horario acaba de reservarse. Consulte de nuevo la disponibilidad.",
+    "confirm": "Cita registrada",
+    "pending": "La cita está guardada. El envío del aviso y del justificante está pendiente y se reintentará automáticamente. Conserve esta referencia.",
+    "sent": "Los dos mensajes han sido aceptados por el servidor de correo. Revise también su carpeta de correo no deseado.",
+    "reference": "Referencia",
+    "print": "Imprimir justificante",
+    "review": "Revise su cita antes de confirmarla",
+    "privacy": "Usamos su nombre, correo, trámite, delegación, fecha y hora para organizar la cita y enviar las comunicaciones. No adjunte informes médicos.",
+    "timezone": "Las horas corresponden a Guinea Ecuatorial (Africa/Malabo).",
+    "required": "Todos los campos marcados son obligatorios.",
+    "return": "Reservar otra cita",
+    "serviceLabels": {
+      "afiliacion": "Afiliación",
+      "carne": "Solicitud de carné",
+      "informacion": "Información",
+      "prestacion": "Presentación de solicitud de prestación"
+    },
+    "invalidDate": "Elija un día laborable dentro del intervalo de reserva."
+  },
+  "contactForm": {
+    "title": "Atención al asegurado",
+    "heading": "Envíenos un mensaje",
+    "name": "Nombre y apellidos",
+    "email": "Correo electrónico",
+    "phone": "Teléfono (opcional)",
+    "category": "Asunto",
+    "message": "Mensaje",
+    "submit": "Enviar mensaje",
+    "choose": "Seleccione una opción",
+    "privacy": "INSESO trata los datos que facilite para responder a su consulta. El teléfono es opcional. No incluya informes médicos ni datos que no sean necesarios. Los datos se comunican al personal autorizado y al proveedor de correo para gestionar el mensaje.",
+    "ack": "He leído la información sobre el tratamiento de datos.",
+    "success": "El servidor de correo ha aceptado su mensaje para info@inseso.org.",
+    "error": "No se pudo enviar el mensaje. Inténtelo de nuevo o contacte con info@inseso.org.",
+    "map": "Consultar ubicación en el mapa",
+    "categories": [
+      "Afiliación",
+      "Solicitud de carné",
+      "Prestaciones",
+      "Información general"
+    ],
+    "receiptFailed": "No se pudo enviar el justificante por correo; conserve esta referencia."
+  },
+  "legal": {
+    "privacy": "Privacidad y tratamiento de datos",
+    "cookies": "Cookies y contenido externo",
+    "notice": "Aviso legal",
+    "more": "Más información sobre privacidad",
+    "privacyText": [
+      "Responsable: Instituto de Seguridad Social (INSESO), Avenida de la Independencia, Malabo. Contacto: info@inseso.org.",
+      "Finalidades: responder a las consultas, organizar las citas solicitadas y enviar avisos y justificantes. Reservar cita no equivale a solicitar ni a obtener una prestación.",
+      "Datos: nombre, correo y contenido necesario de la consulta; para citas, trámite, delegación, fecha y hora. El teléfono del formulario de contacto es opcional. No se solicitan documentos médicos para reservar.",
+      "Formularios digitales: las fichas de empresa, afiliación, prestaciones y reembolso pueden incluir identificación, datos de contacto, laborales, bancarios y datos relativos a la asistencia solicitada, según el trámite. Para descargar un PDF, el servidor procesa estos datos y devuelve el documento; al pulsar Enviar, remite el PDF y la firma declarada al correo del INSESO y envía un justificante al solicitante. Esta función no guarda los formularios en una base de datos; los documentos enviados quedan en los buzones de correo y se gestionan conforme a los plazos institucionales. No se permite adjuntar informes médicos en estos formularios.",
+      "Acceso: personal autorizado del INSESO y proveedores técnicos de alojamiento y correo que intervienen en la gestión. No se utilizan estos formularios para publicidad.",
+      "Conservación: las citas se eliminan del registro operativo 90 días después de su fecha, mediante la tarea de mantenimiento incluida. Los correos siguen los plazos que establezca el INSESO para sus expedientes y buzones.",
+      "Puede solicitar información o ejercer los derechos que correspondan respecto a sus datos escribiendo a info@inseso.org. Identifique su solicitud sin enviar documentación sensible por iniciativa propia."
+    ],
+    "cookiesText": [
+      "La agenda y los formularios no necesitan cookies para enviar solicitudes.",
+      "El modo de previsualización para editores utiliza las cookies técnicas preview y preview-signature. Son HttpOnly, SameSite=Lax, duran 30 minutos y se configuran como Secure en producción. No se activan al visitar las páginas públicas.",
+      "Los mapas se ofrecen mediante enlaces externos. Los vídeos incrustados permanecen bloqueados hasta que se pulsa para cargar contenido externo; el proveedor podría entonces acceder a la IP y utilizar sus propias cookies.",
+      "Los enlaces a redes sociales abren sus servicios externos."
+    ],
+    "noticeText": [
+      "Este sitio ofrece información institucional y orienta sobre los servicios del INSESO. Las condiciones particulares de una prestación se determinan durante la tramitación correspondiente.",
+      "La reserva de cita no sustituye la presentación presencial de documentos ni una resolución administrativa.",
+      "Para comunicar incidencias, solicitar aclaraciones o proponer correcciones, utilice info@inseso.org. Los enlaces externos se abren bajo las condiciones de sus respectivos responsables."
+    ],
+    "externalTitle": "Contenido externo bloqueado",
+    "externalText": "Al cargar este contenido, su navegador se conectará al proveedor externo.",
+    "externalButton": "Cargar contenido externo"
+  },
+  "benefitInterface": {
+    "eyebrow": "INSESO · Prestaciones sociales",
+    "intro": "Encuentre respuestas sobre beneficiarios, cotización, cuantías, documentación y modalidades de la prestación.",
+    "forms": "Formularios",
+    "commonForm": "Una misma solicitud para las once prestaciones.",
+    "invalidDate": "Elija un día laborable dentro del intervalo de reserva."
+  },
+  "benefitFaq": [
+    "Preguntas sobre la prestación",
+    "Pulse una pregunta para consultar su respuesta. Puede abrir varias a la vez.",
+    "Abrir todas",
+    "Cerrar todas",
+    "Formulario común",
+    "Descargar solicitud"
+  ],
+  "commonForm": {
+    "eyebrow": "INSESO · Solicitud de prestaciones sociales",
+    "title": "Formulario común de prestaciones",
+    "intro": "Descargue y complete la solicitud. Marque la prestación que solicita; si su modalidad no figura entre las opciones del impreso, utilice «Otros» y especifíquela.",
+    "download": "Descargar formulario (PDF)",
+    "open": "Abrir PDF",
+    "source": "Formulario común facilitado por el INSESO.",
+    "before": "Antes de presentarlo",
+    "steps": [
+      "Indique los datos del solicitante y del causante, cuando corresponda.",
+      "Seleccione la prestación y complete los apartados aplicables.",
+      "Adjunte la documentación indicada en la ficha de la prestación.",
+      "Confirme con INSESO cualquier dato que no corresponda a su caso."
+    ],
+    "downloadOnly": "Esta página permite descargar la solicitud; no envía datos personales.",
+    "preview": "Vista previa del formulario común"
+  },
+  "release": {
+    "nav": {
+      "gov": "Órganos de gobierno y organigrama",
+      "benefits": "Beneficios de ser asegurado",
+      "card": "Carné",
+      "affiliation": "Afiliación",
+      "general": "Información general",
+      "companies": "Inscripción de empresas",
+      "workers": "Registro de trabajadores",
+      "dependents": "Registro de beneficiarios",
+      "self": "Personas físicas y autónomos",
+      "attention": "Atención al asegurado",
+      "booking": "Cita previa",
+      "forms": "Formularios"
+    },
+    "benefits": {
+      "eyebrow": "INSESO · ASEGURADOS",
+      "title": "Beneficios de ser asegurado",
+      "intro": "La afiliación protege al trabajador y a los familiares a su cargo mediante el acceso a las prestaciones familiares, conforme a los requisitos aplicables.",
+      "heading": "Protección para usted y su familia",
+      "cards": [
+        [
+          "01",
+          "Familiares a cargo",
+          "Consulte qué familiares pueden beneficiarse de la prestación familiar."
+        ],
+        [
+          "02",
+          "Requisitos de acceso",
+          "Revise las condiciones de cotización y la documentación para cada situación familiar."
+        ],
+        [
+          "03",
+          "Prestación familiar",
+          "Conozca las modalidades, las cuantías y la forma de pago."
+        ]
+      ],
+      "cta": "Consultar prestaciones familiares"
+    }
   }
 }

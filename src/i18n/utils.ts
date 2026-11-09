@@ -97,14 +97,8 @@ export const routeTranslations: Record<Locale, Record<string, string>> = {
     '/noticias': '/noticias',
     '/contacto': '/contacto',
     '/sobre_nosotros': '/sobre_nosotros',
-    '/descarga_formularios': '/descarga_formularios',
-    '/condiciones_adhesion': '/condiciones_adhesion',
     '/nuestras_agencias': '/nuestras_agencias',
-    '/afiliacionee_trabajadores': '/afiliacionee_trabajadores',
-    '/afiliacionee_empresas': '/afiliacionee_empresas',
-    '/afiliacionee_autonomo': '/afiliacionee_autonomo',
     '/solicitud_de_carne': '/solicitud_de_carne',
-    '/empleadores/penas-sanciones': '/empleadores/penas-sanciones',
     '/Prestaciones_Sociales': '/Prestaciones_Sociales'
   },
   fr: {
@@ -112,14 +106,8 @@ export const routeTranslations: Record<Locale, Record<string, string>> = {
     '/noticias': '/noticias',
     '/contacto': '/contacto',
     '/sobre_nosotros': '/sobre_nosotros',
-    '/descarga_formularios': '/descarga_formularios',
-    '/condiciones_adhesion': '/condiciones_adhesion',
     '/nuestras_agencias': '/nuestras_agencias',
-    '/afiliacionee_trabajadores': '/afiliacionee_trabajadores',
-    '/afiliacionee_empresas': '/afiliacionee_empresas',
-    '/afiliacionee_autonomo': '/afiliacionee_autonomo',
     '/solicitud_de_carne': '/solicitud_de_carne',
-    '/empleadores/penas-sanciones': '/empleadores/penas-sanciones',
     '/Prestaciones_Sociales': '/Prestaciones_Sociales'
   },
   en: {
@@ -127,14 +115,8 @@ export const routeTranslations: Record<Locale, Record<string, string>> = {
     '/noticias': '/noticias',
     '/contacto': '/contacto',
     '/sobre_nosotros': '/sobre_nosotros',
-    '/descarga_formularios': '/descarga_formularios',
-    '/condiciones_adhesion': '/condiciones_adhesion',
     '/nuestras_agencias': '/nuestras_agencias',
-    '/afiliacionee_trabajadores': '/afiliacionee_trabajadores',
-    '/afiliacionee_empresas': '/afiliacionee_empresas',
-    '/afiliacionee_autonomo': '/afiliacionee_autonomo',
     '/solicitud_de_carne': '/solicitud_de_carne',
-    '/empleadores/penas-sanciones': '/empleadores/penas-sanciones',
     '/Prestaciones_Sociales': '/Prestaciones_Sociales'
   },
   pt: {
@@ -142,14 +124,8 @@ export const routeTranslations: Record<Locale, Record<string, string>> = {
     '/noticias': '/noticias',
     '/contacto': '/contacto',
     '/sobre_nosotros': '/sobre_nosotros',
-    '/descarga_formularios': '/descarga_formularios',
-    '/condiciones_adhesion': '/condiciones_adhesion',
     '/nuestras_agencias': '/nuestras_agencias',
-    '/afiliacionee_trabajadores': '/afiliacionee_trabajadores',
-    '/afiliacionee_empresas': '/afiliacionee_empresas',
-    '/afiliacionee_autonomo': '/afiliacionee_autonomo',
     '/solicitud_de_carne': '/solicitud_de_carne',
-    '/empleadores/penas-sanciones': '/empleadores/penas-sanciones',
     '/Prestaciones_Sociales': '/Prestaciones_Sociales'
   }
 };

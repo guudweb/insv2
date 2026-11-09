@@ -1,0 +1,14 @@
+{
+  "checks": 39,
+  "downloadedDocuments": 2,
+  "originalHashesMatch": true,
+  "languages": [
+    "es",
+    "en",
+    "fr",
+    "pt"
+  ],
+  "portraitPlaced": true,
+  "smtpDiagnostics": true,
+  "realMailSent": false
+}

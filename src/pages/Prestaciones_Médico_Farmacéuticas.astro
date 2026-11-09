@@ -1,5 +1,5 @@
 ---
-// CAMBIO INSESO 2026-10-13 R2: prestación ajena al catálogo; redirige a las ocho autorizadas.
+// CAMBIO INSESO R4: acceso antiguo enlazado al catálogo actualizado.
 import {getLocalizedPath,getLangFromUrl} from '../i18n/utils';
-return Astro.redirect(getLocalizedPath('/Prestaciones_Sociales',getLangFromUrl(Astro.url)),301);
+return Astro.redirect(getLocalizedPath('/prestacion/prestaciones-sanitarias',getLangFromUrl(Astro.url)),301);
 ---

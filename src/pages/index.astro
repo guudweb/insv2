@@ -1,5 +1,9 @@
 ---
-import {benefitCatalog} from '../data/benefit-catalog';
+// CAMBIO INSESO FINAL: contenido externo bajo acción explícita.
+import {createLocalizer} from '../i18n/release.mjs';
+import HomeFaq from '../components/HomeFaq.astro';
+import ExternalMedia from '../components/ExternalMedia.astro';
+import {getBenefitCatalog} from '../data/benefit-catalog';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SwiperHero from '../components/SwiperHero.astro';
 import BlogSlider from '../components/BlogSlider.astro';
@@ -26,6 +30,8 @@ export const prerender = false;
 
 // Detectar idioma actual
 const lang = getLangFromUrl(Astro.url);
+const benefitCatalog=getBenefitCatalog(lang);
+const l=createLocalizer(lang);
 const t = useTranslations(lang);
 
 // Obtener datos de Strapi con el locale correcto
@@ -39,18 +45,18 @@ const noticiasUltimaHora = await getNoticiasByPosicion('ultima-hora', 6, lang);
 const prestaciones = await getPrestaciones(lang);
 // CAMBIO INSESO 2026-10-13 R2: destacados limitados a las ocho prestaciones autorizadas.
 const allowedSlugs = new Set(['subsidio-por-maternidad','prestaciones-por-invalidez','subsidio-de-incapacidad-temporal','discapacidad','pension-por-vejez','gastos-de-sepelio','viudedad','orfandad']);
-const prestacionesDestacadas = benefitCatalog.slice(0,4).map(b=>({...b,imagen:{url:b.imagen},resumen:'Información y requisitos de la prestación'}));
+const prestacionesDestacadas = benefitCatalog.slice(0,4).map(b=>({...b,imagen:{url:b.imagen},resumen:l('Información y requisitos de la prestación')}));
 
 // Fallbacks por si no hay datos en Strapi (usar traducciones)
 const tituloHero = config?.tituloHero || t('home.hero');
 const afiliacionTitulo = config?.afiliacionTitulo || t('nav.aboutConditions');
 const afiliacionImagen = config?.afiliacionImagen ? getStrapiImageUrl(config.afiliacionImagen.url) : '/images/img_acc_04.jpg';
-const afiliacionTexto = config?.afiliacionTexto || 'La función principal de la afiliación a la seguridad social es incorporar a una persona al sistema de seguridad social y, por lo tanto, garantizar su acceso a las prestaciones y servicios que este ofrece. La afiliación es obligatoria para las personas que realizan una actividad laboral que las incluye en el sistema.';
-const afiliacionEnlace = config?.afiliacionEnlace || '/condiciones_adhesion';
+const afiliacionTexto = config?.afiliacionTexto || l('La función principal de la afiliación a la seguridad social es incorporar a una persona al sistema de seguridad social y, por lo tanto, garantizar su acceso a las prestaciones y servicios que este ofrece. La afiliación es obligatoria para las personas que realizan una actividad laboral que las incluye en el sistema.');
+const afiliacionEnlace = config?.afiliacionEnlace || '/afiliacion-informacion';
 
 const sidebarImagenBanner = config?.sidebarImagenBanner ? getStrapiImageUrl(config.sidebarImagenBanner.url) : '/images/accueil/inicio_pub_01.gif';
-const sidebarCardTitulo = config?.sidebarCardTitulo || '¿QUIEN DEBE AFILIARSE A LA SEGURIDAD SOCIAL?';
-const sidebarCardTexto = config?.sidebarCardTexto || 'La persona que ejecuta una obra o presta servicios a otra en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.';
+const sidebarCardTitulo = config?.sidebarCardTitulo || l('¿QUIEN DEBE AFILIARSE A LA SEGURIDAD SOCIAL?');
+const sidebarCardTexto = config?.sidebarCardTexto || l('La persona que ejecuta una obra o presta servicios a otra en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.');
 
 // Media Principal: Soporta video o imagen desde config o noticia principal
 const tipoMediaPrincipal = config?.tipoMediaPrincipal || (noticiaPrincipal?.tipoMedia) || 'video';
@@ -63,12 +69,12 @@ const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 ---
 
 <BaseLayout
-	title="INSESO | Instituto Nacional de Seguridad Social de Guinea Ecuatorial"
+	title="INSESO | Instituto de Seguridad Social de Guinea Ecuatorial"
 	description="Página web oficial de INSESO Guinea Ecuatorial. Encuentra información sobre afiliación, prestaciones sociales, trámites, formularios y red de oficinas en Malabo, Bata y más."
 	currentPath="/"
 >
 	<!-- H1 oculto visualmente para SEO -->
-	<h1 class="visually-hidden">Instituto Nacional de Seguridad Social de Guinea Ecuatorial - INSESO</h1>
+	<h1 class="visually-hidden">Instituto de Seguridad Social de Guinea Ecuatorial - INSESO</h1>
 
 	<SwiperHero slides={heroSlides} />
 
@@ -125,14 +131,7 @@ const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 					{tipoMediaPrincipal === 'imagen' && imagenPrincipal ? (
 						<img src={imagenPrincipal} alt={mediaTitulo} class="img-fluid w-100" style="max-height: 450px; object-fit: cover;" />
 					) : tipoMediaPrincipal === 'video' && noticiaPrincipal?.video && !noticiaPrincipal.videoArchivo ? (
-						<iframe
-							width="100%"
-							height="450"
-							src={noticiaPrincipal.video}
-							style="border: 0;"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-							allowfullscreen>
-						</iframe>
+						<ExternalMedia src={noticiaPrincipal.video} />
 					) : (
 						<video controls width="100%" style="max-height: 450px;">
 							<source src={videoArchivoPrincipal || videoUrl} type="video/mp4">
@@ -159,6 +158,7 @@ const mediaDescripcion = config?.videoDescripcion || (noticiaPrincipal?.contenid
 		<UltimaHoraSection noticias={noticiasUltimaHora} />
 	)}
 
+	<HomeFaq />
 	<PartnersCarousel socios={socios} />
 
 </BaseLayout>

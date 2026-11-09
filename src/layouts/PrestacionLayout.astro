@@ -1,13 +1,13 @@
 ---
-// CAMBIO INSESO 2026-10-13 R2: ficha amplia única basada en las ocho prestaciones del documento.
+// CAMBIO INSESO 2026-10-13 R2: ficha amplia única basada en las once prestaciones del documento.
 import BaseLayout from './BaseLayout.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import BenefitDetails from '../components/BenefitDetails.astro';
-import {benefitCatalog,canonicalBenefit} from '../data/benefit-catalog';
-import {getLangFromUrl,getLocalizedPath,useTranslations} from '../i18n/utils';
-const lang=getLangFromUrl(Astro.url),t=useTranslations(lang);
-const benefit=benefitCatalog.find(b=>b.slug===canonicalBenefit(Astro.props.slug));
+import {getBenefitCatalog,canonicalBenefit} from '../data/benefit-catalog';
+import {getLangFromUrl,getLocalizedPath,useTranslations,ui} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url),t=useTranslations(lang),words=ui[lang].benefitInterface;
+const benefit=getBenefitCatalog(lang).find(b=>b.slug===canonicalBenefit(Astro.props.slug));
 if(!benefit)return Astro.redirect(getLocalizedPath('/Prestaciones_Sociales',lang),301);
 ---
-<BaseLayout title={`INSESO - ${benefit.titulo}`} currentPath={Astro.url.pathname}><Breadcrumb title={benefit.titulo} items={[{label:t('prestaciones.title'),href:getLocalizedPath('/Prestaciones_Sociales',lang)}]}/><div class="container"><header class="benefit-hero"><div><span>INSESO · Prestaciones sociales</span><h1>{benefit.titulo}</h1><p>Encuentre respuestas sobre beneficiarios, cotización, cuantías, documentación y modalidades de la prestación.</p><a href={getLocalizedPath('/formulario-prestaciones',lang)} class="btn btn-primary">Formularios</a></div><img src={benefit.imagen} alt={benefit.titulo} width="720" height="420"/></header><BenefitDetails slug={benefit.slug}/></div></BaseLayout>
+<BaseLayout title={`INSESO - ${benefit.titulo}`} currentPath={Astro.url.pathname}><Breadcrumb title={benefit.titulo} items={[{label:t('prestaciones.title'),href:getLocalizedPath('/Prestaciones_Sociales',lang)}]}/><div class="container"><header class="benefit-hero"><div><span>{words.eyebrow}</span><h1>{benefit.titulo}</h1><p>{words.intro}</p></div><img src={benefit.imagen} alt={benefit.titulo} width="720" height="420"/></header><BenefitDetails slug={benefit.slug}/></div></BaseLayout>
 <style>.benefit-hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:2rem;background:#f0f7f0;border-radius:22px;padding:2.5rem;margin-top:2rem}.benefit-hero span{font-size:.85rem;color:#225924;letter-spacing:.05em}.benefit-hero h1{font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;margin:.8rem 0 1.1rem}.benefit-hero p{line-height:1.7}.benefit-hero img{width:100%;height:auto}@media(max-width:767px){.benefit-hero{grid-template-columns:1fr;padding:1.5rem}.benefit-hero img{max-height:220px}}</style>

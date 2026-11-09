@@ -5,8 +5,8 @@
     "about": "ABOUT US",
     "aboutPresentation": "PRESENTATION",
     "aboutServices": "SOCIAL BENEFITS",
-    "aboutConditions": "MEMBERSHIP CONDITIONS",
-    "aboutAgencies": "OUR AGENCIES",
+    "aboutConditions": "General affiliation conditions",
+    "aboutAgencies": "OUR DELEGATIONS",
     "insured": "INSURED",
     "insuredConditions": "Employee registration",
     "insuredForms": "DOWNLOAD FORMS",
@@ -16,7 +16,9 @@
     "employersForms": "DOWNLOAD FORMS",
     "employersPayments": "DECLARATION AND PAYMENT OF CONTRIBUTIONS",
     "employersPenalties": "PENALTIES AND SANCTIONS",
-    "contact": "CONTACT"
+    "contact": "CONTACT",
+    "workerConditions": "Worker affiliation",
+    "employerConditions": "Employer registration"
   },
   "footer": {
     "allRightsReserved": "All rights reserved",
@@ -255,7 +257,7 @@
     "publicSectorText": "Public sector workers are people who work for the State, local authorities or public establishments. In other words, they provide services on behalf of the State, often paid with public money (taxes)."
   },
   "agencies": {
-    "pageTitle": "INSESO - Our Agencies",
+    "pageTitle": "INSESO - Our delegations",
     "title": "Our Agencies",
     "subtitle": "We are close to you throughout the national territory",
     "description": "Find the INSESO office closest to you",
@@ -321,7 +323,7 @@
     "req3": "One (1) passport-size photo",
     "req4": "Proof of affiliation or social security number",
     "req5": "5,000 FCFAs - Card fee",
-    "duplicateTitle": "Card duplicate",
+    "duplicateTitle": "Lost card. Replacement card",
     "duplicateIntro": "In case of loss or theft, you must present:",
     "dupReq1": "Police report",
     "dupReq2": "Copy of ID Card",
@@ -329,9 +331,13 @@
     "dupReq4": "Duplicate payment (3,000 FCFAs)",
     "deliveryTitle": "Delivery time",
     "normalDelivery": "Normal time:",
-    "normalTime": "7-10 business days",
+    "normalTime": "Normal delivery:",
     "urgentDelivery": "Urgent:",
-    "urgentTime": "2-3 business days (additional cost)"
+    "urgentTime": "Urgent delivery:",
+    "normalDays": "7-10 business days",
+    "urgentDays": "2-3 business days (additional cost)",
+    "officeAlt": "INSESO offices",
+    "duplicateDescription": "In case of loss or theft, submit:"
   },
   "penalties": {
     "pageTitle": "Penalties and Sanctions for Employers - INSESO",
@@ -441,5 +447,210 @@
     "commitment2": "Rigorous collection and management of contributions",
     "commitment3": "Payment of Social Security benefits in accordance with acquired rights",
     "commitment4": "Awareness-raising on social protection and prevention of occupational risks"
+  },
+  "organization": {
+    "government": "Governing bodies",
+    "intro": "Meet the authorities who lead the National Social Security Institute.",
+    "viewChart": "View organization chart",
+    "president": "Chair of the Board of Administration",
+    "delegate": "National Delegate",
+    "secretary": "Secretary General",
+    "structure": "Institutional structure",
+    "chart": "INSESO organization chart",
+    "chartIntro": "The structure links the governing bodies, support units and institutional services.",
+    "council": "Board of Administration",
+    "board": "Executive Council",
+    "legal": "Legal Advisory Office",
+    "cabinet": "Delegate’s Office",
+    "advisory": "Advisory Office",
+    "services": [
+      "Technical Services",
+      "Medical Services",
+      "General Administration",
+      "General Comptroller’s Office",
+      "Studies, Statistics and Training Service",
+      "General Inspection of Services and Internal Audits",
+      "External Control and Occupational Safety Service",
+      "General Affiliation Control and Insured Member Support Service",
+      "IT and Digital Transformation Service",
+      "Special Service for Persons with Disabilities"
+    ]
+  },
+  "benefitGroups": {
+    "general": "General benefits",
+    "survival": "Death and survivors",
+    "survivalTitle": "Death and survivors benefits",
+    "navigation": "Benefit groups"
+  },
+  "attention": {
+    "title": "Appointments",
+    "intro": "Book an appointment and receive a confirmation email. Services and applications are completed in person.",
+    "steps": [
+      "Service",
+      "Office",
+      "Documents",
+      "Date and time",
+      "Your details",
+      "Confirmation"
+    ],
+    "service": "Select a service",
+    "office": "Choose an office",
+    "benefit": "Select a benefit",
+    "requirements": "Documents to bring",
+    "readMore": "Read the full requirements",
+    "date": "Date",
+    "time": "Available time",
+    "name": "Full name",
+    "email": "Email for your confirmation",
+    "ack": "I have read the information about the processing of my data.",
+    "submit": "Confirm appointment",
+    "choose": "Select an option",
+    "loading": "Checking availability…",
+    "disabled": "Online bookings are not enabled yet. Contact info@inseso.org or call 1066.",
+    "empty": "There are no available times on this date. Choose another day.",
+    "noOffices": "No offices are enabled for this service. Contact INSESO.",
+    "error": "The operation could not be completed. Check your details and try again.",
+    "taken": "This time has just been booked. Refresh availability.",
+    "confirm": "Appointment registered",
+    "pending": "Your appointment is saved. The notification emails are pending and will be retried automatically. Keep this reference.",
+    "sent": "Both messages have been accepted by the mail server. Please also check your spam folder.",
+    "reference": "Reference",
+    "print": "Print confirmation",
+    "review": "Review your appointment before confirming",
+    "privacy": "We use your name, email, service, office, date and time to organize your appointment and send notifications. Do not attach medical reports.",
+    "timezone": "Times are in Equatorial Guinea time (Africa/Malabo).",
+    "required": "All marked fields are required.",
+    "return": "Check the schedule again",
+    "serviceLabels": {
+      "afiliacion": "Affiliation",
+      "carne": "Membership card application",
+      "informacion": "Information",
+      "prestacion": "Benefit application submission"
+    },
+    "invalidDate": "Choose a working day within the booking period."
+  },
+  "contactForm": {
+    "title": "Insured assistance",
+    "heading": "Send us a message",
+    "name": "Full name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "category": "Subject",
+    "message": "Message",
+    "submit": "Send message",
+    "choose": "Select an option",
+    "privacy": "INSESO processes the information you provide to answer your enquiry. Phone is optional. Do not include medical reports or unnecessary information. Authorized staff and the email provider process the message.",
+    "ack": "I have read the information about data processing.",
+    "success": "The mail server has accepted your message for info@inseso.org.",
+    "error": "The message could not be sent. Try again or contact info@inseso.org.",
+    "map": "View location on the map",
+    "categories": [
+      "Affiliation",
+      "Membership card",
+      "Benefits",
+      "General information"
+    ],
+    "receiptFailed": "The receipt email could not be sent; keep this reference."
+  },
+  "legal": {
+    "privacy": "Privacy and data processing",
+    "cookies": "Cookies and external content",
+    "notice": "Legal notice",
+    "more": "More information about privacy",
+    "privacyText": [
+      "Controller: Instituto Nacional de Seguridad Social (INSESO), Avenida de la Independencia, Malabo. Contact: info@inseso.org.",
+      "Purposes: answering enquiries, organizing requested appointments and sending notifications and confirmations. Booking an appointment does not constitute an application for or an award of a benefit.",
+      "Data: name, email and necessary enquiry content; for appointments, service, office, date and time. Contact phone is optional. No medical documents are requested for bookings.",
+      "Digital forms may include identity, contact, employment, bank and requested-assistance information, depending on the procedure. To download a PDF, the server processes the data and returns the document. Choosing Send emails the PDF and declared signature to INSESO and sends the applicant a receipt. This feature does not save forms in a database; sent documents remain in mailboxes subject to institutional retention periods. Medical reports cannot be uploaded through these forms.",
+      "Access: authorized INSESO staff and hosting and email providers involved in processing. These forms are not used for advertising.",
+      "Retention: operational appointment records are deleted 90 days after the appointment date by the supplied maintenance task. Email retention follows INSESO’s records and mailbox policies.",
+      "Contact info@inseso.org for information or requests concerning your data. Do not send sensitive documents on your own initiative."
+    ],
+    "cookiesText": [
+      "The delivered source code contains no detected advertising analytics tools or first-party visitor tracking cookies. Booking and contact forms do not require cookies.",
+      "Editor preview uses the technical cookies preview and preview-signature. They are HttpOnly, SameSite=Lax, last 30 minutes and are Secure in production. Public visits do not activate them.",
+      "Maps use external links. Embedded videos remain blocked until you choose to load external content; providers may then receive your IP and use their own cookies.",
+      "Social links open external services. This review covers the delivered source; hosting, CMS and subsequent changes must be checked on the published domain."
+    ],
+    "noticeText": [
+      "This website provides institutional information and guidance on INSESO services. Individual benefit conditions are determined during the applicable administrative process.",
+      "An appointment does not replace submission of documents in person or an administrative decision.",
+      "For issues, enquiries or corrections contact info@inseso.org. External links are subject to their providers’ terms."
+    ],
+    "externalTitle": "External content blocked",
+    "externalText": "Loading this content connects your browser to its external provider.",
+    "externalButton": "Load external content"
+  },
+  "benefitInterface": {
+    "eyebrow": "INSESO · Social benefits",
+    "intro": "Find answers on beneficiaries, contributions, amounts, documents and benefit types. The reference answers are provided in Spanish.",
+    "forms": "Forms",
+    "commonForm": "One application form for all eleven benefits.",
+    "invalidDate": "Choose a working day within the booking period."
+  },
+  "benefitFaq": [
+    "Questions about this benefit",
+    "Select a question to read the Spanish reference answer.",
+    "Expand all",
+    "Collapse all",
+    "Common application form",
+    "Download application"
+  ],
+  "commonForm": {
+    "eyebrow": "INSESO · Social benefit application",
+    "title": "Common benefit application form",
+    "intro": "Download and complete the application. Select your benefit; if your benefit type is not listed, select “Other” and specify it.",
+    "download": "Download form (PDF)",
+    "open": "Open PDF",
+    "source": "Common form provided by INSESO.",
+    "before": "Before submitting",
+    "steps": [
+      "Enter the applicant’s details and those of the insured person concerned, where applicable.",
+      "Select the benefit and complete the relevant sections.",
+      "Attach the documents listed on the benefit page.",
+      "Ask INSESO to clarify any information that does not apply to your case."
+    ],
+    "downloadOnly": "This page downloads the application; it does not send personal data.",
+    "preview": "Preview of the common application form"
+  },
+  "release": {
+    "nav": {
+      "gov": "Governing bodies and structure",
+      "benefits": "Insured benefits",
+      "card": "Insurance card",
+      "affiliation": "Affiliation",
+      "general": "General information",
+      "companies": "Company registration",
+      "workers": "Worker registration",
+      "dependents": "Beneficiary registration",
+      "self": "Self-employed",
+      "attention": "Insured assistance",
+      "booking": "Appointment",
+      "forms": "Forms"
+    },
+    "benefits": {
+      "eyebrow": "INSESO · INSURED PEOPLE",
+      "title": "Benefits of being insured",
+      "intro": "Affiliation provides protection for workers and their dependent family members through family benefits, subject to the applicable requirements.",
+      "heading": "Protection for you and your family",
+      "cards": [
+        [
+          "01",
+          "Dependent family members",
+          "Check which family members may qualify."
+        ],
+        [
+          "02",
+          "Eligibility requirements",
+          "Review contribution conditions and documentation for your family situation."
+        ],
+        [
+          "03",
+          "Family benefits",
+          "Learn about benefit types, amounts and payment methods."
+        ]
+      ],
+      "cta": "View family benefits"
+    }
   }
 }

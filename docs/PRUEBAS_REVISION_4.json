@@ -1,0 +1,310 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/formulario-prestaciones",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/no-existe",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-medico-farmaceuticas",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/Subsidios_familiares",
+    "status": 301,
+    "location": "/prestacion/prestaciones-familiares",
+    "pass": true
+  },
+  {
+    "path": "/Prestaciones_Médico_Farmacéuticas",
+    "status": 301,
+    "location": "/prestacion/prestaciones-sanitarias",
+    "pass": true
+  },
+  {
+    "path": "/Prestaciones_por_muerte_y_supervivencia",
+    "status": 301,
+    "location": "/Prestaciones_Sociales#muerte-supervivencia",
+    "pass": true
+  }
+]

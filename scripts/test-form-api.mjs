@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {readdirSync} from 'node:fs';
+import {App} from 'astro/app';
+import {PDFDocument} from 'pdf-lib';
+process.env.ASTRO_NODE_AUTOSTART='disabled';delete process.env.SITE_ORIGIN;
+const {pageMap}=await import('../dist/server/entry.mjs'),file=readdirSync(new URL('../dist/server/',import.meta.url)).find(n=>n.startsWith('manifest_')),{manifest}=await import(`../dist/server/${file}`);const app=new App({...manifest,pageMap,middleware:()=>import('../dist/server/_astro-internal_middleware.mjs')});
+const input={formType:'prestacion',values:{s0f0:'Persona de prueba',s0f1:'Dirección de prueba',s0f2:'222123456',s1f0:'Maternidad'},signature:{mode:'paper'}};
+const post=(body,path='/api/formularios/pdf')=>app.render(new Request('http://localhost'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}),{clientAddress:'127.0.0.1'});
+assert.equal((await post({...input,values:{}})).status,400);
+const filled=await post(input);assert.equal(filled.status,200);assert.match(filled.headers.get('Content-Disposition'),/^inline;/);assert.equal(filled.headers.get('Cache-Control'),'no-store');assert.equal((await PDFDocument.load(await filled.arrayBuffer())).getPageCount(),1);
+assert.equal((await post(input,'/api/formularios/enviar')).status,404);
+console.log('Servidor compilado: rechaza fichas vacías, sirve la ficha cumplimentada y no ofrece envío por correo.');

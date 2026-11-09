@@ -1,6 +1,6 @@
 /* CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md. */
  
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900');
+/* CAMBIO INSESO FINAL: tipografía de sistema; sin petición a Google Fonts. */
 
 body {
   padding: 0px;
@@ -749,7 +749,7 @@ a.btn-blg:hover {
 }
 .footer { 
 	width:100%; 
-	background: url(../images/footer-bg.jpg) no-repeat center;
+	background: url(../images/footer-bg.webp) no-repeat center;
 	background-size: cover;
 	min-height:250px; 
 	padding:10px 0px 25px 0px;

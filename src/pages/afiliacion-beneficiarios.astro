@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InsuredBenefits from '../components/InsuredBenefits.astro';
+import {getLangFromUrl,ui} from '../i18n/utils';
+import {createLocalizer} from '../i18n/release.mjs';
+const lang=getLangFromUrl(Astro.url),l=createLocalizer(lang);
+export const prerender=false;
+---
+<BaseLayout title={'INSESO · '+l('Registro de beneficiarios')}><InsuredBenefits registration /></BaseLayout>

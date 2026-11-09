@@ -1,3 +1,4 @@
+// CAMBIO INSESO R4: contacto según documento de 15/10/2026.
 // CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 /**
  * Información de contacto centralizada
@@ -9,8 +10,8 @@ export const contactInfo = {
     name: 'Delegación Nacional',
     city: 'Malabo',
     address: 'Avda. de la Independencia, S/N',
-    postalCode: '944',
-    phone: '(+240) 333 092214',
+    postalCode: '',
+    phone: '1066',
     email: 'info@inseso.org',
     hours: 'Lunes - Viernes: 8:00 - 16:00'
   },
@@ -18,15 +19,15 @@ export const contactInfo = {
     name: 'Delegación Regional',
     city: 'Bata',
     address: 'Unidad Africana',
-    phone: '(+240) 333 082690',
-    email: 'bata@inseso-ge.org',
+    phone: '1066',
+    email: 'info@inseso.org',
     hours: 'Lunes - Viernes: 8:00 - 16:00'
   },
   social: {
     facebook: 'https://www.facebook.com/share/19mnxTyaUk/',
     twitter: 'https://x.com/inseso_ge',
     instagram: 'https://www.instagram.com/inseso_ge',
-    tiktok: '' // Pendiente: no se ha proporcionado la URL oficial
+    tiktok: 'https://www.tiktok.com/@inseso_ge?_r=1&_t=ZS-9AXhGFjd7yv'
   }
 };
 

@@ -1,14 +1,82 @@
 [
   {
     "titulo": "Maternidad",
+    "slug": "subsidio-por-maternidad",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarias",
+        "question": "¿Quiénes pueden beneficiarse de la prestación por maternidad?",
+        "answers": [
+          "La mujer trabajadora por cuenta ajena, siempre y cuando se produzca la baja laboral por pre-parto y post-parto."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "¿Cuánto tiempo debo haber cotizado para solicitar la prestación?",
+        "answers": [
+          "Para tener derecho a esa prestación, la mujer trabajadora debe tener acreditados 12 meses inmediatamente anteriores a la baja por maternidad."
+        ]
+      },
+      {
+        "heading": "Cuantía y duración",
+        "question": "¿Cuál es la cuantía de la prestación por maternidad?",
+        "answers": [
+          "El 75% del salario base diario de cotización."
+        ]
+      },
+      {
+        "heading": "Cuantía y duración",
+        "question": "Si no alcanzo 12 meses de cotización, ¿qué asignación se contempla?",
+        "answers": [
+          "Una asignación global equivalente a dos mensualidades de su Salario base de cotizaciones, en caso de que el pago de las cotizaciones al INSESO no alcancen 12 meses inmediatamente a la maternidad."
+        ]
+      },
+      {
+        "heading": "Cuantía y duración",
+        "question": "¿Durante cuánto tiempo se abona la prestación por maternidad?",
+        "answers": [
+          "Se abonará mientras la asegurada se encuentre en situación de baja y reciba Asistencia sanitaria de la Seguridad Social."
+        ]
+      },
+      {
+        "heading": "Requisitos",
+        "question": "¿Qué requisitos y documentos debo presentar?",
+        "answers": [
+          "Carné de Seguro actualizado.",
+          "Baja laboral.",
+          "Certificado de Nacimiento del recién nacido.",
+          "Alta médica.",
+          "Certificado de reposo médico en caso de prolongación de la incapacidad.",
+          "Número de cuenta bancaria.",
+          "Copia del DIP del beneficiario."
+        ]
+      },
+      {
+        "heading": "Incompatibilidad y prohibición",
+        "question": "¿Con qué situaciones o prestaciones es incompatible?",
+        "answers": [
+          "En caso de tener dos o más empleos, la trabajadora podrá optar a la empresa que mejor le favorezca la prestación, y nunca podrá cobrarla simultáneamente con las distintas empresas a las que presta servicios profesionales."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "Se abona mediante cheque o transferencia bancaria."
+        ]
+      }
+    ],
     "sections": [
       "Beneficiarias",
       "La mujer trabajadora por cuenta ajena, siempre y cuando se produzca la baja laboral por pre-parto y post-parto.",
       "Período de espera",
       "Para tener derecho a esa prestación, la mujer trabajadora debe tener acreditados 12 meses inmediatamente anteriores a la baja por maternidad.",
-      "Cuantía de la prestación",
+      "Cuantía y duración",
       "El 75% del salario base diario de cotización.",
+      "Cuantía y duración",
       "Una asignación global equivalente a dos mensualidades de su Salario base de cotizaciones, en caso de que el pago de las cotizaciones al INSESO no alcancen 12 meses inmediatamente a la maternidad.",
+      "Cuantía y duración",
       "Se abonará mientras la asegurada se encuentre en situación de baja y reciba Asistencia sanitaria de la Seguridad Social.",
       "Requisitos",
       "Carné de Seguro actualizado.",
@@ -20,36 +88,154 @@
       "Copia del DIP del beneficiario.",
       "Incompatibilidad y prohibición",
       "En caso de tener dos o más empleos, la trabajadora podrá optar a la empresa que mejor le favorezca la prestación, y nunca podrá cobrarla simultáneamente con las distintas empresas a las que presta servicios profesionales.",
-      "Forma y lugar de pago"
-    ],
-    "slug": "subsidio-por-maternidad"
+      "Forma de pago",
+      "Se abona mediante cheque o transferencia bancaria."
+    ]
   },
   {
     "titulo": "Invalidez",
+    "slug": "prestaciones-por-invalidez",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarios",
+        "question": "¿Quiénes son los beneficiarios?",
+        "answers": [
+          "Todos los trabajadores que cotizan a la Seguridad Social y en situación de incapacidad laboral."
+        ]
+      },
+      {
+        "heading": "Situación de invalidez",
+        "question": "¿Qué situación se considera de invalidez?",
+        "answers": [
+          "Situación del trabajador que presenta reducciones anatómicas o funcionales graves, objetivamente determinables y previsiblemente definitivas, que disminuyen o anulan su capacidad laboral."
+        ]
+      },
+      {
+        "heading": "Grados reconocidos",
+        "question": "¿Qué grados de invalidez se reconocen?",
+        "answers": [
+          "Incapacidad parcial permanente para la profesión habitual.",
+          "Incapacidad total permanente para la profesión habitual.",
+          "Incapacidad total permanente para toda clase de trabajo.",
+          "Gran invalidez."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "Mi situación deriva de enfermedad común o accidente no laboral, ¿cuánto tiempo debo haber cotizado?",
+        "answers": [
+          "El asegurado deberá tener acreditados cinco años de cotizaciones en el período inmediatamente anterior al proceso de incapacidad temporal del que se deriva la invalidez, si la invalidez es derivada de enfermedad común o accidente NO laboral."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "Mi situación deriva de enfermedad profesional o accidente laboral, ¿se exige cotización previa?",
+        "answers": [
+          "El asegurado no deberá demostrar ningún período previo de cotizaciones, si la invalidez es derivada de enfermedad profesional o accidente laboral."
+        ]
+      },
+      {
+        "heading": "Cuantía según el origen y grado de invalidez",
+        "question": "Mi invalidez deriva de enfermedad común o accidente no laboral, ¿cuánto me corresponde?",
+        "answers": [],
+        "dataTable": {
+          "headers": [
+            "Grado",
+            "Prestación"
+          ],
+          "rows": [
+            [
+              "Parcial permanente para la profesión habitual",
+              "Subsidio del 40% del salario base durante 3 meses."
+            ],
+            [
+              "Total permanente para la profesión habitual",
+              "Subsidio del 40% del salario base durante 6 meses."
+            ],
+            [
+              "Total permanente para toda clase de trabajo",
+              "Pensión del 40% del salario base de cotización."
+            ],
+            [
+              "Gran invalidez",
+              "Pensión del 80% del salario base de cotización."
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Cuantía según el origen y grado de invalidez",
+        "question": "Mi invalidez deriva de enfermedad profesional o accidente laboral, ¿cuánto me corresponde?",
+        "answers": [],
+        "dataTable": {
+          "headers": [
+            "Grado",
+            "Prestación"
+          ],
+          "rows": [
+            [
+              "Parcial permanente para la profesión habitual",
+              "Subsidio del 50% del salario base durante 24 meses."
+            ],
+            [
+              "Total permanente para la profesión habitual",
+              "Subsidio del 50% del salario base durante 48 meses."
+            ],
+            [
+              "Total permanente para toda clase de trabajo",
+              "Pensión del 50% del salario base de cotización."
+            ],
+            [
+              "Gran invalidez",
+              "Pensión del 100% del salario base de cotización."
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Requisitos",
+        "question": "¿Qué requisitos y documentos debo presentar?",
+        "answers": [
+          "Carné de la Seguridad Social.",
+          "Certificado médico que certifique el grado de invalidez.",
+          "Baja dada en la empresa.",
+          "Declaración del accidente.",
+          "Número de cuenta bancaria.",
+          "Copia del DIP del beneficiario."
+        ]
+      },
+      {
+        "heading": "Incompatibilidad y prohibición",
+        "question": "¿Con qué situaciones o prestaciones es incompatible?",
+        "answers": [
+          "Las prestaciones de invalidez son incompatibles con las pensiones de vejez."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "Se abona mediante cheque o transferencia bancaria, conforme a la modalidad de subsidio o pensión reconocida."
+        ]
+      }
+    ],
     "sections": [
+      "Beneficiarios",
+      "Todos los trabajadores que cotizan a la Seguridad Social y en situación de incapacidad laboral.",
       "Situación de invalidez",
-      "Situación del trabajador que presente reducciones anatómicas o funciones graves, susceptibles de determinación objetiva y previsiblemente definidas, que disminuyan o anulen su capacidad laboral.",
-      "Grados de invalidez",
+      "Situación del trabajador que presenta reducciones anatómicas o funcionales graves, objetivamente determinables y previsiblemente definitivas, que disminuyen o anulan su capacidad laboral.",
+      "Grados reconocidos",
       "Incapacidad parcial permanente para la profesión habitual.",
       "Incapacidad total permanente para la profesión habitual.",
       "Incapacidad total permanente para toda clase de trabajo.",
       "Gran invalidez.",
-      "Beneficiarios",
-      "Todos los trabajadores que cotizan a la Seguridad Social y en situación de incapacidad laboral.",
       "Período de espera",
       "El asegurado deberá tener acreditados cinco años de cotizaciones en el período inmediatamente anterior al proceso de incapacidad temporal del que se deriva la invalidez, si la invalidez es derivada de enfermedad común o accidente NO laboral.",
+      "Período de espera",
       "El asegurado no deberá demostrar ningún período previo de cotizaciones, si la invalidez es derivada de enfermedad profesional o accidente laboral.",
-      "Cuantía de la prestación",
-      "Invalidez derivada de enfermedad común o accidente NO laboral.",
-      "Incapacidad parcial permanente para la profesión habitual: subsidio del 40% del Salario base durante 3 meses.",
-      "Incapacidad total permanente para la profesión habitual: subsidio del 40% del Salario base durante 6 meses.",
-      "Incapacidad total permanente para toda clase de trabajo: pensión del 40% del Salario base de cotización.",
-      "Gran invalidez: pensión del 80% del Salario base de cotización.",
-      "Invalidez derivada de enfermedad profesional o accidente laboral.",
-      "Incapacidad parcial permanente para la profesión habitual: subsidio del 50% del Salario base durante 24 meses.",
-      "Incapacidad total permanente para la profesión habitual: subsidio del 50% del Salario base durante 48 meses.",
-      "Incapacidad total permanente para toda clase de trabajo: pensión del 50% del Salario base de cotización.",
-      "Gran invalidez: pensión del 100% del Salario base de cotización.",
+      "Cuantía según el origen y grado de invalidez",
+      "Cuantía según el origen y grado de invalidez",
       "Requisitos",
       "Carné de la Seguridad Social.",
       "Certificado médico que certifique el grado de invalidez.",
@@ -58,23 +244,96 @@
       "Número de cuenta bancaria.",
       "Copia del DIP del beneficiario.",
       "Incompatibilidad y prohibición",
-      "Las prestaciones de invalidez serán incompatibles con las pensiones de vejez.",
-      "Forma y lugar de pago"
-    ],
-    "slug": "prestaciones-por-invalidez"
+      "Las prestaciones de invalidez son incompatibles con las pensiones de vejez.",
+      "Forma de pago",
+      "Se abona mediante cheque o transferencia bancaria, conforme a la modalidad de subsidio o pensión reconocida."
+    ]
   },
   {
     "titulo": "Incapacidad temporal",
+    "slug": "subsidio-de-incapacidad-temporal",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarios",
+        "question": "¿Quiénes son los beneficiarios?",
+        "answers": [
+          "Trabajador/a en situación de alta y al corriente de las cotizaciones."
+        ]
+      },
+      {
+        "heading": "Situación protegida",
+        "question": "¿Qué situación protege esta prestación?",
+        "answers": [
+          "Situación de enfermedad o accidente sea o no de trabajo, en tanto sea causante de baja laboral y que el trabajador reciba asistencia sanitaria."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "Mi situación deriva de enfermedad común o accidente no laboral, ¿cuánto tiempo debo haber cotizado?",
+        "answers": [
+          "El trabajador/a debe acreditar un año de cotizaciones en el período inmediatamente anterior al hecho que causa las incapacidades, en caso de enfermedad común o accidente NO laboral."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "Mi situación deriva de enfermedad profesional o accidente laboral, ¿se exige cotización previa?",
+        "answers": [
+          "El trabajador/a no deberá demostrar ningún período previo de cotizaciones, en caso de enfermedad profesional o accidente laboral"
+        ]
+      },
+      {
+        "heading": "Cuantía",
+        "question": "¿Cuál es la cuantía de la prestación?",
+        "answers": [
+          "El subsidio equivale al 50% del salario base diario de cotización multiplicado por los días de reposo prescritos por los facultativos."
+        ]
+      },
+      {
+        "heading": "Requisitos",
+        "question": "¿Qué requisitos y documentos debo presentar?",
+        "answers": [
+          "Carné de Seguro actualizado.",
+          "Baja laboral otorgada por la empresa o departamento ministerial correspondiente.",
+          "Certificado de reposo médico en régimen ambulatorio.",
+          "Alta médica, si hubiera estado hospitalizado.",
+          "Número de cuenta bancaria.",
+          "Copia del DIP del beneficiario."
+        ]
+      },
+      {
+        "heading": "Determinación de los días de reposo",
+        "question": "¿Desde qué día se reconoce la incapacidad temporal y cuál es su duración máxima?",
+        "answers": [
+          "La incapacidad temporal se considera a partir del cuarto día de la declaración de incapacidad y hasta un máximo de veintiséis semanas, susceptible de prórroga según el criterio del Tribunal Médico Calificador. El período generado durante el reposo determina los días reales de incapacidad."
+        ]
+      },
+      {
+        "heading": "Forma y naturaleza del pago",
+        "question": "¿Cómo se paga y es un subsidio de pago único?",
+        "answers": [
+          "Es un subsidio de pago único, abonado mediante cheque o transferencia bancaria al beneficiario o a su representante legalmente autorizado."
+        ]
+      },
+      {
+        "heading": "Incompatibilidad y prohibición",
+        "question": "¿Con qué situaciones o prestaciones es incompatible?",
+        "answers": [
+          "Si el trabajador tiene dos o más empleos, podrá optar por la empresa que más le favorezca para la prestación. No podrá cobrarla simultáneamente por las distintas empresas a las que presta servicios."
+        ]
+      }
+    ],
     "sections": [
-      "Situación de incapacidad temporal",
-      "Situación de enfermedad o accidente sea o no de trabajo, en tanto sea causante de baja laboral y que el trabajador reciba asistencia sanitaria.",
       "Beneficiarios",
       "Trabajador/a en situación de alta y al corriente de las cotizaciones.",
+      "Situación protegida",
+      "Situación de enfermedad o accidente sea o no de trabajo, en tanto sea causante de baja laboral y que el trabajador reciba asistencia sanitaria.",
       "Período de espera",
       "El trabajador/a debe acreditar un año de cotizaciones en el período inmediatamente anterior al hecho que causa las incapacidades, en caso de enfermedad común o accidente NO laboral.",
+      "Período de espera",
       "El trabajador/a no deberá demostrar ningún período previo de cotizaciones, en caso de enfermedad profesional o accidente laboral",
-      "Cuantía de la prestación.",
-      "Se fija de acuerdo al Salario base diario de cotización, aplicando sobre este el porcentaje del 50% multiplicado por los días de reposo prescritos por los facultativos.",
+      "Cuantía",
+      "El subsidio equivale al 50% del salario base diario de cotización multiplicado por los días de reposo prescritos por los facultativos.",
       "Requisitos",
       "Carné de Seguro actualizado.",
       "Baja laboral otorgada por la empresa o departamento ministerial correspondiente.",
@@ -84,20 +343,69 @@
       "Copia del DIP del beneficiario.",
       "Determinación de los días de reposo",
       "La incapacidad temporal se considera a partir del cuarto día de la declaración de incapacidad y hasta un máximo de veintiséis semanas, susceptible de prórroga según el criterio del Tribunal Médico Calificador. El período generado durante el reposo determina los días reales de incapacidad.",
-      "Forma y lugar de pago",
-      "El pago se hace mediante cheque bancario extendido al causante de la prestación o a quien este delegue legalmente. El pago se realiza en la Sección de Contabilidad del INSESO.",
+      "Forma y naturaleza del pago",
+      "Es un subsidio de pago único, abonado mediante cheque o transferencia bancaria al beneficiario o a su representante legalmente autorizado.",
       "Incompatibilidad y prohibición",
       "Si el trabajador tiene dos o más empleos, podrá optar por la empresa que más le favorezca para la prestación. No podrá cobrarla simultáneamente por las distintas empresas a las que presta servicios."
-    ],
-    "slug": "subsidio-de-incapacidad-temporal"
+    ]
   },
   {
     "titulo": "Discapacidad",
+    "slug": "discapacidad",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarios",
+        "question": "¿Quiénes son los beneficiarios?",
+        "answers": [
+          "Personas con discapacidad o familiares que soportan la carga social de la persona con discapacidad."
+        ]
+      },
+      {
+        "heading": "Situación protegida",
+        "question": "¿Qué situación protege esta prestación?",
+        "answers": [
+          "Se considera a la persona ecuatoguineana cuyas posibilidades de obtener, conservar y progresar en un empleo adecuado están sustancialmente reducidas por una deficiencia física, psíquica o sensorial debidamente reconocida."
+        ]
+      },
+      {
+        "heading": "Reconocimiento y procedimiento",
+        "question": "¿Cómo puedo solicitar el reconocimiento de la discapacidad?",
+        "answers": [
+          "Participar en la evaluación que realiza periódicamente el INSESO para reconocer el estado físico, psíquico o sensorial.",
+          "Si no consta en el censo realizado para ese fin, un familiar puede solicitar el reconocimiento en el INSESO, a instancia de parte."
+        ]
+      },
+      {
+        "heading": "Contenido de la prestación",
+        "question": "¿Qué ayudas y servicios incluye?",
+        "answers": [
+          "Prestación médico farmacéutica: asistencia sanitaria para personas calificadas con discapacidad leve que pueden realizar trabajos remunerados por cuenta propia o ajena.",
+          "Subsidio de garantía de ingresos mínimos: cantidad de dinero para personas calificadas como casos graves. El folleto no indica el importe.",
+          "Subsidio por ayuda de tercera persona: se concede a personas calificadas como casos muy graves, con independencia del subsidio de garantía de ingresos mínimos. El folleto no indica el importe.",
+          "Rehabilitación, si fuera necesaria: asistencia sanitaria especializada para la recuperación física, psíquica o sensorial."
+        ]
+      },
+      {
+        "heading": "Cuantía",
+        "question": "¿Cuál es la cuantía de la prestación?",
+        "answers": [
+          "El subsidio de garantía es la cantidad según lo establecido reglamentariamente."
+        ]
+      },
+      {
+        "heading": "Periodicidad y forma de pago",
+        "question": "¿Cada cuánto tiempo y cómo se paga?",
+        "answers": [
+          "Los subsidios de garantía de ingresos mínimos y de ayuda de tercera persona se pagan cada tres meses, por cheque. La atención se organiza en el lugar de residencia habitual de la persona con discapacidad o donde esta indique, según el procedimiento de la prestación."
+        ]
+      }
+    ],
     "sections": [
-      "Situación de discapacidad",
-      "Se considera a la persona ecuatoguineana cuyas posibilidades de obtener, conservar y progresar en un empleo adecuado están sustancialmente reducidas por una deficiencia física, psíquica o sensorial debidamente reconocida.",
       "Beneficiarios",
       "Personas con discapacidad o familiares que soportan la carga social de la persona con discapacidad.",
+      "Situación protegida",
+      "Se considera a la persona ecuatoguineana cuyas posibilidades de obtener, conservar y progresar en un empleo adecuado están sustancialmente reducidas por una deficiencia física, psíquica o sensorial debidamente reconocida.",
       "Reconocimiento y procedimiento",
       "Participar en la evaluación que realiza periódicamente el INSESO para reconocer el estado físico, psíquico o sensorial.",
       "Si no consta en el censo realizado para ese fin, un familiar puede solicitar el reconocimiento en el INSESO, a instancia de parte.",
@@ -106,22 +414,102 @@
       "Subsidio de garantía de ingresos mínimos: cantidad de dinero para personas calificadas como casos graves. El folleto no indica el importe.",
       "Subsidio por ayuda de tercera persona: se concede a personas calificadas como casos muy graves, con independencia del subsidio de garantía de ingresos mínimos. El folleto no indica el importe.",
       "Rehabilitación, si fuera necesaria: asistencia sanitaria especializada para la recuperación física, psíquica o sensorial.",
-      "Período y lugar de pago",
-      "Los subsidios de garantía de ingresos mínimos y de ayuda de tercera persona se pagan cada tres meses, en el lugar de residencia habitual de la persona con discapacidad o donde esta indique.",
-      "Datos no especificados en la documentación",
-      "No se detallan el período de espera, los importes, la documentación de solicitud ni las incompatibilidades. Deben completarse con la unidad competente."
-    ],
-    "slug": "discapacidad"
+      "Cuantía",
+      "El subsidio de garantía es la cantidad según lo establecido reglamentariamente.",
+      "Periodicidad y forma de pago",
+      "Los subsidios de garantía de ingresos mínimos y de ayuda de tercera persona se pagan cada tres meses, por cheque. La atención se organiza en el lugar de residencia habitual de la persona con discapacidad o donde esta indique, según el procedimiento de la prestación."
+    ]
   },
   {
     "titulo": "Vejez o jubilación",
+    "slug": "pension-por-vejez",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarios",
+        "question": "¿Quiénes son los beneficiarios?",
+        "answers": [
+          "Asegurados que, por razón de edad, cesan en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista."
+        ]
+      },
+      {
+        "heading": "Edad y período de cotización",
+        "question": "¿Qué edad y cuántos meses de cotización necesito para jubilarme?",
+        "answers": [
+          "Haber cumplido 60 años.",
+          "Acreditar al menos 120 meses de cotización, equivalentes a 10 años. De ellos, 60 meses deben corresponder a los diez años inmediatamente anteriores al momento de causar el derecho."
+        ]
+      },
+      {
+        "heading": "Cuantía",
+        "question": "¿Cuál es la cuantía de la prestación?",
+        "answers": [
+          "El 40 % del salario base de cotización, aumentado en un 2 % por cada año adicional sobre los diez primeros, sin que la cuantía total supere el 80 %, según el folleto aportado."
+        ]
+      },
+      {
+        "heading": "Adquisición del derecho",
+        "question": "¿Desde qué fecha se reconoce el derecho a la pensión?",
+        "answers": [
+          "El reconocimiento de la pensión surte efectos a partir de la fecha de recepción de la solicitud en las oficinas del INSESO."
+        ]
+      },
+      {
+        "heading": "Requisitos generales",
+        "question": "¿Qué documentos generales debo presentar?",
+        "answers": [
+          "Copia del DIP del beneficiario.",
+          "Copia del carné de seguro.",
+          "Cesantía laboral.",
+          "Número de cuenta bancaria."
+        ]
+      },
+      {
+        "heading": "Requisitos específicos del sector público",
+        "question": "Soy funcionario o trabajador del sector público, ¿qué documentos debo presentar?",
+        "answers": [
+          "Copia del oficio de jubilación.",
+          "Copia del nombramiento.",
+          "Copia del DIP.",
+          "Las tres últimas nóminas de la Tesorería.",
+          "Extracto bancario desde 2020 hasta la fecha de la solicitud.",
+          "Copia del carné militar, para antiguos funcionarios del Ministerio de Defensa.",
+          "Copia del carné del INSESO, si se dispone de él.",
+          "Solicitud."
+        ]
+      },
+      {
+        "heading": "Requisitos específicos del sector privado",
+        "question": "Soy trabajador del sector privado, ¿qué documentos debo presentar?",
+        "answers": [
+          "Documento de cesantía de la empresa.",
+          "Copia del carné del asegurado, si se dispone de él.",
+          "Copia del extracto de nacimiento o del DIP.",
+          "Solicitud."
+        ]
+      },
+      {
+        "heading": "Incompatibilidad y prohibición",
+        "question": "¿Con qué situaciones o prestaciones es incompatible?",
+        "answers": [
+          "La pensión de vejez es incompatible con cualquier otra pensión de la Seguridad Social. Si reúne los requisitos de ambas, el beneficiario puede optar por la que más le favorezca."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "La pensión se abona mediante cheque o transferencia bancaria."
+        ]
+      }
+    ],
     "sections": [
       "Beneficiarios",
       "Asegurados que, por razón de edad, cesan en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista.",
       "Edad y período de cotización",
       "Haber cumplido 60 años.",
       "Acreditar al menos 120 meses de cotización, equivalentes a 10 años. De ellos, 60 meses deben corresponder a los diez años inmediatamente anteriores al momento de causar el derecho.",
-      "Cuantía de la prestación",
+      "Cuantía",
       "El 40 % del salario base de cotización, aumentado en un 2 % por cada año adicional sobre los diez primeros, sin que la cuantía total supere el 80 %, según el folleto aportado.",
       "Adquisición del derecho",
       "El reconocimiento de la pensión surte efectos a partir de la fecha de recepción de la solicitud en las oficinas del INSESO.",
@@ -130,7 +518,7 @@
       "Copia del carné de seguro.",
       "Cesantía laboral.",
       "Número de cuenta bancaria.",
-      "Requisitos específicos para el sector público",
+      "Requisitos específicos del sector público",
       "Copia del oficio de jubilación.",
       "Copia del nombramiento.",
       "Copia del DIP.",
@@ -139,34 +527,455 @@
       "Copia del carné militar, para antiguos funcionarios del Ministerio de Defensa.",
       "Copia del carné del INSESO, si se dispone de él.",
       "Solicitud.",
-      "Requisitos específicos para el sector privado",
+      "Requisitos específicos del sector privado",
       "Documento de cesantía de la empresa.",
       "Copia del carné del asegurado, si se dispone de él.",
       "Copia del extracto de nacimiento o del DIP.",
       "Solicitud.",
       "Incompatibilidad y prohibición",
-      "La pensión de vejez es incompatible con cualquier otra pensión de la Seguridad Social. Si reúne los requisitos de ambas, el beneficiario puede optar por la que más le favorezca."
+      "La pensión de vejez es incompatible con cualquier otra pensión de la Seguridad Social. Si reúne los requisitos de ambas, el beneficiario puede optar por la que más le favorezca.",
+      "Forma de pago",
+      "La pensión se abona mediante cheque o transferencia bancaria."
+    ]
+  },
+  {
+    "titulo": "Prestaciones familiares",
+    "slug": "prestaciones-familiares",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarios a cargo del trabajador",
+        "question": "¿Qué familiares a mi cargo pueden beneficiarse?",
+        "answers": [
+          "La esposa del trabajador.",
+          "Los hijos menores de 14 años y los mayores de esa edad hasta 19 años que acrediten ser estudiantes o estar incapacitados para todo tipo de trabajo.",
+          "Los padres, abuelos, tíos y suegros del esposo o de la esposa trabajadora que dependan económicamente de estos.",
+          "Los hermanos huérfanos menores de 14 años o mayores de esa edad hasta 19 años, cuando acrediten ser estudiantes."
+        ]
+      },
+      {
+        "heading": "Finalidad y modalidades",
+        "question": "¿Para qué sirve la prestación?",
+        "answers": [
+          "Ayudar al trabajador a afrontar sus cargas familiares mediante subsidios familiares y asistencia sanitaria."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "¿Cuánto tiempo debo haber cotizado para solicitar la prestación?",
+        "answers": [
+          "El derecho se adquiere desde el primer día de la afiliación y cotización al INSESO y se mantiene mientras perdure esa condición."
+        ]
+      },
+      {
+        "heading": "Solicitud y documentación",
+        "question": "¿Qué documentos debo presentar para solicitar la prestación familiar?",
+        "answers": [
+          "Fotocopia del carné de seguro del trabajador en vigor.",
+          "Copia del DIP.",
+          "Si el trabajador es funcionario: copia del nombramiento y de las tres últimas nóminas de la Tesorería, con vigencia de tres meses, que acrediten su situación activa como servidor público.",
+          "Número de cuenta bancaria."
+        ],
+        "documentGroups": [
+          {
+            "title": "Esposa no trabajadora",
+            "items": [
+              "Certificado de fe de vida, en original y copia.",
+              "Copia del certificado de matrimonio expedido por el Ministerio de Justicia.",
+              "DIP de la esposa."
+            ]
+          },
+          {
+            "title": "Hijos: desde el nacimiento hasta menores de 20 años",
+            "items": [
+              "Certificado de fe de vida, en original y copia.",
+              "Copia del certificado de extracto del acta de nacimiento o literal.",
+              "Certificado de estudios o copia del boletín del año en curso, para quienes asisten a clase.",
+              "Partida de bautismo o certificado de nacimiento del hospital; certificado de la iglesia firmado por el pastor en caso de no ser católico, o copia del carné de vacunación del niño."
+            ]
+          },
+          {
+            "title": "Abuelos o abuelas",
+            "items": [
+              "Certificado de fe de vida de los abuelos, en original y copia.",
+              "Copia del certificado de extracto del acta de nacimiento de la madre o del padre.",
+              "Copia del certificado de extracto del acta de nacimiento del trabajador o de la trabajadora.",
+              "Certificado de dependencia económica."
+            ]
+          },
+          {
+            "title": "Padres: 60 años cumplidos",
+            "items": [
+              "Certificado de fe de vida del padre o de la madre, en original y copia.",
+              "Certificado de extracto del acta de nacimiento del trabajador.",
+              "Certificado de dependencia económica expedido por el presidente de la comunidad de vecinos.",
+              "DIP del padre o de la madre."
+            ]
+          },
+          {
+            "title": "Suegros: 60 años cumplidos",
+            "items": [
+              "Certificado de fe de vida del suegro o de la suegra, en original y copia.",
+              "Certificado de extracto del acta de nacimiento del esposo o de la esposa.",
+              "Certificado de matrimonio de los cónyuges.",
+              "Certificado de dependencia económica expedido por el presidente de la comunidad de vecinos.",
+              "DIP del suegro o de la suegra."
+            ]
+          },
+          {
+            "title": "Hermanos: huérfanos y estudiantes",
+            "items": [
+              "Certificado de defunción de los padres biológicos.",
+              "Certificado de extracto de nacimiento.",
+              "Certificado de fe de vida, en original y copia.",
+              "Certificados de estudios para los hermanos mayores de 14 años.",
+              "Partida de bautismo.",
+              "Certificado de tutoría expedido por el juez de primera instancia."
+            ]
+          }
+        ]
+      },
+      {
+        "heading": "Inicio del disfrute",
+        "question": "¿Desde cuándo puedo recibir la asistencia y el subsidio familiar?",
+        "answers": [
+          "La asistencia sanitaria comienza desde la entrada oficial de la solicitud, previa validación por el servicio correspondiente.",
+          "El subsidio familiar comienza a cobrarse a partir del mes siguiente a la presentación de la solicitud."
+        ]
+      },
+      {
+        "heading": "Cuantía de los subsidios familiares",
+        "question": "¿Cuál es la cuantía por cada familiar a cargo?",
+        "answers": [],
+        "dataTable": {
+          "headers": [
+            "Carga familiar",
+            "Puntos",
+            "Importe indicado en FCFA"
+          ],
+          "rows": [
+            [
+              "Esposa o Titular",
+              "5",
+              "5.000"
+            ],
+            [
+              "Del primer al tercer hijo, a cada uno le corresponde",
+              "1",
+              "1.000"
+            ],
+            [
+              "Cuarto hijo",
+              "2",
+              "2.000"
+            ],
+            [
+              "Del 5to al 9no, a cada uno le corresponde",
+              "3",
+              "3.000"
+            ],
+            [
+              "Cada hijo desde el décimo hijo le corresponde",
+              "5",
+              "5.000"
+            ],
+            [
+              "Padres abuelos y tíos",
+              "3",
+              "3.000"
+            ],
+            [
+              "Hermanos huérfanos económicamente dependientes",
+              "Según orden aplicable a los hijos",
+              "Igual que los hijos"
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Incompatibilidad y prohibición",
+        "question": "¿Con qué situaciones o prestaciones es incompatible?",
+        "answers": [
+          "Si el marido y la esposa trabajan, solo uno de ellos tiene derecho al subsidio. En caso de separación matrimonial, cada cónyuge lo percibe en función de los hijos que tenga a su cuidado."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "Los subsidios familiares se abonan por transferencia bancaria. La asistencia sanitaria se presta a través de los centros habilitados."
+        ]
+      }
     ],
-    "slug": "pension-por-vejez"
+    "sections": [
+      "Beneficiarios a cargo del trabajador",
+      "La esposa del trabajador.",
+      "Los hijos menores de 14 años y los mayores de esa edad hasta 19 años que acrediten ser estudiantes o estar incapacitados para todo tipo de trabajo.",
+      "Los padres, abuelos, tíos y suegros del esposo o de la esposa trabajadora que dependan económicamente de estos.",
+      "Los hermanos huérfanos menores de 14 años o mayores de esa edad hasta 19 años, cuando acrediten ser estudiantes.",
+      "Finalidad y modalidades",
+      "Ayudar al trabajador a afrontar sus cargas familiares mediante subsidios familiares y asistencia sanitaria.",
+      "Período de espera",
+      "El derecho se adquiere desde el primer día de la afiliación y cotización al INSESO y se mantiene mientras perdure esa condición.",
+      "Solicitud y documentación",
+      "Fotocopia del carné de seguro del trabajador en vigor.",
+      "Copia del DIP.",
+      "Si el trabajador es funcionario: copia del nombramiento y de las tres últimas nóminas de la Tesorería, con vigencia de tres meses, que acrediten su situación activa como servidor público.",
+      "Número de cuenta bancaria.",
+      "Esposa no trabajadora",
+      "Certificado de fe de vida, en original y copia.",
+      "Copia del certificado de matrimonio expedido por el Ministerio de Justicia.",
+      "DIP de la esposa.",
+      "Hijos: desde el nacimiento hasta menores de 20 años",
+      "Certificado de fe de vida, en original y copia.",
+      "Copia del certificado de extracto del acta de nacimiento o literal.",
+      "Certificado de estudios o copia del boletín del año en curso, para quienes asisten a clase.",
+      "Partida de bautismo o certificado de nacimiento del hospital; certificado de la iglesia firmado por el pastor en caso de no ser católico, o copia del carné de vacunación del niño.",
+      "Abuelos o abuelas",
+      "Certificado de fe de vida de los abuelos, en original y copia.",
+      "Copia del certificado de extracto del acta de nacimiento de la madre o del padre.",
+      "Copia del certificado de extracto del acta de nacimiento del trabajador o de la trabajadora.",
+      "Certificado de dependencia económica.",
+      "Padres: 60 años cumplidos",
+      "Certificado de fe de vida del padre o de la madre, en original y copia.",
+      "Certificado de extracto del acta de nacimiento del trabajador.",
+      "Certificado de dependencia económica expedido por el presidente de la comunidad de vecinos.",
+      "DIP del padre o de la madre.",
+      "Suegros: 60 años cumplidos",
+      "Certificado de fe de vida del suegro o de la suegra, en original y copia.",
+      "Certificado de extracto del acta de nacimiento del esposo o de la esposa.",
+      "Certificado de matrimonio de los cónyuges.",
+      "Certificado de dependencia económica expedido por el presidente de la comunidad de vecinos.",
+      "DIP del suegro o de la suegra.",
+      "Hermanos: huérfanos y estudiantes",
+      "Certificado de defunción de los padres biológicos.",
+      "Certificado de extracto de nacimiento.",
+      "Certificado de fe de vida, en original y copia.",
+      "Certificados de estudios para los hermanos mayores de 14 años.",
+      "Partida de bautismo.",
+      "Certificado de tutoría expedido por el juez de primera instancia.",
+      "Inicio del disfrute",
+      "La asistencia sanitaria comienza desde la entrada oficial de la solicitud, previa validación por el servicio correspondiente.",
+      "El subsidio familiar comienza a cobrarse a partir del mes siguiente a la presentación de la solicitud.",
+      "Cuantía de los subsidios familiares",
+      "Incompatibilidad y prohibición",
+      "Si el marido y la esposa trabajan, solo uno de ellos tiene derecho al subsidio. En caso de separación matrimonial, cada cónyuge lo percibe en función de los hijos que tenga a su cuidado.",
+      "Forma de pago",
+      "Los subsidios familiares se abonan por transferencia bancaria. La asistencia sanitaria se presta a través de los centros habilitados."
+    ]
+  },
+  {
+    "titulo": "Prestaciones sanitarias",
+    "slug": "prestaciones-sanitarias",
+    "group": "general",
+    "questions": [
+      {
+        "heading": "Beneficiarios por enfermedad común o accidente no laboral",
+        "question": "¿Quiénes pueden recibir asistencia por enfermedad común o accidente no laboral?",
+        "answers": [
+          "El trabajador.",
+          "La esposa del trabajador o el esposo con invalidez absoluta para el trabajo que dependa económicamente de su esposa.",
+          "Los hijos hasta la edad mínima legal para trabajar por cuenta ajena, o con invalidez absoluta para el trabajo y dependencia económica del trabajador.",
+          "Las personas con invalidez y subsidio, y los pensionistas.",
+          "Los hermanos huérfanos o con invalidez y los ascendientes mayores de 60 años que dependan económicamente del trabajador."
+        ]
+      },
+      {
+        "heading": "Beneficiarios por contingencia profesional y maternidad",
+        "question": "¿Quiénes pueden recibir asistencia por accidente laboral, enfermedad profesional o maternidad?",
+        "answers": [
+          "Por enfermedad profesional o accidente laboral: el trabajador o la trabajadora.",
+          "Por maternidad: la asegurada y la esposa del asegurado."
+        ]
+      },
+      {
+        "heading": "Contenido",
+        "question": "¿Qué asistencia sanitaria y farmacéutica incluye?",
+        "answers": [
+          "Asistencia médica: atención al trabajador y su familia desde la recepción y la consulta hasta la obtención de resultados clínicos.",
+          "Asistencia farmacéutica: dispensación al trabajador y su familia de los medicamentos prescritos por el médico."
+        ]
+      },
+      {
+        "heading": "Período de espera",
+        "question": "¿Cuánto tiempo debo haber cotizado para solicitar la prestación?",
+        "answers": [
+          "No existe período de espera. La condición de beneficiario se adquiere desde el día siguiente a la afiliación y cotización al INSESO."
+        ]
+      },
+      {
+        "heading": "Participación en el coste de la asistencia",
+        "question": "¿Qué parte de la asistencia y de los medicamentos debo pagar?",
+        "answers": [],
+        "dataTable": {
+          "headers": [
+            "Servicio",
+            "Situación",
+            "Participación del beneficiario"
+          ],
+          "rows": [
+            [
+              "Asistencia médica",
+              "Régimen ambulatorio sin hospitalización",
+              "Trabajador y familiares: 25% de los gastos médicos. Pensionista: gratuita."
+            ],
+            [
+              "Asistencia médica",
+              "Hospitalización",
+              "Gratuita."
+            ],
+            [
+              "Asistencia farmacéutica",
+              "Régimen ambulatorio sin hospitalización",
+              "Trabajador y familiares: 50% de la receta. Pensionista: gratuita."
+            ],
+            [
+              "Asistencia farmacéutica",
+              "Accidente de trabajo o enfermedad profesional",
+              "Medicamentos gratuitos."
+            ],
+            [
+              "Asistencia farmacéutica",
+              "Hospitalización",
+              "Gratuita."
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Centros relacionados",
+        "question": "¿En qué centros se presta la asistencia?",
+        "answers": [
+          "Bioko Norte: Policlínico Dr. Loeri Comba, Malabo.",
+          "Bioko Sur: Hospital Provincial de Luba.",
+          "Annobón: Hospital Provincial de Palea.",
+          "Litoral: Hospital Nuevo INSESO y Centro de Salud de INSESO del barrio Zona, Bata.",
+          "Kie-Ntem: Centro Sanitario del INSESO, Ebebiyín.",
+          "Wele-Nzas: Centro Sanitario del INSESO, Mongomo.",
+          "Centro Sur: Centro Sanitario del INSESO, Evinayong.",
+          "Djibloho: Centro de Salud del INSESO, Oyala."
+        ]
+      },
+      {
+        "heading": "Abono de importes económicos",
+        "question": "¿Cómo se abonan los importes económicos reconocidos?",
+        "answers": [
+          "Cuando corresponda el abono de un importe económico reconocido, se utiliza cheque o transferencia bancaria."
+        ]
+      }
+    ],
+    "sections": [
+      "Beneficiarios por enfermedad común o accidente no laboral",
+      "El trabajador.",
+      "La esposa del trabajador o el esposo con invalidez absoluta para el trabajo que dependa económicamente de su esposa.",
+      "Los hijos hasta la edad mínima legal para trabajar por cuenta ajena, o con invalidez absoluta para el trabajo y dependencia económica del trabajador.",
+      "Las personas con invalidez y subsidio, y los pensionistas.",
+      "Los hermanos huérfanos o con invalidez y los ascendientes mayores de 60 años que dependan económicamente del trabajador.",
+      "Beneficiarios por contingencia profesional y maternidad",
+      "Por enfermedad profesional o accidente laboral: el trabajador o la trabajadora.",
+      "Por maternidad: la asegurada y la esposa del asegurado.",
+      "Contenido",
+      "Asistencia médica: atención al trabajador y su familia desde la recepción y la consulta hasta la obtención de resultados clínicos.",
+      "Asistencia farmacéutica: dispensación al trabajador y su familia de los medicamentos prescritos por el médico.",
+      "Período de espera",
+      "No existe período de espera. La condición de beneficiario se adquiere desde el día siguiente a la afiliación y cotización al INSESO.",
+      "Participación en el coste de la asistencia",
+      "Centros relacionados",
+      "Bioko Norte: Policlínico Dr. Loeri Comba, Malabo.",
+      "Bioko Sur: Hospital Provincial de Luba.",
+      "Annobón: Hospital Provincial de Palea.",
+      "Litoral: Hospital Nuevo INSESO y Centro de Salud de INSESO del barrio Zona, Bata.",
+      "Kie-Ntem: Centro Sanitario del INSESO, Ebebiyín.",
+      "Wele-Nzas: Centro Sanitario del INSESO, Mongomo.",
+      "Centro Sur: Centro Sanitario del INSESO, Evinayong.",
+      "Djibloho: Centro de Salud del INSESO, Oyala.",
+      "Abono de importes económicos",
+      "Cuando corresponda el abono de un importe económico reconocido, se utiliza cheque o transferencia bancaria."
+    ]
   },
   {
     "titulo": "Gastos de sepelio",
+    "slug": "gastos-de-sepelio",
+    "group": "muerte-supervivencia",
+    "questions": [
+      {
+        "heading": "Beneficiarios",
+        "question": "¿Quiénes son los beneficiarios?",
+        "answers": [
+          "La asignación corresponde a quien haya soportado los gastos.",
+          "Se presume que dichos gastos han sido satisfechos, salvo prueba en lo contrario, por este orden: por la viuda, por los hijos o los parientes del fallecido que convivieran habitualmente con él.",
+          "Si una entidad ha costeado el sepelio, se le abonan los gastos realmente producidos hasta el importe máximo de la prestación."
+        ]
+      },
+      {
+        "heading": "Hecho causante",
+        "question": "¿Cuándo se puede solicitar la prestación de gastos de sepelio?",
+        "answers": [
+          "Fallecimiento del asegurado o pensionista por vejez o invalidez. Da derecho a una asignación global para afrontar los gastos de sepelio."
+        ]
+      },
+      {
+        "heading": "Cuantía y naturaleza",
+        "question": "¿Cuánto se abona por sepelio y es un pago único?",
+        "answers": [
+          "Subsidio de pago único equivalente a dos meses del salario base de cotización del causante."
+        ]
+      },
+      {
+        "heading": "Requisitos generales",
+        "question": "¿Qué documentos generales debo presentar?",
+        "answers": [
+          "Certificado de defunción.",
+          "Documento público que acredite el nexo familiar.",
+          "Solicitud de reclamación de la entidad, si una entidad pública o privada costeó el sepelio.",
+          "Número de cuenta bancaria.",
+          "Copia del DIP del beneficiario."
+        ]
+      },
+      {
+        "heading": "Requisitos comunes de los sectores público y privado",
+        "question": "¿Qué documentos se exigen tanto en el sector público como en el privado?",
+        "answers": [
+          "Copia del certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
+          "Copia del carné del INSESO del causante, si lo tuviera.",
+          "Copia del DIP del solicitante y del causante.",
+          "Autorización manifiesta y firmada por los familiares del fallecido si el solicitante no es pariente directo. Cada firmante debe adjuntar copia de su DIP.",
+          "Copia del certificado de matrimonio legalizado en el Ministerio de Justicia, si solicita la viuda.",
+          "Impreso de solicitud dirigido al Delegado Nacional."
+        ]
+      },
+      {
+        "heading": "Requisitos adicionales si el causante era funcionario",
+        "question": "Si la persona fallecida era funcionaria, ¿qué documentos adicionales debo aportar?",
+        "answers": [
+          "Copia del nombramiento del fallecido.",
+          "Las tres últimas nóminas de la Tesorería."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "El subsidio se abona una sola vez, por cheque o transferencia bancaria, a quien haya soportado los gastos o a la entidad que los haya costeado, con el límite del importe máximo de la prestación."
+        ]
+      }
+    ],
     "sections": [
-      "Hecho causante",
-      "Fallecimiento del asegurado o pensionista por vejez o invalidez. Da derecho a una asignación global para afrontar los gastos de sepelio.",
       "Beneficiarios",
       "La asignación corresponde a quien haya soportado los gastos.",
       "Se presume que dichos gastos han sido satisfechos, salvo prueba en lo contrario, por este orden: por la viuda, por los hijos o los parientes del fallecido que convivieran habitualmente con él.",
       "Si una entidad ha costeado el sepelio, se le abonan los gastos realmente producidos hasta el importe máximo de la prestación.",
-      "Cuantía de la prestación",
-      "Pago único equivalente a dos meses del salario base de cotización del causante.",
+      "Hecho causante",
+      "Fallecimiento del asegurado o pensionista por vejez o invalidez. Da derecho a una asignación global para afrontar los gastos de sepelio.",
+      "Cuantía y naturaleza",
+      "Subsidio de pago único equivalente a dos meses del salario base de cotización del causante.",
       "Requisitos generales",
       "Certificado de defunción.",
       "Documento público que acredite el nexo familiar.",
       "Solicitud de reclamación de la entidad, si una entidad pública o privada costeó el sepelio.",
       "Número de cuenta bancaria.",
       "Copia del DIP del beneficiario.",
-      "Requisitos comunes de los listados de los sectores público y privado",
+      "Requisitos comunes de los sectores público y privado",
       "Copia del certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
       "Copia del carné del INSESO del causante, si lo tuviera.",
       "Copia del DIP del solicitante y del causante.",
@@ -175,13 +984,123 @@
       "Impreso de solicitud dirigido al Delegado Nacional.",
       "Requisitos adicionales si el causante era funcionario",
       "Copia del nombramiento del fallecido.",
-      "Las tres últimas nóminas de la Tesorería."
-    ],
-    "slug": "gastos-de-sepelio"
+      "Las tres últimas nóminas de la Tesorería.",
+      "Forma de pago",
+      "El subsidio se abona una sola vez, por cheque o transferencia bancaria, a quien haya soportado los gastos o a la entidad que los haya costeado, con el límite del importe máximo de la prestación."
+    ]
   },
   {
     "titulo": "Viudedad",
+    "slug": "viudedad",
+    "group": "muerte-supervivencia",
+    "questions": [
+      {
+        "heading": "Situación protegida y beneficiarios",
+        "question": "¿Quiénes pueden solicitar viudedad y qué situación se protege?",
+        "answers": [
+          "Fallecimiento del asegurado, cualquiera que sea su causa. La modalidad depende de la edad y situación familiar o de invalidez del cónyuge superviviente."
+        ]
+      },
+      {
+        "heading": "Modalidades cuantía y duración",
+        "question": "Soy viuda menor de 30 años y no tengo hijos, ¿qué subsidio me corresponde?",
+        "answers": [
+          "Viuda menor de 30 años sin hijos"
+        ],
+        "dataTable": {
+          "headers": [
+            "Origen del fallecimiento",
+            "Prestación"
+          ],
+          "rows": [
+            [
+              "Enfermedad común o accidente no laboral",
+              "Subsidio del 40% del salario base de cotización durante 24 meses."
+            ],
+            [
+              "Enfermedad profesional o accidente laboral",
+              "Subsidio del 50% del salario base de cotización."
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Modalidades cuantía y duración",
+        "question": "Tengo hijos, soy mayor de 30 años o tengo invalidez, ¿qué pensión de viudedad se contempla?",
+        "answers": [
+          "Viuda con hijos o mayor de 30 años o con invalidez; viudo con invalidez económicamente dependiente de la cónyuge"
+        ],
+        "dataTable": {
+          "headers": [
+            "Origen del fallecimiento",
+            "Prestación"
+          ],
+          "rows": [
+            [
+              "Enfermedad común o accidente no laboral",
+              "Pensión vitalicia del 40% del salario base de cotización."
+            ],
+            [
+              "Enfermedad profesional o accidente laboral",
+              "Pensión del 50% del salario base de cotización."
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Período de carencia",
+        "question": "¿Qué cotizaciones previas debe acreditar la persona fallecida?",
+        "answers": [
+          "Enfermedad común o accidente no laboral: el causante debe acreditar cinco años de cotizaciones en el período anterior al hecho causante.",
+          "Enfermedad profesional o accidente laboral: no se exige período previo de cotización."
+        ]
+      },
+      {
+        "heading": "Requisitos de viudedad",
+        "question": "¿Qué documentos debo presentar para solicitar viudedad?",
+        "answers": [
+          "Copia del certificado de matrimonio legalizado en el Ministerio de Justicia.",
+          "Fe de vida original y actualizada.",
+          "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
+          "Copia del carné del INSESO del causante, si lo tuviera.",
+          "Copia del DIP del solicitante y del causante.",
+          "Copia del nombramiento del fallecido, si era funcionario.",
+          "Las tres últimas nóminas de la Tesorería, si era funcionario.",
+          "Impreso de solicitud dirigido al Delegado Nacional.",
+          "Además, debe aportarse número de cuenta bancaria para la modalidad de transferencia."
+        ]
+      },
+      {
+        "heading": "Requisitos de viudedad por reversión",
+        "question": "Solicito viudedad por reversión, ¿qué documentos debo presentar?",
+        "answers": [
+          "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
+          "Certificado de matrimonio legalizado en el Ministerio de Justicia.",
+          "Fe de vida original y actualizada.",
+          "Copia del carné del INSESO del causante, si lo tuviera.",
+          "Copia del DIP del solicitante y del causante.",
+          "Impreso de solicitud dirigido al Delegado Nacional.",
+          "Debe indicarse también el número de cuenta bancaria. La documentación específica de la reversión se mantiene diferenciada de la solicitud ordinaria."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "El subsidio temporal o la pensión reconocida se abona por cheque o transferencia bancaria."
+        ]
+      }
+    ],
     "sections": [
+      "Situación protegida y beneficiarios",
+      "Fallecimiento del asegurado, cualquiera que sea su causa. La modalidad depende de la edad y situación familiar o de invalidez del cónyuge superviviente.",
+      "Modalidades cuantía y duración",
+      "Viuda menor de 30 años sin hijos",
+      "Modalidades cuantía y duración",
+      "Viuda con hijos o mayor de 30 años o con invalidez; viudo con invalidez económicamente dependiente de la cónyuge",
+      "Período de carencia",
+      "Enfermedad común o accidente no laboral: el causante debe acreditar cinco años de cotizaciones en el período anterior al hecho causante.",
+      "Enfermedad profesional o accidente laboral: no se exige período previo de cotización.",
       "Requisitos de viudedad",
       "Copia del certificado de matrimonio legalizado en el Ministerio de Justicia.",
       "Fe de vida original y actualizada.",
@@ -191,6 +1110,7 @@
       "Copia del nombramiento del fallecido, si era funcionario.",
       "Las tres últimas nóminas de la Tesorería, si era funcionario.",
       "Impreso de solicitud dirigido al Delegado Nacional.",
+      "Además, debe aportarse número de cuenta bancaria para la modalidad de transferencia.",
       "Requisitos de viudedad por reversión",
       "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
       "Certificado de matrimonio legalizado en el Ministerio de Justicia.",
@@ -198,27 +1118,194 @@
       "Copia del carné del INSESO del causante, si lo tuviera.",
       "Copia del DIP del solicitante y del causante.",
       "Impreso de solicitud dirigido al Delegado Nacional.",
-      "Cuantía de la prestación"
-    ],
-    "slug": "viudedad"
+      "Debe indicarse también el número de cuenta bancaria. La documentación específica de la reversión se mantiene diferenciada de la solicitud ordinaria.",
+      "Forma de pago",
+      "El subsidio temporal o la pensión reconocida se abona por cheque o transferencia bancaria."
+    ]
   },
   {
     "titulo": "Orfandad",
+    "slug": "orfandad",
+    "group": "muerte-supervivencia",
+    "questions": [
+      {
+        "heading": "Beneficiarios",
+        "question": "¿Quiénes son los beneficiarios?",
+        "answers": [
+          "Hijos del trabajador fallecido menores de 14 años. También pueden beneficiarse los mayores de 14 años cuando tengan discapacidad o continúen cursando estudios."
+        ]
+      },
+      {
+        "heading": "Cuantía",
+        "question": "¿Cuál es la cuantía de la prestación?",
+        "answers": [
+          "La prestación consiste en un subsidio global del 20% del salario base de cotización."
+        ]
+      },
+      {
+        "heading": "Supuestos de duplicación",
+        "question": "¿En qué situaciones se duplica la prestación de orfandad?",
+        "answers": [
+          "No existe viuda con derecho a pensión.",
+          "Se suspende la pensión de viudedad.",
+          "Fallece la viuda pensionista."
+        ]
+      },
+      {
+        "heading": "Persona que recibe el pago",
+        "question": "¿Quién recibe el pago de la prestación de orfandad?",
+        "answers": [
+          "Se abona a quien tenga a su cargo a los beneficiarios y los atienda debidamente. Si los beneficiarios son mayores de 18 años, el pago se efectúa directamente a ellos."
+        ]
+      },
+      {
+        "heading": "Período de carencia",
+        "question": "¿Qué cotizaciones previas debe acreditar la persona fallecida?",
+        "answers": [
+          "Enfermedad común o accidente no laboral: el causante debe acreditar cinco años de cotizaciones en el período anterior al hecho causante.",
+          "Enfermedad profesional o accidente laboral: no se exige período previo de cotización."
+        ]
+      },
+      {
+        "heading": "Requisitos",
+        "question": "¿Qué documentos generales debo aportar para solicitar orfandad?",
+        "answers": [
+          "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
+          "Carné del INSESO del causante, si lo tuviera.",
+          "Copia del DIP del solicitante, del causante y del beneficiario, según corresponda.",
+          "Certificado de tutoría de quien representa a los beneficiarios.",
+          "Número de cuenta bancaria.",
+          "Impreso de solicitud dirigido al Delegado Nacional."
+        ]
+      },
+      {
+        "heading": "Requisitos",
+        "question": "¿Qué documentación debo presentar por cada hijo?",
+        "answers": [
+          "Fe de vida y estado original y actualizada por cada hijo.",
+          "Copia del extracto del acta de nacimiento por cada hijo.",
+          "Copia del boletín escolar por cada hijo que curse estudios."
+        ]
+      },
+      {
+        "heading": "Requisitos",
+        "question": "Si la persona fallecida era funcionaria, ¿qué documentos adicionales debo presentar?",
+        "answers": [
+          "Copia del nombramiento del fallecido y las tres últimas nóminas de la Tesorería, si era funcionario."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "El subsidio se abona mediante cheque o transferencia bancaria a la persona encargada o directamente al beneficiario mayor de 18 años, según corresponda."
+        ]
+      }
+    ],
     "sections": [
-      "Beneficiarios y condiciones",
-      "El listado solicita documentación por cada hijo. No especifica edades, condiciones de dependencia ni otros requisitos de acceso; estos datos quedan pendientes de la unidad competente.",
+      "Beneficiarios",
+      "Hijos del trabajador fallecido menores de 14 años. También pueden beneficiarse los mayores de 14 años cuando tengan discapacidad o continúen cursando estudios.",
+      "Cuantía",
+      "La prestación consiste en un subsidio global del 20% del salario base de cotización.",
+      "Supuestos de duplicación",
+      "No existe viuda con derecho a pensión.",
+      "Se suspende la pensión de viudedad.",
+      "Fallece la viuda pensionista.",
+      "Persona que recibe el pago",
+      "Se abona a quien tenga a su cargo a los beneficiarios y los atienda debidamente. Si los beneficiarios son mayores de 18 años, el pago se efectúa directamente a ellos.",
+      "Período de carencia",
+      "Enfermedad común o accidente no laboral: el causante debe acreditar cinco años de cotizaciones en el período anterior al hecho causante.",
+      "Enfermedad profesional o accidente laboral: no se exige período previo de cotización.",
       "Requisitos",
       "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia.",
       "Carné del INSESO del causante, si lo tuviera.",
-      "Copia del DIP del solicitante y del causante.",
-      "Fe de vida original y actualizada por cada hijo.",
-      "Copia del extracto del acta de nacimiento por cada hijo.",
-      "Copia del boletín escolar por cada hijo.",
-      "Copia del nombramiento del fallecido, si era funcionario.",
-      "Las tres últimas nóminas de la Tesorería, si era funcionario.",
+      "Copia del DIP del solicitante, del causante y del beneficiario, según corresponda.",
+      "Certificado de tutoría de quien representa a los beneficiarios.",
+      "Número de cuenta bancaria.",
       "Impreso de solicitud dirigido al Delegado Nacional.",
-      "Cuantía de la prestación"
+      "Requisitos",
+      "Fe de vida y estado original y actualizada por cada hijo.",
+      "Copia del extracto del acta de nacimiento por cada hijo.",
+      "Copia del boletín escolar por cada hijo que curse estudios.",
+      "Requisitos",
+      "Copia del nombramiento del fallecido y las tres últimas nóminas de la Tesorería, si era funcionario.",
+      "Forma de pago",
+      "El subsidio se abona mediante cheque o transferencia bancaria a la persona encargada o directamente al beneficiario mayor de 18 años, según corresponda."
+    ]
+  },
+  {
+    "titulo": "Prestación a favor de parientes consanguíneos o afines",
+    "slug": "parientes-consanguineos-o-afines",
+    "group": "muerte-supervivencia",
+    "questions": [
+      {
+        "heading": "Situación protegida",
+        "question": "¿Qué situación protege esta prestación?",
+        "answers": [
+          "Se reconoce cuando no existe viuda ni hijos con derecho a la prestación por muerte y supervivencia."
+        ]
+      },
+      {
+        "heading": "Parientes consanguíneos",
+        "question": "¿Qué parientes consanguíneos pueden beneficiarse?",
+        "answers": [
+          "Padre o madre que dependían económicamente del causante.",
+          "Tíos, hermanos mayores y abuelos del causante que dependían económicamente de él.",
+          "Hermanos menores, sobrinos y primos que dependían económicamente del causante."
+        ]
+      },
+      {
+        "heading": "Parientes afines",
+        "question": "¿Qué parientes afines pueden beneficiarse?",
+        "answers": [
+          "Suegros, cuñados, nueras y yernos que dependían económicamente del causante."
+        ]
+      },
+      {
+        "heading": "Cuantía y duración",
+        "question": "¿Cuál es la cuantía de la prestación y durante cuánto tiempo se abona?",
+        "answers": [
+          "Subsidio del 40% del salario base de cotización durante 24 meses.",
+          "Para los ascendientes, pensión del 40% del salario base de cotización o, en su caso, del 80% de la pensión del causante."
+        ]
+      },
+      {
+        "heading": "Requisitos",
+        "question": "¿Qué requisitos y documentos debo presentar?",
+        "answers": [
+          "Certificado de defunción del causante.",
+          "Justificación del nexo familiar o de afinidad con el causante.",
+          "Número de cuenta bancaria.",
+          "Copia del DIP del beneficiario."
+        ]
+      },
+      {
+        "heading": "Forma de pago",
+        "question": "¿Cómo se paga la prestación?",
+        "answers": [
+          "El subsidio o la pensión reconocida se abona por cheque o transferencia bancaria, conforme a la modalidad concedida."
+        ]
+      }
     ],
-    "slug": "orfandad"
+    "sections": [
+      "Situación protegida",
+      "Se reconoce cuando no existe viuda ni hijos con derecho a la prestación por muerte y supervivencia.",
+      "Parientes consanguíneos",
+      "Padre o madre que dependían económicamente del causante.",
+      "Tíos, hermanos mayores y abuelos del causante que dependían económicamente de él.",
+      "Hermanos menores, sobrinos y primos que dependían económicamente del causante.",
+      "Parientes afines",
+      "Suegros, cuñados, nueras y yernos que dependían económicamente del causante.",
+      "Cuantía y duración",
+      "Subsidio del 40% del salario base de cotización durante 24 meses.",
+      "Para los ascendientes, pensión del 40% del salario base de cotización o, en su caso, del 80% de la pensión del causante.",
+      "Requisitos",
+      "Certificado de defunción del causante.",
+      "Justificación del nexo familiar o de afinidad con el causante.",
+      "Número de cuenta bancaria.",
+      "Copia del DIP del beneficiario.",
+      "Forma de pago",
+      "El subsidio o la pensión reconocida se abona por cheque o transferencia bancaria, conforme a la modalidad concedida."
+    ]
   }
 ]

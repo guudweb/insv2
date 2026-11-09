@@ -1,0 +1,118 @@
+{
+  "sources": [
+    "FICHA AFILIACIÓN INSESO1(1).docx",
+    "FICHA DE REGISTRO DE EMPRESAS INSESO(1).docx"
+  ],
+  "fields": {
+    "empresa": [
+      [
+        "Nombre de la empresa",
+        "Tipo de solicitud",
+        "Tipo de empresa"
+      ],
+      [
+        "Sector",
+        "Número de empleados",
+        "N.º de Registro de Comercio",
+        "N.º de Identificación Fiscal",
+        "Actividad principal",
+        "Forma jurídica",
+        "Capital social"
+      ],
+      [
+        "Ubicación",
+        "Ciudad",
+        "Provincia",
+        "Delegación del INSESO",
+        "Delegación provincial, si corresponde"
+      ],
+      [
+        "Entidad bancaria",
+        "Agencia",
+        "Cuenta"
+      ],
+      [
+        "Nombre",
+        "Apellidos",
+        "Fecha de nacimiento",
+        "Lugar de nacimiento",
+        "País de nacimiento",
+        "Nacionalidad",
+        "Tipo de documento de identificación",
+        "N.º de documento de identificación",
+        "Dirección en Guinea Ecuatorial",
+        "Ciudad en Guinea Ecuatorial",
+        "Teléfono / correo electrónico"
+      ]
+    ],
+    "trabajador": [
+      [
+        "Nombre",
+        "Apellidos",
+        "Fecha de nacimiento",
+        "Lugar de nacimiento",
+        "Tipo de documento",
+        "N.º de documento personal",
+        "Estado civil",
+        "País",
+        "Teléfono",
+        "Nombre del padre",
+        "Nombre de la madre"
+      ],
+      [
+        "Nombre del banco",
+        "Agencia",
+        "N.º de cuenta corriente"
+      ],
+      [
+        "Barrio / calle",
+        "Comunidad / pueblo",
+        "Ciudad"
+      ],
+      [
+        "Relación con INSESO",
+        "Nombre de empresa actual",
+        "Puesto actual",
+        "Salario actual",
+        "Fecha de contratación"
+      ],
+      [
+        "Nombre de actividad",
+        "Tipo de actividad",
+        "Sector de actividad",
+        "Barrio / calle",
+        "Comunidad / pueblo",
+        "Ciudad"
+      ],
+      [
+        "Nombre de la empresa trabajada",
+        "Año y fecha de alta",
+        "Año y fecha de baja",
+        "Nombre de la empresa trabajada",
+        "Año y fecha de alta",
+        "Año y fecha de baja",
+        "Nombre de la empresa trabajada",
+        "Año y fecha de alta",
+        "Año y fecha de baja",
+        "Nombre de la empresa trabajada",
+        "Año y fecha de alta",
+        "Año y fecha de baja",
+        "Nombre de la empresa trabajada",
+        "Año y fecha de alta",
+        "Año y fecha de baja",
+        "Lugar",
+        "Fecha"
+      ],
+      [
+        "N.º de afiliación (reservado a INSESO)",
+        "Fecha de recepción (reservado a INSESO)",
+        "Fecha de registro (reservado a INSESO)",
+        "Funcionario/a responsable (reservado a INSESO)",
+        "Foto"
+      ]
+    ]
+  },
+  "employmentHistoryRows": 5,
+  "reservedPhoto": "Espacio para fotografía en la oficina, como en la columna reservada de la ficha original",
+  "verified": true
+}

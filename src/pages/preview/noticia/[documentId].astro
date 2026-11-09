@@ -1,4 +1,6 @@
 ---
+// CAMBIO INSESO FINAL: contenido externo bajo acción explícita.
+import ExternalMedia from '../../../components/ExternalMedia.astro';
 // CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import {
@@ -100,7 +102,7 @@ const contenidoTexto = richTextToPlainText(noticia.contenido);
                 </video>
               ) : (
                 <div class="ratio ratio-16x9">
-                  <iframe src={videoUrl} allowfullscreen></iframe>
+                  <ExternalMedia src={videoUrl} />
                 </div>
               )}
             </div>

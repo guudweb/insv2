@@ -1,0 +1,29 @@
+---
+import {FORM_PATTERNS} from '../data/web-forms.mjs';
+import InsuredContactHighlight from './InsuredContactHighlight.astro';
+// CAMBIO INSESO FINAL: recorrido de seis pasos y datos mínimos; ninguna carga de documentos.
+import {getLangFromUrl,ui,getLocalizedPath} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url),w=ui[lang].attention,legal=ui[lang].legal;
+---
+<section class="attention container" data-attention data-lang={lang} data-words={JSON.stringify(w)}>
+<header><span>INSESO · 1066</span><h1>{w.title}</h1><p>{w.intro}</p></header>
+<InsuredContactHighlight />
+<ol class="steps" aria-label={w.title}>{w.steps.map((step,i)=><li><span>{i+1}</span>{step}</li>)}</ol>
+<p class="notice" id="agenda-status" role="status" aria-live="polite">{w.loading}</p>
+<form id="appointment-form">
+<fieldset id="booking-fields" disabled>
+<div class="booking-grid">
+<section><h2>1 · {w.steps[0]}</h2><label for="appointment-service">{w.service} *</label><select id="appointment-service" name="service" required><option value="">{w.choose}</option></select><div id="benefit-field" hidden><label for="appointment-benefit">{w.benefit} *</label><select id="appointment-benefit" name="benefit" disabled><option value="">{w.choose}</option></select></div></section>
+<section><h2>2 · {w.steps[1]}</h2><label for="appointment-office">{w.office} *</label><select id="appointment-office" name="office" disabled required><option value="">{w.choose}</option></select></section>
+<section class="requirements"><h2>3 · {w.steps[2]}</h2><h3>{w.requirements}</h3><ul id="appointment-requirements"></ul><a id="requirements-link" hidden>{w.readMore} →</a></section>
+<section><h2>4 · {w.steps[3]}</h2><label for="appointment-date">{w.date} *</label><input type="date" id="appointment-date" name="date" required disabled/><label for="appointment-time">{w.time} *</label><select id="appointment-time" name="time" required disabled><option value="">{w.choose}</option></select><small>{w.timezone}</small></section>
+<section><h2>5 · {w.steps[4]}</h2><label for="appointment-name">{w.name} *</label><input id="appointment-name" name="name" pattern={FORM_PATTERNS.name} autocomplete="name" required minlength="2" maxlength="120"/><label for="appointment-email">{w.email} *</label><input type="email" id="appointment-email" name="email" autocomplete="email" maxlength="254" required/><p class="privacy-note">{w.privacy} <a href={getLocalizedPath('/privacidad',lang)}>{legal.more}</a></p><label class="ack"><input type="checkbox" name="privacy" required/>{w.ack} *</label></section>
+<section class="review"><h2>6 · {w.steps[5]}</h2><h3>{w.review}</h3><p id="appointment-review"></p><p>{w.required}</p><div class="honey" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"/></label></div><button type="submit" class="btn btn-primary" id="confirm-appointment" disabled>{w.submit}</button></section>
+</div></fieldset></form>
+<section id="appointment-result" class="result" hidden tabindex="-1" aria-live="polite"><h2>{w.confirm}</h2><p id="appointment-reference"></p><p id="appointment-summary"></p><p id="appointment-mail-status"></p><button id="print-appointment" class="btn btn-primary" type="button">{w.print}</button><p><a href={getLocalizedPath('/cita-previa',lang)}>{w.return}</a></p></section>
+</section>
+<script>
+ import {bindAppointmentForm} from '../lib/appointment-form';bindAppointmentForm();document.addEventListener('astro:page-load',bindAppointmentForm);
+</script>
+<style>.attention{padding-top:3rem;padding-bottom:4rem}.attention header{max-width:780px}.attention header>span{color:#367a40;font-weight:600;letter-spacing:.1em}.attention h1{color:#163f27;font-size:clamp(2rem,4vw,3rem);margin:1rem 0}.attention p{line-height:1.8}.steps{display:flex;flex-wrap:wrap;list-style:none;padding:0;gap:1rem;margin:2rem 0}.steps li{display:flex;align-items:center;gap:.5rem;color:#225924;font-size:.9rem}.steps span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:#e2efe5;font-weight:bold}.booking-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem}.booking-grid>section{border:1px solid #d6e5d9;border-radius:18px;padding:1.5rem;background:#fff}.booking-grid h2{font-size:1.25rem;color:#225924}.booking-grid h3{font-size:1rem;color:#254d32}.attention label{display:block;margin:.9rem 0 .4rem;font-weight:500}.attention input:not([type=checkbox]),.attention select{width:100%;min-height:46px;border:1px solid #a9c6b1;border-radius:8px;padding:.6rem;background:white;color:#203b29}.attention select:disabled,.attention input:disabled{background:#f1f4f1}.attention .ack{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;line-height:1.6}.ack input{margin-top:.4rem;width:18px;height:18px;flex-shrink:0}.privacy-note{font-size:.88rem}.attention small{display:block;margin-top:.8rem;color:#53675b}.notice,.result{background:#edf6ef;border-left:4px solid #367a40;padding:1rem 1.3rem;border-radius:8px;margin:1.5rem 0}.attention .requirements,.attention .review{background:#f5faf6}.requirements li{line-height:1.8;margin:.5rem 0}.honey{position:absolute;left:-10000px}.attention [hidden]{display:none!important}.attention fieldset{border:0;padding:0;margin:0;min-width:0}.attention a{color:#225924;text-decoration:underline}.attention :focus-visible{outline:3px solid #367a40;outline-offset:3px}@media(max-width:700px){.booking-grid{grid-template-columns:1fr}.booking-grid>section{padding:1.1rem}}@media print{.attention header,.attention .steps,#appointment-form,#agenda-status,.result button,.result a{display:none}.result{display:block!important;border:1px solid #225924}.attention{padding:0}}
+</style>

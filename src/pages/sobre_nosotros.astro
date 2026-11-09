@@ -1,5 +1,6 @@
 ---
 // CAMBIO INSESO 2026-10-13 R2: textos de la web publicados conservados; imágenes adaptadas a identidad verde.
+import InstitutionalOrganization from '../components/InstitutionalOrganization.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PresentationHero from '../components/PresentationHero.astro';
 import PageHeader from '../components/PageHeader.astro';
@@ -56,12 +57,15 @@ const socios = await getSocios();
         </div>
         <div class="col-lg-6">
           <div class="right-ab">
-            <img class="img-fluid rounded mb-4 institution-photo" src="/images/sommes nous/img_qsn_02.png" alt={t('about.missionAlt')} />
+            <img class="img-fluid rounded mb-4 institution-photo" src="/images/sommes nous/img_qsn_02.webp" alt={t('about.missionAlt')} />
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- CAMBIO INSESO R4: autoridades y organigrama en Presentación. -->
+  <!-- Los órganos y el organigrama se presentan en su página propia. -->
 
   <PartnersCarousel socios={socios} />
 </BaseLayout>

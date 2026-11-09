@@ -5,8 +5,8 @@
     "about": "SOBRE NÓS",
     "aboutPresentation": "APRESENTAÇÃO",
     "aboutServices": "PRESTAÇÕES SOCIAIS",
-    "aboutConditions": "CONDIÇÕES DE ADESÃO",
-    "aboutAgencies": "NOSSAS AGÊNCIAS",
+    "aboutConditions": "Condições gerais de adesão",
+    "aboutAgencies": "NOSSAS DELEGAÇÕES",
     "insured": "SEGURADOS",
     "insuredConditions": "Inscrição de trabalhadores",
     "insuredForms": "DOWNLOAD DE FORMULÁRIOS",
@@ -16,7 +16,9 @@
     "employersForms": "DOWNLOAD DE FORMULÁRIOS",
     "employersPayments": "DECLARAÇÃO E PAGAMENTO DE CONTRIBUIÇÕES",
     "employersPenalties": "PENAS E SANÇÕES",
-    "contact": "CONTATO"
+    "contact": "CONTATO",
+    "workerConditions": "Filiação de trabalhadores",
+    "employerConditions": "Inscrição de empresas"
   },
   "footer": {
     "allRightsReserved": "Todos os direitos reservados",
@@ -255,7 +257,7 @@
     "publicSectorText": "Os trabalhadores do setor público são pessoas que trabalham para o Estado, as autoridades locais ou os estabelecimentos públicos. Por outras palavras, prestam serviços por conta do Estado, frequentemente pagos com dinheiro público (impostos)."
   },
   "agencies": {
-    "pageTitle": "INSESO - Nossas Agências",
+    "pageTitle": "INSESO - As nossas delegações",
     "title": "Nossas Agências",
     "subtitle": "Estamos perto de você em todo o território nacional",
     "description": "Encontre o escritório do INSESO mais próximo de você",
@@ -321,7 +323,7 @@
     "req3": "Uma (1) foto tipo passe",
     "req4": "Comprovativo de afiliação ou número de segurança social",
     "req5": "5 000 FCFAs - Custo do cartão",
-    "duplicateTitle": "Duplicado do cartão",
+    "duplicateTitle": "Extravio. Segunda via do cartão",
     "duplicateIntro": "Em caso de perda ou roubo, deve apresentar:",
     "dupReq1": "Queixa policial",
     "dupReq2": "Cópia do Bilhete de Identidade",
@@ -329,9 +331,13 @@
     "dupReq4": "Pagamento do duplicado (3 000 FCFAs)",
     "deliveryTitle": "Prazo de entrega",
     "normalDelivery": "Prazo normal:",
-    "normalTime": "7-10 dias úteis",
+    "normalTime": "Prazo normal:",
     "urgentDelivery": "Urgente:",
-    "urgentTime": "2-3 dias úteis (custo adicional)"
+    "urgentTime": "Prazo urgente:",
+    "normalDays": "7-10 dias úteis",
+    "urgentDays": "2-3 dias úteis (custo adicional)",
+    "officeAlt": "Delegações do INSESO",
+    "duplicateDescription": "Em caso de perda ou roubo, apresente:"
   },
   "penalties": {
     "pageTitle": "Penas e Sanções para Empregadores - INSESO",
@@ -441,5 +447,210 @@
     "commitment2": "Cobrança e gestão rigorosa das contribuições",
     "commitment3": "Pagamento das prestações de Segurança Social de acordo com os direitos adquiridos",
     "commitment4": "Sensibilização em matéria de proteção social e prevenção de riscos profissionais"
+  },
+  "organization": {
+    "government": "Órgãos de governo",
+    "intro": "Conheça as autoridades que dirigem o Instituto Nacional de Segurança Social.",
+    "viewChart": "Ver organograma",
+    "president": "Presidente do Conselho de Administração",
+    "delegate": "Delegada Nacional",
+    "secretary": "Secretária-Geral",
+    "structure": "Estrutura institucional",
+    "chart": "Organograma do INSESO",
+    "chartIntro": "A estrutura liga os órgãos de direção, as unidades de apoio e os serviços da instituição.",
+    "council": "Conselho de Administração",
+    "board": "Conselho Diretivo",
+    "legal": "Assessoria Jurídica",
+    "cabinet": "Gabinete do Delegado",
+    "advisory": "Conselharia",
+    "services": [
+      "Serviços Técnicos",
+      "Serviços Médicos",
+      "Administração Geral",
+      "Intervenção Geral",
+      "Serviço de Estudos, Estatísticas e Formação",
+      "Inspeção Geral de Serviços e Auditorias Internas",
+      "Serviço de Controlo Externo e Segurança no Trabalho",
+      "Serviço de Controlo Geral da Filiação e Atendimento ao Segurado",
+      "Serviço de Informática e Transformação Digital",
+      "Serviço Especial para Pessoas com Deficiência"
+    ]
+  },
+  "benefitGroups": {
+    "general": "Prestações gerais",
+    "survival": "Morte e sobrevivência",
+    "survivalTitle": "Prestações por morte e sobrevivência",
+    "navigation": "Famílias de prestações"
+  },
+  "attention": {
+    "title": "Marcação de consulta",
+    "intro": "Marque a sua consulta e receba o comprovativo por e-mail. Os procedimentos são concluídos presencialmente.",
+    "steps": [
+      "Procedimento",
+      "Delegação",
+      "Documentos",
+      "Data e hora",
+      "Dados pessoais",
+      "Confirmação"
+    ],
+    "service": "Selecione o procedimento",
+    "office": "Escolha a delegação",
+    "benefit": "Selecione a prestação",
+    "requirements": "Documentos a levar",
+    "readMore": "Consultar requisitos completos",
+    "date": "Data",
+    "time": "Hora disponível",
+    "name": "Nome completo",
+    "email": "E-mail para o comprovativo",
+    "ack": "Li as informações sobre o tratamento dos meus dados.",
+    "submit": "Confirmar marcação",
+    "choose": "Selecione uma opção",
+    "loading": "A consultar disponibilidade…",
+    "disabled": "As marcações online ainda não estão ativadas. Contacte info@inseso.org ou ligue 1066.",
+    "empty": "Não há horas disponíveis nesta data. Escolha outro dia.",
+    "noOffices": "Não há delegações ativadas para este procedimento. Contacte o INSESO.",
+    "error": "Não foi possível concluir a operação. Verifique os dados e tente novamente.",
+    "taken": "Este horário acabou de ser reservado. Atualize a disponibilidade.",
+    "confirm": "Marcação registada",
+    "pending": "A sua marcação está guardada. Os e-mails estão pendentes e serão reenviados automaticamente. Guarde esta referência.",
+    "sent": "As duas mensagens foram aceites pelo servidor de correio. Consulte também a pasta de spam.",
+    "reference": "Referência",
+    "print": "Imprimir comprovativo",
+    "review": "Reveja a marcação antes de confirmar",
+    "privacy": "Utilizamos nome, e-mail, procedimento, delegação, data e hora para organizar a marcação e enviar mensagens. Não anexe relatórios médicos.",
+    "timezone": "As horas correspondem à Guiné Equatorial (Africa/Malabo).",
+    "required": "Todos os campos assinalados são obrigatórios.",
+    "return": "Consultar novamente a agenda",
+    "serviceLabels": {
+      "afiliacion": "Filiação",
+      "carne": "Pedido de cartão de segurado",
+      "informacion": "Informações",
+      "prestacion": "Entrega de pedido de prestação"
+    },
+    "invalidDate": "Escolha um dia útil dentro do período de marcação."
+  },
+  "contactForm": {
+    "title": "Atendimento ao segurado",
+    "heading": "Envie uma mensagem",
+    "name": "Nome completo",
+    "email": "E-mail",
+    "phone": "Telefone (opcional)",
+    "category": "Assunto",
+    "message": "Mensagem",
+    "submit": "Enviar mensagem",
+    "choose": "Selecione uma opção",
+    "privacy": "O INSESO trata os dados fornecidos para responder à sua consulta. O telefone é opcional. Não inclua relatórios médicos nem dados desnecessários. O pessoal autorizado e o fornecedor de e-mail gerem a mensagem.",
+    "ack": "Li as informações sobre o tratamento dos dados.",
+    "success": "O servidor aceitou a sua mensagem para info@inseso.org.",
+    "error": "Não foi possível enviar. Tente novamente ou contacte info@inseso.org.",
+    "map": "Consultar localização no mapa",
+    "categories": [
+      "Filiação",
+      "Cartão de segurado",
+      "Prestações",
+      "Informações gerais"
+    ],
+    "receiptFailed": "Não foi possível enviar o comprovativo; guarde esta referência."
+  },
+  "legal": {
+    "privacy": "Privacidade e tratamento de dados",
+    "cookies": "Cookies e conteúdo externo",
+    "notice": "Aviso legal",
+    "more": "Mais informações sobre privacidade",
+    "privacyText": [
+      "Responsável: Instituto Nacional de Seguridad Social (INSESO), Avenida de la Independencia, Malabo. Contacto: info@inseso.org.",
+      "Finalidades: responder a consultas, organizar marcações e enviar notificações e comprovativos. A marcação não equivale a um pedido nem à concessão de uma prestação.",
+      "Dados: nome, e-mail e conteúdo necessário da consulta; para marcações, procedimento, delegação, data e hora. O telefone é opcional. Não são pedidos documentos médicos para reservar.",
+      "Os formulários digitais podem incluir dados de identificação, contacto, emprego, bancários e de assistência solicitada. Para descarregar um PDF, o servidor processa os dados e devolve o documento. O botão Enviar remete o PDF e a assinatura declarada ao INSESO e envia um comprovativo ao requerente. Esta função não guarda os formulários numa base de dados; os documentos enviados permanecem nas caixas de correio segundo os prazos institucionais. Não é possível anexar relatórios médicos nestes formulários.",
+      "Acesso: pessoal autorizado do INSESO e fornecedores de alojamento e e-mail envolvidos. Os formulários não são utilizados para publicidade.",
+      "Conservação: os registos operacionais das marcações são apagados 90 dias após a data pela tarefa de manutenção fornecida. Os e-mails seguem as regras de arquivo e correio do INSESO.",
+      "Contacte info@inseso.org para informações ou pedidos sobre os seus dados. Não envie documentos sensíveis por iniciativa própria."
+    ],
+    "cookiesText": [
+      "O código entregue não contém ferramentas detetadas de análise publicitária nem cookies próprios de rastreio de visitantes. Os formulários não precisam de cookies.",
+      "A pré-visualização dos editores utiliza preview e preview-signature: HttpOnly, SameSite=Lax, duração de 30 minutos e Secure em produção. Não são ativados nas páginas públicas.",
+      "Os mapas são disponibilizados por ligação externa. Os vídeos integrados ficam bloqueados até escolher carregá-los; o fornecedor pode então receber o IP e utilizar cookies próprios.",
+      "As redes sociais são serviços externos. Esta revisão abrange o código entregue; alojamento, CMS e alterações futuras devem ser verificados no domínio publicado."
+    ],
+    "noticeText": [
+      "Este site fornece informações institucionais sobre o INSESO. As condições individuais das prestações são determinadas no procedimento correspondente.",
+      "A marcação não substitui a entrega presencial de documentos nem uma decisão administrativa.",
+      "Para questões ou correções: info@inseso.org. As ligações externas seguem as condições dos respetivos responsáveis."
+    ],
+    "externalTitle": "Conteúdo externo bloqueado",
+    "externalText": "Carregar este conteúdo liga o seu navegador ao fornecedor externo.",
+    "externalButton": "Carregar conteúdo externo"
+  },
+  "benefitInterface": {
+    "eyebrow": "INSESO · Prestações sociais",
+    "intro": "Consulte beneficiários, contribuições, montantes, documentos e modalidades. As respostas de referência são apresentadas em espanhol.",
+    "forms": "Formulários",
+    "commonForm": "Um formulário comum para as onze prestações.",
+    "invalidDate": "Escolha um dia útil dentro do período de marcação."
+  },
+  "benefitFaq": [
+    "Perguntas sobre a prestação",
+    "Selecione uma pergunta para ler a resposta de referência em espanhol.",
+    "Abrir todas",
+    "Fechar todas",
+    "Formulário comum",
+    "Descarregar pedido"
+  ],
+  "commonForm": {
+    "eyebrow": "INSESO · Pedido de prestações sociais",
+    "title": "Formulário comum de prestações",
+    "intro": "Descarregue e preencha o pedido. Selecione a prestação; se a modalidade não estiver indicada, escolha «Outros» e especifique-a.",
+    "download": "Descarregar formulário (PDF)",
+    "open": "Abrir PDF",
+    "source": "Formulário comum disponibilizado pelo INSESO.",
+    "before": "Antes de o entregar",
+    "steps": [
+      "Indique os dados do requerente e da pessoa segurada em causa, quando aplicável.",
+      "Selecione a prestação e preencha as secções aplicáveis.",
+      "Anexe os documentos indicados na ficha da prestação.",
+      "Confirme com o INSESO as informações que não correspondam ao seu caso."
+    ],
+    "downloadOnly": "Esta página permite descarregar o pedido; não envia dados pessoais.",
+    "preview": "Pré-visualização do formulário comum"
+  },
+  "release": {
+    "nav": {
+      "gov": "Órgãos de governo e organograma",
+      "benefits": "Benefícios dos segurados",
+      "card": "Cartão",
+      "affiliation": "Filiação",
+      "general": "Informação geral",
+      "companies": "Registo de empresas",
+      "workers": "Registo de trabalhadores",
+      "dependents": "Registo de beneficiários",
+      "self": "Trabalhadores independentes",
+      "attention": "Atendimento ao segurado",
+      "booking": "Marcação",
+      "forms": "Formulários"
+    },
+    "benefits": {
+      "eyebrow": "INSESO · SEGURADOS",
+      "title": "Benefícios de ser segurado",
+      "intro": "A filiação protege os trabalhadores e os familiares a seu cargo através das prestações familiares, mediante os requisitos aplicáveis.",
+      "heading": "Proteção para si e para a sua família",
+      "cards": [
+        [
+          "01",
+          "Familiares a cargo",
+          "Consulte os familiares que podem beneficiar da prestação."
+        ],
+        [
+          "02",
+          "Condições de acesso",
+          "Verifique as condições de contribuição e os documentos necessários."
+        ],
+        [
+          "03",
+          "Prestações familiares",
+          "Conheça as modalidades, os montantes e as formas de pagamento."
+        ]
+      ],
+      "cta": "Consultar prestações familiares"
+    }
   }
 }

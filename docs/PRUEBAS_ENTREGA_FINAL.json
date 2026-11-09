@@ -1,0 +1,1498 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/normativas-seguridad-social",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/sobre_nosotros",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/organigrama",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/afiliacion-informacion",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/afiliacion-empresas",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/afiliacion-trabajadores",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/afiliacion-beneficiarios",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/afiliacion-autonomos",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/beneficios-asegurados",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/formularios-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/formulario-web",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/contacto",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/atencion-asegurado",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/cita-previa",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/privacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/cookies",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/aviso-legal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/Prestaciones_Sociales",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/nuestras_agencias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/solicitud_de_carne",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/noticias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/discapacidad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/pension-por-vejez",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/prestaciones-familiares",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/prestaciones-sanitarias",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/viudedad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/orfandad",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/prestacion/parientes-consanguineos-o-afines",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/en/normativas-seguridad-social",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/fr/normativas-seguridad-social",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "navigation": "/pt/normativas-seguridad-social",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/no-existe",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/no-existe",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/afiliacionee_autonomo",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/afiliacionee_empresas",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/afiliacionee_trabajadores",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/afiliación_fernanda",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/condiciones_adhesion",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/descarga_formularios",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/formulario-prestaciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/empleadores/penas-sanciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacionee_autonomo",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacionee_empresas",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliacionee_trabajadores",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/afiliación_fernanda",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/condiciones_adhesion",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/descarga_formularios",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/formulario-prestaciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/empleadores/penas-sanciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacionee_autonomo",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacionee_empresas",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliacionee_trabajadores",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/afiliación_fernanda",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/condiciones_adhesion",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/descarga_formularios",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/formulario-prestaciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/fr/empleadores/penas-sanciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacionee_autonomo",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacionee_empresas",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliacionee_trabajadores",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/afiliación_fernanda",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/condiciones_adhesion",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/descarga_formularios",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/formulario-prestaciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "path": "/pt/empleadores/penas-sanciones",
+    "status": 404,
+    "pass": true
+  },
+  {
+    "api": "agenda disabled until institution validates offices",
+    "pass": true
+  },
+  {
+    "api": "/api/send-email",
+    "checks": [
+      "cross-origin blocked",
+      "malformed JSON rejected",
+      "oversized body rejected"
+    ],
+    "pass": true
+  },
+  {
+    "api": "/api/atencion/reservar",
+    "checks": [
+      "cross-origin blocked",
+      "malformed JSON rejected",
+      "oversized body rejected"
+    ],
+    "pass": true
+  },
+  {
+    "api": "contact fails honestly without SMTP; no success simulation",
+    "pass": true
+  }
+]
