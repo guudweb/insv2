@@ -1,5 +1,5 @@
 ---
-import {createLocalizer} from '../i18n/release.mjs';
+import { createLocalizer } from '../i18n/release.mjs';
 // CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHeader from '../components/PageHeader.astro';
@@ -11,8 +11,7 @@ export const prerender = false;
 
 const t = useTranslations('es');
 const socios = await getSocios();
-
-const l=createLocalizer('es');
+const l = createLocalizer('es');
 ---
 
 <BaseLayout title={t('cardRequest.pageTitle')} currentPath="/solicitud_de_carne">
@@ -41,7 +40,14 @@ const l=createLocalizer('es');
             </div>
           </div>
 
-          <div class="card my-4"><h4 class="card-header">{l("Renovación del carné")}</h4><div class="card-body"><p>{l("Consulte con INSESO los requisitos vigentes para la renovación de su carné.")}</p></div></div>
+          <!--
+          <div class="card my-4">
+            <h4 class="card-header">{l("Renovación del carné")}</h4>
+            <div class="card-body">
+              <p>{l("Consulte con INSESO los requisitos vigentes para la renovación de su carné.")}</p>
+            </div>
+          </div>
+
           <div class="card my-4">
             <h4 class="card-header">{t('cardRequest.duplicateTitle')}</h4>
             <div class="card-body">
@@ -53,19 +59,32 @@ const l=createLocalizer('es');
               </ul>
             </div>
           </div>
+          -->
         </div>
 
         <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="/images/trabajadores/img_trabaja_02.jpg" alt={t('cardRequest.imageAlt')} />
+          <img
+            class="img-fluid w-100 rounded mb-4"
+            src="/images/trabajadores/img_trabaja_02.jpg"
+            alt={t('cardRequest.imageAlt')}
+          />
 
+          <!--
           <h4 class="card-header">{t('cardRequest.deliveryTitle')}</h4>
           <div class="card-body">
-            <p><strong>{t('cardRequest.normalTime')}</strong> {t('cardRequest.normalDays')}<br>
-            <strong>{t('cardRequest.urgentTime')}</strong> {t('cardRequest.urgentDays')}</p>
+            <p>
+              <strong>{t('cardRequest.normalTime')}</strong> {t('cardRequest.normalDays')}<br />
+              <strong>{t('cardRequest.urgentTime')}</strong> {t('cardRequest.urgentDays')}
+            </p>
           </div>
+          -->
 
-          <hr>
-          <img class="img-fluid rounded mb-4" src="/images/adaptadas/presentation-3.webp" alt={l('INSESO · Llame al 1066')} />
+          <hr />
+          <img
+            class="img-fluid w-100 rounded mb-4"
+            src="/images/adaptadas/presentation-3.webp"
+            alt={l('INSESO · Llame al 1066')}
+          />
         </div>
       </div>
     </div>
