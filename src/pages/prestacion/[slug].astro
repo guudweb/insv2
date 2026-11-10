@@ -1,37 +1,9 @@
 ---
-/**
- * Ruta dinámica para prestaciones
- * Esta página se genera automáticamente para cualquier prestación en Strapi
- * URL: /prestacion/[slug]
- */
+// CAMBIO INSESO 2026-10-13 R2: rutas limitadas al catálogo autorizado de once prestaciones.
 import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
-import { getPrestacionBySlug } from '../../lib/strapi';
-
-// SSR habilitado - genera páginas dinámicamente
-export const prerender = false;
-
-// Obtener el slug de la URL
-const { slug } = Astro.params;
-
-// Cargar la prestación desde Strapi
-const prestacion = await getPrestacionBySlug(slug as string);
-
-// Si no existe, mostrar 404
-if (!prestacion) {
-  return Astro.redirect('/404');
-}
-
-// Construir el título para la página
-const pageTitle = `INSESO - ${prestacion.titulo}`;
-const breadcrumbTitle = prestacion.titulo.toUpperCase();
+import {benefitCatalog,canonicalBenefit} from '../../data/benefit-catalog';
+export const prerender=false;
+const slug=canonicalBenefit(Astro.params.slug||'');
+if(!benefitCatalog.some(b=>b.slug===slug))return new Response('Prestación no incluida en el catálogo',{status:404});
 ---
-
-<PrestacionLayout
-  slug={slug as string}
-  pageTitle={pageTitle}
-  breadcrumbTitle={breadcrumbTitle}
-  currentPath={`/prestacion/${slug}`}
-  defaultDescripcion=""
-  defaultRequisitos=""
-  defaultImagen="/images/prestaciones/prestaciones_default.jpg"
-/>
+<PrestacionLayout slug={slug}/>

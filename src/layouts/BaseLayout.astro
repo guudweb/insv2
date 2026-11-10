@@ -1,4 +1,5 @@
 ---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import '../styles/global.css';
 import TopBar from '../components/TopBar.astro';
 import Navbar from '../components/Navbar.astro';
@@ -59,7 +60,7 @@ const fullOgImage = new URL(ogImage, siteUrl).href;
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content={description}>
 	<meta name="author" content="INSESO">
-	<link href="/images/favicon.png" rel="icon">
+	<link href="/images/favicon-nuevo.png" rel="icon">
 	<link rel="canonical" href={canonicalURL} />
 
 	<!-- Hreflang tags for multilingual SEO (ISO standard codes) -->
@@ -73,14 +74,8 @@ const fullOgImage = new URL(ogImage, siteUrl).href;
 	<title>{title}</title>
 
 	<!-- Preconnect to external resources for faster loading -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="preconnect" href="https://cdn.jsdelivr.net">
-	<link rel="dns-prefetch" href="https://fonts.googleapis.com">
-	<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
 
 	<!-- Preload critical fonts -->
-	<link rel="preload" href="https://fonts.gstatic.com/s/worksans/v19/QGY_z_wNahGAdqQ43RhVcIgYT2Xz5u32K0nWNigDp6_cOyA.woff2" as="font" type="font/woff2" crossorigin>
 
 	<!-- Open Graph Meta Tags -->
 	<meta property="og:title" content={title} />
@@ -105,7 +100,7 @@ const fullOgImage = new URL(ogImage, siteUrl).href;
 	<meta name="twitter:title" content={title} />
 	<meta name="twitter:description" content={description} />
 	<meta name="twitter:image" content={fullOgImage} />
-	<meta name="twitter:site" content="@INSESO_GQ" />
+	<meta name="twitter:site" content="@inseso_ge" />
 
 	<!-- Additional SEO Meta Tags -->
 	<meta name="robots" content="index, follow" />

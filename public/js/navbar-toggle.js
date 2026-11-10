@@ -1,79 +1,20 @@
-// Script para asegurar que el navbar toggle funcione en mobile
-document.addEventListener('DOMContentLoaded', function() {
-  // Obtener el botón toggler y el menú colapsable
-  const navbarToggler = document.querySelector('.navbar-toggler');
-  const navbarCollapse = document.querySelector('#navbarResponsive');
-
-  if (navbarToggler && navbarCollapse) {
-    // Agregar event listener al botón
-    navbarToggler.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      // Toggle de la clase 'show' en el collapse
-      navbarCollapse.classList.toggle('show');
-
-      // Toggle del aria-expanded
-      const isExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
-      navbarToggler.setAttribute('aria-expanded', !isExpanded);
-
-      // Toggle de la clase collapsed en el botón
-      navbarToggler.classList.toggle('collapsed');
-    });
-
-    // NO cerrar el menú cuando se hace click en un link con dropdown
-    // Solo cerrar cuando se hace click en links sin dropdown (ej: INICIO, CONTACTO)
-    const navLinks = navbarCollapse.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        if (window.innerWidth < 992) { // Solo en mobile
-          // Solo cerrar si el link NO es parte de un dropdown
-          const parentItem = this.closest('.nav-item');
-          if (!parentItem.classList.contains('dropdown')) {
-            navbarCollapse.classList.remove('show');
-            navbarToggler.setAttribute('aria-expanded', 'false');
-            navbarToggler.classList.add('collapsed');
-          }
-        }
-      });
-    });
-  }
-
-  // Manejar dropdowns con click SOLO EN MOBILE
-  const dropdownToggles = document.querySelectorAll('.navbar .dropdown > .nav-link');
-  dropdownToggles.forEach(toggle => {
-    toggle.addEventListener('click', function(e) {
-      // Solo manejar click en mobile (< 992px)
-      if (window.innerWidth < 992) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const dropdown = this.parentElement;
-        const menu = dropdown.querySelector('.dropdown-menu');
-
-        if (menu) {
-          // Cerrar otros dropdowns abiertos
-          document.querySelectorAll('.navbar .dropdown-menu.show').forEach(otherMenu => {
-            if (otherMenu !== menu) {
-              otherMenu.classList.remove('show');
-            }
-          });
-
-          // Toggle del dropdown actual
-          menu.classList.toggle('show');
-        }
-      }
-      // En desktop (>= 992px) dejar que el hover funcione normalmente
-    });
+// CAMBIO INSESO FINAL: navegación nativa para escritorio, móvil y teclado.
+(function(){
+ function bind(){
+  const nav=document.querySelector('.top-nav');if(!nav||nav.dataset.bound)return;nav.dataset.bound='true';
+  const toggler=nav.querySelector('[data-nav-toggle]'),collapse=nav.querySelector('#navbarResponsive');
+  const buttons=[...nav.querySelectorAll('[data-nav-dropdown]')];
+  function close(except){buttons.forEach(button=>{if(button===except)return;button.setAttribute('aria-expanded','false');button.parentElement.querySelector('.dropdown-menu')?.classList.remove('show');});}
+  toggler?.addEventListener('click',()=>{const expanded=toggler.getAttribute('aria-expanded')!=='true';toggler.setAttribute('aria-expanded',String(expanded));collapse?.classList.toggle('show',expanded);if(!expanded)close();});
+  buttons.forEach(button=>{
+   const menu=button.parentElement.querySelector('.dropdown-menu');
+   button.addEventListener('click',event=>{event.preventDefault();const expanded=button.getAttribute('aria-expanded')!=='true';close(button);button.setAttribute('aria-expanded',String(expanded));menu?.classList.toggle('show',expanded);});
+   button.addEventListener('keydown',event=>{if(event.key===' '){event.preventDefault();button.click();}if(event.key==='ArrowDown'){event.preventDefault();close(button);button.setAttribute('aria-expanded','true');menu?.classList.add('show');menu?.querySelector('a')?.focus();}});
+   menu?.addEventListener('keydown',event=>{const links=[...menu.querySelectorAll('a[href]')],index=links.indexOf(document.activeElement);if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();links[(index+(event.key==='ArrowDown'?1:-1)+links.length)%links.length]?.focus();}if(event.key==='Escape'){close();button.focus();}});
   });
-
-  // Cerrar dropdowns en mobile cuando se hace click fuera
-  document.addEventListener('click', function(e) {
-    if (window.innerWidth < 992) {
-      if (!e.target.closest('.navbar .dropdown')) {
-        document.querySelectorAll('.navbar .dropdown-menu.show').forEach(menu => {
-          menu.classList.remove('show');
-        });
-      }
-    }
-  });
-});
+  document.addEventListener('click',event=>{if(!event.target.closest('.top-nav .dropdown'))close();});
+  nav.addEventListener('keydown',event=>{if(event.key==='Escape'){close();if(window.innerWidth<992){collapse?.classList.remove('show');toggler?.setAttribute('aria-expanded','false');}}});
+  nav.querySelectorAll('a[href]').forEach(link=>{if(link.hasAttribute('data-nav-dropdown'))return;link.addEventListener('click',()=>{close();if(window.innerWidth<992){collapse?.classList.remove('show');toggler?.setAttribute('aria-expanded','false');}});});
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind);else bind();document.addEventListener('astro:page-load',bind);
+})();

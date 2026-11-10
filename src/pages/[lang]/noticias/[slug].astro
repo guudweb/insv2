@@ -1,4 +1,7 @@
 ---
+// CAMBIO INSESO FINAL: contenido externo bajo acción explícita.
+import ExternalMedia from '../../../components/ExternalMedia.astro';
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl, richTextToHtml, richTextToPlainText } from '../../../lib/strapi';
 import { languages, useTranslations, type Locale, getLocalizedPath } from '../../../i18n/utils';
@@ -97,14 +100,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 						{tipoMedia === 'video' && videoUrl ? (
 							<div class="video-container">
 								{video && !videoArchivo ? (
-									<iframe
-										width="100%"
-										height="450"
-										src={video}
-										frameborder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
+									<ExternalMedia src={video} />
 								) : (
 									<video controls width="100%" controlslist="nodownload">
 										<source src={videoUrl} type="video/mp4">
@@ -355,7 +351,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 	.noticia-contenido h4 {
 		margin-top: 2rem;
 		margin-bottom: 1rem;
-		color: #8c1b12;
+		color: #2d762f;
 	}
 
 	.noticia-contenido img {
@@ -395,7 +391,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 	}
 
 	.section-title i {
-		color: #8c1b12;
+		color: #2d762f;
 		font-size: 28px;
 	}
 
@@ -412,7 +408,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 
 	.related-card:hover {
 		transform: translateY(-8px);
-		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+		box-shadow: 0 8px 24px rgba(45, 118, 47, 0.15);
 	}
 
 	.related-image {
@@ -452,7 +448,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 	}
 
 	.related-card:hover .video-badge {
-		color: #8c1b12;
+		color: #2d762f;
 		opacity: 1;
 		transform: translate(-50%, -50%) scale(1.2);
 	}
@@ -472,7 +468,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 	}
 
 	.related-date i {
-		color: #8c1b12;
+		color: #2d762f;
 		margin-right: 5px;
 	}
 
@@ -491,7 +487,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 	}
 
 	.related-title a:hover {
-		color: #8c1b12;
+		color: #2d762f;
 	}
 
 	.btn-read-more {
@@ -499,7 +495,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 		align-items: center;
 		justify-content: center;
 		gap: 8px;
-		background: #8c1b12;
+		background: #2d762f;
 		color: white;
 		padding: 10px 20px;
 		border-radius: 8px;
@@ -510,7 +506,7 @@ const breadcrumbNews = locale === 'fr' ? 'Actualités' :
 	}
 
 	.btn-read-more:hover {
-		background: #6d2018;
+		background: #225924;
 		transform: translateX(4px);
 		color: white;
 	}

@@ -1,18 +1,5 @@
 ---
-import PrestacionLayout from '../../layouts/PrestacionLayout.astro';
-
-export const prerender = false;
+// CAMBIO INSESO R4: acceso antiguo enlazado al catálogo actualizado.
+import {getLocalizedPath,getLangFromUrl} from '../../i18n/utils';
+return Astro.redirect(getLocalizedPath('/prestacion/prestaciones-familiares',getLangFromUrl(Astro.url)),301);
 ---
-
-<PrestacionLayout
-  slug="subsidios-familiares"
-  pageTitle="INSESO - Subsidios Familiares"
-  breadcrumbTitle="SUBSIDIOS FAMILIARES"
-  currentPath="/Subsidios_familiares"
-  defaultDescripcion="Los subsidios familiares de protección a la familia se otorgaran a los asegurados casados, viudos con hijos y solteros con hijos naturales reconocidos en el momento del nacimiento de estos. También a los asegurados que acrediten tener a su cargo exclusivo ascendientes o hermanos huérfanos. El subsidio familiar se otorgara a través de un fondo familiar, distribuido por un sistema de puntos de evaluación familiar que determinara la cuantía de la prestación."
-  defaultRequisitos={`CONDICIONES GENERALES:
-- Estar afiliado al sistema de seguridad social
-- Tener uno o varios hijos a cargo
-- Haber declarado los hijos a la caja`}
-  defaultImagen="/images/prestaciones/prestaciones_detail_08.jpg"
-/>

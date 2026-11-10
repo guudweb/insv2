@@ -1,10 +1,15 @@
 ---
+// CAMBIO INSESO FINAL: cuatro opciones visibles, accesibles incluso sin JavaScript.
+
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+import benefits from '../data/benefits.json';
 import { languages, type Locale, getLocalizedPath, removeLocalePrefix, routeTranslations } from '../i18n/utils';
 import { getPrestacionBySlug, getPrestacionSlugsByDocumentId, getNoticiaBySlug, getNoticiaSlugsByDocumentId } from '../lib/strapi';
 
 interface Props {
   currentLang: Locale;
   currentPath?: string;
+  instance?: string;
 }
 
 const { currentLang, currentPath = '/' } = Astro.props;
@@ -22,7 +27,7 @@ const currentNoticiaSlug = noticiaMatch ? noticiaMatch[1] : null;
 
 // Si estamos en una página de prestación, obtener los slugs en todos los idiomas
 let prestacionSlugs: Record<string, string> = {};
-if (currentPrestacionSlug) {
+if (currentPrestacionSlug && !benefits.some(b => b.slug === currentPrestacionSlug)) {
   const currentPrestacion = await getPrestacionBySlug(currentPrestacionSlug, currentLang);
   if (currentPrestacion?.documentId) {
     prestacionSlugs = await getPrestacionSlugsByDocumentId(currentPrestacion.documentId);
@@ -44,7 +49,10 @@ const langLinks = Object.entries(languages).map(([code, name]) => {
   let translatedPath = basePath;
 
   // Si es una página de prestación, usar el slug del idioma correspondiente
-  if (currentPrestacionSlug && prestacionSlugs[targetLang]) {
+  if (currentPrestacionSlug && benefits.some(b => b.slug === currentPrestacionSlug)) {
+    translatedPath = `/prestacion/${currentPrestacionSlug}`;
+  }
+  else if (currentPrestacionSlug && prestacionSlugs[targetLang]) {
     translatedPath = `/prestacion/${prestacionSlugs[targetLang]}`;
   }
   // Si es una página de noticia, usar el slug del idioma correspondiente
@@ -52,6 +60,9 @@ const langLinks = Object.entries(languages).map(([code, name]) => {
     translatedPath = `/noticias/${noticiaSlugs[targetLang]}`;
   }
   // Para otras páginas, buscar en routeTranslations
+  else if (currentPrestacionSlug || currentNoticiaSlug) {
+    translatedPath = currentPrestacionSlug ? '/Prestaciones_Sociales' : '/noticias';
+  }
   else {
     const currentRoutes = routeTranslations[currentLang];
     const targetRoutes = routeTranslations[targetLang];
@@ -68,7 +79,8 @@ const langLinks = Object.entries(languages).map(([code, name]) => {
   return {
     code: targetLang,
     name,
-    url: getLocalizedPath(translatedPath, targetLang),
+    url: getLocalizedPath(translatedPath, targetLang)+(basePath==='/formulario-web'&&Astro.url.searchParams.has('tipo')?'?tipo='+encodeURIComponent(Astro.url.searchParams.get('tipo')!):''),
+    missing: Boolean(currentNoticiaSlug && !noticiaSlugs[targetLang] && targetLang !== currentLang),
     active: currentLang === code
   };
 });
@@ -81,239 +93,10 @@ const flags: Record<Locale, string> = {
   pt: '🇵🇹'
 };
 
-// Nombres cortos de idiomas para mostrar en el botón
-const shortNames: Record<Locale, string> = {
-  es: 'Español',
-  fr: 'Français',
-  en: 'English',
-  pt: 'Português'
-};
 ---
-
-<div class="language-switcher dropdown">
-  <button
-    class="btn btn-language dropdown-toggle"
-    type="button"
-    id="langDropdown"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-    title="Cambiar idioma / Change language"
-    aria-label="Selector de idioma"
-  >
-    <i class="fas fa-globe me-1"></i>
-    <span class="lang-current">
-      <span class="flag-emoji">{flags[currentLang]}</span>
-      <span class="lang-name-short">{shortNames[currentLang]}</span>
-    </span>
-    <i class="fas fa-chevron-down ms-1 dropdown-icon"></i>
-  </button>
-
-  <ul class="dropdown-menu dropdown-menu-right shadow-lg" aria-labelledby="langDropdown">
-    {langLinks.map(lang => (
-      <li>
-        <a
-          class={`dropdown-item d-flex align-items-center ${lang.active ? 'active' : ''}`}
-          href={lang.url}
-          hreflang={lang.code}
-        >
-          <span class="flag-emoji me-2">{flags[lang.code]}</span>
-          <span class="lang-name flex-grow-1">{lang.name}</span>
-          {lang.active && <i class="fas fa-check text-white"></i>}
-        </a>
-      </li>
-    ))}
-  </ul>
-</div>
-
-<style is:global>
-  .language-switcher {
-    position: relative;
-    display: inline-block;
-  }
-
-  .language-switcher .btn-language {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.5rem !important;
-    padding: 0.5rem 0.875rem !important;
-    background-color: transparent !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 6px !important;
-    color: #000000 !important;
-    font-size: 0.875rem !important;
-    font-weight: 500 !important;
-    cursor: pointer !important;
-    transition: all 0.3s ease !important;
-    white-space: nowrap !important;
-  }
-
-  .language-switcher .btn-language:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    border-color: rgba(255, 255, 255, 0.3) !important;
-    transform: translateY(-1px);
-  }
-
-  .language-switcher .btn-language:focus {
-    outline: none !important;
-    box-shadow: 0 0 0 3px rgba(140, 27, 18, 0.3) !important;
-  }
-
-  .language-switcher .btn-language:active {
-    transform: translateY(0);
-  }
-
-  .language-switcher .lang-current {
-    display: flex !important;
-    align-items: center !important;
-    gap: 0.75rem !important;
-  }
-
-  .language-switcher .flag-emoji {
-    font-size: 1.15rem !important;
-    line-height: 1 !important;
-  }
-
-  .language-switcher .lang-name-short {
-    font-weight: 600 !important;
-    letter-spacing: 0.3px !important;
-    display: inline-block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    font-size: 0.875rem !important;
-    color: #000000 !important;
-  }
-
-  .language-switcher .dropdown-icon {
-    font-size: 0.7rem;
-    transition: transform 0.3s ease;
-  }
-
-  .language-switcher .btn-language[aria-expanded="true"] .dropdown-icon {
-    transform: rotate(180deg);
-  }
-
-  .language-switcher .dropdown-menu {
-    min-width: 200px;
-    margin-top: 0.5rem;
-    padding: 0.5rem 0;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    animation: fadeInDown 0.3s ease;
-    z-index: 9999 !important;
-    position: absolute !important;
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .language-switcher .dropdown-item {
-    padding: 0.625rem 1rem;
-    color: #333;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
-  }
-
-  .language-switcher .dropdown-item:hover {
-    background-color: #f8f9fa;
-    color: #8c1b12;
-    border-left-color: #8c1b12;
-    padding-left: 1.25rem;
-  }
-
-  .language-switcher .dropdown-item.active {
-    background: linear-gradient(135deg, #8c1b12 0%, #7a1710 100%);
-    color: #fff;
-    font-weight: 600;
-    border-left-color: #fff;
-  }
-
-  .language-switcher .dropdown-item.active:hover {
-    background: linear-gradient(135deg, #7a1710 0%, #6a130e 100%);
-  }
-
-  .language-switcher .lang-name {
-    font-size: 0.9rem;
-  }
-
-  /* Responsive - Tablet */
-  @media (max-width: 991px) {
-    .language-switcher .btn-language {
-      padding: 0.45rem 0.75rem !important;
-      font-size: 0.8125rem !important;
-    }
-
-    .language-switcher .flag-emoji {
-      font-size: 1rem !important;
-    }
-
-    .language-switcher .dropdown-menu {
-      min-width: 180px;
-    }
-  }
-
-  /* Responsive - Mobile */
-  @media (max-width: 768px) {
-    .language-switcher {
-      width: 100%;
-      margin: 0.75rem 0;
-    }
-
-    .language-switcher .btn-language {
-      width: 100% !important;
-      justify-content: center !important;
-      padding: 0.625rem 1rem !important;
-      font-size: 0.875rem !important;
-      border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    }
-
-    .language-switcher .dropdown-menu {
-      width: 100%;
-      min-width: auto;
-      margin-top: 0.5rem;
-      border-radius: 6px;
-    }
-
-    .language-switcher .dropdown-item {
-      padding: 0.75rem 1rem;
-      font-size: 0.9375rem;
-    }
-
-    .language-switcher .flag-emoji {
-      font-size: 1.25rem !important;
-    }
-
-    .language-switcher .lang-name-short {
-      display: inline-block !important;
-      font-size: 0.85rem !important;
-    }
-  }
-
-  /* Responsive - Extra Small Mobile */
-  @media (max-width: 480px) {
-    .language-switcher .btn-language {
-      padding: 0.5rem 0.875rem !important;
-    }
-
-    .language-switcher .lang-name-short {
-      display: inline-block !important;
-      font-size: 0.8rem !important;
-    }
-
-    .language-switcher .flag-emoji {
-      font-size: 1.1rem !important;
-    }
-  }
-</style>
+<!-- CAMBIO DEFINITIVO: selector compacto a la derecha, con opciones completas en mayúsculas. -->
+<nav class="language-switcher" aria-label="ESPAÑOL · FRANÇAIS · ENGLISH · PORTUGUÊS"><details><summary><i class="fas fa-globe" aria-hidden="true"></i><strong>{currentLang.toUpperCase()}</strong><span class="current-name">{languages[currentLang].toLocaleUpperCase()}</span><span aria-hidden="true">⌄</span></summary><ul>{langLinks.map(lang=><li><a href={lang.url} hreflang={lang.code} lang={lang.code} aria-label={lang.name} aria-current={lang.active?'page':undefined} class:list={{active:lang.active}}>{lang.name.toLocaleUpperCase()}</a></li>)}</ul></details></nav>
+<script>
+function bindLanguageMenu(){document.querySelectorAll<HTMLElement>('.language-switcher').forEach(root=>{if(root.dataset.bound)return;root.dataset.bound='true';const details=root.querySelector('details')!;document.addEventListener('click',e=>{if(!root.contains(e.target as Node))details.open=false;});root.addEventListener('keydown',e=>{if(e.key==='Escape'){details.open=false;root.querySelector('summary')?.focus();}});});}bindLanguageMenu();document.addEventListener('astro:page-load',bindLanguageMenu);
+</script>
+<style>.language-switcher{position:relative;flex-shrink:0;text-transform:uppercase}.language-switcher details{position:relative}.language-switcher summary{display:flex;align-items:center;gap:.5rem;min-height:44px;padding:.4rem .5rem;color:#225924;font-size:.85rem;font-weight:600;cursor:pointer;list-style:none;white-space:nowrap}.language-switcher summary::-webkit-details-marker{display:none}.language-switcher ul{position:absolute;right:0;top:100%;z-index:2000;width:190px;list-style:none;margin:.25rem 0 0;padding:.4rem;background:#fff;border:1px solid #c9dece;border-radius:10px;box-shadow:0 8px 24px #163f2726}.language-switcher li{margin:0;padding:0}.language-switcher a{display:flex;align-items:center;min-height:44px;padding:.65rem .8rem;color:#225924;font-size:.85rem;font-weight:600;text-decoration:none;text-transform:uppercase;border-radius:6px}.language-switcher a.active,.language-switcher a:hover{background:#225924;color:#fff}.language-switcher :focus-visible{outline:3px solid #367a40;outline-offset:3px}@media(max-width:600px){.current-name{display:none}.language-switcher summary{padding:.3rem;gap:.35rem}}</style>

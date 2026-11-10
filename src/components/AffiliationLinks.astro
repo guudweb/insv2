@@ -1,0 +1,8 @@
+---
+// CAMBIO INSESO FINAL: distinguir los tres destinos que antes compartían etiqueta.
+import {getLangFromUrl,ui,getLocalizedPath} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url),w=ui[lang].nav;
+const links=[['/afiliacion-informacion',w.aboutConditions],['/afiliacion-trabajadores',w.workerConditions],['/afiliacion-empresas',w.employerConditions]];
+---
+<nav class="affiliation-links container" aria-label={w.aboutConditions}>{links.map(([href,label])=><a class:list={{current:Astro.url.pathname===getLocalizedPath(href,lang)}} href={getLocalizedPath(href,lang)} aria-current={Astro.url.pathname===getLocalizedPath(href,lang)?'page':undefined}>{label}<span aria-hidden="true">→</span></a>)}</nav>
+<style>.affiliation-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:2rem;margin-bottom:2rem}.affiliation-links a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem;border:1px solid #c9dece;border-radius:12px;background:#edf6ef;color:#225924;font-weight:600;text-decoration:none;line-height:1.5}.affiliation-links a:hover,.affiliation-links a.current{background:#225924;color:white}.affiliation-links a:focus-visible{outline:3px solid #367a40;outline-offset:3px}@media(max-width:767px){.affiliation-links{grid-template-columns:1fr}}</style>

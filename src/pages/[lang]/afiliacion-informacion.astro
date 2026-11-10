@@ -1,0 +1,12 @@
+---
+import {createLocalizer} from '../../i18n/release.mjs';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import InstitutionalSlide from '../../components/InstitutionalSlide.astro';
+import {getLangFromUrl,getLocalizedPath} from '../../i18n/utils';
+const lang=getLangFromUrl(Astro.url);
+export const prerender=false;
+
+const l=createLocalizer(lang);
+---
+<BaseLayout title={"INSESO · "+l("Información general sobre afiliación")}><InstitutionalSlide frame={0} alt="Proteger hoy, asegurar mañana · INSESO" /><main class="container content-page"><h1>{l("Información general sobre afiliación")}</h1><p>{l("La afiliación es la relación jurídica entre la empresa, el trabajador y el INSESO que origina derechos y obligaciones, especialmente el derecho a las prestaciones sociales y la obligación de cotizar.")}</p><h2>{l("¿Cómo se realiza?")}</h2><p>{l("La inscripción de empresas y la afiliación inicial de sus trabajadores se realizan simultáneamente mediante la presentación de los requisitos. Los organismos públicos presentan las nóminas en el modelo oficial.")}</p><h2>{l("¿Quién debe afiliarse?")}</h2><p>{l("La persona que ejecuta una obra o presta servicios a otra persona o entidad jurídica en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.")}</p><h2>{l("¿Quién es responsable?")}</h2><p>{l("El empresario está obligado a dar de alta a los trabajadores. Si no cumple, el trabajador puede acudir al INSESO con los requisitos correspondientes.")}</p></main></BaseLayout>
+<style>.content-page{max-width:1000px;padding-top:4rem;padding-bottom:4rem;line-height:1.8}.aff-hero{padding:2.4rem;border-radius:20px;background:linear-gradient(120deg,#174d2b,#367a40);color:white;margin-bottom:2rem;box-shadow:0 14px 35px #174d2b30}.aff-hero h1{color:white;font-size:clamp(2rem,4vw,3rem);margin:.7rem 0}.aff-hero span{color:#d9e9cb;letter-spacing:.12em;font-size:.8rem;font-weight:700}.aff-hero p{margin:0}.content-page h2{color:#225924;border-bottom:1px solid #d5e6d9;padding:.7rem 0;transition:transform .2s,box-shadow .2s}.content-page h2:hover{transform:translateX(4px);box-shadow:0 8px 18px #174d2b17}.content-page ul{background:white;border:1px solid #dce9de;border-radius:12px;padding:1.3rem 1.3rem 1.3rem 2.5rem}.content-page li::marker{color:#367a40}@media(prefers-reduced-motion:reduce){.content-page h2{transition:none}.content-page h2:hover{transform:none}}.content-page h2{font-size:1.35rem;margin-top:2rem}.content-page li{margin:.5rem 0}.content-page a{color:#225924;text-decoration:underline}</style>
