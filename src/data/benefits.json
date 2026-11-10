@@ -8,7 +8,7 @@
         "heading": "Beneficiarias",
         "question": "¿Quiénes pueden beneficiarse de la prestación por maternidad?",
         "answers": [
-          "La mujer trabajadora por cuenta ajena, siempre y cuando se produzca la baja laboral por pre-parto y post-parto."
+          "La trabajadora por cuenta ajena que cotiza al INSESO y se encuentra de baja laboral antes y después del parto."
         ]
       },
       {
@@ -36,7 +36,7 @@
         "heading": "Cuantía y duración",
         "question": "¿Durante cuánto tiempo se abona la prestación por maternidad?",
         "answers": [
-          "Se abonará mientras la asegurada se encuentre en situación de baja y reciba Asistencia sanitaria de la Seguridad Social."
+          "Se abonará mientras la asegurada se encuentre de baja y reciba asistencia sanitaria de la Seguridad Social: seis semanas antes del parto y seis semanas después del parto."
         ]
       },
       {
@@ -69,7 +69,7 @@
     ],
     "sections": [
       "Beneficiarias",
-      "La mujer trabajadora por cuenta ajena, siempre y cuando se produzca la baja laboral por pre-parto y post-parto.",
+      "La trabajadora por cuenta ajena que cotiza al INSESO y se encuentra de baja laboral antes y después del parto.",
       "Período de espera",
       "Para tener derecho a esa prestación, la mujer trabajadora debe tener acreditados 12 meses inmediatamente anteriores a la baja por maternidad.",
       "Cuantía y duración",
@@ -77,7 +77,7 @@
       "Cuantía y duración",
       "Una asignación global equivalente a dos mensualidades de su Salario base de cotizaciones, en caso de que el pago de las cotizaciones al INSESO no alcancen 12 meses inmediatamente a la maternidad.",
       "Cuantía y duración",
-      "Se abonará mientras la asegurada se encuentre en situación de baja y reciba Asistencia sanitaria de la Seguridad Social.",
+      "Se abonará mientras la asegurada se encuentre de baja y reciba asistencia sanitaria de la Seguridad Social: seis semanas antes del parto y seis semanas después del parto.",
       "Requisitos",
       "Carné de Seguro actualizado.",
       "Baja laboral.",
@@ -108,7 +108,7 @@
         "heading": "Situación de invalidez",
         "question": "¿Qué situación se considera de invalidez?",
         "answers": [
-          "Situación del trabajador que presenta reducciones anatómicas o funcionales graves, objetivamente determinables y previsiblemente definitivas, que disminuyen o anulan su capacidad laboral."
+          "Situación del trabajador que presenta reducciones o limitaciones anatómicas o funcionales graves, objetivamente determinables y previsiblemente definitivas, que disminuyen o anulan su capacidad laboral."
         ]
       },
       {
@@ -224,7 +224,7 @@
       "Beneficiarios",
       "Todos los trabajadores que cotizan a la Seguridad Social y en situación de incapacidad laboral.",
       "Situación de invalidez",
-      "Situación del trabajador que presenta reducciones anatómicas o funcionales graves, objetivamente determinables y previsiblemente definitivas, que disminuyen o anulan su capacidad laboral.",
+      "Situación del trabajador que presenta reducciones o limitaciones anatómicas o funcionales graves, objetivamente determinables y previsiblemente definitivas, que disminuyen o anulan su capacidad laboral.",
       "Grados reconocidos",
       "Incapacidad parcial permanente para la profesión habitual.",
       "Incapacidad total permanente para la profesión habitual.",
@@ -310,7 +310,7 @@
       },
       {
         "heading": "Forma y naturaleza del pago",
-        "question": "¿Cómo se paga y es un subsidio de pago único?",
+        "question": "¿Cómo se paga y qué es un subsidio de pago único?",
         "answers": [
           "Es un subsidio de pago único, abonado mediante cheque o transferencia bancaria al beneficiario o a su representante legalmente autorizado."
         ]
@@ -429,7 +429,7 @@
         "heading": "Beneficiarios",
         "question": "¿Quiénes son los beneficiarios?",
         "answers": [
-          "Asegurados que, por razón de edad, cesan en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista."
+          "Asegurados que hayan cotizado los años exigidos por la ley (período de carencia) y que, por razón de edad, cesen en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista."
         ]
       },
       {
@@ -460,7 +460,7 @@
         "answers": [
           "Copia del DIP del beneficiario.",
           "Copia del carné de seguro.",
-          "Cesantía laboral.",
+          "Cesantía o baja laboral.",
           "Número de cuenta bancaria."
         ]
       },
@@ -482,7 +482,7 @@
         "heading": "Requisitos específicos del sector privado",
         "question": "Soy trabajador del sector privado, ¿qué documentos debo presentar?",
         "answers": [
-          "Documento de cesantía de la empresa.",
+          "Documento de cesantía o baja de la empresa.",
           "Copia del carné del asegurado, si se dispone de él.",
           "Copia del extracto de nacimiento o del DIP.",
           "Solicitud."
@@ -505,7 +505,7 @@
     ],
     "sections": [
       "Beneficiarios",
-      "Asegurados que, por razón de edad, cesan en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista.",
+      "Asegurados que hayan cotizado los años exigidos por la ley (período de carencia) y que, por razón de edad, cesen en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista.",
       "Edad y período de cotización",
       "Haber cumplido 60 años.",
       "Acreditar al menos 120 meses de cotización, equivalentes a 10 años. De ellos, 60 meses deben corresponder a los diez años inmediatamente anteriores al momento de causar el derecho.",
@@ -516,7 +516,7 @@
       "Requisitos generales",
       "Copia del DIP del beneficiario.",
       "Copia del carné de seguro.",
-      "Cesantía laboral.",
+      "Cesantía o baja laboral.",
       "Número de cuenta bancaria.",
       "Requisitos específicos del sector público",
       "Copia del oficio de jubilación.",
@@ -528,7 +528,7 @@
       "Copia del carné del INSESO, si se dispone de él.",
       "Solicitud.",
       "Requisitos específicos del sector privado",
-      "Documento de cesantía de la empresa.",
+      "Documento de cesantía o baja de la empresa.",
       "Copia del carné del asegurado, si se dispone de él.",
       "Copia del extracto de nacimiento o del DIP.",
       "Solicitud.",
@@ -547,7 +547,7 @@
         "heading": "Beneficiarios a cargo del trabajador",
         "question": "¿Qué familiares a mi cargo pueden beneficiarse?",
         "answers": [
-          "La esposa del trabajador.",
+          "La esposa del trabajador cotizante.",
           "Los hijos menores de 14 años y los mayores de esa edad hasta 19 años que acrediten ser estudiantes o estar incapacitados para todo tipo de trabajo.",
           "Los padres, abuelos, tíos y suegros del esposo o de la esposa trabajadora que dependan económicamente de estos.",
           "Los hermanos huérfanos menores de 14 años o mayores de esa edad hasta 19 años, cuando acrediten ser estudiantes."
@@ -709,7 +709,7 @@
     ],
     "sections": [
       "Beneficiarios a cargo del trabajador",
-      "La esposa del trabajador.",
+      "La esposa del trabajador cotizante.",
       "Los hijos menores de 14 años y los mayores de esa edad hasta 19 años que acrediten ser estudiantes o estar incapacitados para todo tipo de trabajo.",
       "Los padres, abuelos, tíos y suegros del esposo o de la esposa trabajadora que dependan económicamente de estos.",
       "Los hermanos huérfanos menores de 14 años o mayores de esa edad hasta 19 años, cuando acrediten ser estudiantes.",
@@ -773,8 +773,8 @@
         "heading": "Beneficiarios por enfermedad común o accidente no laboral",
         "question": "¿Quiénes pueden recibir asistencia por enfermedad común o accidente no laboral?",
         "answers": [
-          "El trabajador.",
-          "La esposa del trabajador o el esposo con invalidez absoluta para el trabajo que dependa económicamente de su esposa.",
+          "El trabajador cotizante.",
+          "La esposa del trabajador cotizante o el esposo con invalidez absoluta para el trabajo que dependa económicamente de su esposa.",
           "Los hijos hasta la edad mínima legal para trabajar por cuenta ajena, o con invalidez absoluta para el trabajo y dependencia económica del trabajador.",
           "Las personas con invalidez y subsidio, y los pensionistas.",
           "Los hermanos huérfanos o con invalidez y los ascendientes mayores de 60 años que dependan económicamente del trabajador."
@@ -866,8 +866,8 @@
     ],
     "sections": [
       "Beneficiarios por enfermedad común o accidente no laboral",
-      "El trabajador.",
-      "La esposa del trabajador o el esposo con invalidez absoluta para el trabajo que dependa económicamente de su esposa.",
+      "El trabajador cotizante.",
+      "La esposa del trabajador cotizante o el esposo con invalidez absoluta para el trabajo que dependa económicamente de su esposa.",
       "Los hijos hasta la edad mínima legal para trabajar por cuenta ajena, o con invalidez absoluta para el trabajo y dependencia económica del trabajador.",
       "Las personas con invalidez y subsidio, y los pensionistas.",
       "Los hermanos huérfanos o con invalidez y los ascendientes mayores de 60 años que dependan económicamente del trabajador.",

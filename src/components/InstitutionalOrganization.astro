@@ -11,15 +11,25 @@ const leaders=[
 ];
 
 const l=createLocalizer(lang);
-const itServiceIndex=ui.es.organization.services.indexOf('Servicio de Informática y Transformación Digital');
+const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "jefe-tecnicos.webp", "jefe-seguro-medico.webp", "jefe-medicos.webp", "jefe-informatica.webp", "jefe-rrhh.webp", "jefe-marketing.webp", null, null, "jefe-control-externo.webp", null];
 ---
 <section class="organization container" aria-labelledby="chart-title" id="organos-gobierno">
  <section class="chart-panel" id="organigrama" aria-labelledby="chart-title"><header><span class="eyebrow">{text.structure}</span><h2 id="chart-title">{text.chart}</h2><p>{text.chartIntro}</p></header>
  <ol class="chart-tree">
-  <li><div class="org-node council authority-node"><span>{text.council}</span><span class="authority-role">{leaders[0].role}</span><h3 class="authority-name">{leaders[0].name}</h3></div>
+  <li><div class="org-node council authority-node"><div class="service-photo"><img src="/images/gobierno/pca.webp" alt={leaders[0].name} loading="lazy" /></div><span>{text.council}</span><span class="authority-role">{leaders[0].role}</span><h3 class="authority-name">{leaders[0].name}</h3></div>
    <ol><li><div class="org-node directive">{text.board}</div>
-    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo" role="img" aria-label={l("Fotografía de Asesoría Jurídica pendiente")}><i class="fas fa-user" aria-hidden="true"></i><small>{l("Fotografía pendiente")}</small></div>{text.legal}</div><div class="org-node delegation authority-node"><span>{text.delegate}</span><h3 class="authority-name">{leaders[1].name}</h3></div><div class="support-stack"><div class="org-support">{text.cabinet}</div><div class="org-support">{text.advisory}</div></div></div>
-     <ol><li><div class="org-node secretary-node authority-node"><span>{text.secretary}</span><h3 class="authority-name">{leaders[2].name}</h3></div><ol class="service-grid">{text.services.map((service,i)=><li><div class="service-node"><div class="service-photo" role="img" aria-label={i===itServiceIndex?l('Jefe del Servicio de Informática y Transformación Digital'):l("Fotografía pendiente de incorporar")}>{i===itServiceIndex?<img src="/images/gobierno/jefe-informatica.webp" alt={l('Jefe del Servicio de Informática y Transformación Digital')} width="400" height="354" loading="lazy" />:<><i class="fas fa-user" aria-hidden="true"></i><small>{l("Fotografía pendiente")}</small></>}</div><p>{service}</p></div></li>)}</ol></li></ol>
+    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo"><img src="/images/gobierno/asesoria-juridica.webp" alt={text.legal} loading="lazy" /></div>{text.legal}</div><div class="org-node delegation authority-node"><span>{text.delegate}</span><h3 class="authority-name">{leaders[1].name}</h3></div><div class="support-stack"><div class="org-support">{text.cabinet}</div><div class="org-support">{text.advisory}</div></div></div>
+     <ol><li><div class="org-node secretary-node authority-node">
+  <div class="service-photo">
+    <img
+      src="/images/gobierno/secretaria-general.jpg"
+      alt={leaders[2].name}
+      loading="lazy"
+    />
+  </div>
+  <span>{text.secretary}</span>
+  <h3 class="authority-name">{leaders[2].name}</h3>
+</div><ol class="service-grid">{text.services.map((service,i)=><li><div class="service-node"><div class="service-photo">{servicePhotos[i]?<img src={`/images/gobierno/${servicePhotos[i]}`} alt={service} loading="lazy" />:<><i class="fas fa-user" aria-hidden="true"></i><small>{l("Fotografía pendiente")}</small></>}</div><p>{service}</p></div></li>)}</ol></li></ol>
     </li></ol>
    </li></ol>
   </li>
@@ -34,4 +44,5 @@ const itServiceIndex=ui.es.organization.services.indexOf('Servicio de Informáti
 .service-photo{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;min-height:125px;margin-bottom:1rem;border-radius:10px;border:1px dashed #a4c5a9;background:#eff6ef;color:#527b59}.service-photo img{display:block;width:100%;height:185px;object-fit:cover;object-position:center 25%;border-radius:9px}.service-photo:has(img){border-style:solid;overflow:hidden}.service-photo i{font-size:2rem}.service-photo small{font-size:.7rem;text-align:center}.service-node p{font-weight:600}
 /* CAMBIO WEB_INSESO: presidencia centrada sobre delegación y secretaría. */
 @media(min-width:601px){.leaders{grid-template-columns:repeat(4,minmax(0,1fr));position:relative}.leader.pca{grid-column:2 / 4;grid-row:1}.leader.delegate{grid-column:1 / 3;grid-row:2}.leader.secretary{grid-column:3 / 5;grid-row:2}.leaders:before{content:"";position:absolute;top:45%;left:25%;right:25%;border-top:2px solid #b4cfbb}.leaders .leader{z-index:1}}
+.authority-node .service-photo img{object-fit:contain}.service-photo img{object-position:center 18%}
 </style>

@@ -56,7 +56,7 @@ const afiliacionEnlace = config?.afiliacionEnlace ? (/^https?:/.test(config.afil
 
 const sidebarImagenBanner = config?.sidebarImagenBanner ? getStrapiImageUrl(config.sidebarImagenBanner.url) : '/images/accueil/inicio_pub_01.gif';
 const sidebarCardTitulo = config?.sidebarCardTitulo || l('¿QUIEN DEBE AFILIARSE A LA SEGURIDAD SOCIAL?');
-const sidebarCardTexto = config?.sidebarCardTexto || l('La persona que ejecuta una obra o presta servicios a otra en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.');
+const sidebarCardTexto = config?.sidebarCardTexto || l('La persona que ejecuta una obra o presta servicios a otra persona o entidad jurídica en virtud de un contrato verbal o escrito, y que recibe un salario o remuneración a cambio.');
 
 // Media Principal: Soporta video o imagen desde config o noticia principal
 const tipoMediaPrincipal = config?.tipoMediaPrincipal || (noticiaPrincipal?.tipoMedia) || 'video';
