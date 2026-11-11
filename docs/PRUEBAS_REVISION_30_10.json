@@ -1,0 +1,21 @@
+{
+  "imageBytes": 9549479,
+  "imageFiles": 214,
+  "maximumBytes": 10000000,
+  "checkedRoutes": 36,
+  "authorityPhotosInChart": 0,
+  "centeredNames": true,
+  "serviceNodes": 10,
+  "removedRoutes": [
+    "/afiliacionee_autonomo",
+    "/afiliacionee_empresas",
+    "/afiliacionee_trabajadores",
+    "/afiliación_fernanda",
+    "/condiciones_adhesion",
+    "/descarga_formularios",
+    "/formulario-prestaciones",
+    "/empleadores/penas-sanciones"
+  ],
+  "realMailSent": false,
+  "realBrowser": false
+}

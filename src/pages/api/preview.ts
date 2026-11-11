@@ -1,3 +1,5 @@
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+import { createHmac, timingSafeEqual } from 'node:crypto';
 import type { APIRoute } from 'astro';
 
 /**
@@ -7,6 +9,9 @@ import type { APIRoute } from 'astro';
  */
 export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   const url = new URL(request.url);
+  const secret = process.env.PREVIEW_SECRET || import.meta.env.PREVIEW_SECRET;
+  const supplied = url.searchParams.get('secret') || '';
+  if (!secret || Buffer.byteLength(supplied) !== Buffer.byteLength(secret) || !timingSafeEqual(Buffer.from(supplied), Buffer.from(secret))) return new Response('Acceso no autorizado',{status:401});
   const type = url.searchParams.get('type');
   const documentId = url.searchParams.get('documentId');
   const status = url.searchParams.get('status');
@@ -17,6 +22,8 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
       status: 400
     });
   }
+
+  if (!/^[a-zA-Z0-9_-]+$/.test(documentId) || !['noticia','prestacion','hero-slide','slide-afiliacion','socio'].includes(type)) return new Response('Parámetros inválidos',{status:400});
 
   // Establecer cookie de preview con datos necesarios
   cookies.set('preview', JSON.stringify({
@@ -33,6 +40,8 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
     maxAge: 60 * 30 // 30 minutos
   });
 
+  const previewValue = cookies.get('preview')!.value;
+  cookies.set('preview-signature',createHmac('sha256',secret).update(previewValue).digest('hex'),{path:'/',httpOnly:true,secure:import.meta.env.PROD,sameSite:'lax',maxAge:1800});
   // Redirigir según el tipo de contenido
   let redirectUrl = '/';
 

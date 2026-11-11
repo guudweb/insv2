@@ -1,0 +1,49 @@
+WEB_INSESO · NORMATIVAS Y REVISIÓN DE CORREO DEL 28 DE OCTUBRE DE 2026
+
+Conserve una copia de su proyecto local, del archivo .env y de la base de datos de citas antes de sustituir archivos. Esta entrega continúa WEB_INSESO_formularios_PDF.zip.
+
+CAMBIOS
+- Más separación entre las pestañas del menú de escritorio.
+- Retirada de los bloques de cabecera repetidos inmediatamente después del slide en las páginas de afiliación, conservando la información y los requisitos.
+- Registro de beneficiarios utiliza la estructura de Beneficios de ser asegurado y conserva el enlace directo a la documentación de prestaciones familiares.
+- Los slides reutilizados cambian automáticamente cada 4 segundos. No muestran flechas, contador ni botones de pausa. Se detienen al pasar el cursor o al recibir foco; el movimiento reducido del dispositivo desactiva el avance automático inicial.
+- Las cuatro fichas digitales tienen validaciones en la interfaz y en el servidor, límites, fechas válidas, formatos de identificación/contacto/importes/cuentas y comprobaciones de campos relacionados.
+- La selección es única para las opciones excluyentes, como tipo de solicitud, sector, documento y prestación. Asistencia recibida, documentación y las situaciones de relación con INSESO permiten varias opciones cuando corresponda.
+
+FORMULARIOS
+Imprimir: complete los campos obligatorios y pulse Imprimir. Se abre el modelo original con los datos colocados en sus casillas. Use Imprimir en el visor de PDF. Puede firmar por nombre (con trazo opcional) o firmar a mano después de imprimir.
+Descargar formulario: descarga el original en blanco sin rellenar la ficha. El envío por correo ya no está disponible para estas cuatro fichas. La consulta de contacto y la cita previa conservan sus envíos.
+Para generar la impresión, el servidor procesa los datos sin guardarlos en una base de datos.
+
+CORREO Y PUESTA EN MARCHA LOCAL
+1. Utilice la versión de Node indicada en package.json (Node 22.13 o posterior compatible).
+2. Ejecute npm ci, o npm install si necesita reinstalar las dependencias.
+3. Mantenga su archivo .env funcional y revise:
+   El destinatario institucional está fijado en src/config/mail.mjs: flora.bula@inseso.org.
+   SITE_ORIGIN=http://localhost:4321
+   El origen debe coincidir exactamente con la dirección/puerto del navegador.
+4. Conserve sus credenciales válidas SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS y SMTP_FROM. SMTP_FROM es el remitente. SMTP_TO ya no cambia el destinatario: incluso si su .env conserva otro valor, consultas y citas se remiten a flora.bula@inseso.org. Los justificantes se envían al correo introducido por el ciudadano. La dirección que se escribió como flora.bula.inseso.org no es un correo válido: falta @. El destinatario institucional fijo de esta entrega es flora.bula@inseso.org.
+5. Ejecute npm start. El script carga .env si existe. No comparta ni suba .env a GitHub.
+Las imágenes siguen optimizadas. No se incluyen node_modules, compilaciones ni credenciales en el ZIP.
+
+CITAS PREVIAS
+Las oficinas conservan la configuración recuperada, desactivadas en esta copia. Compare src/data/appointments.json con su copia local probada. Para reservar se requieren APPOINTMENTS_ENABLED=true, oficinas/trámites habilitados y SMTP válido. Preserve la base de datos y la configuración del trabajador de reintentos.
+
+PRUEBAS
+Para repetir la compilación y las pruebas de formularios: npm run test:formularios.
+
+DATOS Y CONTENIDOS
+Las fichas se basan en los documentos suministrados; confirme con INSESO los requisitos vigentes y la aceptación administrativa de la versión digital. Los textos de la interfaz, afiliación, formularios y las 11 prestaciones se incluyen en JSON en español, inglés, francés y portugués. Los justificantes siguen el idioma elegido; los modelos originales de las fichas y el texto incrustado en las imágenes conservan su idioma original. Cada nueva entrega debe actualizar los cuatro idiomas; npm run build comprueba las claves antes de compilar. La web conserva info@inseso.org como contacto público, aparte del destinatario técnico inicial configurado.
+
+REVISIÓN DE LAS DOS FICHAS ADJUNTAS
+Se contrastaron los campos y opciones con las fichas originales de afiliación y registro de empresas. El historial laboral presenta las cinco filas originales con empresa, fecha de alta y fecha de baja. Se mantienen lugar, fecha, firma y los campos reservados al INSESO, incluido el espacio para la fotografía (se incorpora físicamente en la oficina). Las copias originales se incluyen sin modificaciones. Consulte docs/CAMPOS_FICHAS_ADJUNTAS.json y ejecute node scripts/test-source-forms.mjs.
+
+TRADUCCIONES Y CORREO
+Se verificaron 24 páginas en cuatro idiomas y 12 avisos institucionales con transporte simulado (contacto, citas y PDF por cada idioma), incluso con un SMTP_TO antiguo distinto. No se enviaron correos reales. Conserve su .env válido y compruebe la recepción en su entorno. La agenda añade automáticamente el idioma a la base de datos existente sin borrar las reservas. Ejecutar npm run test:traducciones para repetir las comprobaciones.
+
+NOVEDADES DE ESTA ENTREGA
+- Fotografía suministrada incorporada al Servicio de Informática y Transformación Digital, optimizada en WebP sin generar ni cambiar el retrato.
+- Slides institucionales más luminosos mediante CSS, con avance automático cada cuatro segundos y sin controles visibles.
+- Nuevo enlace Normativas de la seguridad social en el pie, traducido a los cuatro idiomas. Los dos PDF se entregan con Content-Disposition: attachment, sin visor integrado, y sus bytes coinciden con los adjuntos originales. El navegador puede abrirlos después de descargarlos si así está configurado.
+- Diagnóstico SMTP mejorado: npm run smtp:verificar. Para solicitar un envío real a Flora: npm run smtp:verificar -- --enviar-prueba. Consulte docs/SOLUCION_CORREO_SMTP.md. El ZIP no contiene credenciales: restaure su .env junto a package.json y reinicie npm start.
+- Se comprobaron las descargas, traducciones, posición de la foto, diagnóstico SMTP, formularios, agenda y navegación. Los envíos se probaron con transporte simulado; no se ha confirmado una entrega real.

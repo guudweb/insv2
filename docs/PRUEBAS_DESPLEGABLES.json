@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Las respuestas empiezan cerradas y cada pregunta tiene summary",
+    "pass": true
+  },
+  {
+    "name": "Pulsar una pregunta abre únicamente esa respuesta",
+    "pass": true
+  },
+  {
+    "name": "Se pueden abrir varias respuestas y volver a cerrar una",
+    "pass": true
+  },
+  {
+    "name": "Abrir todas abre todas las respuestas",
+    "pass": true
+  },
+  {
+    "name": "Cerrar todas cierra todas las respuestas",
+    "pass": true
+  },
+  {
+    "name": "Reinicializar no duplica escuchas ni rompe los controles",
+    "pass": true
+  },
+  {
+    "name": "Un enlace directo a una pregunta abre su respuesta",
+    "pass": true
+  },
+  {
+    "name": "Un ancla inexistente no abre una respuesta equivocada",
+    "pass": true
+  },
+  {
+    "name": "Tablas de invalidez contienen ocho filas de datos en total",
+    "pass": true
+  }
+]

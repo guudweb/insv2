@@ -1,3 +1,13 @@
+# INSESO · Entrega final
+
+Lea primero [PUBLICACION.md](PUBLICACION.md): instalación, SMTP, activación de oficinas, agenda persistente, trabajador de correo y pruebas antes de publicar.
+
+Resumen y resultados: [docs/ENTREGA_FINAL.md](docs/ENTREGA_FINAL.md).
+
+Las citas se entregan desactivadas hasta validar las oficinas/trámites y configurar SMTP. No se incluyen credenciales ni datos personales de producción.
+
+---
+
 
 
 ## 🛠️ Tecnologías

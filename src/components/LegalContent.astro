@@ -1,0 +1,9 @@
+---
+// CAMBIO INSESO FINAL: páginas visibles basadas en el tratamiento y herramientas del código entregado.
+import {getLangFromUrl,ui} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url),w=ui[lang].legal;
+const kind=Astro.props.kind as 'privacy'|'cookies'|'notice';
+const paragraphs=kind==='privacy'?w.privacyText:kind==='cookies'?w.cookiesText:w.noticeText;
+---
+<article class="legal-content container"><span>INSESO</span><h1>{w[kind]}</h1>{paragraphs.map(text=><p>{text}</p>)}<a href="mailto:info@inseso.org">info@inseso.org</a></article>
+<style>.legal-content{padding-top:3rem;padding-bottom:4rem;max-width:900px}.legal-content>span{color:#367a40;letter-spacing:.12em;font-weight:600}.legal-content h1{color:#163f27;font-size:clamp(2rem,4vw,3rem);margin:1rem 0 2rem}.legal-content p{line-height:1.9;margin-bottom:1.4rem}.legal-content a{color:#225924;text-decoration:underline}</style>

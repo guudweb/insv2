@@ -1,0 +1,15 @@
+---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+import {getLangFromUrl} from '../i18n/utils';
+import {getInstitutionalDocuments,getStrapiImageUrl} from '../lib/strapi';
+const lang=getLangFromUrl(Astro.url);
+const words={"es": ["Información institucional", "Organigrama", "Órganos de gobierno", "Normativa", "Estadísticas", "Memorias", "Licitaciones", "Documentación pendiente de incorporación a esta versión.", "Unidad responsable", "Fecha", "Descargar"], "fr": ["Informations institutionnelles", "Organigramme", "Organes de gouvernance", "Réglementation", "Statistiques", "Rapports annuels", "Appels d’offres", "Documentation en attente d’intégration dans cette version.", "Unité responsable", "Date", "Télécharger"], "en": ["Institutional information", "Organization chart", "Governing bodies", "Regulations", "Statistics", "Annual reports", "Procurement", "Documents are awaiting inclusion in this version.", "Responsible unit", "Date", "Download"], "pt": ["Informação institucional", "Organograma", "Órgãos de governo", "Normativa", "Estatísticas", "Relatórios anuais", "Licitações", "Documentação pendente de inclusão nesta versão.", "Unidade responsável", "Data", "Descarregar"]}[lang];
+const documents=await getInstitutionalDocuments(lang);
+const types=['organigrama','gobierno','normativa','estadisticas','memorias','licitaciones'];
+---
+<div class="container py-5">
+<h1>{words[0]}</h1>
+<nav class="mb-4" aria-label={words[0]}>{types.map((type,i)=><a class="btn btn-outline-secondary m-1" href={`#${type}`}>{words[i+1]}</a>)}</nav>
+{types.map((type,i)=><section id={type} class="mb-5"><h2>{words[i+1]}</h2>{documents.filter(d=>d.categoria===type&&d.archivo?.url).length ? <ul>{documents.filter(d=>d.categoria===type&&d.archivo?.url).map(d=><li><h3>{d.titulo}</h3><p>{words[8]}: {d.unidadResponsable} · {words[9]}: {d.fechaRevision}</p><a href={getStrapiImageUrl(d.archivo.url)}>{words[10]}</a></li>)}</ul>:<p>{words[7]}</p>}</section>)}
+</div>
+<style>section{scroll-margin-top:6rem}h2{font-size:1.5rem;color:#225924}h3{font-size:1.1rem}</style>

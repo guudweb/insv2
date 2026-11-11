@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LegalContent from '../components/LegalContent.astro';
+import {getLangFromUrl,ui} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url);
+export const prerender=false;
+---
+<BaseLayout title={`INSESO · ${ui[lang].legal.notice}`}><LegalContent kind="notice" /></BaseLayout>

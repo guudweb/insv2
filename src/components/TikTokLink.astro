@@ -1,0 +1,8 @@
+---
+// CAMBIO INSESO 2026-10-13 R3: R4: cuenta oficial confirmada por INSESO.
+import TikTokIcon from './TikTokIcon.astro';
+import {contactInfo} from '../config/contact';
+const url=contactInfo.social.tiktok;
+---
+{url?<a href={url} class="tiktok-social" target="_blank" rel="noopener noreferrer" aria-label="TikTok de INSESO" title="TikTok de INSESO"><TikTokIcon/></a>:<span class="tiktok-social pending" role="img" aria-label="TikTok: cuenta institucional pendiente de confirmar" title="TikTok: enlace de la cuenta institucional pendiente de confirmar"><TikTokIcon/></span>}
+<style>.tiktok-social{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid currentColor;border-radius:50%;color:#fff;vertical-align:middle}.pending{opacity:.65;cursor:help}.tiktok-social svg{display:block}</style>

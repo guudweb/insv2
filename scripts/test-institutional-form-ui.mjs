@@ -1,0 +1,33 @@
+// Ejecuta el módulo real de la interfaz en un DOM controlado y conecta con los handlers reales.
+import assert from 'node:assert/strict';import vm from 'node:vm';import {readFileSync,readdirSync,writeFileSync} from 'node:fs';import ts from 'typescript';import {Window} from 'happy-dom';import sharp from 'sharp';import {App} from 'astro/app';
+import {createLocalizer,localeCode} from '../src/i18n/release.mjs';
+import {webForms} from '../src/data/web-forms.mjs';import {validateInstitutionalForm} from '../src/lib/form-validation.mjs';import {createFormsHandler} from '../src/server/forms.mjs';
+process.env.ASTRO_NODE_AUTOSTART='disabled';delete process.env.SMTP_TO;delete process.env.SITE_ORIGIN;
+const {pageMap}=await import('../dist/server/entry.mjs'),manifestFile=readdirSync(new URL('../dist/server/',import.meta.url)).find(n=>n.startsWith('manifest_')),{manifest}=await import(`../dist/server/${manifestFile}`);const app=new App({...manifest,pageMap,middleware:()=>import('../dist/server/_astro-internal_middleware.mjs')});
+const html=await(await app.render(new Request('http://localhost/formulario-web?tipo=empresa'))).text();
+const window=new Window({url:'http://localhost/formulario-web?tipo=empresa',settings:{disableCSSFileLoading:true,enableJavaScriptEvaluation:false,disableJavaScriptFileLoading:true}});window.document.write(html);const document=window.document,form=document.querySelector('[data-institutional-form]');assert(form);
+// Happy DOM no aplica la bandera Unicode v de los patrones HTML; se emula aquí esa regla nativa.
+form.reportValidity=()=>{const patterns=[...form.querySelectorAll('input[pattern]')].map(input=>({input,pattern:input.getAttribute('pattern')}));for(const {input}of patterns)input.removeAttribute('pattern');const native=form.checkValidity();for(const {input,pattern}of patterns)input.setAttribute('pattern',pattern);return native&&patterns.every(({input,pattern})=>input.disabled||!input.value||new RegExp('^(?:'+pattern+')$','v').test(input.value));};
+const context2d={lineWidth:2,lineCap:'round',strokeStyle:'',fillStyle:'',clearRect(){},beginPath(){},arc(){},fill(){},moveTo(){},lineTo(){},stroke(){}};document.querySelector('canvas').getContext=()=>context2d;
+const signatureBytes=await sharp(Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="400" height="100"><path d="M20 70 C80 0 100 100 160 30 S220 90 350 40" stroke="#203c2b" stroke-width="3" fill="none"/></svg>')).png().toBuffer();
+const canvas=document.querySelector('canvas');canvas.toDataURL=()=> 'data:image/png;base64,'+signatureBytes.toString('base64');canvas.setPointerCapture=()=>{};canvas.getBoundingClientRect=()=>({left:0,top:0,width:640,height:180});
+let opened=0,previewURL='';window.open=()=>{opened++;return{location:{replace:url=>previewURL=url},close(){},closed:false};};window.setInterval=()=>0;window.HTMLElement.prototype.scrollIntoView=function(){};
+const calls=[];const pdf=createFormsHandler();
+const source=readFileSync(new URL('../src/lib/institutional-form.ts',import.meta.url),'utf8');const exports={};
+const sandbox={exports,require:specifier=>specifier.includes('release.mjs')?{createLocalizer,localeCode}:specifier.includes('web-forms')?{webForms}:{validateInstitutionalForm},document,window,FormData:window.FormData,URL:{createObjectURL:()=> 'blob:test',revokeObjectURL(){}},setTimeout,clearTimeout,console,fetch:async(url,options)=>{calls.push(url);return pdf({request:new Request('http://localhost'+url,options),clientAddress:'127.0.0.1'});}};
+vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText,sandbox);exports.bindInstitutionalForms();
+const change=()=>form.dispatchEvent(new window.Event('change',{bubbles:true}));const set=(name,value)=>{const controls=[...form.querySelectorAll(`[name="${name}"]`)];assert(controls.length,name);if(controls[0].type==='radio')controls.forEach(e=>e.checked=e.value===value);else controls[0].value=value;};
+const wait=async()=>{for(let i=0;i<300;i++){if(!document.querySelector('[data-form-status]').textContent.includes('…'))return;await new Promise(r=>setTimeout(r,10));}throw new Error('Timeout de la interfaz');};
+const print=form.querySelector('[data-form-action=print]');
+const download=form.querySelector('a[download]');
+assert.equal(new URL(download.href).pathname,webForms.empresa.source);
+assert.equal(form.querySelectorAll('a[download]').length,1);assert(!form.querySelector('[data-form-action=send]'));assert(!form.querySelector('[name=contactEmail]'));
+print.click();assert.equal(opened,0);assert.equal(calls.length,0);
+for(const [key,value]of Object.entries({s0f0:'Empresa de prueba',s0f1:'Alta inicial',s0f2:'Privada',s1f0:'Terciario',s1f3:'NIF-123456',s4f0:'Persona',s4f1:'De Prueba',signatureName:'Persona De Prueba'}))set(key,value);
+form.querySelector('[name=signatureConfirmed]').checked=true;
+set('s1f1','-5');change();print.click();assert.equal(opened,0);
+set('s1f1','3');change();print.click();await wait();assert.equal(opened,1);assert.equal(previewURL,'blob:test');assert.deepEqual(calls,['/api/formularios/pdf']);
+set('signatureMethod','paper');change();assert(form.querySelector('[name=signatureName]').disabled);print.click();await wait();assert.equal(opened,2);
+await window.happyDOM.close();
+writeFileSync(new URL('../docs/PRUEBAS_INTERFAZ_FORMULARIOS.json',import.meta.url),JSON.stringify({passed:true,checks:['descarga del original sin introducir datos','impresión vacía e inválida bloqueada','vista de impresión en PDF','firma en papel','sin opción de correo']},null,2));
+console.log('Interfaz: original descargable sin datos y vista de impresión solo con datos válidos.');

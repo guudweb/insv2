@@ -1,4 +1,5 @@
 ---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getNoticias, getStrapiImageUrl, richTextToPlainText } from '../../lib/strapi';
 
@@ -180,7 +181,7 @@ function highlightSearchTerm(text: string, query: string) {
 <style>
   /* Page Header */
   .page-header-noticias {
-    background: linear-gradient(135deg, #8c1b12 0%, #6d2018 100%);
+    background: linear-gradient(135deg, #2d762f 0%, #225924 100%);
     padding: 4rem 0 3rem;
     margin-bottom: 3rem;
     color: white;
@@ -231,7 +232,7 @@ function highlightSearchTerm(text: string, query: string) {
 
   .btn-search-main {
     background: white;
-    color: #8c1b12;
+    color: #2d762f;
     border: none;
     padding: 15px 30px;
     border-radius: 8px;
@@ -265,7 +266,7 @@ function highlightSearchTerm(text: string, query: string) {
   .alert-info i,
   .alert-warning i {
     font-size: 64px;
-    color: #8c1b12;
+    color: #2d762f;
     margin-bottom: 1.5rem;
   }
 
@@ -298,7 +299,7 @@ function highlightSearchTerm(text: string, query: string) {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background: #8c1b12;
+    background: #2d762f;
     color: white;
     padding: 12px 30px;
     border-radius: 8px;
@@ -309,7 +310,7 @@ function highlightSearchTerm(text: string, query: string) {
   }
 
   .btn-volver:hover {
-    background: #6d2018;
+    background: #225924;
     transform: translateY(-2px);
     color: white;
   }
@@ -342,7 +343,7 @@ function highlightSearchTerm(text: string, query: string) {
     align-items: center;
     gap: 8px;
     background: #f5f5f5;
-    color: #8c1b12;
+    color: #2d762f;
     padding: 10px 20px;
     border-radius: 8px;
     text-decoration: none;
@@ -352,7 +353,7 @@ function highlightSearchTerm(text: string, query: string) {
   }
 
   .btn-clear-results:hover {
-    background: #8c1b12;
+    background: #2d762f;
     color: white;
   }
 
@@ -393,7 +394,7 @@ function highlightSearchTerm(text: string, query: string) {
 
   .noticia-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+    box-shadow: 0 8px 24px rgba(45, 118, 47, 0.15);
   }
 
   .noticia-image {
@@ -446,7 +447,7 @@ function highlightSearchTerm(text: string, query: string) {
   }
 
   .noticia-card:hover .video-overlay {
-    background: rgba(140, 27, 18, 0.9);
+    background: rgba(45, 118, 47, 0.9);
     transform: translate(-50%, -50%) scale(1.1);
   }
 
@@ -454,7 +455,7 @@ function highlightSearchTerm(text: string, query: string) {
     position: absolute;
     top: 15px;
     right: 15px;
-    background: #8c1b12;
+    background: #2d762f;
     color: white;
     padding: 6px 16px;
     border-radius: 20px;
@@ -481,7 +482,7 @@ function highlightSearchTerm(text: string, query: string) {
   }
 
   .noticia-meta i {
-    color: #8c1b12;
+    color: #2d762f;
     margin-right: 5px;
   }
 
@@ -499,7 +500,7 @@ function highlightSearchTerm(text: string, query: string) {
   }
 
   .noticia-title a:hover {
-    color: #8c1b12;
+    color: #2d762f;
   }
 
   .noticia-excerpt {
@@ -515,7 +516,7 @@ function highlightSearchTerm(text: string, query: string) {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    background: #8c1b12;
+    background: #2d762f;
     color: white;
     font-weight: 600;
     font-size: 14px;
@@ -523,13 +524,13 @@ function highlightSearchTerm(text: string, query: string) {
     padding: 12px 24px;
     border-radius: 6px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(140, 27, 18, 0.2);
+    box-shadow: 0 2px 8px rgba(45, 118, 47, 0.2);
   }
 
   .btn-leer-mas:hover {
-    background: #6d2018;
+    background: #225924;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(140, 27, 18, 0.3);
+    box-shadow: 0 4px 12px rgba(45, 118, 47, 0.3);
     color: white;
   }
 

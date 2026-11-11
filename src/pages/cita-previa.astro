@@ -1,0 +1,7 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import InsuredAttention from '../components/InsuredAttention.astro';
+import {getLangFromUrl,ui} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url); export const prerender=false;
+---
+<BaseLayout title={`INSESO · ${ui[lang].attention.title}`}><InsuredAttention /></BaseLayout>

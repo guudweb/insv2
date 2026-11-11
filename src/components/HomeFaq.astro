@@ -1,0 +1,10 @@
+---
+import {createLocalizer} from '../i18n/release.mjs';
+import {getLangFromUrl,getLocalizedPath} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url);
+const items=[['¿Cómo puedo afiliarme?','/afiliacion-informacion'],['¿Cómo solicito el carné?','/solicitud_de_carne'],['¿Qué prestaciones existen?','/Prestaciones_Sociales'],['¿Cómo solicito una cita previa?','/cita-previa'],['¿Dónde están nuestras delegaciones?','/nuestras_agencias']];
+
+const l=createLocalizer(lang);
+---
+<section class="container home-faq"><h2>{l("Preguntas frecuentes")}</h2><p>{l("Encuentra información y requisitos para tus trámites.")}</p><div>{items.map(([q,url])=><a href={getLocalizedPath(url,lang)}>{l(q)}<span aria-hidden="true">→</span></a>)}</div></section>
+<style>.home-faq{padding-top:3rem;padding-bottom:3rem}.home-faq h2{color:#225924}.home-faq div{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}.home-faq a{display:flex;justify-content:space-between;gap:1rem;border:1px solid #c9dece;border-radius:12px;padding:1.2rem;background:#f4faf4;color:#225924;font-weight:600}.home-faq a:hover{background:#225924;color:white}</style>

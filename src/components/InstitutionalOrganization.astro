@@ -1,0 +1,48 @@
+---
+import {createLocalizer} from '../i18n/release.mjs';
+// CAMBIO INSESO R4 2026-10-15: organigrama de la imagen facilitada y autoridades confirmadas por la usuaria.
+import {getLangFromUrl,ui} from '../i18n/utils';
+const lang=getLangFromUrl(Astro.url);
+const text=ui[lang].organization;
+const leaders=[
+ {name:'Eduardo Orobiyi Lajay',role:text.president,position:'pca'},
+ {name:'Monserrat de la Gracia Bonkanka',role:text.delegate,position:'delegate'},
+ {name:'Juana Magdalena Ntutumu',role:text.secretary,position:'secretary'}
+];
+
+const l=createLocalizer(lang);
+const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "jefe-tecnicos.webp", "jefe-seguro-medico.webp", "jefe-medicos.webp", "jefe-informatica.webp", "jefe-rrhh.webp", "jefe-marketing.webp", null, null, null, "jefe-control-externo.webp"];
+---
+<section class="organization container" aria-labelledby="chart-title" id="organos-gobierno">
+ <section class="chart-panel" id="organigrama" aria-labelledby="chart-title"><header><span class="eyebrow">{text.structure}</span><h2 id="chart-title">{text.chart}</h2><p>{text.chartIntro}</p></header>
+ <ol class="chart-tree">
+  <li><div class="org-node council authority-node"><div class="service-photo"><img src="/images/gobierno/pca.webp" alt={leaders[0].name} loading="lazy" /></div><span>{text.council}</span><span class="authority-role">{leaders[0].role}</span><h3 class="authority-name">{leaders[0].name}</h3></div>
+   <ol><li><div class="org-node directive">{text.board}</div>
+    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo"><img src="/images/gobierno/asesoria-juridica.webp" alt={text.legal} loading="lazy" /></div>{text.legal}</div><div class="org-node delegation authority-node"><span>{text.delegate}</span><h3 class="authority-name">{leaders[1].name}</h3></div><div class="support-stack"><div class="org-support">{text.cabinet}</div><div class="org-support">{text.advisory}</div></div></div>
+     <ol><li><div class="org-node secretary-node authority-node">
+  <div class="service-photo">
+    <img
+      src="/images/gobierno/secretaria-general.jpg"
+      alt={leaders[2].name}
+      loading="lazy"
+    />
+  </div>
+  <span>{text.secretary}</span>
+  <h3 class="authority-name">{leaders[2].name}</h3>
+</div><ol class="service-grid">{text.services.map((service,i)=><li><div class="service-node"><div class="service-photo">{servicePhotos[i]?<img src={`/images/gobierno/${servicePhotos[i]}`} alt={service} loading="lazy" />:<><i class="fas fa-user" aria-hidden="true"></i><small>{l("Fotografía pendiente")}</small></>}</div><p>{service}</p></div></li>)}</ol></li></ol>
+    </li></ol>
+   </li></ol>
+  </li>
+ </ol>
+ </section>
+</section>
+<style>
+/* CAMBIO 30/10: las autoridades forman parte de sus nodos, con nombre centrado. */
+.authority-node .service-photo{max-width:230px;margin:0 auto 1rem}.authority-node .service-photo img{height:200px;object-fit:contain;object-position:center bottom}.authority-node .authority-name{text-align:center;font-size:1.1rem;line-height:1.45;font-weight:700;color:inherit;margin:.65rem 0 0;overflow-wrap:anywhere}.authority-role{display:block;font-size:.8rem;font-weight:400;line-height:1.5;margin-top:.5rem}.authority-node>span{display:block}
+
+.organization{padding-top:4.5rem;padding-bottom:4.5rem;--org-green:#225924;--org-ink:#163f27;--org-line:#b4cfbb;scroll-margin-top:2rem}.organization-heading{max-width:760px;margin-bottom:2rem}.eyebrow{text-transform:uppercase;font-size:.75rem;letter-spacing:.18em;font-weight:700;color:#4c7555}.organization h2{font-size:clamp(1.8rem,3vw,2.5rem);color:var(--org-ink);margin:.6rem 0 1rem;line-height:1.2}.organization-heading p,.chart-panel header p{color:#53675b;line-height:1.8}.org-shortcut{display:inline-flex;gap:1rem;align-items:center;font-weight:600;color:var(--org-green);border-bottom:1px solid #a9c6b1;padding:.5rem 0}.leaders{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem;margin-bottom:4rem}.leader{border:1px solid #dce8df;border-radius:20px;overflow:hidden;background:white;box-shadow:0 8px 25px #174b2510;transition:transform .25s ease,box-shadow .25s ease;animation:org-enter .6s ease both;animation-delay:var(--delay)}.leader:hover{transform:translateY(-6px);box-shadow:0 16px 32px #174b2520}.portrait{height:290px;background:linear-gradient(135deg,#eef6ef,#dfece2);padding:1.1rem 1.1rem 0}.portrait img{width:100%;height:100%;object-fit:contain;object-position:center bottom;display:block}.leader-body{padding:1.6rem}.leader-role{display:block;min-height:3em;font-size:.8rem;font-weight:600;color:#42664b;line-height:1.5}.leader h3{font-size:1.35rem;line-height:1.4;margin:.6rem 0 1rem;color:var(--org-ink)}.leader-line{display:block;width:40px;height:3px;background:#438b4d;transition:width .25s}.leader:hover .leader-line{width:75px}.chart-panel{background:linear-gradient(145deg,#f0f7f1,#f9fcf9);border:1px solid #d9e6dc;border-radius:24px;padding:2.5rem;scroll-margin-top:2rem}.chart-panel>header{text-align:center;max-width:680px;margin:0 auto 2rem}.chart-tree,.chart-tree ol{list-style:none;margin:0;padding:0}.chart-tree ol{position:relative;padding-top:30px}.chart-tree ol:before{content:'';position:absolute;top:0;left:50%;height:30px;border-left:2px solid var(--org-line)}.org-node{max-width:360px;margin:auto;padding:1rem 1.2rem;text-align:center;border-radius:12px;font-weight:600;line-height:1.5;border:1px solid #c9dece;background:white;color:var(--org-ink);box-shadow:0 4px 14px #174b2508;transition:transform .2s,box-shadow .2s}.org-node:hover,.service-node:hover{transform:translateY(-3px);box-shadow:0 8px 20px #174b2518}.council{background:#225924;color:white;border-color:#225924}.directive{background:#e2efe5}.delegation{background:#367a40;color:white;border-color:#367a40;width:100%;position:relative;z-index:1}.delegation-row{display:grid;grid-template-columns:1fr 1.3fr 1fr;align-items:center;gap:24px;position:relative}.delegation-row:before{content:'';position:absolute;left:12%;right:12%;top:50%;border-top:2px solid var(--org-line)}.org-support{position:relative;background:#fff;border:1px solid #c9dece;border-radius:10px;text-align:center;padding:.8rem;font-size:.85rem;color:#355e40;line-height:1.5}.support-stack{display:grid;gap:.7rem}.service-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}.service-grid>li{position:relative}.service-node{height:100%;padding:1.1rem;border:1px solid #c9dece;border-radius:12px;background:#fff;transition:transform .2s,box-shadow .2s}.service-node>span{font-size:.75rem;color:#4e7b56;border-radius:6px;background:#edf5ee;padding:.3rem .5rem;display:inline-block;margin-bottom:.8rem}.service-node p{font-size:.9rem;line-height:1.6;color:#254d32;margin:0}.service-grid:after{content:'';position:absolute;top:15px;left:12%;right:12%;border-top:2px solid var(--org-line)}.org-shortcut:focus-visible{outline:3px solid #377e45;outline-offset:5px}@keyframes org-enter{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}@media(max-width:991px){.portrait{height:240px}.leader-body{padding:1.1rem}.leader h3{font-size:1.15rem}.chart-panel{padding:1.5rem}.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.delegation-row{gap:12px;grid-template-columns:1fr 1.2fr 1fr}}@media(max-width:600px){.leaders{grid-template-columns:1fr}.leader{display:grid;grid-template-columns:120px 1fr}.portrait{height:190px;padding:.5rem}.leader-role{min-height:0}.leader-body{align-self:center}.chart-panel{padding:1.3rem .8rem}.delegation-row{display:flex;flex-direction:column;gap:12px}.delegation-row:before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:2px solid var(--org-line)}.delegation{order:-1;max-width:100%}.legal,.support-stack{width:86%}.service-grid{gap:.6rem}.service-node{padding:.8rem}.service-node p{font-size:.82rem}.organization{padding-top:2.5rem;padding-bottom:2.5rem}}@media(prefers-reduced-motion:reduce){.leader{animation:none}.leader,.leader-line,.org-node,.service-node{transition:none}.leader:hover,.org-node:hover,.service-node:hover{transform:none}}
+.service-photo{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem;min-height:125px;margin-bottom:1rem;border-radius:10px;border:1px dashed #a4c5a9;background:#eff6ef;color:#527b59}.service-photo img{display:block;width:100%;height:185px;object-fit:cover;object-position:center 25%;border-radius:9px}.service-photo:has(img){border-style:solid;overflow:hidden}.service-photo i{font-size:2rem}.service-photo small{font-size:.7rem;text-align:center}.service-node p{font-weight:600}
+/* CAMBIO WEB_INSESO: presidencia centrada sobre delegación y secretaría. */
+@media(min-width:601px){.leaders{grid-template-columns:repeat(4,minmax(0,1fr));position:relative}.leader.pca{grid-column:2 / 4;grid-row:1}.leader.delegate{grid-column:1 / 3;grid-row:2}.leader.secretary{grid-column:3 / 5;grid-row:2}.leaders:before{content:"";position:absolute;top:45%;left:25%;right:25%;border-top:2px solid #b4cfbb}.leaders .leader{z-index:1}}
+.authority-node .service-photo img{object-fit:contain}.service-photo img{object-position:center 18%}
+</style>

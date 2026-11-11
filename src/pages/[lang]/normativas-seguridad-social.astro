@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NormativeDocuments from '../../components/NormativeDocuments.astro';
+import {createLocalizer} from '../../i18n/release.mjs';
+import {getLangFromUrl} from '../../i18n/utils';
+const l=createLocalizer(getLangFromUrl(Astro.url));
+export const prerender=false;
+---
+<BaseLayout title={`INSESO · ${l('Normativas de la seguridad social')}`}><NormativeDocuments /></BaseLayout>

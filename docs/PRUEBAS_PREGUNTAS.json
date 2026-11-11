@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Once prestaciones y cuatro de muerte y supervivencia",
+    "pass": true
+  },
+  {
+    "name": "Preguntas con identificadores únicos y respuestas o tablas",
+    "pass": true
+  },
+  {
+    "name": "Entradas inexistentes no producen fichas",
+    "pass": true
+  },
+  {
+    "name": "Invalidez mantiene ocho cuantías y ambas contingencias",
+    "pass": true
+  },
+  {
+    "name": "Sector público, privado y reversión conservan documentación diferenciada",
+    "pass": true
+  },
+  {
+    "name": "Incapacidad temporal y sepelio son de pago único",
+    "pass": true
+  },
+  {
+    "name": "Orfandad distingue los documentos por hijo y del funcionario",
+    "pass": true
+  },
+  {
+    "name": "Alias de idioma conserva la ficha",
+    "pass": true
+  }
+]

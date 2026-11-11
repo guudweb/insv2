@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Agenda cerrada por defecto y oficinas filtradas por activación",
+    "pass": true
+  },
+  {
+    "name": "Días laborables, límites, fechas imposibles y oficina no autorizada",
+    "pass": true
+  },
+  {
+    "name": "Datos inválidos, inyección de cabeceras, consentimiento y prestación inexistente",
+    "pass": true
+  },
+  {
+    "name": "Reserva, idempotencia y doble ocupación entre distintos trámites",
+    "pass": true
+  },
+  {
+    "name": "Aviso exclusivo a info@inseso.org y justificante con referencia, requisitos y hora local",
+    "pass": true
+  },
+  {
+    "name": "Fallo SMTP conserva la cita, bloquea el justificante hasta avisar a INSESO y reintenta",
+    "pass": true
+  },
+  {
+    "name": "Si solo falla el justificante no se repite el aviso institucional",
+    "pass": true
+  },
+  {
+    "name": "Dos procesos compitiendo por el mismo hueco: una sola reserva",
+    "pass": true
+  },
+  {
+    "name": "Cancelar libera el hueco; otro trámite y otra delegación conservan su independencia",
+    "pass": true
+  },
+  {
+    "name": "Límite de tres citas activas por correo y validación de la configuración horaria",
+    "pass": true
+  },
+  {
+    "name": "Conservación: elimina citas antiguas y correos asociados",
+    "pass": true
+  },
+  {
+    "name": "El lector JSON rechaza entradas malformadas y cuerpos excesivos",
+    "pass": true
+  },
+  {
+    "name": "Trabajador continuo conserva pendientes sin SMTP y cierra limpiamente con SIGTERM",
+    "pass": true
+  }
+]

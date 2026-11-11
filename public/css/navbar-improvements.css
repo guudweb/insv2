@@ -1,3 +1,4 @@
+/* CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md. */
 /* ===================================
    MEJORAS DEL NAVBAR - INSESO
    =================================== */
@@ -21,19 +22,19 @@
 
 /* Asegurar que el link activo mantenga el rojo */
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active {
-  color: #8c1b12 !important;
+  color: #2d762f !important;
   background-color: transparent !important;
 }
 
 /* Mantener las líneas decorativas del hover en rojo para el estado activo */
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active:before,
 .navbar-expand-lg.top-nav .navbar-nav .nav-link:before {
-  background: #8c1b12 !important;
+  background: #2d762f !important;
 }
 
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active:after,
 .navbar-expand-lg.top-nav .navbar-nav .nav-link:after {
-  background: #8c1b12 !important;
+  background: #2d762f !important;
 }
 
 /* Dropdown por defecto oculto */
@@ -45,7 +46,7 @@
 @media (min-width: 992px) {
   .nav-item.dropdown:hover .dropdown-menu {
     display: block !important;
-    background-color: #6d2018 !important;
+    background-color: #225924 !important;
     border-radius: 8px;
     left: 50% !important;
     transform: translateX(-50%);
@@ -63,7 +64,7 @@
 
   .nav-item.dropdown .dropdown-menu.show {
     display: block !important;
-    background-color: #6d2018 !important;
+    background-color: #225924 !important;
     border-radius: 4px;
     position: static !important;
     transform: none !important;
@@ -84,7 +85,7 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item,
 body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
 .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
 .navbar-expand-lg.top-nav .navbar-nav .dropdown-menu .dropdown-item:hover {
-  background-color: #8c1b12 !important; /* Rojo más claro al hover */
+  background-color: #2d762f !important; /* Rojo más claro al hover */
   color: #ffffff !important; /* Mantener texto blanco */
 }
 
@@ -106,19 +107,19 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   .top-nav .navbar-toggler {
     padding: 0.5rem;
     font-size: 1.5rem;
-    border: 2px solid #8c1b12;
+    border: 2px solid #2d762f;
     border-radius: 6px;
   }
 
   .top-nav .navbar-toggler:hover,
   .top-nav .navbar-toggler:focus {
-    color: #8c1b12 !important;
-    border-color: #8c1b12 !important;
-    background-color: rgba(140, 27, 18, 0.1);
+    color: #2d762f !important;
+    border-color: #2d762f !important;
+    background-color: rgba(45, 118, 47, 0.1);
   }
 
   .top-nav .navbar-toggler .fas {
-    color: #8c1b12;
+    color: #2d762f;
   }
 
   /* Menú colapsado en mobile con transición suave */
@@ -154,8 +155,8 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   }
 
   .navbar-expand-lg.top-nav .navbar-nav .nav-link:hover {
-    background-color: rgba(140, 27, 18, 0.1) !important;
-    color: #8c1b12 !important;
+    background-color: rgba(45, 118, 47, 0.1) !important;
+    color: #2d762f !important;
   }
 
   .navbar-expand-lg.top-nav .navbar-nav .nav-item:last-child .nav-link {
@@ -172,7 +173,7 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   .nav-item.dropdown .dropdown-menu {
     position: static !important;
     transform: none !important;
-    background-color: #6d2018 !important;
+    background-color: #225924 !important;
     border-radius: 4px;
     margin: 0.5rem 0;
     padding: 0.5rem;
@@ -186,7 +187,7 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   }
 
   .nav-item.dropdown:hover .dropdown-menu {
-    background-color: #6d2018 !important;
+    background-color: #225924 !important;
   }
 
   /* Items del dropdown en mobile - texto blanco y centrado */
@@ -212,7 +213,7 @@ body .nav-item.dropdown:hover .dropdown-menu .dropdown-item:hover,
   }
 
   .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
-    background-color: #8c1b12 !important;
+    background-color: #2d762f !important;
     color: #ffffff !important;
   }
 

@@ -1,55 +1,55 @@
 ---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
+// CAMBIO INSESO 2026-10-13 R2: enlace Formularios dirige a la solicitud común de prestaciones.
 // Footer component
-import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/utils';
+import {createLocalizer} from '../i18n/release.mjs';
+import SocialLinks from './SocialLinks.astro';
+import { contactInfo } from '../config/contact';
+import { getLangFromUrl, useTranslations, getLocalizedPath, ui } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const l=createLocalizer(lang);
 ---
 
 <footer class="footer">
 	<div class="container bottom_border">
 		<div class="row">
 			<div class="col-lg-4 col-md-6 col-sm-12">
-				<img class="footer-logo" src="/images/img_footer_01.png" alt="INSESO Logo" />
+				<img style="background:transparent;padding:0" class="footer-logo" src="/images/footer-transparente.png" alt="INSESO Logo" />
 				<p class="footer-description">{t('footer.description')}</p>
 			</div>
 
 			<div class="col-lg-3 col-md-6 col-sm-6">
 				<h5 class="headin5_amrc col_white_amrc pt2">{t('footer.quickLinks')}</h5>
 				<ul class="footer_ul_amrc">
-					<li><a href={getLocalizedPath('/condiciones_adhesion', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkConditions')}</a></li>
 					<li><a href={getLocalizedPath('/sobre_nosotros', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkAbout')}</a></li>
-					<li><a href={getLocalizedPath('/prestaciones', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkServices')}</a></li>
-					<li><a href={getLocalizedPath('/contacto', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkContact')}</a></li>
+					<li><a href={getLocalizedPath('/Prestaciones_Sociales', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkServices')}</a></li>
+					<li><a href={getLocalizedPath('/atencion-asegurado', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkContact')}</a></li>
 				</ul>
 			</div>
 
 			<div class="col-lg-2 col-md-6 col-sm-6">
 				<h5 class="headin5_amrc col_white_amrc pt2">{t('footer.services')}</h5>
 				<ul class="footer_ul_amrc">
-					<li><a href={getLocalizedPath('/descarga_formularios', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkForms')}</a></li>
-					<li><a href={getLocalizedPath('/prestaciones', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkBenefits')}</a></li>
+					<li><a href={getLocalizedPath('/formularios-web', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkForms')}</a></li>
 					<li><a href={getLocalizedPath('/noticias', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkNews')}</a></li>
-					<li><a href={getLocalizedPath('/empleadores/penas-sanciones', lang)}><i class="fas fa-chevron-right"></i> {t('footer.linkPenalties')}</a></li>
 				</ul>
 			</div>
 
 			<div class="col-lg-3 col-md-6 col-sm-12">
 				<h5 class="headin5_amrc col_white_amrc pt2">{t('footer.followUs')}</h5>
-				<ul class="footer-social">
-					<li><a class="facebook hb-xs-margin" href="https://www.facebook.com/share/19mnxTyaUk/" target="_blank" aria-label="Facebook"><span class="hb hb-xs spin hb-facebook"><i class="fab fa-facebook-f"></i></span></a></li>
-					<li><a class="twitter hb-xs-margin" href="https://x.com/inseso_ge?s=21" target="_blank" aria-label="Twitter"><span class="hb hb-xs spin hb-twitter"><i class="fab fa-twitter"></i></span></a></li>
-					<li><a class="instagram hb-xs-margin" href="https://www.instagram.com/inseso_ge?igsh=amVsczBpd3Fxc2N3" target="_blank" aria-label="Instagram"><span class="hb hb-xs spin hb-instagram"><i class="fab fa-instagram"></i></span></a></li>
-				</ul>
+				<div class="footer-social"><SocialLinks /></div>
 				<div class="footer-contact">
 					<p><i class="fas fa-map-marker-alt"></i> Malabo, {t('footer.country')}</p>
-					<p><i class="fas fa-phone"></i> (+240) 333 092214</p>
 					<p><i class="fas fa-envelope"></i> info@inseso.org</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="container">
+    <!-- CAMBIO INSESO FINAL: accesos legales y atención al asegurado visibles. -->
+    <nav class="legal-links" aria-label="INSESO">{[['/normativas-seguridad-social',l('Normativas de la seguridad social')],['/privacidad',ui[lang].legal.privacy],['/cookies',ui[lang].legal.cookies],['/aviso-legal',ui[lang].legal.notice],['/atencion-asegurado',ui[lang].contactForm.title]].map(([href,label])=><a href={getLocalizedPath(href,lang)}>{label}</a>)}</nav>
 		<p class="copyright text-center">{t('footer.allRightsReserved')} &copy; 2026 INSESO</p>
 	</div>
 </footer>
@@ -66,3 +66,11 @@ const t = useTranslations(lang);
 		text-decoration: underline;
 	}
 </style>
+<style>
+/* CAMBIO INSESO R4: proporción del logo y alineación uniforme de las redes. */
+.footer-logo{display:block;width:240px;max-width:240px;max-width:100%;height:auto;object-fit:contain;object-position:left center;margin-bottom:1rem}
+.footer-social{display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;list-style:none;padding:0}
+.footer-social li{display:flex;align-items:center;justify-content:center;margin:0}
+</style>
+
+<style>.legal-links{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;padding-top:1.5rem}.legal-links a{color:#fff;font-size:.88rem;text-decoration:underline}</style>

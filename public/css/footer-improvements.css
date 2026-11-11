@@ -1,3 +1,4 @@
+/* CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md. */
 /* ===================================
    MEJORAS DEL FOOTER - INSESO
    =================================== */
@@ -33,7 +34,7 @@
 .footer_ul_amrc li a i {
   font-size: 10px;
   margin-right: 8px;
-  color: #8c1b12;
+  color: #2d762f;
   transition: transform 0.3s ease;
 }
 
@@ -60,7 +61,7 @@
 }
 
 .footer-contact p i {
-  color: #8c1b12;
+  color: #2d762f;
   margin-right: 10px;
   min-width: 18px;
   font-size: 14px;
@@ -91,7 +92,7 @@
 }
 
 .copyright a {
-  color: #8c1b12;
+  color: #2d762f;
   font-weight: 600;
   transition: color 0.3s ease;
 }
@@ -164,3 +165,15 @@
   padding-bottom: 2rem;
   padding-top: 3rem;
 }
+
+.footer-logo { height:auto; object-fit:contain; }
+a:focus-visible, button:focus-visible { outline:3px solid #258444; outline-offset:3px; }
+
+/* CAMBIO INSESO 2026-10-13 R3: pie íntegramente verde, contraste legible en títulos, iconos y enlaces. */
+.footer { background:#17522A !important; color:#f5fbf6; border-top:6px solid #258444; }
+.footer .footer-description,.footer .footer-contact p,.footer .footer_ul_amrc li a { color:#e2efe5; }
+.footer .headin5_amrc,.footer .copyright { color:#fff; }
+.footer .footer_ul_amrc li a i,.footer .footer-contact p i { color:#a6d6b2; }
+.footer .footer_ul_amrc li a:hover,.footer .footer-social a:hover { color:#fff; }
+.footer .bottom_border { border-bottom-color:#ffffff35; }
+.footer .footer-social .tiktok-social { color:#fff; }
