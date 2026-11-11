@@ -1,5 +1,8 @@
 ---
+// CAMBIO INSESO 2026-10-13 R2: textos de la web publicados conservados; imágenes adaptadas a identidad verde.
+import InstitutionalOrganization from '../components/InstitutionalOrganization.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import PresentationHero from '../components/PresentationHero.astro';
 import PageHeader from '../components/PageHeader.astro';
 import PartnersCarousel from '../components/PartnersCarousel.astro';
 import InfoCard from '../components/InfoCard.astro';
@@ -15,7 +18,7 @@ const socios = await getSocios();
 ---
 
 <BaseLayout title={t('about.pageTitle')} currentPath="/sobre_nosotros">
-  <PageHeader imageSrc="/images/sommes nous/slide_qsn.gif" imageAlt={t('about.headerAlt')} />
+  <PresentationHero />
 
   <div class="container">
     <div class="about-main">
@@ -26,7 +29,7 @@ const socios = await getSocios();
           <p>{t('about.presentationText2')}</p>
         </div>
         <div class="col-lg-6">
-          <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_01.jpg" alt={t('about.facilitiesAlt')} />
+          <img class="img-fluid rounded mb-4 institution-photo" src="/images/sommes nous/img_qsn_01.jpg" alt={t('about.facilitiesAlt')} />
         </div>
       </div>
     </div>
@@ -54,12 +57,15 @@ const socios = await getSocios();
         </div>
         <div class="col-lg-6">
           <div class="right-ab">
-            <img class="img-fluid rounded mb-4" src="/images/sommes nous/img_qsn_02.png" alt={t('about.missionAlt')} />
+            <img class="img-fluid rounded mb-4 institution-photo" src="/images/sommes nous/img_qsn_02.webp" alt={t('about.missionAlt')} />
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- CAMBIO INSESO R4: autoridades y organigrama en Presentación. -->
+  <!-- Los órganos y el organigrama se presentan en su página propia. -->
 
   <PartnersCarousel socios={socios} />
 </BaseLayout>

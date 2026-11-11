@@ -1,0 +1,15 @@
+{
+  "pages": 24,
+  "languages": [
+    "es",
+    "en",
+    "fr",
+    "pt"
+  ],
+  "benefits": 11,
+  "currenciesAndPercentagesPreserved": true,
+  "institutionalMessages": 8,
+  "recipient": "flora.bula@inseso.org",
+  "realMailSent": false,
+  "legacyDatabaseMigration": true
+}

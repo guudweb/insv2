@@ -1,0 +1,24 @@
+// CAMBIO INSESO 2026-10-13 R3: pruebas DOM de apertura/cierre sobre HTML realmente renderizado.
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import ts from 'typescript';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+const {JSDOM}=require(process.env.INSESO_QA_JSDOM || 'jsdom');
+const html=fs.readFileSync(process.env.INSESO_QA_HTML || '/tmp/benefit-faq-render.html','utf8');
+const output=ts.transpileModule(fs.readFileSync(new URL('../src/lib/benefit-accordion.ts',import.meta.url),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
+const module={exports:{}};new Function('exports','module',output)(module.exports,module);
+const dom=new JSDOM(html,{url:'https://www.inseso.org/prestacion/prestaciones-por-invalidez'});
+const doc=dom.window.document,items=[...doc.querySelectorAll('details.faq-item')];
+const results=[];const test=(name,fn)=>{fn();results.push({name,pass:true});};
+test('Las respuestas empiezan cerradas y cada pregunta tiene summary',()=>{assert(items.length>=5);assert(items.every(d=>!d.open&&d.querySelector('summary')));});
+test('Pulsar una pregunta abre únicamente esa respuesta',()=>{items[0].querySelector('summary').click();assert(items[0].open);assert(items.slice(1).every(d=>!d.open));});
+test('Se pueden abrir varias respuestas y volver a cerrar una',()=>{items[1].querySelector('summary').click();assert(items[0].open&&items[1].open);items[0].querySelector('summary').click();assert(!items[0].open&&items[1].open);});
+module.exports.bindBenefitAccordions(doc);
+test('Abrir todas abre todas las respuestas',()=>{doc.querySelector('[data-faq-action="open"]').click();assert(items.every(d=>d.open));});
+test('Cerrar todas cierra todas las respuestas',()=>{doc.querySelector('[data-faq-action="close"]').click();assert(items.every(d=>!d.open));});
+test('Reinicializar no duplica escuchas ni rompe los controles',()=>{module.exports.bindBenefitAccordions(doc);module.exports.bindBenefitAccordions(doc);doc.querySelector('[data-faq-action="open"]').click();assert(items.every(d=>d.open));doc.querySelector('[data-faq-action="close"]').click();assert(items.every(d=>!d.open));});
+test('Un enlace directo a una pregunta abre su respuesta',()=>{dom.window.location.hash='#pregunta-3';dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange'));assert(items[2].open);});
+test('Un ancla inexistente no abre una respuesta equivocada',()=>{doc.querySelector('[data-faq-action="close"]').click();dom.window.location.hash='#no-existe';dom.window.dispatchEvent(new dom.window.HashChangeEvent('hashchange'));assert(items.every(d=>!d.open));});
+test('Tablas de invalidez contienen ocho filas de datos en total',()=>assert.equal(doc.querySelectorAll('.faq-answer tbody tr').length,8));
+fs.writeFileSync(new URL('../docs/PRUEBAS_DESPLEGABLES.json',import.meta.url),JSON.stringify(results,null,2));console.log(`${results.length} pruebas DOM superadas`);dom.window.close();

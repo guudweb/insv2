@@ -1,7 +1,12 @@
 // Librería para conectar con Strapi
 import qs from 'qs';
+import legacyBenefits from '../data/legacy-benefits.json';
 
 const STRAPI_URL = import.meta.env.STRAPI_URL || 'http://localhost:1337';
+
+async function cmsFetch(url: string, options: RequestInit = {}) {
+ return fetch(url, {...options,signal:options.signal || AbortSignal.timeout(5000)});
+}
 
 // Preview context para mantener el estado de preview
 interface PreviewContext {
@@ -9,20 +14,13 @@ interface PreviewContext {
   status?: string;
 }
 
-let previewContext: PreviewContext = {
-  enabled: false
-};
-
-// Función para establecer el contexto de preview
+import { AsyncLocalStorage } from 'node:async_hooks';
+export const previewStorage = new AsyncLocalStorage<PreviewContext>();
 export function setPreviewContext(enabled: boolean, status?: string) {
-  previewContext = { enabled, status };
+ const context = previewStorage.getStore();
+ if (context) Object.assign(context,{enabled,status});
 }
-
-// Función para obtener el contexto de preview
-export function getPreviewContext(): PreviewContext {
-  return previewContext;
-}
-
+export function getPreviewContext(): PreviewContext { return previewStorage.getStore() || {enabled:false}; }
 interface StrapiResponse<T> {
   data: T;
   meta: {
@@ -149,6 +147,9 @@ export interface ConfiguracionInicio {
 
 // Interfaz para Prestaciones
 export interface Prestacion {
+  validado?: boolean;
+  fechaRevision?: string;
+  formulario?: {archivo?: StrapiImage};
   id: number;
   documentId: string;
   titulo: string;
@@ -192,7 +193,7 @@ export async function getNoticias(locale: string = 'es'): Promise<Noticia[]> {
   };
 
   // Añadir publicationState=preview si estamos en modo preview
-  if (previewContext.enabled) {
+  if (getPreviewContext().enabled) {
     queryParams.publicationState = 'preview';
   }
 
@@ -204,11 +205,11 @@ export async function getNoticias(locale: string = 'es'): Promise<Noticia[]> {
     const headers: HeadersInit = {};
 
     // Habilitar content source maps en modo preview
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       headers['strapi-encode-source-maps'] = 'true';
     }
 
-    const response = await fetch(`${STRAPI_URL}/api/noticias?${query}`, {
+    const response = await cmsFetch(`${STRAPI_URL}/api/noticias?${query}`, {
       headers,
     });
 
@@ -232,7 +233,7 @@ export async function getNoticiaByDocumentId(documentId: string, locale: string 
   };
 
   // Añadir publicationState=preview si estamos en modo preview
-  if (previewContext.enabled) {
+  if (getPreviewContext().enabled) {
     queryParams.publicationState = 'preview';
   }
 
@@ -244,11 +245,11 @@ export async function getNoticiaByDocumentId(documentId: string, locale: string 
     const headers: HeadersInit = {};
 
     // Habilitar content source maps en modo preview
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       headers['strapi-encode-source-maps'] = 'true';
     }
 
-    const response = await fetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`, {
+    const response = await cmsFetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`, {
       headers,
     });
 
@@ -279,7 +280,7 @@ export async function getNoticiaBySlug(slug: string, locale: string = 'es'): Pro
     };
 
     // Añadir publicationState=preview si estamos en modo preview
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       queryParams.publicationState = 'preview';
     }
 
@@ -288,11 +289,11 @@ export async function getNoticiaBySlug(slug: string, locale: string = 'es'): Pro
     });
 
     const headers: HeadersInit = {};
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       headers['strapi-encode-source-maps'] = 'true';
     }
 
-    const responseBySlug = await fetch(`${STRAPI_URL}/api/noticias?${queryBySlug}`, {
+    const responseBySlug = await cmsFetch(`${STRAPI_URL}/api/noticias?${queryBySlug}`, {
       headers,
     });
 
@@ -327,7 +328,7 @@ export async function getNoticiaSlugsByDocumentId(documentId: string): Promise<R
         encodeValuesOnly: true,
       });
 
-      const response = await fetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`);
+      const response = await cmsFetch(`${STRAPI_URL}/api/noticias/${documentId}?${query}`);
 
       if (response.ok) {
         const json: StrapiResponse<Noticia> = await response.json();
@@ -349,6 +350,8 @@ export async function getNoticiaSlugsByDocumentId(documentId: string): Promise<R
 // Helper para obtener URL completa de imagen
 export function getStrapiImageUrl(url: string): string {
   if (!url) return '';
+  // CAMBIO INSESO 2026-10-13 R2: ilustraciones y PDF locales no se solicitan a Strapi.
+  if (url.startsWith('/images/') || url.startsWith('/formularios/')) return url;
   if (url.startsWith('http')) return url;
   return `${STRAPI_URL}${url}`;
 }
@@ -588,7 +591,7 @@ export function richTextToHtml(richText: any): string {
 export async function getPrestaciones(locale: string = 'es'): Promise<Prestacion[]> {
   const query = qs.stringify(
     {
-      populate: ['imagen', 'imagenDetalle'],
+      populate: {imagen:true,imagenDetalle:true,formulario:{populate:['archivo']}},
       sort: ['orden:asc'],
       pagination: {
         pageSize: 100,
@@ -601,7 +604,7 @@ export async function getPrestaciones(locale: string = 'es'): Promise<Prestacion
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/prestaciones?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching prestaciones: ${response.status}`);
@@ -618,12 +621,12 @@ export async function getPrestaciones(locale: string = 'es'): Promise<Prestacion
 // Obtener una prestación por documentId (para preview)
 export async function getPrestacionByDocumentId(documentId: string, locale: string = 'es'): Promise<Prestacion | null> {
   const queryParams: any = {
-    populate: ['imagen', 'imagenDetalle'],
+    populate: {imagen:true,imagenDetalle:true,formulario:{populate:['archivo']}},
     locale: locale,
   };
 
   // Añadir publicationState=preview si estamos en modo preview
-  if (previewContext.enabled) {
+  if (getPreviewContext().enabled) {
     queryParams.publicationState = 'preview';
   }
 
@@ -635,11 +638,11 @@ export async function getPrestacionByDocumentId(documentId: string, locale: stri
     const headers: HeadersInit = {};
 
     // Habilitar content source maps en modo preview
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       headers['strapi-encode-source-maps'] = 'true';
     }
 
-    const response = await fetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`, {
+    const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`, {
       headers,
     });
 
@@ -663,12 +666,12 @@ export async function getPrestacionBySlug(slug: string, locale: string = 'es'): 
         $eq: slug,
       },
     },
-    populate: ['imagen', 'imagenDetalle'],
+    populate: {imagen:true,imagenDetalle:true,formulario:{populate:['archivo']}},
     locale: locale,
   };
 
   // Añadir publicationState=preview si estamos en modo preview
-  if (previewContext.enabled) {
+  if (getPreviewContext().enabled) {
     queryParams.publicationState = 'preview';
   }
 
@@ -678,11 +681,11 @@ export async function getPrestacionBySlug(slug: string, locale: string = 'es'): 
 
   try {
     const headers: HeadersInit = {};
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       headers['strapi-encode-source-maps'] = 'true';
     }
 
-    const response = await fetch(`${STRAPI_URL}/api/prestaciones?${query}`, {
+    const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones?${query}`, {
       headers,
     });
 
@@ -691,9 +694,12 @@ export async function getPrestacionBySlug(slug: string, locale: string = 'es'): 
     }
 
     const json: StrapiResponse<Prestacion[]> = await response.json();
-    return json.data.length > 0 ? json.data[0] : null;
+    if (json.data.length > 0) return json.data[0];
+    throw new Error('No existe ficha publicada; usar respaldo local');
   } catch (error) {
     console.error('Error al obtener prestación:', error);
+    const legacy = (legacyBenefits as Record<string, any>)[slug];
+    if (legacy) return {titulo:legacy.titulo,slug,requisitos:legacy.requisitos,descripcion:[{type:'paragraph',children:[{type:'text',text:legacy.descripcion}]}]} as Prestacion;
     return null;
   }
 }
@@ -712,7 +718,7 @@ export async function getPrestacionSlugsByDocumentId(documentId: string): Promis
         encodeValuesOnly: true,
       });
 
-      const response = await fetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`);
+      const response = await cmsFetch(`${STRAPI_URL}/api/prestaciones/${documentId}?${query}`);
 
       if (response.ok) {
         const json: StrapiResponse<Prestacion> = await response.json();
@@ -751,7 +757,7 @@ export async function getHeroSlides(): Promise<HeroSlide[]> {
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/hero-slides?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/hero-slides?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching hero slides: ${response.status}`);
@@ -789,7 +795,7 @@ export async function getSlidesAfiliacion(locale: string = 'es'): Promise<SlideA
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/slide-afiliacions?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/slide-afiliacions?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching slides afiliacion: ${response.status}`);
@@ -830,7 +836,7 @@ export async function getNoticiasByPosicion(posicion: string, limit?: number, lo
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/noticias?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/noticias?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching noticias: ${response.status}`);
@@ -859,7 +865,7 @@ export async function getConfiguracionInicio(locale: string = 'es'): Promise<Con
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/configuracion-inicio?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/configuracion-inicio?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching configuracion inicio: ${response.status}`);
@@ -896,7 +902,7 @@ export async function getSocios(): Promise<Socio[]> {
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/socios?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/socios?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching socios: ${response.status}`);
@@ -917,7 +923,7 @@ export async function getSocioByDocumentId(documentId: string): Promise<Socio | 
   };
 
   // Añadir publicationState=preview si estamos en modo preview
-  if (previewContext.enabled) {
+  if (getPreviewContext().enabled) {
     queryParams.publicationState = 'preview';
   }
 
@@ -929,11 +935,11 @@ export async function getSocioByDocumentId(documentId: string): Promise<Socio | 
     const headers: HeadersInit = {};
 
     // Habilitar content source maps en modo preview
-    if (previewContext.enabled) {
+    if (getPreviewContext().enabled) {
       headers['strapi-encode-source-maps'] = 'true';
     }
 
-    const response = await fetch(`${STRAPI_URL}/api/socios/${documentId}?${query}`, {
+    const response = await cmsFetch(`${STRAPI_URL}/api/socios/${documentId}?${query}`, {
       headers,
     });
 
@@ -1021,14 +1027,29 @@ export async function getCategoriasFormularios(locale: string = 'es'): Promise<C
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/categorias-formularios?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/categorias-formularios?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching categorias formularios: ${response.status}`);
     }
 
     const json: StrapiResponse<CategoriaFormulario[]> = await response.json();
-    return json.data;
+    const categories = json.data;
+    const moved: Formulario[] = [];
+    for (const category of categories) {
+      category.formularios = (category.formularios || []).filter(form => {
+        const name = form.nombre.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+        if (/solicitud.*prestacion|benefit.*application|demande.*prestation|pedido.*presta/.test(name)) { moved.push(form); return false; }
+        return true;
+      });
+    }
+    if (moved.length) {
+      const title = {es:'Prestaciones',fr:'Prestations',en:'Benefits',pt:'Prestações'}[locale] || 'Prestaciones';
+      const existing = categories.find(cat => /prestacion|prestation|benefit|prestaç/i.test(cat.titulo));
+      if (existing) existing.formularios.push(...moved);
+      else categories.push({titulo:title,icono:'fas fa-file-alt',color:'#2d762f',descripcion:'',formularios:moved} as CategoriaFormulario);
+    }
+    return categories;
   } catch (error) {
     console.error('Error al obtener categorías de formularios:', error);
     return [];
@@ -1057,7 +1078,7 @@ export async function getFormularios(locale: string = 'es'): Promise<Formulario[
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/formularios?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/formularios?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching formularios: ${response.status}`);
@@ -1089,7 +1110,7 @@ export async function getFormularioByCodigo(codigo: string, locale: string = 'es
   );
 
   try {
-    const response = await fetch(`${STRAPI_URL}/api/formularios?${query}`);
+    const response = await cmsFetch(`${STRAPI_URL}/api/formularios?${query}`);
 
     if (!response.ok) {
       throw new Error(`Error fetching formulario: ${response.status}`);
@@ -1170,7 +1191,7 @@ export function getCategoriasNoticiasEstaticas(): Omit<Categoria, 'id' | 'docume
       nombre: 'Institucional',
       slug: 'institucional',
       descripcion: 'Noticias institucionales de INSESO',
-      color: '#8c1b12',
+      color: '#2d762f',
       icono: 'fa-building',
       activo: true
     },
@@ -1207,4 +1228,13 @@ export function getCategoriasNoticiasEstaticas(): Omit<Categoria, 'id' | 'docume
       activo: true
     }
   ];
+}
+
+export async function getInstitutionalDocuments(locale: string) {
+ try {
+  const query=qs.stringify({locale,populate:['archivo'],filters:{activo:{$eq:true}},sort:['fechaRevision:desc'],pagination:{pageSize:100}},{encodeValuesOnly:true});
+  const res=await cmsFetch(`${STRAPI_URL}/api/documentos-institucionales?${query}`);
+  if(!res.ok)return [];
+  return (await res.json()).data || [];
+ } catch {return [];}
 }

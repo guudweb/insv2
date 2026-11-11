@@ -1,5 +1,6 @@
+/* CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md. */
  
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900');
+/* CAMBIO INSESO FINAL: tipografía de sistema; sin petición a Google Fonts. */
 
 body {
   padding: 0px;
@@ -16,16 +17,16 @@ body {
 }
 
 a.btn-primary{
-	background-color: #6a150e;
-	border-color: #6a150e;
+	background-color: #225924;
+	border-color: #225924;
 }
 a.btn-primary:hover{
 	background-color: #323232;
 	border-color: #323232;
 }
 button.btn-primary{
-	background-color: #6a150e;
-	border-color: #6a150e;
+	background-color: #225924;
+	border-color: #225924;
 }
 button.btn-primary:hover{
 	background-color: #323232;
@@ -33,7 +34,7 @@ button.btn-primary:hover{
 }
 
 a.btn-secondary{
-	background-color: #6a150e;
+	background-color: #225924;
 	border-color: #1273eb;
 }
 a.btn-secondary:hover{
@@ -41,8 +42,8 @@ a.btn-secondary:hover{
 	border-color: #323232;
 }
 button.btn-secondary{
-	background-color: #6a150e;
-	border-color: #6a150e;
+	background-color: #225924;
+	border-color: #225924;
 }
 button.btn-secondary:hover{
 	background-color: #323232;
@@ -50,7 +51,7 @@ button.btn-secondary:hover{
 }
 
 .top-bar{
-	background: #6a150e;
+	background: #225924;
 	padding: 4px 0px;
 }
 .social-media ul{
@@ -105,17 +106,17 @@ button.btn-secondary:hover{
 	margin-left: 5px;
 }
 .navbar-expand-lg.top-nav .navbar-nav .nav-link:hover{
-	color: #8c1b12;
+	color: #2d762f;
 	border-radius: 4.8px;
 }
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active{
-	color: #8c1b12;
+	color: #2d762f;
 }
 .navbar-expand-lg.top-nav .navbar-nav .nav-link.active:before{
 	content: "";
 	position: absolute;
 	width: 40px;
-	background: #8c1b12;
+	background: #2d762f;
 	height: 5px;
 	top: 0px;
 	left: 0px;
@@ -125,7 +126,7 @@ button.btn-secondary:hover{
 	content: "";
 	position: absolute;
 	width: 40px;
-	background: #8c1b12;
+	background: #2d762f;
 	height: 5px;
 	bottom: 0px;
 	right: 0px;
@@ -135,7 +136,7 @@ button.btn-secondary:hover{
 	content: "";
 	position: absolute;
 	width: 0px;
-	background: #8c1b12;
+	background: #2d762f;
 	height: 5px;
 	top: 0px;
 	left: 0px;
@@ -150,7 +151,7 @@ button.btn-secondary:hover{
 	content: "";
 	position: absolute;
 	width: 0px;
-	background: #8c1b12;
+	background: #2d762f;
 	height: 5px;
 	bottom: 0px;
 	right: 0px;
@@ -183,7 +184,7 @@ button.btn-secondary:hover{
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
   margin-top: 0;
-  background-color: #6d2018;
+  background-color: #225924;
   left: 50% !important;
   transform: translateX(-50%);
   right: auto !important;
@@ -300,7 +301,7 @@ button.btn-secondary:hover{
 }
 .navbar-expand-lg.top-nav .navbar-nav .dropdown-menu .dropdown-item:hover{
 	background: none;
-	color: #8c1b12;
+	color: #2d762f;
 }
 .top-nav .navbar-toggler{
 	color: #323232;
@@ -318,7 +319,7 @@ button.btn-secondary:hover{
 	background: #323232;
 }
 .slider-main .carousel .carousel-indicators .active{
-	background: #6d2018;
+	background: #225924;
 }
 .slider-main .carousel .carousel-item .carousel-caption h3{
 	font-size: 75px;
@@ -380,7 +381,7 @@ button.btn-secondary:hover{
 }
 
 .about-main h2{
-	color: #8c1b12;
+	color: #2d762f;
 	font-size: 38px;
 	font-weight: 600;
 	margin-bottom: 20px;
@@ -510,7 +511,7 @@ button.btn-secondary:hover{
 .post-slide{
     margin: 0 15px;
     background: #fff;
-    border-bottom: 4px solid #8c1b12;
+    border-bottom: 4px solid #2d762f;
 }
 .post-slide .post-header{
     padding: 15px 20px;
@@ -540,7 +541,7 @@ button.btn-secondary:hover{
 }
 .post-slide .post-bar li a{
     font-size: 15px;
-    color: #8c1b12;
+    color: #2d762f;
     text-transform: capitalize;
 }
 .post-slide .post-bar li a:hover{
@@ -589,7 +590,7 @@ button.btn-secondary:hover{
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #8c1b12;
+    background: #2d762f;
     z-index: 1;
 }
 .post-slide .post-category li{
@@ -744,11 +745,11 @@ a.btn-blg:hover {
 .touch-line a.btn-secondary{
 	background-color: #ffffff;
 	border-color: #ffffff;
-	color: #6a150e;
+	color: #225924;
 }
 .footer { 
 	width:100%; 
-	background: url(../images/footer-bg.jpg) no-repeat center;
+	background: url(../images/footer-bg.webp) no-repeat center;
 	background-size: cover;
 	min-height:250px; 
 	padding:10px 0px 25px 0px;
@@ -1147,7 +1148,7 @@ footer p {
 
 .full-title{
 	padding: auto;
-	background: #8c1b12;
+	background: #2d762f;
 	position: relative;
 	display: block;
 }
@@ -1171,7 +1172,7 @@ footer p {
 .left-ab h2{
 	font-size: 38px;
 	font-weight: 600;
-	color: #8c1b12;
+	color: #2d762f;
 	margin-bottom: 20px;
 	padding-bottom: 10px;
 	position: relative;

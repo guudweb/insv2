@@ -1,8 +1,8 @@
 /* Global styles */
 :root {
-  --color-inseso-primary: #8c1b12;
-  --color-inseso-dark: #7a1710;
-  --color-inseso-darker: #6a130e;
+  --color-inseso-primary: #2d762f;
+  --color-inseso-dark: #225924;
+  --color-inseso-darker: #17522a;
 }
 
 /* Visually hidden - oculto visualmente pero accesible para SEO y lectores de pantalla */
@@ -17,3 +17,5 @@
   white-space: nowrap;
   border: 0;
 }
+/* CAMBIO INSESO 2026-10-13 R2: marco institucional para fotografías; mantiene colores naturales. */
+.institution-photo { border: 2px solid #d8e7da; border-bottom: 7px solid #258444; border-radius: 14px !important; }

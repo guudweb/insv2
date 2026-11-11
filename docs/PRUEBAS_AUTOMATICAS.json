@@ -1,0 +1,362 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/nuestras_agencias",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/nuestras_agencias",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/nuestras_agencias",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/nuestras_agencias",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/Prestaciones_Sociales",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/discapacidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/pension-por-vejez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-medico-farmaceuticas",
+    "status": 404,
+    "expected": 404,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/viudedad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/descarga_formularios",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/descarga_formularios",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/api/preview?type=noticia&documentId=test",
+    "status": 401,
+    "expected": 401,
+    "pass": true
+  },
+  {
+    "path": "/preview/home",
+    "status": 401,
+    "expected": 401,
+    "pass": true
+  },
+  {
+    "path": "/xx/contacto",
+    "status": 404,
+    "expected": 404,
+    "pass": true
+  },
+  {
+    "path": "/institucional",
+    "status": 301,
+    "expected": 301,
+    "pass": true
+  },
+  {
+    "path": "/en/institucional",
+    "status": 301,
+    "expected": 301,
+    "pass": true
+  },
+  {
+    "path": "/fr/",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/formulario-prestaciones",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/formulario-prestaciones",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/sobre_nosotros",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/condiciones_adhesion",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacionee_trabajadores",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/afiliacionee_empresas",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/Prestaciones_Médico_Farmacéuticas",
+    "status": 301,
+    "expected": 301,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/subsidio-por-maternidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/prestaciones-por-invalidez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/subsidio-de-incapacidad-temporal",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/discapacidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/discapacidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/discapacidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/discapacidad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/pension-por-vejez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/pension-por-vejez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/pension-por-vejez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/pension-por-vejez",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/gastos-de-sepelio",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/viudedad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/viudedad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/viudedad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/viudedad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/prestacion/orfandad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/fr/prestacion/orfandad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/en/prestacion/orfandad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "/pt/prestacion/orfandad",
+    "status": 200,
+    "expected": 200,
+    "pass": true
+  },
+  {
+    "path": "preview autorizado: firma de cookie",
+    "status": 307,
+    "expected": 307,
+    "pass": true
+  }
+]

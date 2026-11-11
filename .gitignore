@@ -31,6 +31,9 @@ npm-debug.log*
 .vscode/
 .idea/
 public/images.zip
-.gitignore
 .claude
-/docs
+
+# Agenda: datos personales y ficheros WAL del servidor
+var/
+*.sqlite-shm
+*.sqlite-wal

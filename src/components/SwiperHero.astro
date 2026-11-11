@@ -1,4 +1,5 @@
 ---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 // Swiper Hero Carousel - Más fácil de manejar que Bootstrap
 import type { HeroSlide } from '../lib/strapi';
 import { getStrapiImageUrl } from '../lib/strapi';
@@ -11,13 +12,13 @@ const { slides: heroSlides = [] } = Astro.props;
 
 // Fallback a slides estáticos si no hay datos de Strapi
 const defaultSlides = [
-	{ image: '/images/accueil/slider-00.jpg' },
-	{ image: '/images/accueil/slider-01.jpg' },
-	{ image: '/images/accueil/slider-02.jpg' },
-	{ image: '/images/accueil/slider-03.jpg' },
-	{ image: '/images/accueil/slider-04.jpg' },
-	{ image: '/images/accueil/slider-05.jpg' },
-	{ image: '/images/accueil/slider-06.jpg' }
+	{ image: '/images/accueil/slider-00-verde.svg' },
+	{ image: '/images/accueil/slider-01-verde.svg' },
+	{ image: '/images/accueil/slider-02-verde.svg' },
+	{ image: '/images/accueil/slider-03-verde.svg' },
+	{ image: '/images/accueil/slider-04-verde.svg' },
+	{ image: '/images/accueil/slider-05-verde.svg' },
+	{ image: '/images/accueil/slider-06-verde.svg' }
 ];
 
 type ProcessedSlide = {
@@ -40,7 +41,7 @@ const slides: ProcessedSlide[] = heroSlides.length > 0
 ---
 
 <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="/vendor/swiper/swiper-bundle.min.css" />
 
 <header class="hero-swiper">
 	<div class="swiper heroSwiper">
@@ -132,7 +133,7 @@ const slides: ProcessedSlide[] = heroSlides.length > 0
 	/* Estilo de botones de navegación */
 	.swiper-button-next,
 	.swiper-button-prev {
-		color: #8c1b12;
+		color: #2d762f;
 		background: rgba(255,255,255,0.8);
 		width: 44px;
 		height: 44px;
@@ -146,7 +147,7 @@ const slides: ProcessedSlide[] = heroSlides.length > 0
 
 	/* Paginación */
 	.swiper-pagination-bullet {
-		background: #8c1b12;
+		background: #2d762f;
 		opacity: 0.5;
 	}
 
@@ -173,7 +174,7 @@ const slides: ProcessedSlide[] = heroSlides.length > 0
 </style>
 
 <!-- Swiper JS -->
-<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script is:inline src="/vendor/swiper/swiper-bundle.min.js"></script>
 <script is:inline>
 	document.addEventListener('DOMContentLoaded', function() {
 		new Swiper('.heroSwiper', {

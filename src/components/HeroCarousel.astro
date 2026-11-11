@@ -1,4 +1,5 @@
 ---
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 // Hero Carousel component - Conectado a Strapi
 import type { HeroSlide } from '../lib/strapi';
 import { getStrapiImageUrl } from '../lib/strapi';
@@ -11,13 +12,13 @@ const { slides: heroSlides = [] } = Astro.props;
 
 // Fallback a slides estáticos si no hay datos de Strapi
 const defaultSlides = [
-	{ image: '/images/accueil/slider-00.jpg' },
-	{ image: '/images/accueil/slider-01.jpg' },
-	{ image: '/images/accueil/slider-02.jpg' },
-	{ image: '/images/accueil/slider-03.jpg' },
-	{ image: '/images/accueil/slider-04.jpg' },
-	{ image: '/images/accueil/slider-05.jpg' },
-	{ image: '/images/accueil/slider-06.jpg' }
+	{ image: '/images/accueil/slider-00-verde.svg' },
+	{ image: '/images/accueil/slider-01-verde.svg' },
+	{ image: '/images/accueil/slider-02-verde.svg' },
+	{ image: '/images/accueil/slider-03-verde.svg' },
+	{ image: '/images/accueil/slider-04-verde.svg' },
+	{ image: '/images/accueil/slider-05-verde.svg' },
+	{ image: '/images/accueil/slider-06-verde.svg' }
 ];
 
 // Definir tipo para los slides procesados

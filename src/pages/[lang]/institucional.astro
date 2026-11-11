@@ -1,0 +1,5 @@
+---
+// CAMBIO INSESO 2026-10-13 R2: sección retirada a petición del usuario.
+import {getLangFromUrl,getLocalizedPath} from '../../i18n/utils';
+return Astro.redirect(getLocalizedPath('/sobre_nosotros',getLangFromUrl(Astro.url)),301);
+---

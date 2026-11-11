@@ -1,0 +1,129 @@
+{
+  "timezone": "Africa/Malabo",
+  "slotMinutes": 30,
+  "startHour": 8,
+  "endHour": 16,
+  "daysAhead": 30,
+  "minimumLeadDays": 1,
+  "weekdays": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "closedDates": [],
+  "offices": [
+    {
+      "id": "malabo-central",
+      "name": "Malabo · Sede central",
+      "address": "Avenida de la Independencia",
+      "enabled": true,
+      "services": [
+        "afiliacion",
+        "carne",
+        "informacion",
+        "prestacion"
+      ]
+    },
+    {
+      "id": "santa-maria",
+      "name": "Malabo · Santa María 2",
+      "address": "Santa María 2",
+      "enabled": true,
+      "services": []
+    },
+    {
+      "id": "bata",
+      "name": "Bata · Delegación Regional",
+      "address": "Unidad Africana",
+      "enabled": true,
+      "services": [
+        "afiliacion",
+        "carne",
+        "informacion",
+        "prestacion"
+      ]
+    },
+    {
+      "id": "mongomo",
+      "name": "Mongomo",
+      "address": "Kie-Osie",
+      "enabled": true,
+      "services": []
+    },
+    {
+      "id": "evinayong",
+      "name": "Evinayong",
+      "address": "Barrio Servicio",
+      "enabled": true,
+      "services": []
+    },
+    {
+      "id": "ebebiyin",
+      "name": "Ebibeyín",
+      "address": "Barrio Eson, frente al Hospital Provincial de Jesús Alfonso Oyono de Ebibeyín",
+      "enabled": true,
+      "services": []
+    },
+    {
+      "id": "annobon",
+      "name": "Annobón",
+      "address": "Frente al Cuartel Militar, carretera del aeropuerto",
+      "enabled": true,
+      "services": []
+    },
+    {
+      "id": "luba",
+      "name": "Luba",
+      "address": "Frente del Mercado de Luba",
+      "enabled": true,
+      "services": []
+    },
+    {
+      "id": "oyala",
+      "name": "Oyala",
+      "address": "Carretera Oyala Añisok, al lado del Complejo Candy Vista Lago",
+      "enabled": true,
+      "services": []
+    }
+  ],
+  "services": [
+    {
+      "id": "afiliacion",
+      "name": "Afiliación",
+      "requirements": [
+        "Consulte los requisitos de afiliación para su situación: trabajador, empresa o autónomo.",
+        "Lleve su documento de identidad y la documentación indicada en la página de afiliación correspondiente."
+      ],
+      "link": "/afiliacion-informacion"
+    },
+    {
+      "id": "carne",
+      "name": "Solicitud de carné",
+      "requirements": [
+        "Revise los requisitos de solicitud de carné según su sector.",
+        "Lleve el documento de identidad y los documentos indicados en el panel de solicitud de carné."
+      ],
+      "link": "/solicitud_de_carne"
+    },
+    {
+      "id": "informacion",
+      "name": "Información",
+      "requirements": [
+        "Identifique el tema de su consulta.",
+        "Para consultar un expediente propio, lleve su documento de identidad y la referencia del expediente, si la tiene."
+      ],
+      "link": "/atencion-asegurado"
+    },
+    {
+      "id": "prestacion",
+      "name": "Presentación de solicitud de prestación",
+      "requirements": [
+        "Seleccione la prestación para consultar su documentación concreta.",
+        "Complete el formulario común y lleve los documentos indicados en la ficha de esa prestación."
+      ],
+      "link": "/Prestaciones_Sociales"
+    }
+  ]
+}

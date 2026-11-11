@@ -1,3 +1,4 @@
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import type { Schema, Struct } from '@strapi/strapi';
 
 export interface AdminApiToken extends Struct.CollectionTypeSchema {
@@ -643,6 +644,72 @@ export interface ApiConfiguracionInicioConfiguracionInicio
   };
 }
 
+export interface ApiDocumentoInstitucionalDocumentoInstitucional
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'documentos_institucionales';
+  info: {
+    displayName: 'Documento institucional';
+    pluralName: 'documentos-institucionales';
+    singularName: 'documento-institucional';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    activo: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    archivo: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    categoria: Schema.Attribute.Enumeration<
+      [
+        'organigrama',
+        'gobierno',
+        'normativa',
+        'estadisticas',
+        'memorias',
+        'licitaciones',
+      ]
+    > &
+      Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fechaRevision: Schema.Attribute.Date &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::documento-institucional.documento-institucional'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    unidadResponsable: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiFormularioFormulario extends Struct.CollectionTypeSchema {
   collectionName: 'formularios';
   info: {
@@ -946,6 +1013,18 @@ export interface ApiPrestacionPrestacion extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<true>;
+    aprobador: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    baseLegal: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -962,15 +1041,23 @@ export interface ApiPrestacionPrestacion extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<false>;
-    imagen: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+    fechaRevision: Schema.Attribute.Date &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    formulario: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::formulario.formulario'
+    >;
+    imagen: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
         };
       }>;
-    imagenDetalle: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    > &
+    imagenDetalle: Schema.Attribute.Media<'images'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: false;
@@ -987,6 +1074,18 @@ export interface ApiPrestacionPrestacion extends Struct.CollectionTypeSchema {
           localized: false;
         };
       }>;
+    plazos: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    procedimiento: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     publishedAt: Schema.Attribute.DateTime;
     requisitos: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
@@ -995,6 +1094,12 @@ export interface ApiPrestacionPrestacion extends Struct.CollectionTypeSchema {
         };
       }>;
     resumen: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    revisor: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -1012,9 +1117,22 @@ export interface ApiPrestacionPrestacion extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
+    unidadResponsable: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    validado: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Schema.Attribute.DefaultTo<false>;
   };
 }
 
@@ -1636,6 +1754,7 @@ declare module '@strapi/strapi' {
       'api::categoria-formulario.categoria-formulario': ApiCategoriaFormularioCategoriaFormulario;
       'api::categoria.categoria': ApiCategoriaCategoria;
       'api::configuracion-inicio.configuracion-inicio': ApiConfiguracionInicioConfiguracionInicio;
+      'api::documento-institucional.documento-institucional': ApiDocumentoInstitucionalDocumentoInstitucional;
       'api::formulario.formulario': ApiFormularioFormulario;
       'api::hero-slide.hero-slide': ApiHeroSlideHeroSlide;
       'api::noticia.noticia': ApiNoticiaNoticia;

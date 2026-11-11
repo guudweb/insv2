@@ -1,4 +1,7 @@
 ---
+// CAMBIO INSESO FINAL: contenido externo bajo acción explícita.
+import ExternalMedia from '../../components/ExternalMedia.astro';
+// CAMBIO INSESO 2026-10-13: identidad verde y correcciones previas; detalles en docs/CAMBIOS_REVISION_2.md.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getNoticias, getNoticiaBySlug, getStrapiImageUrl, formatDate, getNoticiaSlug, getNoticiaVideoUrl, richTextToHtml, richTextToPlainText } from '../../lib/strapi';
 
@@ -54,14 +57,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 						{tipoMedia === 'video' && videoUrl ? (
 							<div class="video-container">
 								{video && !videoArchivo ? (
-									<iframe
-										width="100%"
-										height="450"
-										src={video}
-										frameborder="0"
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen>
-									</iframe>
+									<ExternalMedia src={video} />
 								) : (
 									<video controls width="100%" controlslist="nodownload">
 										<source src={videoUrl} type="video/mp4">
@@ -309,7 +305,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 	.noticia-contenido h4 {
 		margin-top: 2rem;
 		margin-bottom: 1rem;
-		color: #8c1b12;
+		color: #2d762f;
 	}
 
 	.noticia-contenido img {
@@ -349,7 +345,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 	}
 
 	.section-title i {
-		color: #8c1b12;
+		color: #2d762f;
 		font-size: 28px;
 	}
 
@@ -366,7 +362,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 
 	.related-card:hover {
 		transform: translateY(-8px);
-		box-shadow: 0 8px 24px rgba(140, 27, 18, 0.15);
+		box-shadow: 0 8px 24px rgba(45, 118, 47, 0.15);
 	}
 
 	.related-image {
@@ -406,7 +402,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 	}
 
 	.related-card:hover .video-badge {
-		color: #8c1b12;
+		color: #2d762f;
 		opacity: 1;
 		transform: translate(-50%, -50%) scale(1.2);
 	}
@@ -426,7 +422,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 	}
 
 	.related-date i {
-		color: #8c1b12;
+		color: #2d762f;
 		margin-right: 5px;
 	}
 
@@ -445,7 +441,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 	}
 
 	.related-title a:hover {
-		color: #8c1b12;
+		color: #2d762f;
 	}
 
 	.btn-read-more {
@@ -453,7 +449,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 		align-items: center;
 		justify-content: center;
 		gap: 8px;
-		background: #8c1b12;
+		background: #2d762f;
 		color: white;
 		padding: 10px 20px;
 		border-radius: 8px;
@@ -464,7 +460,7 @@ const noticiaImage = imagen?.url ? getStrapiImageUrl(imagen.url) : '/images/logo
 	}
 
 	.btn-read-more:hover {
-		background: #6d2018;
+		background: #225924;
 		transform: translateX(4px);
 		color: white;
 	}
