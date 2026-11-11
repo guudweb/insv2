@@ -18,7 +18,7 @@
       "id": "malabo-central",
       "name": "Malabo · Sede central",
       "address": "Avenida de la Independencia",
-      "enabled": false,
+      "enabled": true,
       "services": [
         "afiliacion",
         "carne",
@@ -30,14 +30,14 @@
       "id": "santa-maria",
       "name": "Malabo · Santa María 2",
       "address": "Santa María 2",
-      "enabled": false,
+      "enabled": true,
       "services": []
     },
     {
       "id": "bata",
       "name": "Bata · Delegación Regional",
       "address": "Unidad Africana",
-      "enabled": false,
+      "enabled": true,
       "services": [
         "afiliacion",
         "carne",
@@ -49,42 +49,42 @@
       "id": "mongomo",
       "name": "Mongomo",
       "address": "Kie-Osie",
-      "enabled": false,
+      "enabled": true,
       "services": []
     },
     {
       "id": "evinayong",
       "name": "Evinayong",
       "address": "Barrio Servicio",
-      "enabled": false,
+      "enabled": true,
       "services": []
     },
     {
       "id": "ebebiyin",
       "name": "Ebibeyín",
       "address": "Barrio Eson, frente al Hospital Provincial de Jesús Alfonso Oyono de Ebibeyín",
-      "enabled": false,
+      "enabled": true,
       "services": []
     },
     {
       "id": "annobon",
       "name": "Annobón",
       "address": "Frente al Cuartel Militar, carretera del aeropuerto",
-      "enabled": false,
+      "enabled": true,
       "services": []
     },
     {
       "id": "luba",
       "name": "Luba",
       "address": "Frente del Mercado de Luba",
-      "enabled": false,
+      "enabled": true,
       "services": []
     },
     {
       "id": "oyala",
       "name": "Oyala",
       "address": "Carretera Oyala Añisok, al lado del Complejo Candy Vista Lago",
-      "enabled": false,
+      "enabled": true,
       "services": []
     }
   ],

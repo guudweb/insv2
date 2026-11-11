@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "intervalSeconds": 4,
+  "checks": [
+    "avance automático",
+    "sin botones ni contador",
+    "pausa al pasar el cursor",
+    "movimiento reducido"
+  ],
+  "realBrowser": false
+}

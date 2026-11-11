@@ -1,0 +1,1648 @@
+[
+  {
+    "titulo": "Maternidad",
+    "slug": "subsidio-por-maternidad",
+    "locale": "es",
+    "orden": 1,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarias"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La mujer trabajadora por cuenta ajena, siempre y cuando se produzca la baja laboral por pre-parto y post-parto."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Período de espera"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Para tener derecho a esa prestación, la mujer trabajadora debe tener acreditados 12 meses inmediatamente anteriores a la baja por maternidad."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El 75% del salario base diario de cotización."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Una asignación global equivalente a dos mensualidades de su Salario base de cotizaciones, en caso de que el pago de las cotizaciones al INSESO no alcancen 12 meses inmediatamente a la maternidad."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Se abonará mientras la asegurada se encuentre en situación de baja y reciba Asistencia sanitaria de la Seguridad Social."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Carné de Seguro actualizado."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Baja laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de Nacimiento del recién nacido."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Alta médica."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de reposo médico en caso de prolongación de la incapacidad."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Número de cuenta bancaria."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del beneficiario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incompatibilidad y prohibición"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "En caso de tener dos o más empleos, la trabajadora podrá optar a la empresa que mejor le favorezca la prestación, y nunca podrá cobrarla simultáneamente con las distintas empresas a las que presta servicios profesionales."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Forma y lugar de pago"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Invalidez",
+    "slug": "prestaciones-por-invalidez",
+    "locale": "es",
+    "orden": 2,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Situación de invalidez"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Situación del trabajador que presente reducciones anatómicas o funciones graves, susceptibles de determinación objetiva y previsiblemente definidas, que disminuyan o anulen su capacidad laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Grados de invalidez"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad parcial permanente para la profesión habitual."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad total permanente para la profesión habitual."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad total permanente para toda clase de trabajo."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Gran invalidez."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarios"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Todos los trabajadores que cotizan a la Seguridad Social y en situación de incapacidad laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Período de espera"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El asegurado deberá tener acreditados cinco años de cotizaciones en el período inmediatamente anterior al proceso de incapacidad temporal del que se deriva la invalidez, si la invalidez es derivada de enfermedad común o accidente NO laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El asegurado no deberá demostrar ningún período previo de cotizaciones, si la invalidez es derivada de enfermedad profesional o accidente laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Invalidez derivada de enfermedad común o accidente NO laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad parcial permanente para la profesión habitual: subsidio del 40% del Salario base durante 3 meses."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad total permanente para la profesión habitual: subsidio del 40% del Salario base durante 6 meses."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad total permanente para toda clase de trabajo: pensión del 40% del Salario base de cotización."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Gran invalidez: pensión del 80% del Salario base de cotización."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Invalidez derivada de enfermedad profesional o accidente laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad parcial permanente para la profesión habitual: subsidio del 50% del Salario base durante 24 meses."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad total permanente para la profesión habitual: subsidio del 50% del Salario base durante 48 meses."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incapacidad total permanente para toda clase de trabajo: pensión del 50% del Salario base de cotización."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Gran invalidez: pensión del 100% del Salario base de cotización."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Carné de la Seguridad Social."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado médico que certifique el grado de invalidez."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Baja dada en la empresa."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Declaración del accidente."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Número de cuenta bancaria."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del beneficiario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incompatibilidad y prohibición"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Las prestaciones de invalidez serán incompatibles con las pensiones de vejez."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Forma y lugar de pago"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Incapacidad temporal",
+    "slug": "subsidio-de-incapacidad-temporal",
+    "locale": "es",
+    "orden": 3,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Situación de incapacidad temporal"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Situación de enfermedad o accidente sea o no de trabajo, en tanto sea causante de baja laboral y que el trabajador reciba asistencia sanitaria."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarios"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Trabajador/a en situación de alta y al corriente de las cotizaciones."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Período de espera"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El trabajador/a debe acreditar un año de cotizaciones en el período inmediatamente anterior al hecho que causa las incapacidades, en caso de enfermedad común o accidente NO laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El trabajador/a no deberá demostrar ningún período previo de cotizaciones, en caso de enfermedad profesional o accidente laboral"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Se fija de acuerdo al Salario base diario de cotización, aplicando sobre este el porcentaje del 50% multiplicado por los días de reposo prescritos por los facultativos."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Carné de Seguro actualizado."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Baja laboral otorgada por la empresa o departamento ministerial correspondiente."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de reposo médico en régimen ambulatorio."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Alta médica, si hubiera estado hospitalizado."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Número de cuenta bancaria."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del beneficiario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Determinación de los días de reposo"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La incapacidad temporal se considera a partir del cuarto día de la declaración de incapacidad y hasta un máximo de veintiséis semanas, susceptible de prórroga según el criterio del Tribunal Médico Calificador. El período generado durante el reposo determina los días reales de incapacidad."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Forma y lugar de pago"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El pago se hace mediante cheque bancario extendido al causante de la prestación o a quien este delegue legalmente. El pago se realiza en la Sección de Contabilidad del INSESO."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incompatibilidad y prohibición"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Si el trabajador tiene dos o más empleos, podrá optar por la empresa que más le favorezca para la prestación. No podrá cobrarla simultáneamente por las distintas empresas a las que presta servicios."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Discapacidad",
+    "slug": "discapacidad",
+    "locale": "es",
+    "orden": 4,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Situación de discapacidad"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Se considera a la persona ecuatoguineana cuyas posibilidades de obtener, conservar y progresar en un empleo adecuado están sustancialmente reducidas por una deficiencia física, psíquica o sensorial debidamente reconocida."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarios"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Personas con discapacidad o familiares que soportan la carga social de la persona con discapacidad."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Reconocimiento y procedimiento"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Participar en la evaluación que realiza periódicamente el INSESO para reconocer el estado físico, psíquico o sensorial."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Si no consta en el censo realizado para ese fin, un familiar puede solicitar el reconocimiento en el INSESO, a instancia de parte."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Contenido de la prestación"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Prestación médico farmacéutica: asistencia sanitaria para personas calificadas con discapacidad leve que pueden realizar trabajos remunerados por cuenta propia o ajena."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Subsidio de garantía de ingresos mínimos: cantidad de dinero para personas calificadas como casos graves. El folleto no indica el importe."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Subsidio por ayuda de tercera persona: se concede a personas calificadas como casos muy graves, con independencia del subsidio de garantía de ingresos mínimos. El folleto no indica el importe."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Rehabilitación, si fuera necesaria: asistencia sanitaria especializada para la recuperación física, psíquica o sensorial."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Período y lugar de pago"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Los subsidios de garantía de ingresos mínimos y de ayuda de tercera persona se pagan cada tres meses, en el lugar de residencia habitual de la persona con discapacidad o donde esta indique."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Datos no especificados en la documentación"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "No se detallan el período de espera, los importes, la documentación de solicitud ni las incompatibilidades. Deben completarse con la unidad competente."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Vejez o jubilación",
+    "slug": "pension-por-vejez",
+    "locale": "es",
+    "orden": 5,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarios"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Asegurados que, por razón de edad, cesan en el trabajo por cuenta ajena. El folleto describe una pensión vitalicia única para cada pensionista."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Edad y período de cotización"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Haber cumplido 60 años."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Acreditar al menos 120 meses de cotización, equivalentes a 10 años. De ellos, 60 meses deben corresponder a los diez años inmediatamente anteriores al momento de causar el derecho."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El 40 % del salario base de cotización, aumentado en un 2 % por cada año adicional sobre los diez primeros, sin que la cuantía total supere el 80 %, según el folleto aportado."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Adquisición del derecho"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El reconocimiento de la pensión surte efectos a partir de la fecha de recepción de la solicitud en las oficinas del INSESO."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos generales"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del beneficiario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné de seguro."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cesantía laboral."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Número de cuenta bancaria."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos específicos para el sector público"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del oficio de jubilación."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del nombramiento."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Las tres últimas nóminas de la Tesorería."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Extracto bancario desde 2020 hasta la fecha de la solicitud."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné militar, para antiguos funcionarios del Ministerio de Defensa."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné del INSESO, si se dispone de él."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Solicitud."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos específicos para el sector privado"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Documento de cesantía de la empresa."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné del asegurado, si se dispone de él."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del extracto de nacimiento o del DIP."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Solicitud."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Incompatibilidad y prohibición"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La pensión de vejez es incompatible con cualquier otra pensión de la Seguridad Social. Si reúne los requisitos de ambas, el beneficiario puede optar por la que más le favorezca."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Gastos de sepelio",
+    "slug": "gastos-de-sepelio",
+    "locale": "es",
+    "orden": 6,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Hecho causante"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Fallecimiento del asegurado o pensionista por vejez o invalidez. Da derecho a una asignación global para afrontar los gastos de sepelio."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarios"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "La asignación corresponde a quien haya soportado los gastos."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Se presume que dichos gastos han sido satisfechos, salvo prueba en lo contrario, por este orden: por la viuda, por los hijos o los parientes del fallecido que convivieran habitualmente con él."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Si una entidad ha costeado el sepelio, se le abonan los gastos realmente producidos hasta el importe máximo de la prestación."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Pago único equivalente a dos meses del salario base de cotización del causante."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos generales"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de defunción."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Documento público que acredite el nexo familiar."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Solicitud de reclamación de la entidad, si una entidad pública o privada costeó el sepelio."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Número de cuenta bancaria."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del beneficiario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos comunes de los listados de los sectores público y privado"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné del INSESO del causante, si lo tuviera."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del solicitante y del causante."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Autorización manifiesta y firmada por los familiares del fallecido si el solicitante no es pariente directo. Cada firmante debe adjuntar copia de su DIP."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del certificado de matrimonio legalizado en el Ministerio de Justicia, si solicita la viuda."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Impreso de solicitud dirigido al Delegado Nacional."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos adicionales si el causante era funcionario"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del nombramiento del fallecido."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Las tres últimas nóminas de la Tesorería."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Viudedad",
+    "slug": "viudedad",
+    "locale": "es",
+    "orden": 7,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos de viudedad"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del certificado de matrimonio legalizado en el Ministerio de Justicia."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Fe de vida original y actualizada."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné del INSESO del causante, si lo tuviera."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del solicitante y del causante."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del nombramiento del fallecido, si era funcionario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Las tres últimas nóminas de la Tesorería, si era funcionario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Impreso de solicitud dirigido al Delegado Nacional."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos de viudedad por reversión"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de matrimonio legalizado en el Ministerio de Justicia."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Fe de vida original y actualizada."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del carné del INSESO del causante, si lo tuviera."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del solicitante y del causante."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Impreso de solicitud dirigido al Delegado Nacional."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "titulo": "Orfandad",
+    "slug": "orfandad",
+    "locale": "es",
+    "orden": 8,
+    "activo": true,
+    "validado": false,
+    "descripcion": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Beneficiarios y condiciones"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "El listado solicita documentación por cada hijo. No especifica edades, condiciones de dependencia ni otros requisitos de acceso; estos datos quedan pendientes de la unidad competente."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Requisitos"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Certificado de defunción del Hospital Loery Comba o Guinea Salud o, en su defecto, legalizado en el Ministerio de Justicia."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Carné del INSESO del causante, si lo tuviera."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del DIP del solicitante y del causante."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Fe de vida original y actualizada por cada hijo."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del extracto del acta de nacimiento por cada hijo."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del boletín escolar por cada hijo."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Copia del nombramiento del fallecido, si era funcionario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Las tres últimas nóminas de la Tesorería, si era funcionario."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Impreso de solicitud dirigido al Delegado Nacional."
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "text": "Cuantía de la prestación"
+          }
+        ]
+      }
+    ]
+  }
+]

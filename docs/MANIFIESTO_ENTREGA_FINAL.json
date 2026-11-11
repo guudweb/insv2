@@ -1,0 +1,2557 @@
+{
+  "delivery": "INSESO entrega definitiva",
+  "files": [
+    {
+      "path": ".env.example",
+      "sha256": "71bb2ac46634f45e3d97e3924d89193a192dbe9dbcf1b992d523350bcf41ed5a"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "07faa46e9ac4d15bc74d486a5228d01acbec2416df49e5e5145445dc487cb813"
+    },
+    {
+      "path": "PUBLICACION.md",
+      "sha256": "a0a60b809d365f57c571501d0de1a50c1349cfe981e37a81286292ae4964241c"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c8b3321b5ae889a91e7a6ef066c07142763ad6d7317b53b17fbf5fd1cc3d97a2"
+    },
+    {
+      "path": "astro.config.mjs",
+      "sha256": "e4f62bb346e1e6d979c8a9a4c87612936cc65485b81445345b1473e2e38fcc70"
+    },
+    {
+      "path": "cms/.env.example",
+      "sha256": "dfc36cf16b316acfd96a30346e6ef3cfb9f7c4452ea45e81e9080e065b30bce0"
+    },
+    {
+      "path": "cms/.gitignore",
+      "sha256": "0d182ec662dfb9ff2b7bc22a13218fa1e5b31e100a280dd914952d7f9123f627"
+    },
+    {
+      "path": "cms/.strapi-updater.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a"
+    },
+    {
+      "path": "cms/README.md",
+      "sha256": "4f2484f867e6f48db4dbf681d716e97270c079fdcab2dafd0eb769b89d6acda7"
+    },
+    {
+      "path": "cms/TRADUCCION_AUTOMATICA.md",
+      "sha256": "20d4b7c5fb0b5fee0626915bd6577d438514b710b9b47e95af8fa4d2ecef2321"
+    },
+    {
+      "path": "cms/config/admin.ts",
+      "sha256": "d742338f02578ec060da96bbc9483669422026312c79732daa127aa2ecbca273"
+    },
+    {
+      "path": "cms/config/api.ts",
+      "sha256": "7bb741423a2bc7094ff28b1ed94f9f1845dbb5eb9e49f53e18cc8ab9a2a0c24d"
+    },
+    {
+      "path": "cms/config/database.ts",
+      "sha256": "229ab4a2c5a316c9a9e69099381db65fa1847d7f147f7a5b03c62dc254301367"
+    },
+    {
+      "path": "cms/config/middlewares.ts",
+      "sha256": "6df70687db1a4366cfbb04a93f94d3256fb228c0963cc37d41183ba596ca869a"
+    },
+    {
+      "path": "cms/config/plugins.ts",
+      "sha256": "5574a7979bdd90af7cb4ad2834e6f39deccc49bc2fbb5cbbf73cd59183e1793d"
+    },
+    {
+      "path": "cms/config/server.ts",
+      "sha256": "481d40bf5b283489055007544f056dfe55ec20be8b6ff3ff331b0e433142ed5c"
+    },
+    {
+      "path": "cms/database/migrations/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cms/favicon.png",
+      "sha256": "28467c1136874518aed0f61fba90a29ae71273ec5187140c9bb625562c118398"
+    },
+    {
+      "path": "cms/package-lock.json",
+      "sha256": "73580dce49eabd2bc255391d6955238107e80635f137c566c8ba8a2eef9e5e1b"
+    },
+    {
+      "path": "cms/package.json",
+      "sha256": "837ae49993cffa94cada4bca4897cd5b42b4f550e1ff2cf9f347d8fa0782d4b0"
+    },
+    {
+      "path": "cms/public/robots.txt",
+      "sha256": "2273da7d64f2fff204c15b38c198dd3192f6b5cc3f024573752143810c5cb535"
+    },
+    {
+      "path": "cms/public/uploads/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cms/src/admin/app.tsx",
+      "sha256": "a89b0f3981994e40fd14a9624403ae28bbe13752b37dd56a05cfa2e9c469e9bc"
+    },
+    {
+      "path": "cms/src/admin/tsconfig.json",
+      "sha256": "60a38fb858e891457976ece173b97a66c1caa77d5f9c7f99a6699ad29b1449b5"
+    },
+    {
+      "path": "cms/src/admin/vite.config.example.ts",
+      "sha256": "67e872d503edeba69e8e7e97c346dc946f9de5864222b860868062c0e6e0d682"
+    },
+    {
+      "path": "cms/src/api/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cms/src/api/categoria-formulario/content-types/categoria-formulario/schema.json",
+      "sha256": "593e8883f94e8fd1410982002a0be6d24136e541670deccc859ce69865e12ae6"
+    },
+    {
+      "path": "cms/src/api/categoria-formulario/controllers/categoria-formulario.ts",
+      "sha256": "51d7122120adff65437ed4febc9d7b5a87d08f134934b1576814eb20155c5973"
+    },
+    {
+      "path": "cms/src/api/categoria-formulario/routes/categoria-formulario.ts",
+      "sha256": "e37ddd664a8d5288ca7e7a76c8ef8b243c33ef600240033de9da85192e500c78"
+    },
+    {
+      "path": "cms/src/api/categoria-formulario/services/categoria-formulario.ts",
+      "sha256": "825a7013eeac90fd1b8399557dbdb8811f27e7c18ea45e719c192210b7af4c21"
+    },
+    {
+      "path": "cms/src/api/categoria/content-types/categoria/schema.json",
+      "sha256": "575178f95d1ebcbf7fc4667be0880f91cced47f340895a34a77b1df3918cf71c"
+    },
+    {
+      "path": "cms/src/api/categoria/controllers/categoria.ts",
+      "sha256": "48280d0d13a00e1164cd6018135cc2ecc366f55d96ec87f732fd5268bc46b1e4"
+    },
+    {
+      "path": "cms/src/api/categoria/routes/categoria.ts",
+      "sha256": "d063cccef39390767f2d42efbb367a93efd582d1553f9c150d4b659e7437d2fc"
+    },
+    {
+      "path": "cms/src/api/categoria/services/categoria.ts",
+      "sha256": "d3ebe206dd99023d820d59e1d0d2a663f88d875ddb41daa34c2f721d5c967c1e"
+    },
+    {
+      "path": "cms/src/api/configuracion-inicio/content-types/configuracion-inicio/schema.json",
+      "sha256": "ffd1908fe171066ed975f556687aa42b6a70a4c1223b9c37918dd352a3d86e3d"
+    },
+    {
+      "path": "cms/src/api/configuracion-inicio/controllers/configuracion-inicio.ts",
+      "sha256": "1d5cea36cc59f18cd2a3c54e973595a149590ebae32b0a67d1ea06f916b5dd0c"
+    },
+    {
+      "path": "cms/src/api/configuracion-inicio/routes/configuracion-inicio.ts",
+      "sha256": "76786cf1d23117e9a9f764bd11a15441b0ca134e921740f6414eef7f84f9dba8"
+    },
+    {
+      "path": "cms/src/api/configuracion-inicio/services/configuracion-inicio.ts",
+      "sha256": "c350541d1c338f93a2a841295f40512de6647497d91a009cc009d7fbf3d4bcb1"
+    },
+    {
+      "path": "cms/src/api/documento-institucional/content-types/documento-institucional/schema.json",
+      "sha256": "ba015eed4e6a544a0e8aa023ebc7412676fc511941a1359d520c1e449f4ed80d"
+    },
+    {
+      "path": "cms/src/api/documento-institucional/controllers/documento-institucional.ts",
+      "sha256": "65a8cbc7c7cb2eceb88769ee274fa9dca121be4ca8eda7439f631936778b6f5d"
+    },
+    {
+      "path": "cms/src/api/documento-institucional/routes/documento-institucional.ts",
+      "sha256": "6296e093efe525007588d2ddcf790487a9041f3a14a8b8e9148df1325fe8fe50"
+    },
+    {
+      "path": "cms/src/api/documento-institucional/services/documento-institucional.ts",
+      "sha256": "683a11cd370481d89ead820882b1300b04191b89bf9ceaed730fd8a531a29cfe"
+    },
+    {
+      "path": "cms/src/api/formulario/content-types/formulario/schema.json",
+      "sha256": "fda7c4660437de3cce8634941338dfd124749191692d2935836b25d5649becff"
+    },
+    {
+      "path": "cms/src/api/formulario/controllers/formulario.ts",
+      "sha256": "c553faa7ad0acf6a40bcdab8e17baa69d9248ca2c3082007bd7a97954734584b"
+    },
+    {
+      "path": "cms/src/api/formulario/routes/formulario.ts",
+      "sha256": "791aeea4d9906a0b89840fccfc0bcba0308389aa65b5c6b7b0f53e255b0173a5"
+    },
+    {
+      "path": "cms/src/api/formulario/services/formulario.ts",
+      "sha256": "4189d9554c0408b73b837e1afb9989f14398a23780cc90c961ef317952efbb40"
+    },
+    {
+      "path": "cms/src/api/hero-slide/content-types/hero-slide/schema.json",
+      "sha256": "a58697e0f763f327491308e54c2e4e37c5140e0cdca260a0cc2c7b3bf15a81ac"
+    },
+    {
+      "path": "cms/src/api/hero-slide/controllers/hero-slide.ts",
+      "sha256": "a4c05877cd465f07659412fae3d08dd7630561d8da2fdfc1ca53fa8cf6c1f3f8"
+    },
+    {
+      "path": "cms/src/api/hero-slide/routes/hero-slide.ts",
+      "sha256": "6d64a524ba06f75a0aef118d653540b2531c3761efa527bf64a92fa87e3d8db0"
+    },
+    {
+      "path": "cms/src/api/hero-slide/services/hero-slide.ts",
+      "sha256": "499b88fa4b0010241d274345157b692e49fca3f8b82ccad96cde5892a7512abb"
+    },
+    {
+      "path": "cms/src/api/noticia/content-types/noticia/schema.json",
+      "sha256": "fb791b35ed686f78292f908a8ce4f27d66b26f6dd4e5900cccb63957bfec4eaf"
+    },
+    {
+      "path": "cms/src/api/noticia/controllers/noticia.ts",
+      "sha256": "1b3f45529c5f590659cf5eefeae6e64730db7b5f7e37ea4a128562fca3120cc5"
+    },
+    {
+      "path": "cms/src/api/noticia/routes/noticia.ts",
+      "sha256": "c288e95e8813128b2cf19509c3cd80d46810402196306d4f203774f61ad2a440"
+    },
+    {
+      "path": "cms/src/api/noticia/services/noticia.ts",
+      "sha256": "a696d65dad605e1d70ba14026fdd076484db019ea981a34f4918ef0566c29b08"
+    },
+    {
+      "path": "cms/src/api/prestacion/content-types/prestacion/schema.json",
+      "sha256": "d52666dbd4509d71ae6d03c63406868f3940c5a5b54f090a44649c99ffea72f5"
+    },
+    {
+      "path": "cms/src/api/prestacion/controllers/prestacion.ts",
+      "sha256": "78acb90a8f4c5280145b248fa711702dbe0372d932409f13b1a888d2dc82d6c2"
+    },
+    {
+      "path": "cms/src/api/prestacion/routes/prestacion.ts",
+      "sha256": "d3334f0f16bbc7df9b8814077a39797b547a214e96eaa9b8cd6696de46b071e3"
+    },
+    {
+      "path": "cms/src/api/prestacion/services/prestacion.ts",
+      "sha256": "0d29533e5dd3055d465cfaf7aa108203a8de3a7b8fb6bb11402a8e4f42ffe09b"
+    },
+    {
+      "path": "cms/src/api/slide-afiliacion/content-types/slide-afiliacion/schema.json",
+      "sha256": "f816f418ac82d5e93eac567a8c59610588b60ac45287ee4f722bbee23529bd8c"
+    },
+    {
+      "path": "cms/src/api/slide-afiliacion/controllers/slide-afiliacion.ts",
+      "sha256": "92f8e3d3fbe5493d7e54ead66fa9478a2df4869a467a8e3d518200c1e864f38a"
+    },
+    {
+      "path": "cms/src/api/slide-afiliacion/routes/slide-afiliacion.ts",
+      "sha256": "d8ca28dda76e5da411387c7a97eddf6727d0af2247c37866bcb4cc05aee36919"
+    },
+    {
+      "path": "cms/src/api/slide-afiliacion/services/slide-afiliacion.ts",
+      "sha256": "60127f83555ae658a4519cbb322dd4579df41325b41cffb5f24393627b7ab3ac"
+    },
+    {
+      "path": "cms/src/api/socio/content-types/socio/schema.json",
+      "sha256": "e7e36f2bae325f5643b2d5f298c177b5de9352ea13aec64e67746fb4c2793545"
+    },
+    {
+      "path": "cms/src/api/socio/controllers/socio.ts",
+      "sha256": "2a51fe9891b304f6c91e533cd39b15e39c1da0b16b956a308349a23e22cc7b15"
+    },
+    {
+      "path": "cms/src/api/socio/routes/socio.ts",
+      "sha256": "2092beb0968046f5e48eefc19ed4fd04d6c442e8169009709c09f2044e96996b"
+    },
+    {
+      "path": "cms/src/api/socio/services/socio.ts",
+      "sha256": "a27e06e8dcefc38d6e79fd56fc730c1064039eec167e71a5e11d39ec8ad25444"
+    },
+    {
+      "path": "cms/src/extensions/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cms/src/index.ts",
+      "sha256": "945dffb5ca9aa73a91da1c8b2ca46163d8948c6034c1ed1fd917966df7553dec"
+    },
+    {
+      "path": "cms/tsconfig.json",
+      "sha256": "5a668f1025543fecf6039e600b2fee92937ab3cfe7052e213f79f74323caafa0"
+    },
+    {
+      "path": "cms/types/generated/components.d.ts",
+      "sha256": "375b501a9cdbca503ea6c4627c21196353d678698db6c263a7c358852eaace12"
+    },
+    {
+      "path": "cms/types/generated/contentTypes.d.ts",
+      "sha256": "0acf4ef3bb4e6415e98ddd6c03af8c640a9beaeddd24a92e1b2680edd1d3e8f7"
+    },
+    {
+      "path": "css/all.css",
+      "sha256": "b525c085579f9d4802491ffc88457eaacc88cc0856df5d990957e729e6309619"
+    },
+    {
+      "path": "css/animate_2.css",
+      "sha256": "fe347496cacc05a84656a99c3667917a13e8b7a56c1b41331448d1e257db4a6b"
+    },
+    {
+      "path": "css/bootstrap_2.css",
+      "sha256": "d44ef7a6a399d9af9b60c8cc54236dc16b01a1282a6c7074496a21f8f5b32b54"
+    },
+    {
+      "path": "css/font-awesome_2.css",
+      "sha256": "21cd49fb7d8bdeee33abd1e2b799be2f6f7fb9bb7bdaecf78967d75c07cd720a"
+    },
+    {
+      "path": "css/jquery.fancybox.min.css",
+      "sha256": "e72ac4dd95f7f11db42ea03fd4cbe1dca1c9586d47245e36aad66546d1864601"
+    },
+    {
+      "path": "css/menu_deroulant.js",
+      "sha256": "84a374fe784d0e9d5b379c7b8354778f75b371bebbc94b469235ad588bf4ce50"
+    },
+    {
+      "path": "css/owl.carousel.min.css",
+      "sha256": "7c39dc75c9579402ea4771ce3b7e0e187c5e93dd6af00a660f780695d33e4678"
+    },
+    {
+      "path": "css/owl.carousel_2.css",
+      "sha256": "c9430ccc20d8d58e10dbcaba36ae11739cf20190424b6f55c0d8cf90241658f6"
+    },
+    {
+      "path": "css/owl.theme_2.css",
+      "sha256": "a72843979d55dc4d5d9bcac65c18b3b75d753258c9fece915f49e9ad52a290b8"
+    },
+    {
+      "path": "css/owl.transitions_2.css",
+      "sha256": "46c63e19392696c9ccbce249541b5b7edeb46ca35679a5f91ed4f6779c0dfdbc"
+    },
+    {
+      "path": "css/prettyPhoto_2.css",
+      "sha256": "cb444ba3d0eb341ae27ff4e550228e184ac89b72da014d46e4f252d81ec26c86"
+    },
+    {
+      "path": "css/responsive_2.css",
+      "sha256": "b23e71dd5de4ef9a170121baac205e801c5d6732e48a40c4f116e3ac0fe4820a"
+    },
+    {
+      "path": "css/style.css",
+      "sha256": "16fdb6ff85652eaeb0b1bc5e55b095213d4c54079acfa0eda4d836e0e90e6a4c"
+    },
+    {
+      "path": "css/style_2.css",
+      "sha256": "7afeabb908cd351b64e125360b9b45b68d784b1ccc45d304404cd5c3d1e7e153"
+    },
+    {
+      "path": "docs/ARCHIVOS_CAMBIADOS.json",
+      "sha256": "043818a50abafde989412177a8baedc69fbf0168070c1e4115c57559aa302253"
+    },
+    {
+      "path": "docs/AUDITORIA_COOKIES.md",
+      "sha256": "ffd45db59a317ca5f7408b755291b920bbb38a323193e527243903a3eb5450bc"
+    },
+    {
+      "path": "docs/BORRADORES_PRESTACIONES.json",
+      "sha256": "ed907b665e770e025cd221f2f1dfde1426783d80033f9a8656fe76252c7a9825"
+    },
+    {
+      "path": "docs/CAMBIOS_REVISION_2.md",
+      "sha256": "0e91fd165c82098364edcfc2682aca7b65dca98b16907a6728f17eb3be2b7d33"
+    },
+    {
+      "path": "docs/CAMBIOS_REVISION_3.md",
+      "sha256": "5c9639c69879b92a4fe606fc070dad055ba936e9a09ba6a89b132e5b7708b8fe"
+    },
+    {
+      "path": "docs/CAMBIOS_REVISION_4.md",
+      "sha256": "ea41cf3815e693ca164f0dc386495de97a24bf19ff1d1205d6b2ec20ca873f4f"
+    },
+    {
+      "path": "docs/ENTREGA_DEFINITIVA.md",
+      "sha256": "0fb0082429a9a7a33c8608b225c7cd695a40e51eaf8e3718a18bc73a6e188a76"
+    },
+    {
+      "path": "docs/ENTREGA_FINAL.md",
+      "sha256": "a6d3848b8d14866309b88f343c515badddadf14edec76a316a6e4922f0aee408"
+    },
+    {
+      "path": "docs/LEEME_CAMBIOS_Y_PENDIENTES.md",
+      "sha256": "7ebe2d5537457fb6ad79496f72aab26f7d903a8160232f9c6d7ca2caa88208b9"
+    },
+    {
+      "path": "docs/PROCEDIMIENTO_EDITORIAL.md",
+      "sha256": "427c0abc496eb455c1d3a0868d694dcfec62bec615da34f320bba2b0f915b5c4"
+    },
+    {
+      "path": "docs/PRUEBAS_AGENDA_FINAL.json",
+      "sha256": "ee0e4c4430365572d52020f9b3b6a82c73c301fdffba3d52c2910c568ed3fadb"
+    },
+    {
+      "path": "docs/PRUEBAS_AUTOMATICAS.json",
+      "sha256": "759147cc2206d2aa5fbbde59d8f87ea0757d9b123cb54546f436794af4378097"
+    },
+    {
+      "path": "docs/PRUEBAS_CONFIRMACION_UI.json",
+      "sha256": "12a22fb29ee6b95bae7779bdd6e13ac18463d2657bc2a9db199d3a178adc4478"
+    },
+    {
+      "path": "docs/PRUEBAS_DESPLEGABLES.json",
+      "sha256": "21e665d1c9d8822363fe881c264ee01fbd4f1c42ff2ee79c6bc2082a651d77d2"
+    },
+    {
+      "path": "docs/PRUEBAS_ENTREGA_FINAL.json",
+      "sha256": "56d30dd846794997058d92927ed45c14849f560c9e89f7e60e24bdcc77df61be"
+    },
+    {
+      "path": "docs/PRUEBAS_PREGUNTAS.json",
+      "sha256": "b43abcd7ab9a98e2b643e55fac5d08749f66b0f2ff5f0847c1091c1d1acfda36"
+    },
+    {
+      "path": "docs/PRUEBAS_REVISION_4.json",
+      "sha256": "f6f6de1513484aa51710c73a83b1f0fd340bfd8f706225cbf25d2050cfea7ae6"
+    },
+    {
+      "path": "docs/nginx-fragment.conf",
+      "sha256": "872daec090a8e0cfdd8cde0c62b81ac1f45f5f577e5991366c6946016ffe0143"
+    },
+    {
+      "path": "docs/referencias/familiares-documentos.webp",
+      "sha256": "4e7ba31c5a06603176be0efe2d12e95104107885d947b15876bcb16eee5e3093"
+    },
+    {
+      "path": "ecosystem.config.cjs",
+      "sha256": "f70b52947c060e906dd0951d0a1ca472e4120bf4786b46220d6aed742b44f396"
+    },
+    {
+      "path": "images/01.jpg",
+      "sha256": "93c09ca7236d8242bfb1573ab07d60228394d4484294454223c37ce434217c4a"
+    },
+    {
+      "path": "images/02.jpg",
+      "sha256": "5c2081e29d30cfe742184775499f5f186f036755336c380b788de9fff33eb5b0"
+    },
+    {
+      "path": "images/03.jpg",
+      "sha256": "183035ed8d6e4a038ac766df65c3ce96f200df3c36f60587ed5132ac2b57fbc6"
+    },
+    {
+      "path": "images/04.jpg",
+      "sha256": "ea83e194d13b3e20394abde667d705296d348a9269fed3bb1b53eded0e2f14d2"
+    },
+    {
+      "path": "images/05.jpg",
+      "sha256": "f6eea8b2b96b09fc2a660141870e293eed81e62abd3fe18053af2868af0daaed"
+    },
+    {
+      "path": "images/Blog/1.jpg",
+      "sha256": "818677e6f472cf11d494aa379f92c0a345dc9796c4912a2760db613b0b3e4dc8"
+    },
+    {
+      "path": "images/Blog/2.jpg",
+      "sha256": "ef131a9d0dc594a7578bf4a32544ec5d15f7935a468495795b9a0fb538a45c60"
+    },
+    {
+      "path": "images/Blog/3.jpg",
+      "sha256": "f6a7ad6f5ae8086bd436d8fcf2fbb626f5121a1b9c56b413e1976ee89787fc31"
+    },
+    {
+      "path": "images/accueil/img_OMS.png",
+      "sha256": "4709848915e34d8836055b729653f95bf8945248cc098f5079815cb385e96bec"
+    },
+    {
+      "path": "images/accueil/img_logo_01.webp",
+      "sha256": "7e15b6b3cd155884db220dfbabe9a231ebf031e9f9379a45aca1505b8c319cbe"
+    },
+    {
+      "path": "images/accueil/inicio_pub_01.gif",
+      "sha256": "70304e6d69730ea429519c7f1df4b748f963a34f28aafc2d857a483f588e3111"
+    },
+    {
+      "path": "images/accueil/inseso_noti_01.jpg",
+      "sha256": "ba514b09dd0994064bdf02027ab11c11ac56bb2dfcba9b6e598e0fc56ef8a2be"
+    },
+    {
+      "path": "images/accueil/inseso_noti_02.jpg",
+      "sha256": "5386d63bf5649e6389f4cb0ef89614bb8fa20477bc9947a2086ffda58e47abd8"
+    },
+    {
+      "path": "images/accueil/slider-00.jpg",
+      "sha256": "feef3c8d429270e3ef67afeff435056f2d7f4c5e7573f303847693322fc1a037"
+    },
+    {
+      "path": "images/accueil/slider-01.jpg",
+      "sha256": "50c792da203af3da0da1c5ee716ca921e4a404d4653289bedcc313151975fd69"
+    },
+    {
+      "path": "images/accueil/slider-02.jpg",
+      "sha256": "2ed6284aa2fcb0eb821969e5a09c34345c859bab0e648770fd9f917fe77f16f1"
+    },
+    {
+      "path": "images/accueil/slider-03.jpg",
+      "sha256": "1f394814c31e1b04adf5c34dea6b5924a8d3268c821371ed4a97716e11e6f8ec"
+    },
+    {
+      "path": "images/accueil/slider-04.jpg",
+      "sha256": "25292046b61b6d6f0857e7607386943f0fc4cade121fdaa29b3a76b74e0ba73c"
+    },
+    {
+      "path": "images/accueil/slider-05.jpg",
+      "sha256": "55604768e02b3e20038beb1020cac37ec98d8aafbf093fb83bb418d7e9b363b5"
+    },
+    {
+      "path": "images/accueil/slider-06.jpg",
+      "sha256": "548379305bcee9870d56cbbc8e000c8919f271d4041f92baa7c71abb55d1627d"
+    },
+    {
+      "path": "images/afiliacion/afiliacion_00.gif",
+      "sha256": "b79ce78605f89d853319f052fca67971ead335939b33848e68858f2860a40204"
+    },
+    {
+      "path": "images/afiliacion/afiliacion_img_01.jpg",
+      "sha256": "d6890b07be329c10e7456e6dbb2d02bbaa4c4500c6df111a8ed5982aeda3e0a1"
+    },
+    {
+      "path": "images/afiliacion/afiliacion_slider_01.jpg",
+      "sha256": "21323687998de9f75b9a885903d603834007b3b96ed5704cbca56343f68140df"
+    },
+    {
+      "path": "images/all-title-bg.webp",
+      "sha256": "f0dbc86a69f87b08d253f744617827fac275ad0157a6ff9b0b469f93deb542ba"
+    },
+    {
+      "path": "images/assurés/asegurados_00.jpg",
+      "sha256": "37c757af358028b365207adcd63777c6d2936de2d513effb9ea46154e2d778da"
+    },
+    {
+      "path": "images/assurés/asegurados_01.jpg",
+      "sha256": "8cba01d46a359c24843fb250434037ca2339f2b2b8e9bb5452f56db5f9c55a4d"
+    },
+    {
+      "path": "images/assurés/asegurados_02.jpg",
+      "sha256": "94c989efe0be0f983a3ab37bb62a025560a980d5050a0ad95bddbef5bf18c551"
+    },
+    {
+      "path": "images/assurés/asegurados_03.jpg",
+      "sha256": "63afc09c8da955620e9ade8271ce7009ba69e9fd5bb319ae196994ecd605dfe1"
+    },
+    {
+      "path": "images/assurés/asegurados_04.jpg",
+      "sha256": "c61af5bf1668272b8a092767e2ee687f98b7bb72f8adda9f680297798778ee98"
+    },
+    {
+      "path": "images/assurés/asegurados_pub_01.gif",
+      "sha256": "e639bd7b2f9ba903cdad78cb96db9cd78d9a1d35c25a5b7d83d63b673689c868"
+    },
+    {
+      "path": "images/assurés/asegurados_pub_02.gif",
+      "sha256": "6cacb39460540020571c6e610cd299e08ad8b91282de0288d37691e71d73ff66"
+    },
+    {
+      "path": "images/assurés/slide_asegurados_01.jpg",
+      "sha256": "4fce54b8810b14f98a307923f6c1a7408c640b8b1449dc5513d63c2dd49fc987"
+    },
+    {
+      "path": "images/bg-bdr2.png",
+      "sha256": "75b4ae9ac388fbd426266040ba730963d702f5e619c73d1d5adf2eaef2f81285"
+    },
+    {
+      "path": "images/blog-img-01.jpg",
+      "sha256": "f75aa2ad4dabf2c6a916369bbef6e9621388385c016bb0b681e30401fd7871a4"
+    },
+    {
+      "path": "images/contacto/contacto_pub_01.gif",
+      "sha256": "9cd8f52017dc6712f5caff2a950fbd620f193388fb6a05f721732f84bfa5aab8"
+    },
+    {
+      "path": "images/dott.jpg",
+      "sha256": "695239127150804c9c06b929ef15bf585c312c38c3aff0a2cbfcbdb550568b18"
+    },
+    {
+      "path": "images/favicon.png",
+      "sha256": "aa2340752bb3483f40cf29066f1fa9561b1b08da76f887df1f06c8e3f47540dc"
+    },
+    {
+      "path": "images/footer-bg.webp",
+      "sha256": "116519b081bbb964ebed0ef302ac6db7ac6a4282e993c7aaa23863e59867b970"
+    },
+    {
+      "path": "images/img-1.jpg",
+      "sha256": "76ef4ee831a62e6d585470c402d740b6719cac1dbf2eea3b49a075840dc88b14"
+    },
+    {
+      "path": "images/img-2.jpg",
+      "sha256": "ffafa7f04eb0d6c74966eac94f536748bb56848a25271efdb4614b297bd47950"
+    },
+    {
+      "path": "images/img-3.jpg",
+      "sha256": "b89dcbb3c97bcb960cda9ac90fe469e947ad64f6695a0f4b920d3b5b797bea5b"
+    },
+    {
+      "path": "images/img_acc-01.jpg",
+      "sha256": "3b4be7289d1d934f352923a2711e807bc642e75d9278f5c2c82b1b837464faf4"
+    },
+    {
+      "path": "images/img_acc-02.jpg",
+      "sha256": "8533bdf1121181f992945d8aa5aa4ec2f024b681ac16d6eed7b74c592119d27b"
+    },
+    {
+      "path": "images/img_acc_02.jpg",
+      "sha256": "0b619d3aeb789312c71a23cf2cc17a74ca284b18927b26fd589ccad4a6ea7126"
+    },
+    {
+      "path": "images/img_acc_03.jpg",
+      "sha256": "2c7986f695405936aedbf36e58d09afe128556f41a6f452391add03e23f7199d"
+    },
+    {
+      "path": "images/img_acc_04.jpg",
+      "sha256": "77a822e625c51d9077460a351a6b03d29a0acdf1b2f96bf0f3f5cb7d2d99bef3"
+    },
+    {
+      "path": "images/img_acc_05.jpg",
+      "sha256": "8a19bf109e3324298f594c2598c794d40dcd0895ea82275ae27a91c00f271e12"
+    },
+    {
+      "path": "images/img_acc_06.jpg",
+      "sha256": "a8a0c8fa5da79ee910075d3ccbc6ff335606da90072df90194464e945a0637cc"
+    },
+    {
+      "path": "images/img_acc_07.jpg",
+      "sha256": "e15882fb883a771f0c7bdb895de13b508e7b71efa328abad6ef9e9965434cb64"
+    },
+    {
+      "path": "images/img_acc_08.jpg",
+      "sha256": "259ac73aa6ae771ce65ef06d8921b3478f510b51041dfdfd358abe7ff6a8ca3d"
+    },
+    {
+      "path": "images/img_acc_09.jpg",
+      "sha256": "6f54144d401b527640eeff86bdcf13b413341a1ae184e67a0ca0ed9ea893502b"
+    },
+    {
+      "path": "images/img_acc_10.jpg",
+      "sha256": "c3698dc0789724fe1d6ca431f59e3c944e8bc928dd6ac5ccb570c41b20969569"
+    },
+    {
+      "path": "images/img_acc_11.jpg",
+      "sha256": "77b10d1cbf61ba1e973d427351ede44540fe355dfbf836cf4437108047bd4ddf"
+    },
+    {
+      "path": "images/img_acc_12.jpg",
+      "sha256": "80cfd44aff0e4adb579b96a11a26f0d614aa6d800281ce4598c818548d95d516"
+    },
+    {
+      "path": "images/img_acc_13.jpg",
+      "sha256": "5dd07299c02a957a4a6567f46ccfc6ff5c48fa1e84243513f117cb83abc51804"
+    },
+    {
+      "path": "images/img_footer_01.png",
+      "sha256": "97a4fec0f9f03ff86b0f8fdd4f9418f95b50f48f7dbf67b0106cb1eedcf86f9a"
+    },
+    {
+      "path": "images/img_qsn_01.webp",
+      "sha256": "fad3e9f85eec01511f105aaf15154ca2b3aa5fd4b5a7078a53ce0839fb787262"
+    },
+    {
+      "path": "images/img_qsn_02.png",
+      "sha256": "18f414a2b09e6b1e6653c54b35f10990302ed6ebccb0041fe5fbaf25bef53b77"
+    },
+    {
+      "path": "images/img_sede.jpg",
+      "sha256": "4b6c62f80eb084de07a86f31acdb396457bd4edba56a839016f8f3c2f9900e7f"
+    },
+    {
+      "path": "images/info/Post_inseso_info_18_jun_25.jpg",
+      "sha256": "f29c440f100b7ef163b65a86ef1e3745defb5da8152cd9024ba27c4a96061729"
+    },
+    {
+      "path": "images/info/Post_inseso_info_3_agos_25.jpg",
+      "sha256": "6e35542436521ec0db9e852ef2aab051ffb85cf2f50868f92d5763f6d9d26f82"
+    },
+    {
+      "path": "images/info/Post_inseso_info_7_agos_25.jpg",
+      "sha256": "25bfeff34fd8ec87dd49865f709ba41bbf5fa21d2cf1e613bbcc3525e018977f"
+    },
+    {
+      "path": "images/info/inseso_img2_3_agos_25.jpg",
+      "sha256": "acc8966e8050f34dd2b77fbce81d2f619d5956d64bee463882a984a5005f298a"
+    },
+    {
+      "path": "images/info/inseso_img2_7_agos_25.jpg",
+      "sha256": "bd695c7e863381125371eb82f22631073080f5d6e94f9a1955e61440349fe4eb"
+    },
+    {
+      "path": "images/info/inseso_img_18_jun_25.jpg",
+      "sha256": "cb9d75367df31b4c24d3895882e9a85ffe4e94f9a5fb2679894743506898e4a9"
+    },
+    {
+      "path": "images/info/inseso_img_3_agos_25.jpg",
+      "sha256": "6abe5e0ef782cf656b3410f813868e57707a4d5053282cebdd341e597a3dace0"
+    },
+    {
+      "path": "images/info/inseso_img_7_agos_25.jpg",
+      "sha256": "0ea4245641c2604980899fc321fae6a873c2fd23c72aac6af16a6c4a557b542f"
+    },
+    {
+      "path": "images/info/inseso_info_18_jun_25.jpg",
+      "sha256": "d02a1b6e0147b50c99b804313ea57ee829a05662b6e912c221e7ba05033b87d0"
+    },
+    {
+      "path": "images/info/inseso_info_3_agos_25.jpg",
+      "sha256": "2bfde2e5c17493c0997da266113d64cdb66960668f257ce9b69c5476d96746e9"
+    },
+    {
+      "path": "images/info/inseso_info_7_agos_25.jpg",
+      "sha256": "60165f4e6b12089df5c7c94197078cf0a7a08966344186e0f00a9b6b8e3db2c1"
+    },
+    {
+      "path": "images/logo.png",
+      "sha256": "2db34a3327a1de715865d041910859e99e72796a88eb61be4f5766092a84b431"
+    },
+    {
+      "path": "images/noticias/testi_01.png",
+      "sha256": "9c5d24c92ec3756084aca2d4d38d2294335bef832984eb40a8dab9aa1e031178"
+    },
+    {
+      "path": "images/partner/img_embleme_01.jpg",
+      "sha256": "37c3cd9009d37e0fd4b67666e2026731a62aaa87d55b03d86616aa48d1afdc4e"
+    },
+    {
+      "path": "images/partner/img_embleme_02.jpg",
+      "sha256": "0303d6ff3fa26cc54a5c0de9f85930ffc24ca4b187c6faf410947c0dae0cb31a"
+    },
+    {
+      "path": "images/partner/img_partn_01.jpg",
+      "sha256": "bcd92f8a181f880b5cb723139a0641fe863f6d414811c6442153b61d6b339fc2"
+    },
+    {
+      "path": "images/partner/img_partn_01.png",
+      "sha256": "9560001c40af83429781f1cd7fc65d631e6ced839dc6ff1eef8c9171efb7b8c0"
+    },
+    {
+      "path": "images/partner/img_partn_02.jpg",
+      "sha256": "60484b14d1353fa0c1f8febe4092e7fb2ccd62926566667e61d611402e611707"
+    },
+    {
+      "path": "images/partner/img_partn_02.png",
+      "sha256": "3f64d110b894e03fb9ad69765e63dc2e22b00c1f7aafd93784f3eadd400c59dd"
+    },
+    {
+      "path": "images/partner/img_partn_03.png",
+      "sha256": "84744d369bb458522a8da7bad4aa9aa5ba8a4115ccd25f6df20a4634a161cac9"
+    },
+    {
+      "path": "images/partner/img_partn_04.png",
+      "sha256": "f6d2fc0ac1cb350c51ede6ff2e3c8425084d7c88e7ea9412da133f0daa4f2f3e"
+    },
+    {
+      "path": "images/partner/img_partn_05.png",
+      "sha256": "3718d37311cb707a9e92046280ae4b1550a3f2ffdfe381b60af67b6c8e62a1bc"
+    },
+    {
+      "path": "images/partner/img_partn_06.png",
+      "sha256": "3d005a7e9747cd12caa5e1e2a7bb2b68f75041c004c4f746d2aa0e8a6721f90f"
+    },
+    {
+      "path": "images/partner/img_partn_07.png",
+      "sha256": "d3837e5f2bb23fde45cb877f542ce0b7be204d6509c1c5da090223fde0d64713"
+    },
+    {
+      "path": "images/partner/img_partner_logo_00.jpg",
+      "sha256": "0b59e01dac9b806ba59359b3848b0f4cdf1ed7ea5a60d52b3ab2b7e852fa8d45"
+    },
+    {
+      "path": "images/partner/img_partner_logo_01.jpg",
+      "sha256": "b89a52d024631d8cd31b6f6efdebf5e1816756b6527c50a2b2a7c5712d175c7b"
+    },
+    {
+      "path": "images/partner/logo_02.png",
+      "sha256": "b5f285b71ca59cd03273300ad19baf69cd5134ec1d3dc0e52911f71a8a163fc8"
+    },
+    {
+      "path": "images/portfolio-big-01.jpg",
+      "sha256": "20b2a86f9df1e9946b6603f941d7e376d34ec23d513159614002f355bcf7cb70"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_01.jpg",
+      "sha256": "62c9cffdeff70bf3f8512cb46884168881023357deb0efc63ab7567d4afc82eb"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_02.jpg",
+      "sha256": "63f3b6301ea32e9d92e42ddf254c0b0ecee2ea61f8485976533d0ce46708ea7b"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_03.webp",
+      "sha256": "9426372501406e1f22ddb3853fc5a39b5d8e1cfbe37699ba6797116832be4106"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_04.jpg",
+      "sha256": "79939d1876edfe830bb273f024d980a2a3386bd53775dc4612e39e0ed2c73374"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_05.jpg",
+      "sha256": "9272ffb9bcd95af76fd683d9c02139bd3a56de59fc10120718c70952f719c429"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_06.jpg",
+      "sha256": "200c662ccc44577cd75dc030a3c4b4aed87a87b0a910335df588c4130d98a24b"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_06_0.jpg",
+      "sha256": "16fd43142dd48eae962fab2e9d15d1559a1773443e5e453b3716fe3ed301a7d5"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_07.jpg",
+      "sha256": "84b38a7cef9f21de65bfd1002e0e4e21842d11f2964332136c83cc3776b34ca2"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_08.jpg",
+      "sha256": "e2498d61b43e9e579ab592bc0d143b4fd5f5fa1035ac64e80e0578e97e8e574a"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_detail_09.jpg",
+      "sha256": "33e1858e5ab69b3788e4756b579120406b37a5b5e85fd5fbab412591ac3024c7"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_01.jpg",
+      "sha256": "e7735631d91070135a2a3dee30d88c33c592cfe00b52ecf98732efc0e45a6c26"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_02.webp",
+      "sha256": "7217465e7419183ed6321b46696547eee26888914ce5d45323e6287139bc7aa6"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_03.jpg",
+      "sha256": "b07265ea5d66a4b1df93ccbea00542c27ae1a94d8f7509948c2cba33632eb486"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_04.jpg",
+      "sha256": "7a0fba41f30143fd721bc97f161a53b3f86bb874d195fcf0833279022b4d8608"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_05.jpg",
+      "sha256": "8b19cf3ac68c525124c50bafef044043091160a0bf5d834868c010ea4f9e6e6a"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_06.jpg",
+      "sha256": "f675d8cc56e4b0a1dfbfaafe9dedd4788a339d7fca63e8ad3b654655edb967d0"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_07.jpg",
+      "sha256": "69f9b8ef778a59c8539dbdc185a12c8d4755a52dbeb7a580b8f53435a27b7f7e"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_08.jpg",
+      "sha256": "386423882ada778dd11bc241e190fdf8e7f5504bc9805428978859191567f526"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_img_09.jpg",
+      "sha256": "331272eefa0c4be5e1662d2914577de019edd9d0fd7529e0421cc9e3973c0afe"
+    },
+    {
+      "path": "images/prestaciones/prestaciones_slider.gif",
+      "sha256": "30d9c8e548971f006431927ccdf7251c9ba93ec082f9688f3a2d57437dda306e"
+    },
+    {
+      "path": "images/services-img-01.jpg",
+      "sha256": "cfcd9dd8eabf7940316fe3e3dafb94c7e03aab34eaadc1ae8363bf992c98b19e"
+    },
+    {
+      "path": "images/slider-01.jpg",
+      "sha256": "b2dcf9456c32bc0985d92c32eb674eda89e1bde1070bd464ee04303ed5d2c052"
+    },
+    {
+      "path": "images/slider-02.jpg",
+      "sha256": "5f5b4c07c981404edd8387af4207cf8b4c9eed68cab8f9e755bb4f97083b9293"
+    },
+    {
+      "path": "images/slider-03.jpg",
+      "sha256": "9abeba3129232472ae857cceb1e6a8b1b78a539e1a36895647090f6a39c15f20"
+    },
+    {
+      "path": "images/slider-04.jpg",
+      "sha256": "7837f4cb49c40c7f7da81b195b391bab1c402fa6c9919e453aa68228d9e536d8"
+    },
+    {
+      "path": "images/slider-05.jpg",
+      "sha256": "a9e83cfec39c50637a6740bec01876919660db645ac4df7a6443f2e62e36b774"
+    },
+    {
+      "path": "images/sommes nous/14251558.gif",
+      "sha256": "a85f0c674fa7ba930471a12d9d0a60f1680e06ae620f8a0c447a752222bcdd9f"
+    },
+    {
+      "path": "images/sommes nous/img_qsn_01.jpg",
+      "sha256": "700ae879d698ac50bd094e9b70d89113da99a79660846d9302a8218b243f66f6"
+    },
+    {
+      "path": "images/sommes nous/img_qsn_01.png",
+      "sha256": "ae62b48eb60903b6926fdd1b95ef4e2d6f668f13f7e291fedf80f1fe143f8824"
+    },
+    {
+      "path": "images/sommes nous/img_qsn_02.webp",
+      "sha256": "767e7c94db35fad9eb42b1fda5016cd7ab4d76af4e8f64e9f898dd1d914a1e7b"
+    },
+    {
+      "path": "images/sommes nous/slide_01.webp",
+      "sha256": "309b9878ed75c173df6e2d2750e66e707f03f138f3bc386478c1e9b1c603a45b"
+    },
+    {
+      "path": "images/sommes nous/slide_02.jpg",
+      "sha256": "5113d114a57b8d3741a6b6b5014d569faeed8d618abc80ae31a445981290902d"
+    },
+    {
+      "path": "images/sommes nous/slide_03.jpg",
+      "sha256": "c9c067aabe71c8c4354484a88536ac476ec966e6fb4ae1100ed172c928efa466"
+    },
+    {
+      "path": "images/sommes nous/slide_qsn_01.gif",
+      "sha256": "fef7f8114c3ac63022d0096b7adc39abaac300c0364776ec9925afccef653de4"
+    },
+    {
+      "path": "images/sommes nous/slide_qsn_01.jpg",
+      "sha256": "98f9be9c1b9865159587e7e68d7f869342a0bebb38ada386b2cd5b89c65abf64"
+    },
+    {
+      "path": "images/sommes nous/slide_qsn_02.jpg",
+      "sha256": "4fce54b8810b14f98a307923f6c1a7408c640b8b1449dc5513d63c2dd49fc987"
+    },
+    {
+      "path": "images/sommes nous/slide_qsn_03.webp",
+      "sha256": "ba027d7ef348c5a96fa5cadec4f0d4ddef947067ef77e7e93258f17746b784e1"
+    },
+    {
+      "path": "images/sommes nous/slide_qsn_04.jpg",
+      "sha256": "0569eb290b902efc8abd90397bb01eb5059420e9cbcd2faef8e865e42f60368c"
+    },
+    {
+      "path": "images/trabajadores/Solicitud.png",
+      "sha256": "5498e0f3ef1224864f911bf55edd06a9d66826797b3fe057b90bca3ee9f9be0a"
+    },
+    {
+      "path": "images/trabajadores/img_silder_trabaja_01.jpg",
+      "sha256": "65dab552c1c37947532ab95aa26fd3e5c73e8455757e976004e127bc93d78e15"
+    },
+    {
+      "path": "images/trabajadores/img_silder_trabaja_02.jpg",
+      "sha256": "567a6111549e4a95449d4283764ad079e6d49e064f86b3f934899e5b51a6e9f9"
+    },
+    {
+      "path": "images/trabajadores/img_trabaja_01.webp",
+      "sha256": "8b04b39f0d4ae8fd61c33ccba0f019de3c4fc0f9b18147e00a4d880804d5fa59"
+    },
+    {
+      "path": "images/trabajadores/img_trabaja_02.jpg",
+      "sha256": "bb0c9fcc0dabf4266397520ea174fccd0d1470e733f3447294586891ca3d1107"
+    },
+    {
+      "path": "images/trabajadores/img_trabaja_03.jpg",
+      "sha256": "c470a1b4b15135262169b2e760e4fab9f7aa99bd4bdf772f7e8c27da384791d2"
+    },
+    {
+      "path": "js/contact_me.js",
+      "sha256": "22ef32d3f6c5b2b941308cfa949c54610dcfe4f45a2aab4677ab357f4c4d6fff"
+    },
+    {
+      "path": "js/filter.js",
+      "sha256": "56af3f6b884b490109e4abab215c7d3550b9126066c56b93a51607814a64a2d0"
+    },
+    {
+      "path": "js/imagesloaded.pkgd.min.js",
+      "sha256": "96abf166b3cbb5f7df525d86fdeeeccea4af3c120b19bc26b0613530a94e8b44"
+    },
+    {
+      "path": "js/isotope.pkgd.min.js",
+      "sha256": "2ac1dec2ea676653dc33c1dc718636434357b352fd07d6bf9750c69250191abc"
+    },
+    {
+      "path": "js/jqBootstrapValidation.js",
+      "sha256": "b18af19a05cfbc13033b2739d7f79242bed141ce70b3a52d2467f3370d89fbdb"
+    },
+    {
+      "path": "js/jquery.appear.js",
+      "sha256": "2d1887577f97622899873b36b41ccdec1d3ac304811dfb52c3983b3c192d3ae5"
+    },
+    {
+      "path": "js/jquery.countTo_2.js",
+      "sha256": "0a4823631ea7d539ef8d8ecb2e9e8171d5d055ab69c42ab6cf27d612c914cdf3"
+    },
+    {
+      "path": "js/jquery.fancybox.min.js",
+      "sha256": "50b476aa512ee968a0258e3142c0ec25e5bbe9ef6d104d845a39ca110fb42fc4"
+    },
+    {
+      "path": "js/jquery.inview.min_2.js",
+      "sha256": "2fb896d59ab96b495498601fb1a0b126b53057ac7583e9ad13b319a3e532a943"
+    },
+    {
+      "path": "js/jquery.min_2.js",
+      "sha256": "100a135d8e7d5ebf1fe83b0b16da1d8d8b2321acdc4d5c24a1f9a7df53b23cf1"
+    },
+    {
+      "path": "js/jquery.nicescroll_2.js",
+      "sha256": "678485867189876d2d7b93964d1b40138fbed6d5fabf90e30d5a3e13b380cd7d"
+    },
+    {
+      "path": "js/owl.carousel.min.js",
+      "sha256": "e0e2bc4e1d3ee5024c4e1aa58a6cad9aa42fc63a8c89ce18013a1c8f2b94875c"
+    },
+    {
+      "path": "js/owl.carousel_2.js",
+      "sha256": "a0611f81ec5521ce8ec2d6a2a719d0de5273898618fa70e79ce1c8d9349c0d43"
+    },
+    {
+      "path": "js/script.js",
+      "sha256": "9f0632aed3ab65a884360f6a0021e19a94744fe2ff54c662ba8134cea58c4874"
+    },
+    {
+      "path": "js/script_2.js",
+      "sha256": "db39f9ef02d9899d88e67c034ff6dfe53f8b11862654e18255f8badaa3f33e05"
+    },
+    {
+      "path": "js/wow_2.js",
+      "sha256": "e66e0d421e9efaead4934c69b825be1d218eebd9ea4e205629daa7da378039d6"
+    },
+    {
+      "path": "mail/contact_me.php",
+      "sha256": "ce2c1ff972f2d626d1d7039e95df4253592aab96b9173c07ad3228b15a40ebf7"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "56c4489d11c08f8abbbc4a7ff6d028d39720d1c22e0f2ea4dc222ea62cbef780"
+    },
+    {
+      "path": "package.json",
+      "sha256": "8318447406915757841c6f36050f761c1675e440aa07d06056ec4b6c0ca34633"
+    },
+    {
+      "path": "public/css/all.css",
+      "sha256": "b525c085579f9d4802491ffc88457eaacc88cc0856df5d990957e729e6309619"
+    },
+    {
+      "path": "public/css/custom-adjustments.css",
+      "sha256": "9ad453f2bec707eed4f03f21021a5c54c47e7f445b2c50cc0dff1007c777a05e"
+    },
+    {
+      "path": "public/css/footer-improvements.css",
+      "sha256": "34c42ab5c0eedc8ff8a185d273a4cbf0fc2c10fccdd37034b6d5c1c686ef4e09"
+    },
+    {
+      "path": "public/css/hero-improvements.css",
+      "sha256": "3ae7ce1670f839e05f96a4054c9dde23c4ea0b62a46e40773edcf4ba3e204bd9"
+    },
+    {
+      "path": "public/css/menu_deroulant.js",
+      "sha256": "84a374fe784d0e9d5b379c7b8354778f75b371bebbc94b469235ad588bf4ce50"
+    },
+    {
+      "path": "public/css/navbar-improvements.css",
+      "sha256": "fce25357e8d6457b8bb80b7a55ee8e33454a7e4df45b5dceaf2535c9db06187f"
+    },
+    {
+      "path": "public/css/news-improvements.css",
+      "sha256": "dc6f348958761f3677d9553107141ccd4fd3774db4943f5b615d92d88be68b6d"
+    },
+    {
+      "path": "public/css/owl.carousel.min.css",
+      "sha256": "7c39dc75c9579402ea4771ce3b7e0e187c5e93dd6af00a660f780695d33e4678"
+    },
+    {
+      "path": "public/css/owl.carousel_2.css",
+      "sha256": "baf092e64cc80820d06e5d87a058e05a439880abd520c3e1d3b119ab1fd3b9ba"
+    },
+    {
+      "path": "public/css/owl.theme_2.css",
+      "sha256": "961eeeba3878b6f4e7abc658e04f5d2f9724c60c5e02f63832b66a9f95e0a7b0"
+    },
+    {
+      "path": "public/css/responsive_2.css",
+      "sha256": "d33bf11c7765dc7b9319de1b4778b96b77efe6a2e7bfc207cf5560dbdbdf3a8a"
+    },
+    {
+      "path": "public/css/style.css",
+      "sha256": "4fc65af3d6e8820bdd3eddc5d39635ff4f5db5993aa692ecb9abad85e91a0ba4"
+    },
+    {
+      "path": "public/css/style_2.css",
+      "sha256": "aa314765612ecf5cf0968800f7dc9346477fc60d587bd18290ebc256b8ee74e1"
+    },
+    {
+      "path": "public/formularios/solicitud-comun-prestaciones.pdf",
+      "sha256": "e1961ed37049ad0c61a7eeb085b8fed4cca7774f6108b57feda2253cd14db197"
+    },
+    {
+      "path": "public/images/01.jpg",
+      "sha256": "93c09ca7236d8242bfb1573ab07d60228394d4484294454223c37ce434217c4a"
+    },
+    {
+      "path": "public/images/02.jpg",
+      "sha256": "5c2081e29d30cfe742184775499f5f186f036755336c380b788de9fff33eb5b0"
+    },
+    {
+      "path": "public/images/03.jpg",
+      "sha256": "183035ed8d6e4a038ac766df65c3ce96f200df3c36f60587ed5132ac2b57fbc6"
+    },
+    {
+      "path": "public/images/04.jpg",
+      "sha256": "ea83e194d13b3e20394abde667d705296d348a9269fed3bb1b53eded0e2f14d2"
+    },
+    {
+      "path": "public/images/05.jpg",
+      "sha256": "f6eea8b2b96b09fc2a660141870e293eed81e62abd3fe18053af2868af0daaed"
+    },
+    {
+      "path": "public/images/Blog/1.jpg",
+      "sha256": "818677e6f472cf11d494aa379f92c0a345dc9796c4912a2760db613b0b3e4dc8"
+    },
+    {
+      "path": "public/images/Blog/2.jpg",
+      "sha256": "ef131a9d0dc594a7578bf4a32544ec5d15f7935a468495795b9a0fb538a45c60"
+    },
+    {
+      "path": "public/images/Blog/3.jpg",
+      "sha256": "f6a7ad6f5ae8086bd436d8fcf2fbb626f5121a1b9c56b413e1976ee89787fc31"
+    },
+    {
+      "path": "public/images/accueil/img_OMS.png",
+      "sha256": "4709848915e34d8836055b729653f95bf8945248cc098f5079815cb385e96bec"
+    },
+    {
+      "path": "public/images/accueil/img_logo_01.webp",
+      "sha256": "7e15b6b3cd155884db220dfbabe9a231ebf031e9f9379a45aca1505b8c319cbe"
+    },
+    {
+      "path": "public/images/accueil/inicio_pub_01.gif",
+      "sha256": "70304e6d69730ea429519c7f1df4b748f963a34f28aafc2d857a483f588e3111"
+    },
+    {
+      "path": "public/images/accueil/inseso_noti_01.jpg",
+      "sha256": "ba514b09dd0994064bdf02027ab11c11ac56bb2dfcba9b6e598e0fc56ef8a2be"
+    },
+    {
+      "path": "public/images/accueil/inseso_noti_02.jpg",
+      "sha256": "5386d63bf5649e6389f4cb0ef89614bb8fa20477bc9947a2086ffda58e47abd8"
+    },
+    {
+      "path": "public/images/accueil/slider-00-verde.svg",
+      "sha256": "a9117b9ae5592997177711d423a5a6222316360942ce3bfa52d088a9d44f613f"
+    },
+    {
+      "path": "public/images/accueil/slider-00.jpg",
+      "sha256": "feef3c8d429270e3ef67afeff435056f2d7f4c5e7573f303847693322fc1a037"
+    },
+    {
+      "path": "public/images/accueil/slider-01-verde.svg",
+      "sha256": "8c9da7df78adbed046959012cbd130d0ac46f7b49bf5831968efb0ee6dafaa36"
+    },
+    {
+      "path": "public/images/accueil/slider-01.jpg",
+      "sha256": "50c792da203af3da0da1c5ee716ca921e4a404d4653289bedcc313151975fd69"
+    },
+    {
+      "path": "public/images/accueil/slider-02-verde.svg",
+      "sha256": "deb3c3ac3c7db6aa9d491447fa05b16e73212d9383ef5ef50fb96783acca670d"
+    },
+    {
+      "path": "public/images/accueil/slider-02.jpg",
+      "sha256": "2ed6284aa2fcb0eb821969e5a09c34345c859bab0e648770fd9f917fe77f16f1"
+    },
+    {
+      "path": "public/images/accueil/slider-03-verde.svg",
+      "sha256": "a451410a8371585ed49af2dbcaf4b5db1383752058eb7dfcce774ec984858851"
+    },
+    {
+      "path": "public/images/accueil/slider-03.jpg",
+      "sha256": "1f394814c31e1b04adf5c34dea6b5924a8d3268c821371ed4a97716e11e6f8ec"
+    },
+    {
+      "path": "public/images/accueil/slider-04-verde.svg",
+      "sha256": "cae0e4e0c52e4d1c7a894cecbba72c258bd1669ef7d948c3efac3590bbdc07e7"
+    },
+    {
+      "path": "public/images/accueil/slider-04.jpg",
+      "sha256": "25292046b61b6d6f0857e7607386943f0fc4cade121fdaa29b3a76b74e0ba73c"
+    },
+    {
+      "path": "public/images/accueil/slider-05-verde.svg",
+      "sha256": "7b73798944b0139d9dff24ff9841520c7c76e6ae1a9c44ac7d3ccb9d7928fc87"
+    },
+    {
+      "path": "public/images/accueil/slider-05.jpg",
+      "sha256": "55604768e02b3e20038beb1020cac37ec98d8aafbf093fb83bb418d7e9b363b5"
+    },
+    {
+      "path": "public/images/accueil/slider-06-verde.svg",
+      "sha256": "e2abe236aad2af18433214b14a518d6c9283935663b6c16ca0395b10c2e41e6a"
+    },
+    {
+      "path": "public/images/accueil/slider-06.jpg",
+      "sha256": "548379305bcee9870d56cbbc8e000c8919f271d4041f92baa7c71abb55d1627d"
+    },
+    {
+      "path": "public/images/adaptadas/card-application.png",
+      "sha256": "461f5af16a9ccc9365870a0e4edc6463429d99a343e0a0eccce01c9c7e258545"
+    },
+    {
+      "path": "public/images/adaptadas/companies-header.png",
+      "sha256": "97f65f4b163887ae65ef78f7305c79b3449681d2b37e8aa4656de568593a9e62"
+    },
+    {
+      "path": "public/images/adaptadas/conditions-main.png",
+      "sha256": "312cffecb9c3933dff29bf89214a0644a26622a32b2fb8b22acea77105c92842"
+    },
+    {
+      "path": "public/images/adaptadas/presentation-0.png",
+      "sha256": "40bdcd2cd743c4be47aae93e6c709ecd0c9e179b3eda7a189c5aa530d1056e35"
+    },
+    {
+      "path": "public/images/adaptadas/presentation-1.png",
+      "sha256": "2a2cb548f6b25a00acc4f8f22c6b5b10c377be25c092d9542472033764c2f746"
+    },
+    {
+      "path": "public/images/adaptadas/presentation-2.png",
+      "sha256": "bbd7eea6df57c0630cf9874d6a6d4f1300660a7001eb5c870c8e07fafc8440b9"
+    },
+    {
+      "path": "public/images/adaptadas/presentation-3.webp",
+      "sha256": "059081304d96066fee16a9ddd1f05b94ff6dc89ee7feca663b872a82eacac497"
+    },
+    {
+      "path": "public/images/adaptadas/workers-header.png",
+      "sha256": "ec7a51825f785ba44bbe4936ee1873195b880280a97c3eb72e1226b355eeed03"
+    },
+    {
+      "path": "public/images/adaptadas/workers-main.webp",
+      "sha256": "f725a6945dd6d4aaeb556ec64aa5e90fad0d8a2694a14d005144bec1147dc288"
+    },
+    {
+      "path": "public/images/afiliacion/afiliacion_00.gif",
+      "sha256": "b79ce78605f89d853319f052fca67971ead335939b33848e68858f2860a40204"
+    },
+    {
+      "path": "public/images/afiliacion/afiliacion_img_01.jpg",
+      "sha256": "d6890b07be329c10e7456e6dbb2d02bbaa4c4500c6df111a8ed5982aeda3e0a1"
+    },
+    {
+      "path": "public/images/afiliacion/afiliacion_slider_01.jpg",
+      "sha256": "21323687998de9f75b9a885903d603834007b3b96ed5704cbca56343f68140df"
+    },
+    {
+      "path": "public/images/agencias/santa-maria-2.jpg",
+      "sha256": "7271aac2613403b69f488d2e5697775c3234396a37190de5aa5fee9fac70df13"
+    },
+    {
+      "path": "public/images/agencias/santa-maria-exterior.jpg",
+      "sha256": "74a8504c1ccb0ebb2ff033b95f4a8d06d6c32a0f144f8f3cb400489698ab6b03"
+    },
+    {
+      "path": "public/images/all-title-bg.webp",
+      "sha256": "f0dbc86a69f87b08d253f744617827fac275ad0157a6ff9b0b469f93deb542ba"
+    },
+    {
+      "path": "public/images/assurés/asegurados_00.jpg",
+      "sha256": "37c757af358028b365207adcd63777c6d2936de2d513effb9ea46154e2d778da"
+    },
+    {
+      "path": "public/images/assurés/asegurados_01.jpg",
+      "sha256": "8cba01d46a359c24843fb250434037ca2339f2b2b8e9bb5452f56db5f9c55a4d"
+    },
+    {
+      "path": "public/images/assurés/asegurados_02.jpg",
+      "sha256": "94c989efe0be0f983a3ab37bb62a025560a980d5050a0ad95bddbef5bf18c551"
+    },
+    {
+      "path": "public/images/assurés/asegurados_03.jpg",
+      "sha256": "63afc09c8da955620e9ade8271ce7009ba69e9fd5bb319ae196994ecd605dfe1"
+    },
+    {
+      "path": "public/images/assurés/asegurados_04.jpg",
+      "sha256": "c61af5bf1668272b8a092767e2ee687f98b7bb72f8adda9f680297798778ee98"
+    },
+    {
+      "path": "public/images/assurés/asegurados_pub_01.gif",
+      "sha256": "e639bd7b2f9ba903cdad78cb96db9cd78d9a1d35c25a5b7d83d63b673689c868"
+    },
+    {
+      "path": "public/images/assurés/asegurados_pub_02.gif",
+      "sha256": "6cacb39460540020571c6e610cd299e08ad8b91282de0288d37691e71d73ff66"
+    },
+    {
+      "path": "public/images/assurés/slide_asegurados_01.jpg",
+      "sha256": "4fce54b8810b14f98a307923f6c1a7408c640b8b1449dc5513d63c2dd49fc987"
+    },
+    {
+      "path": "public/images/bg-bdr2.png",
+      "sha256": "75b4ae9ac388fbd426266040ba730963d702f5e619c73d1d5adf2eaef2f81285"
+    },
+    {
+      "path": "public/images/blog-img-01.jpg",
+      "sha256": "f75aa2ad4dabf2c6a916369bbef6e9621388385c016bb0b681e30401fd7871a4"
+    },
+    {
+      "path": "public/images/contacto/contacto-verde.png",
+      "sha256": "d8e96842923df66d114ab00aa611e475c5ce5f1a02ededc231d23bc6dc60e85f"
+    },
+    {
+      "path": "public/images/contacto/contacto_pub_01.gif",
+      "sha256": "9cd8f52017dc6712f5caff2a950fbd620f193388fb6a05f721732f84bfa5aab8"
+    },
+    {
+      "path": "public/images/dott.jpg",
+      "sha256": "695239127150804c9c06b929ef15bf585c312c38c3aff0a2cbfcbdb550568b18"
+    },
+    {
+      "path": "public/images/evina.webp",
+      "sha256": "5ebbcd72f51af09b682445ee72f6ed660d487e578632d1ecb110f67eaa16369d"
+    },
+    {
+      "path": "public/images/favicon-nuevo.png",
+      "sha256": "a930864e1b9d3ded15871aa83d7b07227bbffd10462afa921af2ecea11f3992b"
+    },
+    {
+      "path": "public/images/favicon.png",
+      "sha256": "aa2340752bb3483f40cf29066f1fa9561b1b08da76f887df1f06c8e3f47540dc"
+    },
+    {
+      "path": "public/images/footer-bg.webp",
+      "sha256": "116519b081bbb964ebed0ef302ac6db7ac6a4282e993c7aaa23863e59867b970"
+    },
+    {
+      "path": "public/images/footer-nuevo.png",
+      "sha256": "6ba3d86f228f2e8af2cfb43c8d6689477393dcb8fe29026258e626b01d1fba97"
+    },
+    {
+      "path": "public/images/footer-transparente.png",
+      "sha256": "2d63ccd0b1e824457adc16107b152a46f0785e878086825e6e83b656a8ecf337"
+    },
+    {
+      "path": "public/images/gobierno/delegada-nacional.webp",
+      "sha256": "6a42f703df57264db8dec0787aa98d96cf8b64ddcca66e5904aef287c56626d0"
+    },
+    {
+      "path": "public/images/gobierno/pca.webp",
+      "sha256": "a1b8db0be977cfef8639322fd745c410db407ccda8da6322850a9d9b715eba11"
+    },
+    {
+      "path": "public/images/gobierno/secretaria-general.webp",
+      "sha256": "cc6eb24a462b7e3f7f2fa504964cec9a1df655d5f1d8c60e0301a6127615437f"
+    },
+    {
+      "path": "public/images/img-1.jpg",
+      "sha256": "76ef4ee831a62e6d585470c402d740b6719cac1dbf2eea3b49a075840dc88b14"
+    },
+    {
+      "path": "public/images/img-2.jpg",
+      "sha256": "ffafa7f04eb0d6c74966eac94f536748bb56848a25271efdb4614b297bd47950"
+    },
+    {
+      "path": "public/images/img-3.jpg",
+      "sha256": "b89dcbb3c97bcb960cda9ac90fe469e947ad64f6695a0f4b920d3b5b797bea5b"
+    },
+    {
+      "path": "public/images/img_acc-01.jpg",
+      "sha256": "3b4be7289d1d934f352923a2711e807bc642e75d9278f5c2c82b1b837464faf4"
+    },
+    {
+      "path": "public/images/img_acc-02.jpg",
+      "sha256": "8533bdf1121181f992945d8aa5aa4ec2f024b681ac16d6eed7b74c592119d27b"
+    },
+    {
+      "path": "public/images/img_acc_02.jpg",
+      "sha256": "0b619d3aeb789312c71a23cf2cc17a74ca284b18927b26fd589ccad4a6ea7126"
+    },
+    {
+      "path": "public/images/img_acc_03.jpg",
+      "sha256": "2c7986f695405936aedbf36e58d09afe128556f41a6f452391add03e23f7199d"
+    },
+    {
+      "path": "public/images/img_acc_04.jpg",
+      "sha256": "77a822e625c51d9077460a351a6b03d29a0acdf1b2f96bf0f3f5cb7d2d99bef3"
+    },
+    {
+      "path": "public/images/img_acc_05.jpg",
+      "sha256": "8a19bf109e3324298f594c2598c794d40dcd0895ea82275ae27a91c00f271e12"
+    },
+    {
+      "path": "public/images/img_acc_06.jpg",
+      "sha256": "a8a0c8fa5da79ee910075d3ccbc6ff335606da90072df90194464e945a0637cc"
+    },
+    {
+      "path": "public/images/img_acc_07.jpg",
+      "sha256": "e15882fb883a771f0c7bdb895de13b508e7b71efa328abad6ef9e9965434cb64"
+    },
+    {
+      "path": "public/images/img_acc_08.jpg",
+      "sha256": "259ac73aa6ae771ce65ef06d8921b3478f510b51041dfdfd358abe7ff6a8ca3d"
+    },
+    {
+      "path": "public/images/img_acc_09.jpg",
+      "sha256": "6f54144d401b527640eeff86bdcf13b413341a1ae184e67a0ca0ed9ea893502b"
+    },
+    {
+      "path": "public/images/img_acc_10.jpg",
+      "sha256": "c3698dc0789724fe1d6ca431f59e3c944e8bc928dd6ac5ccb570c41b20969569"
+    },
+    {
+      "path": "public/images/img_acc_11.jpg",
+      "sha256": "77b10d1cbf61ba1e973d427351ede44540fe355dfbf836cf4437108047bd4ddf"
+    },
+    {
+      "path": "public/images/img_acc_12.jpg",
+      "sha256": "80cfd44aff0e4adb579b96a11a26f0d614aa6d800281ce4598c818548d95d516"
+    },
+    {
+      "path": "public/images/img_acc_13.jpg",
+      "sha256": "5dd07299c02a957a4a6567f46ccfc6ff5c48fa1e84243513f117cb83abc51804"
+    },
+    {
+      "path": "public/images/img_footer_01.png",
+      "sha256": "97a4fec0f9f03ff86b0f8fdd4f9418f95b50f48f7dbf67b0106cb1eedcf86f9a"
+    },
+    {
+      "path": "public/images/img_qsn_01.webp",
+      "sha256": "fad3e9f85eec01511f105aaf15154ca2b3aa5fd4b5a7078a53ce0839fb787262"
+    },
+    {
+      "path": "public/images/img_qsn_02.png",
+      "sha256": "18f414a2b09e6b1e6653c54b35f10990302ed6ebccb0041fe5fbaf25bef53b77"
+    },
+    {
+      "path": "public/images/img_sede.jpg",
+      "sha256": "4b6c62f80eb084de07a86f31acdb396457bd4edba56a839016f8f3c2f9900e7f"
+    },
+    {
+      "path": "public/images/info/Post_inseso_info_18_jun_25.jpg",
+      "sha256": "f29c440f100b7ef163b65a86ef1e3745defb5da8152cd9024ba27c4a96061729"
+    },
+    {
+      "path": "public/images/info/Post_inseso_info_3_agos_25.jpg",
+      "sha256": "6e35542436521ec0db9e852ef2aab051ffb85cf2f50868f92d5763f6d9d26f82"
+    },
+    {
+      "path": "public/images/info/Post_inseso_info_7_agos_25.jpg",
+      "sha256": "25bfeff34fd8ec87dd49865f709ba41bbf5fa21d2cf1e613bbcc3525e018977f"
+    },
+    {
+      "path": "public/images/info/inseso_img2_3_agos_25.jpg",
+      "sha256": "acc8966e8050f34dd2b77fbce81d2f619d5956d64bee463882a984a5005f298a"
+    },
+    {
+      "path": "public/images/info/inseso_img2_7_agos_25.jpg",
+      "sha256": "bd695c7e863381125371eb82f22631073080f5d6e94f9a1955e61440349fe4eb"
+    },
+    {
+      "path": "public/images/info/inseso_img_18_jun_25.jpg",
+      "sha256": "cb9d75367df31b4c24d3895882e9a85ffe4e94f9a5fb2679894743506898e4a9"
+    },
+    {
+      "path": "public/images/info/inseso_img_3_agos_25.jpg",
+      "sha256": "6abe5e0ef782cf656b3410f813868e57707a4d5053282cebdd341e597a3dace0"
+    },
+    {
+      "path": "public/images/info/inseso_img_7_agos_25.jpg",
+      "sha256": "0ea4245641c2604980899fc321fae6a873c2fd23c72aac6af16a6c4a557b542f"
+    },
+    {
+      "path": "public/images/info/inseso_info_18_jun_25.jpg",
+      "sha256": "d02a1b6e0147b50c99b804313ea57ee829a05662b6e912c221e7ba05033b87d0"
+    },
+    {
+      "path": "public/images/info/inseso_info_3_agos_25.jpg",
+      "sha256": "2bfde2e5c17493c0997da266113d64cdb66960668f257ce9b69c5476d96746e9"
+    },
+    {
+      "path": "public/images/info/inseso_info_7_agos_25.jpg",
+      "sha256": "60165f4e6b12089df5c7c94197078cf0a7a08966344186e0f00a9b6b8e3db2c1"
+    },
+    {
+      "path": "public/images/inseso-sede.webp",
+      "sha256": "33dcdf644d3c7e413e9187eaa6d86bf37e26ff82950bbd9e3ba6595e9592f4e6"
+    },
+    {
+      "path": "public/images/logo-institucional.png",
+      "sha256": "be45e79e0b7669daec3921925adb13f914c80297e9940c4627c215a501816bda"
+    },
+    {
+      "path": "public/images/logo-institucional.svg",
+      "sha256": "93314dec9870113f0302626d9e5d242085c230af6bd7bca84800cf5407b30105"
+    },
+    {
+      "path": "public/images/logo-nuevo.png",
+      "sha256": "c37eec7cdb1d2e00bbb9f69109d7bf3b26091105b8110b345df6e40347475b00"
+    },
+    {
+      "path": "public/images/logo.png",
+      "sha256": "20cdd0f0bc5959d4503e6b30b1e82c74ef701e642a9d116ae6ef2c427902959b"
+    },
+    {
+      "path": "public/images/logo_01.png",
+      "sha256": "5db5f029c278ebd54d90c1c3186ac3752aa4d6e1f1964f1218d5b69118112318"
+    },
+    {
+      "path": "public/images/noticias/testi_01.png",
+      "sha256": "9c5d24c92ec3756084aca2d4d38d2294335bef832984eb40a8dab9aa1e031178"
+    },
+    {
+      "path": "public/images/partner/img_embleme_01.jpg",
+      "sha256": "37c3cd9009d37e0fd4b67666e2026731a62aaa87d55b03d86616aa48d1afdc4e"
+    },
+    {
+      "path": "public/images/partner/img_embleme_02.jpg",
+      "sha256": "0303d6ff3fa26cc54a5c0de9f85930ffc24ca4b187c6faf410947c0dae0cb31a"
+    },
+    {
+      "path": "public/images/partner/img_partn_01.jpg",
+      "sha256": "bcd92f8a181f880b5cb723139a0641fe863f6d414811c6442153b61d6b339fc2"
+    },
+    {
+      "path": "public/images/partner/img_partn_01.png",
+      "sha256": "9560001c40af83429781f1cd7fc65d631e6ced839dc6ff1eef8c9171efb7b8c0"
+    },
+    {
+      "path": "public/images/partner/img_partn_02.jpg",
+      "sha256": "60484b14d1353fa0c1f8febe4092e7fb2ccd62926566667e61d611402e611707"
+    },
+    {
+      "path": "public/images/partner/img_partn_02.png",
+      "sha256": "3f64d110b894e03fb9ad69765e63dc2e22b00c1f7aafd93784f3eadd400c59dd"
+    },
+    {
+      "path": "public/images/partner/img_partn_03.png",
+      "sha256": "84744d369bb458522a8da7bad4aa9aa5ba8a4115ccd25f6df20a4634a161cac9"
+    },
+    {
+      "path": "public/images/partner/img_partn_04.png",
+      "sha256": "f6d2fc0ac1cb350c51ede6ff2e3c8425084d7c88e7ea9412da133f0daa4f2f3e"
+    },
+    {
+      "path": "public/images/partner/img_partn_05.png",
+      "sha256": "3718d37311cb707a9e92046280ae4b1550a3f2ffdfe381b60af67b6c8e62a1bc"
+    },
+    {
+      "path": "public/images/partner/img_partn_06.png",
+      "sha256": "3d005a7e9747cd12caa5e1e2a7bb2b68f75041c004c4f746d2aa0e8a6721f90f"
+    },
+    {
+      "path": "public/images/partner/img_partn_07.png",
+      "sha256": "d3837e5f2bb23fde45cb877f542ce0b7be204d6509c1c5da090223fde0d64713"
+    },
+    {
+      "path": "public/images/partner/img_partner_logo_00.jpg",
+      "sha256": "0b59e01dac9b806ba59359b3848b0f4cdf1ed7ea5a60d52b3ab2b7e852fa8d45"
+    },
+    {
+      "path": "public/images/partner/img_partner_logo_01.jpg",
+      "sha256": "b89a52d024631d8cd31b6f6efdebf5e1816756b6527c50a2b2a7c5712d175c7b"
+    },
+    {
+      "path": "public/images/partner/logo_02.png",
+      "sha256": "b5f285b71ca59cd03273300ad19baf69cd5134ec1d3dc0e52911f71a8a163fc8"
+    },
+    {
+      "path": "public/images/portfolio-big-01.jpg",
+      "sha256": "20b2a86f9df1e9946b6603f941d7e376d34ec23d513159614002f355bcf7cb70"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-1.svg",
+      "sha256": "fec8a7eb8cd84115de9100c0983f4dc144aa7944762a945b9208b8433fc27bb6"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-2.svg",
+      "sha256": "6246cbf3ec87c0739f0911cab66cb93bf341cdddc06e4d99cf07a685acbbf996"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-3.svg",
+      "sha256": "900449f1993b5fa9f5013890c903069d5911dc3aa629fadca1171d2e557f8fa3"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-4.svg",
+      "sha256": "f9c01697f78e28dfae108dd9c9090e64079e2527ebb40a0cec21e51708ee6342"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-5.svg",
+      "sha256": "c204ed750a06520801e7650329a037c894569259dd798ded5e1a29d2e35150d0"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-6.svg",
+      "sha256": "9cba414e3384638e4378dac3c87c484e22b8487bd723b48087577451b0282ec2"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-7.svg",
+      "sha256": "99309258274d745dfbebb7ac4d46b79f2d8134b69a8e46439adbfdd6edc7cda2"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-8.svg",
+      "sha256": "57ad6a1853f9634831545e75b6f2bd02a645684d6c1fc0e5f674758d675e4834"
+    },
+    {
+      "path": "public/images/prestaciones/catalogo-9.svg",
+      "sha256": "16e278d8d5def35178cbd05578d2e34e64fb6d7eae8831950c2007da61471e41"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_01.jpg",
+      "sha256": "62c9cffdeff70bf3f8512cb46884168881023357deb0efc63ab7567d4afc82eb"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_02.jpg",
+      "sha256": "63f3b6301ea32e9d92e42ddf254c0b0ecee2ea61f8485976533d0ce46708ea7b"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_03.webp",
+      "sha256": "9426372501406e1f22ddb3853fc5a39b5d8e1cfbe37699ba6797116832be4106"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_04.jpg",
+      "sha256": "79939d1876edfe830bb273f024d980a2a3386bd53775dc4612e39e0ed2c73374"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_05.jpg",
+      "sha256": "9272ffb9bcd95af76fd683d9c02139bd3a56de59fc10120718c70952f719c429"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_06.jpg",
+      "sha256": "200c662ccc44577cd75dc030a3c4b4aed87a87b0a910335df588c4130d98a24b"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_06_0.jpg",
+      "sha256": "16fd43142dd48eae962fab2e9d15d1559a1773443e5e453b3716fe3ed301a7d5"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_07.jpg",
+      "sha256": "84b38a7cef9f21de65bfd1002e0e4e21842d11f2964332136c83cc3776b34ca2"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_08.jpg",
+      "sha256": "e2498d61b43e9e579ab592bc0d143b4fd5f5fa1035ac64e80e0578e97e8e574a"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_detail_09.jpg",
+      "sha256": "33e1858e5ab69b3788e4756b579120406b37a5b5e85fd5fbab412591ac3024c7"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_01.jpg",
+      "sha256": "e7735631d91070135a2a3dee30d88c33c592cfe00b52ecf98732efc0e45a6c26"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_02.webp",
+      "sha256": "7217465e7419183ed6321b46696547eee26888914ce5d45323e6287139bc7aa6"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_03.jpg",
+      "sha256": "b07265ea5d66a4b1df93ccbea00542c27ae1a94d8f7509948c2cba33632eb486"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_04.jpg",
+      "sha256": "7a0fba41f30143fd721bc97f161a53b3f86bb874d195fcf0833279022b4d8608"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_05.jpg",
+      "sha256": "8b19cf3ac68c525124c50bafef044043091160a0bf5d834868c010ea4f9e6e6a"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_06.jpg",
+      "sha256": "f675d8cc56e4b0a1dfbfaafe9dedd4788a339d7fca63e8ad3b654655edb967d0"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_07.jpg",
+      "sha256": "69f9b8ef778a59c8539dbdc185a12c8d4755a52dbeb7a580b8f53435a27b7f7e"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_08.jpg",
+      "sha256": "386423882ada778dd11bc241e190fdf8e7f5504bc9805428978859191567f526"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_img_09.jpg",
+      "sha256": "331272eefa0c4be5e1662d2914577de019edd9d0fd7529e0421cc9e3973c0afe"
+    },
+    {
+      "path": "public/images/prestaciones/prestaciones_slider.gif",
+      "sha256": "30d9c8e548971f006431927ccdf7251c9ba93ec082f9688f3a2d57437dda306e"
+    },
+    {
+      "path": "public/images/services-img-01.jpg",
+      "sha256": "cfcd9dd8eabf7940316fe3e3dafb94c7e03aab34eaadc1ae8363bf992c98b19e"
+    },
+    {
+      "path": "public/images/slider-01.jpg",
+      "sha256": "b2dcf9456c32bc0985d92c32eb674eda89e1bde1070bd464ee04303ed5d2c052"
+    },
+    {
+      "path": "public/images/slider-02.jpg",
+      "sha256": "5f5b4c07c981404edd8387af4207cf8b4c9eed68cab8f9e755bb4f97083b9293"
+    },
+    {
+      "path": "public/images/slider-03.jpg",
+      "sha256": "9abeba3129232472ae857cceb1e6a8b1b78a539e1a36895647090f6a39c15f20"
+    },
+    {
+      "path": "public/images/slider-04.jpg",
+      "sha256": "7837f4cb49c40c7f7da81b195b391bab1c402fa6c9919e453aa68228d9e536d8"
+    },
+    {
+      "path": "public/images/slider-05.jpg",
+      "sha256": "a9e83cfec39c50637a6740bec01876919660db645ac4df7a6443f2e62e36b774"
+    },
+    {
+      "path": "public/images/sommes nous/14251558.gif",
+      "sha256": "a85f0c674fa7ba930471a12d9d0a60f1680e06ae620f8a0c447a752222bcdd9f"
+    },
+    {
+      "path": "public/images/sommes nous/img_qsn_01.jpg",
+      "sha256": "700ae879d698ac50bd094e9b70d89113da99a79660846d9302a8218b243f66f6"
+    },
+    {
+      "path": "public/images/sommes nous/img_qsn_01.png",
+      "sha256": "ae62b48eb60903b6926fdd1b95ef4e2d6f668f13f7e291fedf80f1fe143f8824"
+    },
+    {
+      "path": "public/images/sommes nous/img_qsn_02.webp",
+      "sha256": "767e7c94db35fad9eb42b1fda5016cd7ab4d76af4e8f64e9f898dd1d914a1e7b"
+    },
+    {
+      "path": "public/images/sommes nous/slide_01.webp",
+      "sha256": "309b9878ed75c173df6e2d2750e66e707f03f138f3bc386478c1e9b1c603a45b"
+    },
+    {
+      "path": "public/images/sommes nous/slide_02.jpg",
+      "sha256": "5113d114a57b8d3741a6b6b5014d569faeed8d618abc80ae31a445981290902d"
+    },
+    {
+      "path": "public/images/sommes nous/slide_03.jpg",
+      "sha256": "c9c067aabe71c8c4354484a88536ac476ec966e6fb4ae1100ed172c928efa466"
+    },
+    {
+      "path": "public/images/sommes nous/slide_qsn_01.gif",
+      "sha256": "fef7f8114c3ac63022d0096b7adc39abaac300c0364776ec9925afccef653de4"
+    },
+    {
+      "path": "public/images/sommes nous/slide_qsn_01.jpg",
+      "sha256": "98f9be9c1b9865159587e7e68d7f869342a0bebb38ada386b2cd5b89c65abf64"
+    },
+    {
+      "path": "public/images/sommes nous/slide_qsn_02.jpg",
+      "sha256": "4fce54b8810b14f98a307923f6c1a7408c640b8b1449dc5513d63c2dd49fc987"
+    },
+    {
+      "path": "public/images/sommes nous/slide_qsn_03.webp",
+      "sha256": "ba027d7ef348c5a96fa5cadec4f0d4ddef947067ef77e7e93258f17746b784e1"
+    },
+    {
+      "path": "public/images/sommes nous/slide_qsn_04.jpg",
+      "sha256": "0569eb290b902efc8abd90397bb01eb5059420e9cbcd2faef8e865e42f60368c"
+    },
+    {
+      "path": "public/images/trabajadores/Solicitud.png",
+      "sha256": "5498e0f3ef1224864f911bf55edd06a9d66826797b3fe057b90bca3ee9f9be0a"
+    },
+    {
+      "path": "public/images/trabajadores/img_silder_trabaja_01.jpg",
+      "sha256": "65dab552c1c37947532ab95aa26fd3e5c73e8455757e976004e127bc93d78e15"
+    },
+    {
+      "path": "public/images/trabajadores/img_silder_trabaja_02.jpg",
+      "sha256": "567a6111549e4a95449d4283764ad079e6d49e064f86b3f934899e5b51a6e9f9"
+    },
+    {
+      "path": "public/images/trabajadores/img_trabaja_01.webp",
+      "sha256": "8b04b39f0d4ae8fd61c33ccba0f019de3c4fc0f9b18147e00a4d880804d5fa59"
+    },
+    {
+      "path": "public/images/trabajadores/img_trabaja_02.jpg",
+      "sha256": "bb0c9fcc0dabf4266397520ea174fccd0d1470e733f3447294586891ca3d1107"
+    },
+    {
+      "path": "public/images/trabajadores/img_trabaja_03.jpg",
+      "sha256": "c470a1b4b15135262169b2e760e4fab9f7aa99bd4bdf772f7e8c27da384791d2"
+    },
+    {
+      "path": "public/js/filter.js",
+      "sha256": "56af3f6b884b490109e4abab215c7d3550b9126066c56b93a51607814a64a2d0"
+    },
+    {
+      "path": "public/js/imagesloaded.pkgd.min.js",
+      "sha256": "96abf166b3cbb5f7df525d86fdeeeccea4af3c120b19bc26b0613530a94e8b44"
+    },
+    {
+      "path": "public/js/init-partners-carousel.js",
+      "sha256": "ffda38b8525292e6a62d94364b0dbc41dcf99da41857e7d71eeb7c11898db406"
+    },
+    {
+      "path": "public/js/isotope.pkgd.min.js",
+      "sha256": "2ac1dec2ea676653dc33c1dc718636434357b352fd07d6bf9750c69250191abc"
+    },
+    {
+      "path": "public/js/jquery.appear.js",
+      "sha256": "2d1887577f97622899873b36b41ccdec1d3ac304811dfb52c3983b3c192d3ae5"
+    },
+    {
+      "path": "public/js/navbar-toggle.js",
+      "sha256": "0abb525fb1b45a10ab1f7a8581de086b3c61b4959eeb811d98dc14b8844ed8d5"
+    },
+    {
+      "path": "public/js/owl.carousel.min.js",
+      "sha256": "e0e2bc4e1d3ee5024c4e1aa58a6cad9aa42fc63a8c89ce18013a1c8f2b94875c"
+    },
+    {
+      "path": "public/js/script.js",
+      "sha256": "9f0632aed3ab65a884360f6a0021e19a94744fe2ff54c662ba8134cea58c4874"
+    },
+    {
+      "path": "public/robots.txt",
+      "sha256": "2231ab079fe4254588fbc72a6798ff0f6b37c25d3d388b4e312d4f78874545c2"
+    },
+    {
+      "path": "public/vendor/bootstrap/css/bootstrap.min.css",
+      "sha256": "31df1e69ea3aece8a8bae5c08bcb7f5e977cb76f886897b301355359b66a48ec"
+    },
+    {
+      "path": "public/vendor/bootstrap/js/bootstrap.bundle.min.js",
+      "sha256": "928f97f310d8f768c5e3d521e3b1ce2cff156f9cc60c5d09fad772f4a2c43f52"
+    },
+    {
+      "path": "public/vendor/jquery/jquery.min.js",
+      "sha256": "160a426ff2894252cd7cebbdd6d6b7da8fcd319c65b70468f10b6690c45d02ef"
+    },
+    {
+      "path": "public/vendor/swiper/swiper-bundle.min.css",
+      "sha256": "74ca6aae5468dbc924790c3b4d219a089b90a34bad53a0f7ca3a73e73b6f5ab8"
+    },
+    {
+      "path": "public/vendor/swiper/swiper-bundle.min.js",
+      "sha256": "985f1224c0eeec99d367a9db35e58e44b21e7eb9ce45831b15b4c108e41fd97f"
+    },
+    {
+      "path": "public/video/Felicitacion del ILMO. Señor Delegado Nacional a Su Excelencia Obiang Nguema Mbasogo..mp4",
+      "sha256": "2cde3100fb79aa69958ac1c28fd137c48d2968cf1f1eae2f233d0c6555a34b5d"
+    },
+    {
+      "path": "public/webfonts/fa-brands-400.eot",
+      "sha256": "a7d84c1474f1aa695c23c6219a09b9120855ce6702563fcb4911cc7e72a454c6"
+    },
+    {
+      "path": "public/webfonts/fa-brands-400.svg",
+      "sha256": "458d163cae861950c094eb89299577e9ab731af92086540da52d1dd07476e813"
+    },
+    {
+      "path": "public/webfonts/fa-brands-400.ttf",
+      "sha256": "5660ca37cb851e9114f88800050a4d6b5bf871d48bfe7e6d6ba4332d8220255f"
+    },
+    {
+      "path": "public/webfonts/fa-brands-400.woff",
+      "sha256": "e1e30bb6e54ee8694d77ce63ff9b71e1174c2ade3791f094c6b9bb3ba292fda6"
+    },
+    {
+      "path": "public/webfonts/fa-brands-400.woff2",
+      "sha256": "974956f1b7b82cecd8ae88a0b685f0d5dfe5c8534c2784e59abeea719eadbbc4"
+    },
+    {
+      "path": "public/webfonts/fa-regular-400.eot",
+      "sha256": "c2a7d76738711f69ea2dbfd04aafe90f3f7fadef05b329acf9c16c86d8e6a77a"
+    },
+    {
+      "path": "public/webfonts/fa-regular-400.svg",
+      "sha256": "6bd57bdd6e377395a28384d621582111acce562f008b3f7e796b0187ae36d5c3"
+    },
+    {
+      "path": "public/webfonts/fa-regular-400.ttf",
+      "sha256": "13c222639abd611d066619c165c58f596b3add0d664b1b32beb7c7e82c9af211"
+    },
+    {
+      "path": "public/webfonts/fa-regular-400.woff",
+      "sha256": "f47e95b5a8e9c9da8cd50f626888cc2042d6da99c2c340cf3dc137da2e54f5b2"
+    },
+    {
+      "path": "public/webfonts/fa-regular-400.woff2",
+      "sha256": "48810f2ca5c1a9cb285177a493b18a3ca22c177afeb9b242a592788eafc606f2"
+    },
+    {
+      "path": "public/webfonts/fa-solid-900.eot",
+      "sha256": "4e7c8b81bb33a90d9bee61ad6d0dc6885bd7950e79e6c06c9e61990b13f2b9c9"
+    },
+    {
+      "path": "public/webfonts/fa-solid-900.svg",
+      "sha256": "f6bd8f51d0ef39a195943ed084c621ec009317c2714900c3ec3fe274ba7b406d"
+    },
+    {
+      "path": "public/webfonts/fa-solid-900.ttf",
+      "sha256": "0777ab6eb9d4714f3f0f0ddd718436fe2221a9aca8d04375a150b57af45a0215"
+    },
+    {
+      "path": "public/webfonts/fa-solid-900.woff",
+      "sha256": "a188f8b84731c59143770ef391c9ad0fa2534d316862d5cb384623285c95c2e0"
+    },
+    {
+      "path": "public/webfonts/fa-solid-900.woff2",
+      "sha256": "ca3ea16761b7d443c64cfd99dd1cf8aa84790a25bb4709582935956fe71d014d"
+    },
+    {
+      "path": "scripts/appointment-mail-worker.mjs",
+      "sha256": "8bb82908d55f7757e21bc1f8597b4343b7c58c7cb3364db2ab6127b64e3e2ecc"
+    },
+    {
+      "path": "scripts/appointments-admin.mjs",
+      "sha256": "229f383c99f250889e6c81737ca19db2d87ec5c1697a16d267fe956b511a670b"
+    },
+    {
+      "path": "scripts/check-smtp.mjs",
+      "sha256": "231e8d97a90b2652c26133dd5a7dcabb6cd2f4e69382c0356faef884e2216645"
+    },
+    {
+      "path": "scripts/generate-banner-vectors.mjs",
+      "sha256": "ccba49f7c125236a63382d05c62a664cb859db67ad259d1ecd4b2d6a90118fef"
+    },
+    {
+      "path": "scripts/generate-brand-assets.mjs",
+      "sha256": "2de134d10adf23e5b7581f2042a49d6dec9c91170968bf2ca1d3d8d894ac8751"
+    },
+    {
+      "path": "scripts/populate-prestaciones.js",
+      "sha256": "5c1ea9b5e0b7990fe2f08a2bbeca73e2fa88ccdbcf835c0522803f0d59ce828c"
+    },
+    {
+      "path": "scripts/populate-strapi.js",
+      "sha256": "dac3eb48d53586115afc131668f5790aa9923ae665a58bd9f90bc247ffc080b8"
+    },
+    {
+      "path": "scripts/prepare-benefit-drafts.mjs",
+      "sha256": "0852a9a0cfee4b07733a48c32594efe7d4e771f9540b29b88012285aed8c1bff"
+    },
+    {
+      "path": "scripts/test-appointments.mjs",
+      "sha256": "8e02519509fbe898bb0af76812a89e9ded005cd39f3d166630ae3e6c16c041fa"
+    },
+    {
+      "path": "scripts/test-benefit-accordion.mjs",
+      "sha256": "d258de12878025274b5f48ba5c33becfcca9d95683d0963dbc242bcc440f3ece"
+    },
+    {
+      "path": "scripts/test-benefit-faq.mjs",
+      "sha256": "5c7c85f8bf86c5da146308f1423c816e6953bbe87d1ef6352d01c0de2dab64f9"
+    },
+    {
+      "path": "scripts/test-consent-ui.mjs",
+      "sha256": "7ec28e928c0d9a8a2e394e8952c3ee5b652631417fe9768cd2b551814040efa4"
+    },
+    {
+      "path": "scripts/test-final.mjs",
+      "sha256": "c6bed8248698b7aaea4e0bd7bd6b9e5c0e3f0d469919a1745bdebc28c9bfcd52"
+    },
+    {
+      "path": "scripts/test-render.mjs",
+      "sha256": "efa20c1ab957e22c84d6b33207aff2ee4c205092749e0b70dabc5ba5bacc1d5e"
+    },
+    {
+      "path": "scripts/test-revision-4.mjs",
+      "sha256": "cb6ca96d53d882cc621f80b8bafab5c64d0563c5c48c2d4d01d7522fdc001556"
+    },
+    {
+      "path": "src/assets/images/logos/logo.webp",
+      "sha256": "20cdd0f0bc5959d4503e6b30b1e82c74ef701e642a9d116ae6ef2c427902959b"
+    },
+    {
+      "path": "src/components/AffiliationLinks.astro",
+      "sha256": "349e94e1b7678645e317ccf28aeea67b2601c29a44f120bcca166e5c4ac807a4"
+    },
+    {
+      "path": "src/components/BenefitDetails.astro",
+      "sha256": "1b8d85a5e9f7da2d7fa9aafbd9f34a7a3777c9e6d4c77d82e868a8a59c3458ec"
+    },
+    {
+      "path": "src/components/BlogSlider.astro",
+      "sha256": "e5ee1eb06194aa523f8d5d6e20edcd886eaaa90b60a5b55a773259c3d2b6298e"
+    },
+    {
+      "path": "src/components/Breadcrumb.astro",
+      "sha256": "94fcca6470944dfcda5206ded81dddb4dc9f8591b7a41618e7c0abbf221147c1"
+    },
+    {
+      "path": "src/components/CommonBenefitForm.astro",
+      "sha256": "9b2761589e6ad91d2d567b4315775303cf2427d9650706dc9c9c5aed2aadb6a9"
+    },
+    {
+      "path": "src/components/ContactPanel.astro",
+      "sha256": "1f0ba755b187b5d59379a5374c50dfe907d20564e8b3aeca2d4faa768d70ee75"
+    },
+    {
+      "path": "src/components/ExternalMedia.astro",
+      "sha256": "1d7749dc57c3f0315b9e59b656bffb5488b93f9944c552936b28a9efa6b0a41c"
+    },
+    {
+      "path": "src/components/Footer.astro",
+      "sha256": "dfe20e8db5bb156013a88e6fca432f1fe5e7803ec6bab9740b554938dcb34e59"
+    },
+    {
+      "path": "src/components/HeroCarousel.astro",
+      "sha256": "25a884832355377c3970da8fefd5569ec377937b5454ea4f8fbb3125cbef0da3"
+    },
+    {
+      "path": "src/components/InfoCard.astro",
+      "sha256": "a8a8614d700e55633c73600646d0375d720da8209811f83d3570bf4296a8d6a3"
+    },
+    {
+      "path": "src/components/InstitutionalContent.astro",
+      "sha256": "3ea6e6461ba1a0a97fa1f2250faea959cd6e436580ec2330ae571e178be11a53"
+    },
+    {
+      "path": "src/components/InstitutionalOrganization.astro",
+      "sha256": "6c023db5f710842151e7506b5a5fe5b9860201705688d7d396d87dbd7c30f379"
+    },
+    {
+      "path": "src/components/InsuredAttention.astro",
+      "sha256": "ddb4d2ee8e1d0d0c54ad9b261c59d225d011f5d493e8f53d22c95aedb7281a97"
+    },
+    {
+      "path": "src/components/InsuredContactHighlight.astro",
+      "sha256": "c476d224a8b1255406eeee595f87b8d7cc80ab221b56df9c38d15cdb710b6244"
+    },
+    {
+      "path": "src/components/LanguageSwitcher.astro",
+      "sha256": "bea379b74e340e6603fc6ba068e1bb98b07c5a44d7a2866ee9adb6f7435dcd67"
+    },
+    {
+      "path": "src/components/LegalContent.astro",
+      "sha256": "064a841cc75b9d9f58b9275f6ad715b6682f3871a06774a8ee12d79f3bb6ecd5"
+    },
+    {
+      "path": "src/components/Navbar.astro",
+      "sha256": "70668bdfa15431202f0139fdaf4098ec8fc06e511f6ce300daa588a528651b19"
+    },
+    {
+      "path": "src/components/NewsCard.astro",
+      "sha256": "cf3044e8c754ee01edf28b74d7702940120e48bfb9d860fc7f8f7069e36086d0"
+    },
+    {
+      "path": "src/components/NewsGrid.astro",
+      "sha256": "e33f0d2e932c5aa4c1e1ca39ea2091af2eb44811694408039fa9011d891b2ee0"
+    },
+    {
+      "path": "src/components/NewsLateralCard.astro",
+      "sha256": "5deb9d48def48bc58f9078d2f46328e933768ef97720651d437b4ffdcf761427"
+    },
+    {
+      "path": "src/components/NovedadesSection.astro",
+      "sha256": "17f9515e70190ac45033aaa0b5a6d2a75993de16e4131f0c72e7ed1a6cc25251"
+    },
+    {
+      "path": "src/components/OfficesDirectory.astro",
+      "sha256": "a9c03a631860a83180ca6d1ad4fa2ce3d8e77e060b3bb7c91546c6c99dfd21a7"
+    },
+    {
+      "path": "src/components/OptimizedImage.astro",
+      "sha256": "da3a76a30f653bd0e41384f3219ebbdf990e07f5ddb76e6a40e7835a93c6ce99"
+    },
+    {
+      "path": "src/components/PageHeader.astro",
+      "sha256": "90e0b41ba1307ca503bf7143cf36213647e74df1aa4ba7504e27790c447afbd5"
+    },
+    {
+      "path": "src/components/PartnersCarousel.astro",
+      "sha256": "bd58e1628f5add8ad53e015dc531a541699d6eeb8349bf3207556e1926f5968e"
+    },
+    {
+      "path": "src/components/PresentationHero.astro",
+      "sha256": "cd44dfee56e5ce223e18afd8b4d99d01d97e783324ba3e64443accc35431340c"
+    },
+    {
+      "path": "src/components/PrestacionesGrid.astro",
+      "sha256": "0a1760f323eb2295258a5cf2f9a5caa154d0b56fc44c6b042197a2c94bd34f53"
+    },
+    {
+      "path": "src/components/PreviewBanner.astro",
+      "sha256": "81f7052fa027cc493f78dcf60e2c11c5e3abbbfb24d9898b4d2e169f362a3a0f"
+    },
+    {
+      "path": "src/components/SocialLinks.astro",
+      "sha256": "03c805d9457eaa864dd3e30d9d53e823b5e117d6f670dcdfd57ed463edf85fcf"
+    },
+    {
+      "path": "src/components/SwiperHero.astro",
+      "sha256": "273362aa02db44fdf85891c7ab107ce4e6f8b5f08a0240eee1aff2408ec31082"
+    },
+    {
+      "path": "src/components/TikTokIcon.astro",
+      "sha256": "341e612421a159ee13f6377ac3b5f53a75dc4dcd78a027aadcd23337cce5ec39"
+    },
+    {
+      "path": "src/components/TikTokLink.astro",
+      "sha256": "d6b008d4572453410b295ad65157b532246039b84886203e22cb79ca1f77db86"
+    },
+    {
+      "path": "src/components/TopBar.astro",
+      "sha256": "603e6558cf51ddd168494834612a514d09c80fb155beb6938966cfbecb0e6da9"
+    },
+    {
+      "path": "src/components/UltimaHoraSection.astro",
+      "sha256": "2a596f7373a1bdfbdc60325677c59db20a9e4727d9c0a5bbf219f0b7ae92d08b"
+    },
+    {
+      "path": "src/config/contact.ts",
+      "sha256": "73441f3945dd43b145f2e10a522c5e5b9e86e57090035ca422747e2332b73408"
+    },
+    {
+      "path": "src/data/appointments.json",
+      "sha256": "10351002ca4f12980a8f0ce4031fd1901fc8fe0b506759ce6540b9c348a5dd4c"
+    },
+    {
+      "path": "src/data/benefit-catalog.ts",
+      "sha256": "e8f4bde572dea548305e141685a0b6d6b11f4f20694dbc970017039a65efa677"
+    },
+    {
+      "path": "src/data/benefit-faq.ts",
+      "sha256": "1e6a2bb4ef48aadb8c872803a92ea17822f516e3f820e6b53fae1e0446021de4"
+    },
+    {
+      "path": "src/data/benefits.json",
+      "sha256": "b07851a1c27de57da7020f81ffe01654ea8a783be6876b5e67fd32e889323070"
+    },
+    {
+      "path": "src/data/legacy-benefits.json",
+      "sha256": "45f3a9fd63863f7af1d982ffaf632962a0539675b4ae903eb0ac3bf28eb9ea94"
+    },
+    {
+      "path": "src/data/offices.ts",
+      "sha256": "1f7a05ac28c9f3cf8cc12f775fb53eb7d011012c63f30c4b5d196bb7747d8c93"
+    },
+    {
+      "path": "src/env.d.ts",
+      "sha256": "cc719d1ef0609cd73ab9d19df5df62df8a3f84bed76b9e6b0ae1f669c67a1ff8"
+    },
+    {
+      "path": "src/i18n/locales/en.json",
+      "sha256": "cc5cabebe1600ac85423e9097c61d994f3b55d9dc209fcb980b0d400677231ce"
+    },
+    {
+      "path": "src/i18n/locales/es.json",
+      "sha256": "1ca1b7dade35fa0f92c80f0b4d80377b638d1263010a7f513c84686975fe0336"
+    },
+    {
+      "path": "src/i18n/locales/fr.json",
+      "sha256": "f856c22425efd9cc2f92266fa810278c1de6517a7048f509260cb2250385177e"
+    },
+    {
+      "path": "src/i18n/locales/pt.json",
+      "sha256": "0a9207f971cda04a49073b5104c5c886806b94d95ff7138d1a8183bdcb28c7aa"
+    },
+    {
+      "path": "src/i18n/utils.ts",
+      "sha256": "7fbecc477e43b6b3153090430d3ae44b7486cbeb4fd622dd4940ad0b7ad4f9a2"
+    },
+    {
+      "path": "src/layouts/BaseLayout.astro",
+      "sha256": "aa3194bc22e3b1513d88166042718406f63d5084a0b4b221ab6a9a79e0b2b710"
+    },
+    {
+      "path": "src/layouts/ContentWithSidebarLayout.astro",
+      "sha256": "cc1cbae8808f65b907eede5d4563155ed9c9105aa6f8781253e5d45be4914e50"
+    },
+    {
+      "path": "src/layouts/PrestacionLayout.astro",
+      "sha256": "4d9cfc186edf7c9ac9e9bf498066d9696500d6d827152abe055d95e12b4ac88e"
+    },
+    {
+      "path": "src/lib/appointment-form.ts",
+      "sha256": "2f7a32302e25affc9809a3659509d5b38c25a35e8db9af8fd9e7678f8d89a6c7"
+    },
+    {
+      "path": "src/lib/benefit-accordion.ts",
+      "sha256": "8d8d77b942596d60c836b45905f87c47d708253735a607bb40da06cf083b495e"
+    },
+    {
+      "path": "src/lib/strapi.ts",
+      "sha256": "60551ef26633bfebd91b231ac3866f13ee7911f2c5645cb8cf6833827618be8d"
+    },
+    {
+      "path": "src/middleware.ts",
+      "sha256": "6aa746b3d2ca647b06469220c57099b6eaba9ec304ac377f75663818cce54313"
+    },
+    {
+      "path": "src/pages/Pensión_por_vejez.astro",
+      "sha256": "e73b097db3fcc676695870d08e5baf701cb5bef88a2a266f98ba668c1677b590"
+    },
+    {
+      "path": "src/pages/Prestaciones_Médico_Farmacéuticas.astro",
+      "sha256": "8ea4f7d632a8abb897615a33c91be33a461441bc643ad0e16b2f12205de7c034"
+    },
+    {
+      "path": "src/pages/Prestaciones_Sociales.astro",
+      "sha256": "995a2b4d0417739a912fac2f2bbb8707512b475c4d305cb25298694fd23e88b6"
+    },
+    {
+      "path": "src/pages/Prestaciones_por_invalidez.astro",
+      "sha256": "840c55f112b542d9f26d09a4a2bae947b16970a65a9ef48ffa68fea4eba37534"
+    },
+    {
+      "path": "src/pages/Prestaciones_por_muerte_y_supervivencia.astro",
+      "sha256": "eb6efb8b0529c8e3fd5a72d018dbd2b60db729b3eef5b0504f4977b3d88a8d60"
+    },
+    {
+      "path": "src/pages/Protección_al_empleo.astro",
+      "sha256": "ec057ffe4ce9cb550f747ea2e861f5e7a70fe7260d1cda0ea87373b5f12248e4"
+    },
+    {
+      "path": "src/pages/Servicios_sociales.astro",
+      "sha256": "ec057ffe4ce9cb550f747ea2e861f5e7a70fe7260d1cda0ea87373b5f12248e4"
+    },
+    {
+      "path": "src/pages/Subsidio_de_incapacidad_temporal.astro",
+      "sha256": "2bf469b54d9780b4d301b59de61819321350eca1c1620034f2790b5b98cbe2b9"
+    },
+    {
+      "path": "src/pages/Subsidio_por_maternidad.astro",
+      "sha256": "0967ac828b15d6c0f0d694d9cb857dbd371cfe0d2a250e440bdd2f2cc140b15c"
+    },
+    {
+      "path": "src/pages/Subsidios_familiares.astro",
+      "sha256": "be3d2f3b9c4ae5b9f1a300eec48738b5cecc7092d894be60600c09ad8bffa8ae"
+    },
+    {
+      "path": "src/pages/[lang]/Pensión_por_vejez.astro",
+      "sha256": "1d4a8ea5752f897410c8c816d3104c5b49f163e43801c21aada6374728a3286b"
+    },
+    {
+      "path": "src/pages/[lang]/Prestaciones_Médico_Farmacéuticas.astro",
+      "sha256": "302eea9d4ec8414b3388444871e7dae558dcb3a9ca3427e2684b0867dbfadb30"
+    },
+    {
+      "path": "src/pages/[lang]/Prestaciones_Sociales.astro",
+      "sha256": "f566b20a5f00be43367534edfecb3115f10b9dda2a0db94bc1034721f12e794f"
+    },
+    {
+      "path": "src/pages/[lang]/Prestaciones_por_invalidez.astro",
+      "sha256": "72b0fab6d41a592c80953c992bb6502422fc556e264e6584eca5dff3a4173a1d"
+    },
+    {
+      "path": "src/pages/[lang]/Prestaciones_por_muerte_y_supervivencia.astro",
+      "sha256": "9ea4ed1bdb0827b73477846286d4c475d1688a9b99c50bd4d5476fc995965dfe"
+    },
+    {
+      "path": "src/pages/[lang]/Protección_al_empleo.astro",
+      "sha256": "a712af25a8426058a8ce85865a773559d2bbd2a3ee3faffb451b710344448083"
+    },
+    {
+      "path": "src/pages/[lang]/Servicios_sociales.astro",
+      "sha256": "a712af25a8426058a8ce85865a773559d2bbd2a3ee3faffb451b710344448083"
+    },
+    {
+      "path": "src/pages/[lang]/Subsidio_de_incapacidad_temporal.astro",
+      "sha256": "18c0c0455666bf9bd55f5d6dfcd761dc48b0e87aa252efb09029c7af1023ccbd"
+    },
+    {
+      "path": "src/pages/[lang]/Subsidio_por_maternidad.astro",
+      "sha256": "9317b6989c48fc1d7c7caf76da2becf782df214dfb8bc209d4cae7da59a52164"
+    },
+    {
+      "path": "src/pages/[lang]/Subsidios_familiares.astro",
+      "sha256": "3d3380ccaea37878dbeae8213a17cedcda7b75279a3efb95b3307209e4959f71"
+    },
+    {
+      "path": "src/pages/[lang]/afiliacionee_autonomo.astro",
+      "sha256": "898e49bb5044558e662ba831cc03cff82b0d7420896e590c7a7d80febb2eba69"
+    },
+    {
+      "path": "src/pages/[lang]/afiliacionee_empresas.astro",
+      "sha256": "c9421c2e0ba60b1e48964733b3690b1c0add0297ba8415c65d5f5cc2416227f4"
+    },
+    {
+      "path": "src/pages/[lang]/afiliacionee_trabajadores.astro",
+      "sha256": "7373bbdd18093c8326f9afe862582068ff7507ba6d1feed6e1b95041754fd36d"
+    },
+    {
+      "path": "src/pages/[lang]/atencion-asegurado.astro",
+      "sha256": "040eae47414eee36dbe8184b128721560cad2c4b0164d7a22ecb2501469fa71d"
+    },
+    {
+      "path": "src/pages/[lang]/aviso-legal.astro",
+      "sha256": "036049a3c876638dc9ee69ea35b5e5340bf21b470f9a0d74751fd9988b68e84f"
+    },
+    {
+      "path": "src/pages/[lang]/condiciones_adhesion.astro",
+      "sha256": "80eb495f958180922155b4efa8ddb217297531192651848043353528157ab1b3"
+    },
+    {
+      "path": "src/pages/[lang]/contacto.astro",
+      "sha256": "eded2ac841bf3c386001a528dbf907ec698c626ac13b0ca83a9226869106692d"
+    },
+    {
+      "path": "src/pages/[lang]/cookies.astro",
+      "sha256": "7d0fbb72dab4b17a552e084815f33bd4a324692464d74fc0f2194d595b5f71be"
+    },
+    {
+      "path": "src/pages/[lang]/descarga_formularios.astro",
+      "sha256": "3841b6bed9f11d491eae145e4589fc4990c26d7e69be98707a12628c4909660d"
+    },
+    {
+      "path": "src/pages/[lang]/empleadores/penas-sanciones.astro",
+      "sha256": "5ea142551c76d9642f6e5dea9ccd944840276efc1353a3eb1ec50aa79f589bda"
+    },
+    {
+      "path": "src/pages/[lang]/formulario-prestaciones.astro",
+      "sha256": "1847a03f094827b50cffcf47fb644115a89171f94c988ab835fc955fc9f4f219"
+    },
+    {
+      "path": "src/pages/[lang]/index.astro",
+      "sha256": "99017f09b27c1ecc842176398db9a7e6c7e56664208bcdac8ce14179bf817968"
+    },
+    {
+      "path": "src/pages/[lang]/institucional.astro",
+      "sha256": "287f3c758fc8282a94f4f51053af48311ac84606d9e99b258a6a945a530c5c57"
+    },
+    {
+      "path": "src/pages/[lang]/noticias.astro",
+      "sha256": "cb2d708cd88e3380a4fc16a8ea9190b6660b12a0147d4f8b7c60645a0a7d3a4a"
+    },
+    {
+      "path": "src/pages/[lang]/noticias/[slug].astro",
+      "sha256": "5fd428b7a3daf15505917eadae3c859d458a1664c523ceb35d870d2a8cbf7503"
+    },
+    {
+      "path": "src/pages/[lang]/nuestras_agencias.astro",
+      "sha256": "c7a7d5f5fd7635b5f82925d20a319c08c8d49e6e3db6c0c26b1eee445fd9037c"
+    },
+    {
+      "path": "src/pages/[lang]/prestacion/[slug].astro",
+      "sha256": "0ba7861dd411c2702456184487790105e7d51b83116d196dc5f2edaf8e693a8a"
+    },
+    {
+      "path": "src/pages/[lang]/privacidad.astro",
+      "sha256": "ef262386e1f63638a72d53c4a4a1616047ed1863a141bc1002415229ac0b4c11"
+    },
+    {
+      "path": "src/pages/[lang]/sobre_nosotros.astro",
+      "sha256": "4e1a3f94f38fe6e92973e4fa123d9e428a688559dbd3183c1c5c0236ba468c1a"
+    },
+    {
+      "path": "src/pages/[lang]/solicitud_de_carne.astro",
+      "sha256": "94c952b017df36ad23ca7e26d3bda88281703486cd1bae8b882952569c168cbe"
+    },
+    {
+      "path": "src/pages/afiliacionee_autonomo.astro",
+      "sha256": "60517897067f81a7e83708b1cd2bd5742eaf28382fdc97e9e70208797c80e740"
+    },
+    {
+      "path": "src/pages/afiliacionee_empresas.astro",
+      "sha256": "405872db297d4a78ffcdd88ba1d67d7704e9b791f0f2d050b702aecce5e948c4"
+    },
+    {
+      "path": "src/pages/afiliacionee_trabajadores.astro",
+      "sha256": "552c056b2f7c9856c7e504e41562c8c48d18ec87e7bea69807758ca11d453a03"
+    },
+    {
+      "path": "src/pages/afiliación_fernanda.astro",
+      "sha256": "3a8410e5d839a5f4cd7955285f31b1d0e511afb18f0b1b5bfdab41a4dc1d1a90"
+    },
+    {
+      "path": "src/pages/api/atencion/config.ts",
+      "sha256": "fde498344c073b385b3dddf5b856049acc2cabed3517fcb5c00da2d628ed2b85"
+    },
+    {
+      "path": "src/pages/api/atencion/huecos.ts",
+      "sha256": "78414c565d09b8b307db1dfcbc1b77e394c8fcc46b48fee4794fe0b439038276"
+    },
+    {
+      "path": "src/pages/api/atencion/reservar.ts",
+      "sha256": "f321bcfb3dfa9f91a29d0155d7c0ca082fdee87a374a2c9ee488ed9dd6b1368d"
+    },
+    {
+      "path": "src/pages/api/exit-preview.ts",
+      "sha256": "8a9aa16924bf2bc970064cec4548eca23c7dc1e8c05656de9d4c5439acb9efe3"
+    },
+    {
+      "path": "src/pages/api/preview.ts",
+      "sha256": "352b47d5631474ad917a8c373c4f69e333971015b4d609f52f29f6400384acc8"
+    },
+    {
+      "path": "src/pages/api/send-email.ts",
+      "sha256": "ba9b4de037340623f57481057feb63b49a571fcb94b9ba3cf4aeea7c6ccc0b83"
+    },
+    {
+      "path": "src/pages/atencion-asegurado.astro",
+      "sha256": "72a64efa5f6dfe043cfb547a54fc442dcfc06dc2c1abaf7765bbaa82d178a55c"
+    },
+    {
+      "path": "src/pages/aviso-legal.astro",
+      "sha256": "ccaafb322b04b211afc93136be4ec6846b23164dfb985222f5c3927fc742568e"
+    },
+    {
+      "path": "src/pages/condiciones_adhesion.astro",
+      "sha256": "877205463d0169faefce3202ea55ed5753025dcfd7273875ca24c3201d275c6f"
+    },
+    {
+      "path": "src/pages/contacto.astro",
+      "sha256": "ca99ba93e6d9ee57066de4311beacf50abe6d2f34f36197aa738e6208d6f0b71"
+    },
+    {
+      "path": "src/pages/cookies.astro",
+      "sha256": "523a79309b8e4bdada12c8d5984baff4457776f5655dd374504f8ca703860428"
+    },
+    {
+      "path": "src/pages/descarga_formularios.astro",
+      "sha256": "ce1b3e8590872acf1ca31430ed178f0f6755f2c1ebb207b190912698f0f02acc"
+    },
+    {
+      "path": "src/pages/empleadores/penas-sanciones.astro",
+      "sha256": "9823d02526b0b8607988a4c97b0a4c92ac2c046951b3cb353cdb5fc39c2c4417"
+    },
+    {
+      "path": "src/pages/formulario-prestaciones.astro",
+      "sha256": "7444e37d30c6d6eee258f4dfa6e5336281d858deca9fab8b84310336a3284994"
+    },
+    {
+      "path": "src/pages/index.astro",
+      "sha256": "941838331a6abe95f768cb222ad0814d7a8c005ae2695c65d4ed0f57512211b6"
+    },
+    {
+      "path": "src/pages/información_1.astro",
+      "sha256": "a7ec3ff0c3fe13ca97a7ce279a1d48365ab44a4d5a7e68aec8ecd8a76e253c75"
+    },
+    {
+      "path": "src/pages/información_2.astro",
+      "sha256": "2a84893c44127560b770a18999ed62a02a2d7ae27b075089b1b1badd201283da"
+    },
+    {
+      "path": "src/pages/información_3.astro",
+      "sha256": "769fd5e2856fd844054a7b02f1c598e8849b444b43566dee4b7b6f25cb832c0f"
+    },
+    {
+      "path": "src/pages/institucional.astro",
+      "sha256": "7383e68825876cb693d09f3f21443deacd99ebc0172165edfcf9396345e96af0"
+    },
+    {
+      "path": "src/pages/noticia/[slug].astro",
+      "sha256": "281c1f3de34a59730ae66812bb5e34f2316671c4bc08aec43b1c55b1c7c31d65"
+    },
+    {
+      "path": "src/pages/noticias.astro",
+      "sha256": "19659fa1f30d96523146f571693ab120573492c82c5df72caed8bd6924686e1d"
+    },
+    {
+      "path": "src/pages/noticias/[slug].astro",
+      "sha256": "8e04375705d86dd82e959b152b6afc3cde9b47f10801f1f176ac95e68c46bb1e"
+    },
+    {
+      "path": "src/pages/noticias/buscar.astro",
+      "sha256": "e0b80f0f8d76f5a7b17012d7c07874220f2cafb39aa14df45f0b5a765931574c"
+    },
+    {
+      "path": "src/pages/nuestras_agencias.astro",
+      "sha256": "8017eb1589083d6a0cd0561beb3ca30f7e84490f471cce11b8fd8c2091d60117"
+    },
+    {
+      "path": "src/pages/prestacion/[slug].astro",
+      "sha256": "14b32163c9d23357ff9f9000afb71db296b36928dd4ff71722cf09e58d45287e"
+    },
+    {
+      "path": "src/pages/preview/home.astro",
+      "sha256": "18bf402b7864284f3a9023f8d3444549e246b2c559a9cb71b20c32ecc76a418e"
+    },
+    {
+      "path": "src/pages/preview/noticia/[documentId].astro",
+      "sha256": "9ab60a1a8ff9918acc2987535aad31d277843c22e4647bcb7f5f3510a5a67de4"
+    },
+    {
+      "path": "src/pages/preview/prestacion/[documentId].astro",
+      "sha256": "b42578e386452e440d0184fdb54f852ab7dc0a49a0009898aa299a0fa71632d0"
+    },
+    {
+      "path": "src/pages/privacidad.astro",
+      "sha256": "1a396110aeb4907dbd75e8887267a32fa2d02d6907c26885c5abd52a305e4044"
+    },
+    {
+      "path": "src/pages/sobre_nosotros.astro",
+      "sha256": "e841497d642b9b322921d825a7de143487b7e16cb543b1e60ef4e70d768dfbe6"
+    },
+    {
+      "path": "src/pages/solicitud_de_carne.astro",
+      "sha256": "5e3704aa93bd6403fb683c1a6ac1fc7c02045edefa9b19746a8101adcbcc6c0b"
+    },
+    {
+      "path": "src/server/appointments.mjs",
+      "sha256": "5f53107a1e93ce1f5584b6455fade8309f3ebfe4eddafcf5ec8391ee3d8b7542"
+    },
+    {
+      "path": "src/server/mail.mjs",
+      "sha256": "abc54ae0677ed95068bb62746e153be322b0335dc714b036041abca73ab966aa"
+    },
+    {
+      "path": "src/styles/global.css",
+      "sha256": "36b8ea1e406432150804f7b536154877429ec895ec9054a2bf79e8b0154822fc"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "b6d92ae4f6d86c61913df027bd59180784e0c1a5908397d5db88295eb68494da"
+    },
+    {
+      "path": "vendor/bootstrap/css/bootstrap.min.css",
+      "sha256": "31df1e69ea3aece8a8bae5c08bcb7f5e977cb76f886897b301355359b66a48ec"
+    },
+    {
+      "path": "vendor/bootstrap/js/bootstrap.bundle.min.js",
+      "sha256": "928f97f310d8f768c5e3d521e3b1ce2cff156f9cc60c5d09fad772f4a2c43f52"
+    },
+    {
+      "path": "vendor/jquery/jquery.min.js",
+      "sha256": "160a426ff2894252cd7cebbdd6d6b7da8fcd319c65b70468f10b6690c45d02ef"
+    },
+    {
+      "path": "video/Felicitacion del ILMO. Señor Delegado Nacional a Su Excelencia Obiang Nguema Mbasogo..mp4",
+      "sha256": "2cde3100fb79aa69958ac1c28fd137c48d2968cf1f1eae2f233d0c6555a34b5d"
+    },
+    {
+      "path": "webfonts/fa-brands-400.eot",
+      "sha256": "a7d84c1474f1aa695c23c6219a09b9120855ce6702563fcb4911cc7e72a454c6"
+    },
+    {
+      "path": "webfonts/fa-brands-400.svg",
+      "sha256": "458d163cae861950c094eb89299577e9ab731af92086540da52d1dd07476e813"
+    },
+    {
+      "path": "webfonts/fa-brands-400.ttf",
+      "sha256": "5660ca37cb851e9114f88800050a4d6b5bf871d48bfe7e6d6ba4332d8220255f"
+    },
+    {
+      "path": "webfonts/fa-brands-400.woff",
+      "sha256": "e1e30bb6e54ee8694d77ce63ff9b71e1174c2ade3791f094c6b9bb3ba292fda6"
+    },
+    {
+      "path": "webfonts/fa-brands-400.woff2",
+      "sha256": "974956f1b7b82cecd8ae88a0b685f0d5dfe5c8534c2784e59abeea719eadbbc4"
+    },
+    {
+      "path": "webfonts/fa-regular-400.eot",
+      "sha256": "c2a7d76738711f69ea2dbfd04aafe90f3f7fadef05b329acf9c16c86d8e6a77a"
+    },
+    {
+      "path": "webfonts/fa-regular-400.svg",
+      "sha256": "6bd57bdd6e377395a28384d621582111acce562f008b3f7e796b0187ae36d5c3"
+    },
+    {
+      "path": "webfonts/fa-regular-400.ttf",
+      "sha256": "13c222639abd611d066619c165c58f596b3add0d664b1b32beb7c7e82c9af211"
+    },
+    {
+      "path": "webfonts/fa-regular-400.woff",
+      "sha256": "f47e95b5a8e9c9da8cd50f626888cc2042d6da99c2c340cf3dc137da2e54f5b2"
+    },
+    {
+      "path": "webfonts/fa-regular-400.woff2",
+      "sha256": "48810f2ca5c1a9cb285177a493b18a3ca22c177afeb9b242a592788eafc606f2"
+    },
+    {
+      "path": "webfonts/fa-solid-900.eot",
+      "sha256": "4e7c8b81bb33a90d9bee61ad6d0dc6885bd7950e79e6c06c9e61990b13f2b9c9"
+    },
+    {
+      "path": "webfonts/fa-solid-900.svg",
+      "sha256": "f6bd8f51d0ef39a195943ed084c621ec009317c2714900c3ec3fe274ba7b406d"
+    },
+    {
+      "path": "webfonts/fa-solid-900.ttf",
+      "sha256": "0777ab6eb9d4714f3f0f0ddd718436fe2221a9aca8d04375a150b57af45a0215"
+    },
+    {
+      "path": "webfonts/fa-solid-900.woff",
+      "sha256": "a188f8b84731c59143770ef391c9ad0fa2534d316862d5cb384623285c95c2e0"
+    },
+    {
+      "path": "webfonts/fa-solid-900.woff2",
+      "sha256": "ca3ea16761b7d443c64cfd99dd1cf8aa84790a25bb4709582935956fe71d014d"
+    }
+  ]
+}

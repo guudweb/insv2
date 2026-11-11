@@ -1,0 +1,26 @@
+{
+  "revision": 3,
+  "fecha": "2026-10-13",
+  "cambios": [
+    "src/data/benefit-faq.ts",
+    "src/components/BenefitDetails.astro",
+    "src/lib/benefit-accordion.ts",
+    "src/layouts/PrestacionLayout.astro",
+    "src/components/TikTokIcon.astro",
+    "src/components/TikTokLink.astro",
+    "src/components/TopBar.astro",
+    "src/components/Footer.astro",
+    "public/css/footer-improvements.css",
+    "src/data/offices.ts",
+    "src/components/OfficesDirectory.astro",
+    "public/images/agencias/santa-maria-exterior.jpg",
+    "scripts/test-benefit-faq.mjs",
+    "scripts/test-benefit-accordion.mjs",
+    "scripts/test-render.mjs"
+  ],
+  "pruebas": 78,
+  "pendientes": [
+    "URL oficial TikTok",
+    "Fotos verificadas de cinco oficinas solicitadas y Ebebiyín"
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documentos_institucionales",
+  "info": {
+    "singularName": "documento-institucional",
+    "pluralName": "documentos-institucionales",
+    "displayName": "Documento institucional"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "unidadResponsable": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "fechaRevision": {
+      "type": "date",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "categoria": {
+      "type": "enumeration",
+      "enum": [
+        "organigrama",
+        "gobierno",
+        "normativa",
+        "estadisticas",
+        "memorias",
+        "licitaciones"
+      ],
+      "required": true
+    },
+    "archivo": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ],
+      "required": true
+    },
+    "activo": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

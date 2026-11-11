@@ -11,7 +11,7 @@ const lang=getLangFromUrl(Astro.url),w=ui[lang].attention,legal=ui[lang].legal;
 <ol class="steps" aria-label={w.title}>{w.steps.map((step,i)=><li><span>{i+1}</span>{step}</li>)}</ol>
 <p class="notice" id="agenda-status" role="status" aria-live="polite">{w.loading}</p>
 <form id="appointment-form">
-<fieldset id="booking-fields">
+<fieldset id="booking-fields" disabled>
 <div class="booking-grid">
 <section><h2>1 · {w.steps[0]}</h2><label for="appointment-service">{w.service} *</label><select id="appointment-service" name="service" required><option value="">{w.choose}</option></select><div id="benefit-field" hidden><label for="appointment-benefit">{w.benefit} *</label><select id="appointment-benefit" name="benefit" disabled><option value="">{w.choose}</option></select></div></section>
 <section><h2>2 · {w.steps[1]}</h2><label for="appointment-office">{w.office} *</label><select id="appointment-office" name="office" disabled required><option value="">{w.choose}</option></select></section>

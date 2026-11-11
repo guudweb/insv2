@@ -1,0 +1,26 @@
+{
+  "checks": 61,
+  "realMailSent": false,
+  "results": [
+    {
+      "form": "empresa",
+      "pages": 2,
+      "bytes": 25653
+    },
+    {
+      "form": "trabajador",
+      "pages": 3,
+      "bytes": 27125
+    },
+    {
+      "form": "prestacion",
+      "pages": 2,
+      "bytes": 25662
+    },
+    {
+      "form": "reembolso",
+      "pages": 2,
+      "bytes": 25814
+    }
+  ]
+}
