@@ -1,11 +1,11 @@
 {
-  "imageBytes": 9549479,
-  "imageFiles": 214,
+  "imageBytes": 9704585,
+  "imageFiles": 224,
   "maximumBytes": 10000000,
   "checkedRoutes": 36,
-  "authorityPhotosInChart": 0,
+  "authorityPhotosInChart": 1,
   "centeredNames": true,
-  "serviceNodes": 10,
+  "serviceNodes": 13,
   "removedRoutes": [
     "/afiliacionee_autonomo",
     "/afiliacionee_empresas",
