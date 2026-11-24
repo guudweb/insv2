@@ -18,7 +18,18 @@ const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "
  <ol class="chart-tree">
   <li><div class="org-node council authority-node"><div class="service-photo"><img src="/images/gobierno/pca.webp" alt={leaders[0].name} loading="lazy" /></div><span>{leaders[0].role}</span><h3 class="authority-name">{leaders[0].name}</h3></div>
    <ol><li><div class="org-node directive">{text.board}</div>
-    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo"><img src="/images/gobierno/asesoria-juridica.webp" alt={text.legal} loading="lazy" /></div>{text.legal}</div><div class="org-node delegation authority-node"><span>{text.delegate}</span><h3 class="authority-name">{leaders[1].name}</h3></div><div class="support-stack"><div class="org-support">{text.cabinet}</div></div></div>
+    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo"><img src="/images/gobierno/asesoria-juridica.webp" alt={text.legal} loading="lazy" /></div>{text.legal}</div><div class="org-node delegation authority-node">
+  <div class="service-photo delegate-photo">
+    <img
+      src="/images/gobierno/delegada-nacional.jpeg"
+      alt={leaders[1].name}
+      loading="lazy"
+    />
+  </div>
+
+  <span>{text.delegate}</span>
+  <h3 class="authority-name">{leaders[1].name}</h3>
+</div><div class="support-stack"><div class="org-support">{text.cabinet}</div></div></div>
      <ol><li><div class="org-node secretary-node authority-node">
   <div class="service-photo">
     <img
@@ -29,9 +40,6 @@ const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "
   </div>
   <span>{text.secretary}</span>
   <h3 class="authority-name">{leaders[2].name}</h3>
-  <div class="secretary-section">
-    {text.studiesSection}
-  </div>
 </div><ol class="service-grid">{text.services.map((service,i)=><li><div class="service-node"><div class="service-photo">{servicePhotos[i]?<img src={`/images/gobierno/${servicePhotos[i]}`} alt={service} loading="lazy" />:<><i class="fas fa-user" aria-hidden="true"></i><small>{l("Fotografía pendiente")}</small></>}</div><p>{service}</p></div></li>)}</ol></li></ol>
     </li></ol>
    </li></ol>
