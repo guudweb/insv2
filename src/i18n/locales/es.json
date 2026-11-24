@@ -444,7 +444,7 @@
     "commitment3": "Pago de las prestaciones de la Seguridad Social conforme a los derechos adquiridos",
     "commitment4": "Sensibilización en materia de protección social y prevención de riesgos laborales"
   },
-  "organization": {
+    "organization": {
     "government": "Órganos de gobierno",
     "intro": "Conozca a las autoridades que encabezan la organización del Instituto de Seguridad Social.",
     "viewChart": "Ver organigrama",
@@ -456,23 +456,23 @@
     "chartIntro": "La estructura conecta los órganos de dirección, las unidades de apoyo y los servicios de la institución.",
     "council": "Consejo de Administración",
     "board": "Consejo Directivo",
-    "legal": "Asesoría Jurídica",
+    "legal": "Jefa de la Asesoría Jurídica",
     "cabinet": "Gabinete de la Delegada",
     "advisory": "Consejería",
+    "studiesSection": "Sección de Estudios, Estadísticas y Formación",
     "services": [
-      "Administración General",
-      "Intervención General",
-      "Servicio de Control General de Afiliación y Atención al Asegurado",
-      "Servicios Técnicos",
-      "Servicio de Prestaciones Sanitarias y del Seguro Médico Universal",
-      "Servicios Médicos",
-      "Servicio de Informática y Transformación Digital",
-      "Servicio de Recursos Humanos",
-      "Servicio de Marketing",
-      "Servicio de Estudios, Estadísticas y Formación",
-      "Inspección General de Servicios y Auditorías Internas",
-      "Servicio de Control Externo y Seguridad Laboral",
-      "Servicio Especial de Discapacitados"
+      "Administrador General",
+      "Interventora General",
+      "Jefe del Servicio de Control General de Afiliación y Atención al Asegurado",
+      "Jefe de los Servicios Técnicos",
+      "Responsable de las Prestaciones Sanitarias y del Servicio Médico Universal",
+      "Jefa de los Servicios Médicos",
+      "Jefe del Servicio de Informática y Transformación Digital",
+      "Jefa del Servicio de Recursos Humanos",
+      "Jefa del Servicio de Marketing",
+      "Director de Auditorías",
+      "Jefe del Servicio de Control Externo y Seguridad Laboral",
+      "Jefe del Servicio Especial de Discapacitados"
     ]
   },
   "benefitGroups": {

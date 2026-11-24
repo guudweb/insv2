@@ -463,21 +463,21 @@
     "legal": "Conseil juridique",
     "cabinet": "Cabinet du délégué",
     "advisory": "Conseil consultatif",
+    "studiesSection": "Section des études, des statistiques et de la formation",
     "services": [
-      "Administration générale",
-      "Contrôle général",
-      "Service du contrôle général de l’affiliation et de l’accueil des assurés",
-      "Services techniques",
-      "Service des prestations de santé et de l’assurance maladie universelle",
-      "Services médicaux",
-      "Service informatique et transformation numérique",
-      "Service des ressources humaines",
-      "Service du marketing",
-      "Service des études, des statistiques et de la formation",
-      "Inspection générale des services et audits internes",
-      "Service du contrôle externe et de la sécurité au travail",
-      "Service spécial pour les personnes handicapées"
-    ]
+  "Administrateur général",
+  "Contrôleuse générale",
+  "Chef du service de contrôle général de l’affiliation et d’accueil des assurés",
+  "Chef des services techniques",
+  "Responsable des prestations sanitaires et du service médical universel",
+  "Chef des services médicaux",
+  "Chef du service informatique et de la transformation numérique",
+  "Chef du service des ressources humaines",
+  "Chef du service marketing",
+  "Directeur des audits",
+  "Chef du service de contrôle externe et de sécurité au travail",
+  "Chef du service spécial pour les personnes handicapées"
+]
   },
   "benefitGroups": {
     "general": "Prestations générales",

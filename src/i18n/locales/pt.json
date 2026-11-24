@@ -463,21 +463,21 @@
     "legal": "Assessoria Jurídica",
     "cabinet": "Gabinete do Delegado",
     "advisory": "Conselharia",
+    "studiesSection": "Secção de Estudos, Estatística e Formação",
     "services": [
-      "Administração Geral",
-      "Intervenção Geral",
-      "Serviço de Controlo Geral da Filiação e Atendimento ao Segurado",
-      "Serviços Técnicos",
-      "Serviço de Prestações de Saúde e do Seguro de Saúde Universal",
-      "Serviços Médicos",
-      "Serviço de Informática e Transformação Digital",
-      "Serviço de Recursos Humanos",
-      "Serviço de Marketing",
-      "Serviço de Estudos, Estatísticas e Formação",
-      "Inspeção Geral de Serviços e Auditorias Internas",
-      "Serviço de Controlo Externo e Segurança no Trabalho",
-      "Serviço Especial para Pessoas com Deficiência"
-    ]
+  "Administrador-Geral",
+  "Interventora-Geral",
+  "Chefe do Serviço de Controlo Geral da Inscrição e Atendimento ao Segurado",
+  "Chefe dos Serviços Técnicos",
+  "Responsável pelas Prestações de Saúde e pelo Serviço Médico Universal",
+  "Chefe dos Serviços Médicos",
+  "Chefe do Serviço de Informática e Transformação Digital",
+  "Chefe do Serviço de Recursos Humanos",
+  "Chefe do Serviço de Marketing",
+  "Diretor de Auditorias",
+  "Chefe do Serviço de Controlo Externo e Segurança no Trabalho",
+  "Chefe do Serviço Especial para Pessoas com Deficiência"
+]
   },
   "benefitGroups": {
     "general": "Prestações gerais",

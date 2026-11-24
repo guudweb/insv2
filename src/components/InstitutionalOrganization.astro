@@ -11,14 +11,14 @@ const leaders=[
 ];
 
 const l=createLocalizer(lang);
-const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "jefe-tecnicos.webp", "jefe-seguro-medico.webp", "jefe-medicos.webp", "jefe-informatica.webp", "jefe-rrhh.webp", "jefe-marketing.webp", null, null, null, "jefe-control-externo.webp"];
+const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "jefe-tecnicos.webp", "jefe-seguro-medico.webp", "jefe-medicos.webp", "jefe-informatica.webp", "jefe-rrhh.webp", "jefe-marketing.webp", null, null, "jefe-control-externo.webp"];
 ---
 <section class="organization container" aria-labelledby="chart-title" id="organos-gobierno">
  <section class="chart-panel" id="organigrama" aria-labelledby="chart-title"><header><span class="eyebrow">{text.structure}</span><h2 id="chart-title">{text.chart}</h2><p>{text.chartIntro}</p></header>
  <ol class="chart-tree">
-  <li><div class="org-node council authority-node"><div class="service-photo"><img src="/images/gobierno/pca.webp" alt={leaders[0].name} loading="lazy" /></div><span>{text.council}</span><span class="authority-role">{leaders[0].role}</span><h3 class="authority-name">{leaders[0].name}</h3></div>
+  <li><div class="org-node council authority-node"><div class="service-photo"><img src="/images/gobierno/pca.webp" alt={leaders[0].name} loading="lazy" /></div><span>{leaders[0].role}</span><h3 class="authority-name">{leaders[0].name}</h3></div>
    <ol><li><div class="org-node directive">{text.board}</div>
-    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo"><img src="/images/gobierno/asesoria-juridica.webp" alt={text.legal} loading="lazy" /></div>{text.legal}</div><div class="org-node delegation authority-node"><span>{text.delegate}</span><h3 class="authority-name">{leaders[1].name}</h3></div><div class="support-stack"><div class="org-support">{text.cabinet}</div><div class="org-support">{text.advisory}</div></div></div>
+    <ol><li><div class="delegation-row"><div class="org-support legal"><div class="service-photo"><img src="/images/gobierno/asesoria-juridica.webp" alt={text.legal} loading="lazy" /></div>{text.legal}</div><div class="org-node delegation authority-node"><span>{text.delegate}</span><h3 class="authority-name">{leaders[1].name}</h3></div><div class="support-stack"><div class="org-support">{text.cabinet}</div></div></div>
      <ol><li><div class="org-node secretary-node authority-node">
   <div class="service-photo">
     <img
@@ -29,6 +29,9 @@ const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "
   </div>
   <span>{text.secretary}</span>
   <h3 class="authority-name">{leaders[2].name}</h3>
+  <div class="secretary-section">
+    {text.studiesSection}
+  </div>
 </div><ol class="service-grid">{text.services.map((service,i)=><li><div class="service-node"><div class="service-photo">{servicePhotos[i]?<img src={`/images/gobierno/${servicePhotos[i]}`} alt={service} loading="lazy" />:<><i class="fas fa-user" aria-hidden="true"></i><small>{l("Fotografía pendiente")}</small></>}</div><p>{service}</p></div></li>)}</ol></li></ol>
     </li></ol>
    </li></ol>
@@ -45,4 +48,39 @@ const servicePhotos=["jefe-administracion.webp", null, "jefe-afiliacion.webp", "
 /* CAMBIO WEB_INSESO: presidencia centrada sobre delegación y secretaría. */
 @media(min-width:601px){.leaders{grid-template-columns:repeat(4,minmax(0,1fr));position:relative}.leader.pca{grid-column:2 / 4;grid-row:1}.leader.delegate{grid-column:1 / 3;grid-row:2}.leader.secretary{grid-column:3 / 5;grid-row:2}.leaders:before{content:"";position:absolute;top:45%;left:25%;right:25%;border-top:2px solid #b4cfbb}.leaders .leader{z-index:1}}
 .authority-node .service-photo img{object-fit:contain}.service-photo img{object-position:center 18%}
+/* Presentación uniforme de los retratos del organigrama */
+.organization .service-photo {
+  width: 100%;
+  max-width: 230px;
+  margin: 0 auto 1rem;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.organization .service-photo img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center 25%;
+  border-radius: 11px;
+}
+
+.organization .delegate-photo img {
+  object-position: center 45%;
+}
+
+.service-node p,
+.authority-name {
+  text-align: center;
+}
+
+.secretary-section {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--org-line);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
 </style>

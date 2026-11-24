@@ -463,20 +463,20 @@
     "legal": "Legal Advisory Office",
     "cabinet": "Delegate’s Office",
     "advisory": "Advisory Office",
+    "studiesSection": "Section for Studies, Statistics and Training",
     "services": [
-      "General Administration",
-      "General Comptroller’s Office",
-      "General Affiliation Control and Insured Member Support Service",
-      "Technical Services",
-      "Health Benefits and Universal Health Insurance Service",
-      "Medical Services",
-      "IT and Digital Transformation Service",
-      "Human Resources Service",
-      "Marketing Service",
-      "Studies, Statistics and Training Service",
-      "General Inspection of Services and Internal Audits",
-      "External Control and Occupational Safety Service",
-      "Special Service for Persons with Disabilities"
+  "General Administrator",
+  "General Comptroller",
+  "Head of the General Affiliation Control and Insured Services Department",
+  "Head of Technical Services",
+  "Head of Healthcare Benefits and the Universal Medical Service",
+  "Head of Medical Services",
+  "Head of Information Technology and Digital Transformation",
+  "Head of Human Resources",
+  "Head of Marketing",
+  "Director of Audits",
+  "Head of External Control and Occupational Safety",
+  "Head of the Special Service for Persons with Disabilities"
     ]
   },
   "benefitGroups": {
